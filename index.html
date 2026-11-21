@@ -1,0 +1,1660 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>8시마켓 — 저녁 8시, 우리 동네 가격이 달라집니다</title>
+<meta name="description" content="동네 점포의 당일 잔여상품을 실시간 마감특가로 연결하고, 선결제 후 가까운 매장에서 픽업하는 로컬 커머스 플랫폼 8시마켓의 시제품 페이지입니다.">
+<meta name="theme-color" content="#15803d">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%2315803d'/><text x='16' y='23' font-size='15' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='bold'>8</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap">
+<style>
+/* ============ Tokens ============ */
+:root{
+  --green-900:#14532d; --green-800:#166534; --green-700:#15803d; --green-600:#16a34a;
+  --green-100:#dcfce7; --mint:#f0fdf4; --mint-2:#f7fdf9;
+  --orange-600:#ea580c; --orange-500:#f97316; --orange-100:#ffedd5;
+  --ink:#0f172a; --ink-2:#334155; --muted:#64748b; --line:#e6ebf0; --soft:#f8fafc;
+  --r-lg:22px; --r-md:16px; --r-sm:12px;
+  --shadow:0 1px 2px rgba(15,23,42,.04), 0 10px 30px -18px rgba(15,23,42,.25);
+  --shadow-lg:0 24px 60px -30px rgba(15,23,42,.35);
+}
+
+/* ============ Base ============ */
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+:focus-visible{outline:2px solid #16a34a;outline-offset:2px;border-radius:4px}
+::selection{background:#bbf7d0;color:#14532d}
+body{
+  margin:0;background:#fff;color:var(--ink);line-height:1.62;word-break:keep-all;
+  font-family:Pretendard,"Noto Sans KR",-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+h1,h2,h3,h4,p{margin:0}
+button{font-family:inherit}
+a{color:inherit}
+[hidden]{display:none !important}
+.wrap{width:100%;max-width:1140px;margin:0 auto;padding:0 20px}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+
+/* ============ Header ============ */
+.site-header{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.88);backdrop-filter:saturate(180%) blur(12px);border-bottom:1px solid var(--line)}
+.site-header .wrap{display:flex;align-items:center;justify-content:space-between;gap:14px;height:66px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:900;font-size:19px;letter-spacing:-.03em}
+.logo-mark{width:36px;height:36px;border-radius:12px;background:linear-gradient(140deg,#22c55e,#15803d);color:#fff;display:grid;place-items:center;font-size:14px;font-weight:900;box-shadow:0 8px 16px -8px rgba(22,163,74,.95)}
+.logo small{display:block;font-size:10.5px;font-weight:700;color:var(--muted);letter-spacing:0;line-height:1.2;margin-top:1px}
+.nav{display:flex;align-items:center;gap:24px;font-size:14px;font-weight:700;color:var(--ink-2)}
+.nav a{text-decoration:none;transition:color .15s}
+.nav a:hover{color:var(--green-700)}
+.header-cta{display:inline-flex;align-items:center;gap:6px;background:var(--green-700);color:#fff;text-decoration:none;font-weight:800;font-size:13.5px;padding:9px 15px;border-radius:10px;white-space:nowrap}
+.header-cta:hover{background:var(--green-800)}
+@media(max-width:820px){.nav{display:none}}
+@media(max-width:420px){.logo small{display:none}.header-cta{padding:8px 12px;font-size:12.5px}}
+
+/* ============ Hero ============ */
+.hero{position:relative;background:
+  radial-gradient(900px 420px at 82% -12%,#dcfce7 0%,rgba(220,252,231,0) 62%),
+  radial-gradient(600px 300px at 8% 0%,#fef3e8 0%,rgba(254,243,232,0) 60%),
+  linear-gradient(180deg,#f7fdf9 0%,#fff 78%);
+  overflow:hidden}
+.hero::after{content:"";position:absolute;inset:auto 0 0 0;height:1px;background:linear-gradient(90deg,transparent,var(--line),transparent)}
+.hero-inner{display:grid;grid-template-columns:1.06fr .94fr;gap:44px;align-items:center;padding:60px 0 54px}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid #d5efdf;color:var(--green-700);font-weight:800;font-size:12.5px;padding:7px 13px;border-radius:999px;box-shadow:0 6px 16px -12px rgba(21,128,61,.8)}
+.eyebrow .dot-live{width:7px;height:7px;border-radius:50%;background:var(--green-600);box-shadow:0 0 0 4px rgba(22,163,74,.15)}
+.hero-title{font-size:clamp(30px,4.5vw,50px);line-height:1.2;letter-spacing:-.04em;font-weight:900;margin-top:18px}
+.hero-title .g{color:var(--green-700)}
+.hero-title .o{color:var(--orange-600)}
+.hero-lead{margin-top:16px;color:var(--ink-2);font-size:clamp(15px,1.5vw,17.5px);max-width:520px}
+.hero-lead b{color:var(--ink);font-weight:800}
+.hero-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.hero-meta{display:flex;flex-wrap:wrap;gap:14px;margin-top:18px;font-size:12.5px;color:var(--muted);font-weight:600}
+.hero-meta span{display:inline-flex;align-items:center;gap:6px}
+
+/* flow */
+.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin-top:32px;max-width:600px}
+.flow-step{background:#fff;border:1px solid var(--line);border-radius:13px;padding:12px 11px;box-shadow:0 1px 2px rgba(15,23,42,.03)}
+.flow-step b{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:7px;background:var(--green-100);color:var(--green-700);font-size:12px;font-weight:900;margin-bottom:7px}
+.flow-step span{display:block;font-size:12.5px;font-weight:800;letter-spacing:-.02em;line-height:1.35}
+.flow-step small{display:block;color:var(--muted);font-size:11px;font-weight:600;margin-top:2px;line-height:1.4}
+@media(max-width:640px){.flow{grid-template-columns:repeat(2,1fr)}}
+
+/* hero visual */
+.hero-visual{position:relative;display:grid;place-items:center;padding:8px 0}
+.phone{position:relative;width:288px;background:#0b1220;border-radius:44px;padding:10px;box-shadow:0 40px 70px -30px rgba(15,23,42,.55)}
+.phone-screen{position:relative;background:#fff;border-radius:36px;overflow:hidden;border:1px solid #e8eef4}
+.phone-notch{position:absolute;top:0;left:50%;transform:translateX(-50%);width:104px;height:22px;background:#0b1220;border-radius:0 0 14px 14px;z-index:4}
+.phone-head{background:linear-gradient(160deg,#f0fdf4,#ffffff);padding:26px 16px 12px;border-bottom:1px solid #eef3f0}
+.phone-head .pb{display:flex;align-items:center;justify-content:space-between;font-size:11px;font-weight:800;color:var(--green-700)}
+.phone-head h4{font-size:16px;letter-spacing:-.03em;margin-top:8px;font-weight:900}
+.phone-head p{font-size:11px;color:var(--muted);font-weight:600;margin-top:2px}
+.phone-body{padding:10px 12px 14px;display:grid;gap:9px}
+.mini{display:grid;grid-template-columns:44px 1fr auto;gap:9px;align-items:center;border:1px solid #eef2f6;border-radius:12px;padding:8px;background:#fff}
+.mini .mi-thumb{width:44px;height:44px;border-radius:9px;background:var(--mint);display:grid;place-items:center;font-size:22px}
+.mini .mi-name{font-size:11.5px;font-weight:800;letter-spacing:-.02em;line-height:1.3}
+.mini .mi-store{font-size:10px;color:var(--muted);font-weight:600}
+.mini .mi-price{text-align:right}
+.mini .mi-was{font-size:9.5px;color:#94a3b8;text-decoration:line-through;display:block;line-height:1.2}
+.mini .mi-now{font-size:12.5px;font-weight:900;letter-spacing:-.02em}
+.mini .mi-pct{font-size:9.5px;font-weight:900;color:var(--orange-600)}
+.phone-foot{display:flex;justify-content:space-around;border-top:1px solid #eef2f6;padding:9px 6px 12px;font-size:9.5px;color:#94a3b8;font-weight:700;background:#fff}
+.phone-foot b{color:var(--green-700)}
+.chip-float{position:absolute;z-index:5;background:#fff;border:1px solid var(--line);border-radius:13px;padding:9px 12px;font-size:11.5px;font-weight:800;color:var(--ink);box-shadow:0 18px 34px -18px rgba(15,23,42,.45);display:flex;align-items:center;gap:7px;white-space:nowrap}
+.chip-float .ic{width:20px;height:20px;border-radius:6px;display:grid;place-items:center;font-size:11px;background:var(--green-100);color:var(--green-700)}
+.chip-1{top:6%;left:-6%;animation:float1 5s ease-in-out infinite}
+.chip-2{top:34%;right:-9%;animation:float2 6s ease-in-out infinite}
+.chip-3{bottom:9%;left:-4%;animation:float1 5.5s ease-in-out infinite}
+@keyframes float1{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+@keyframes float2{0%,100%{transform:translateY(0)}50%{transform:translateY(8px)}}
+.countdown{font-variant-numeric:tabular-nums}
+@media(max-width:940px){
+  .hero-inner{grid-template-columns:1fr;gap:30px;padding:36px 0 40px}
+  .hero-visual{order:2}
+  .chip-1{left:0}.chip-2{right:0}.chip-3{left:2%}
+}
+@media(max-width:420px){
+  .phone{width:255px}
+  .chip-float{display:none}
+}
+
+/* ============ Buttons ============ */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;border:0;border-radius:12px;font-weight:800;font-size:15px;padding:13px 20px;cursor:pointer;text-decoration:none;transition:transform .13s ease, box-shadow .2s ease, background .2s ease;line-height:1.2}
+.btn:active{transform:translateY(1px)}
+.btn-primary{background:linear-gradient(180deg,#1aad51,#15803d);color:#fff;box-shadow:0 10px 22px -12px rgba(22,163,74,.95)}
+.btn-primary:hover{background:linear-gradient(180deg,#16a34a,#166534)}
+.btn-primary:disabled{background:#cbd5e1;color:#f8fafc;box-shadow:none;cursor:not-allowed}
+.btn-orange{background:linear-gradient(180deg,#f97316,#ea580c);color:#fff;box-shadow:0 10px 22px -12px rgba(234,88,12,.95)}
+.btn-orange:hover{background:linear-gradient(180deg,#ea580c,#c2410c)}
+.btn-ghost{background:#fff;border:1px solid var(--line);color:var(--ink-2)}
+.btn-ghost:hover{border-color:#cbd5e1;background:var(--soft)}
+.btn-lg{font-size:16px;padding:15px 24px;border-radius:14px}
+.btn-sm{font-size:13px;padding:9px 14px;border-radius:10px}
+.btn-block{width:100%}
+
+/* ============ Sections ============ */
+.section{padding:70px 0;scroll-margin-top:78px}
+section[id]{scroll-margin-top:78px}
+.section.mint{background:linear-gradient(180deg,var(--mint-2),var(--mint))}
+.section-head{max-width:730px;margin:0 auto 32px;text-align:center}
+.label{display:inline-block;font-size:12px;font-weight:900;letter-spacing:.06em;color:var(--orange-600);background:var(--orange-100);padding:5px 12px;border-radius:999px}
+.label.green{color:var(--green-700);background:var(--green-100)}
+.section-head h2{font-size:clamp(23px,3vw,32px);letter-spacing:-.035em;line-height:1.28;font-weight:900;margin-top:12px}
+.section-head p{color:var(--ink-2);font-size:15.5px;margin-top:12px}
+
+/* pillars */
+.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.pillar{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px 20px;box-shadow:var(--shadow)}
+.pillar .pi{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;font-size:20px;background:var(--mint);margin-bottom:12px}
+.pillar h3{font-size:16px;font-weight:900;letter-spacing:-.02em}
+.pillar p{font-size:13.5px;color:var(--ink-2);margin-top:6px;line-height:1.6}
+.pillar .why{display:inline-block;margin-top:11px;font-size:11.5px;font-weight:800;color:var(--green-700);background:var(--mint);padding:4px 9px;border-radius:7px}
+@media(max-width:860px){.pillars{grid-template-columns:1fr}}
+
+/* ============ Prototype shell ============ */
+.app-shell{background:#fff;border:1px solid var(--line);border-radius:26px;box-shadow:var(--shadow-lg);overflow:hidden}
+.app-top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:18px 22px;border-bottom:1px solid var(--line);background:linear-gradient(180deg,#fff,#fbfdfc);flex-wrap:wrap}
+.app-top .at-left{display:flex;align-items:center;gap:10px}
+.app-top .at-left .mini-logo{width:30px;height:30px;border-radius:9px;background:linear-gradient(140deg,#22c55e,#15803d);color:#fff;display:grid;place-items:center;font-size:12px;font-weight:900}
+.app-top h3{font-size:16px;font-weight:900;letter-spacing:-.03em;line-height:1.25}
+.app-top p{font-size:11.5px;color:var(--muted);font-weight:600}
+.app-top .at-right{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.live-pill{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:800;color:var(--green-700);background:var(--mint);border:1px solid #d7f0e0;padding:6px 10px;border-radius:999px;font-variant-numeric:tabular-nums}
+.live-pill i{width:6px;height:6px;border-radius:50%;background:var(--green-600);animation:blink 1.6s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+.demo-tag{font-size:11px;font-weight:700;color:var(--muted);background:var(--soft);border:1px solid var(--line);padding:6px 10px;border-radius:999px}
+
+.tabs{display:flex;gap:6px;padding:6px;background:#f2f6f4;border-radius:15px;overflow-x:auto;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab-btn{flex:1 1 0;min-width:max-content;display:inline-flex;align-items:center;justify-content:center;gap:7px;border:0;background:transparent;border-radius:11px;padding:11px 15px;font-size:13.5px;font-weight:800;color:#64748b;cursor:pointer;white-space:nowrap;transition:background .18s,color .18s,box-shadow .18s}
+.tab-btn .tn{display:inline-grid;place-items:center;width:19px;height:19px;border-radius:6px;background:#e2e8f0;color:#64748b;font-size:11px;font-weight:900}
+.tab-btn.is-active{background:#fff;color:var(--green-700);box-shadow:0 3px 10px -4px rgba(15,23,42,.2)}
+.tab-btn.is-active .tn{background:var(--green-100);color:var(--green-700)}
+.tabs-holder{padding:16px 22px 0}
+@media(max-width:640px){
+  .app-top{padding:14px 16px}
+  .tabs-holder{padding:12px 14px 0}
+  .tab-btn{font-size:12.5px;padding:10px 12px}
+}
+
+.panel{padding:20px 22px 26px}
+@media(max-width:640px){.panel{padding:14px 14px 20px}}
+
+/* ============ Consumer ============ */
+.filter-bar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:14px}
+.radius-group{display:inline-flex;background:#f1f5f3;border:1px solid var(--line);border-radius:11px;padding:3px;gap:2px}
+.r-btn{border:0;background:transparent;border-radius:8px;padding:8px 12px;font-size:12.5px;font-weight:800;color:#64748b;cursor:pointer;transition:.15s}
+.r-btn.is-active{background:#fff;color:var(--green-700);box-shadow:0 2px 6px -2px rgba(15,23,42,.2)}
+.result-line{font-size:12.5px;color:var(--muted);font-weight:700}
+.result-line b{color:var(--green-700)}
+.cat-row{display:flex;gap:7px;overflow-x:auto;padding:2px 1px 10px;scrollbar-width:none}
+.cat-row::-webkit-scrollbar{display:none}
+.cat-pill{border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 14px;font-size:12.5px;font-weight:800;color:#475569;cursor:pointer;white-space:nowrap;transition:.15s}
+.cat-pill:hover{border-color:#cbd5e1}
+.cat-pill.is-active{background:var(--green-700);border-color:var(--green-700);color:#fff;box-shadow:0 8px 16px -10px rgba(21,128,61,.9)}
+
+.product-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:13px;margin-top:6px}
+.pcard{position:relative;background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;transition:transform .18s,box-shadow .18s,border-color .18s}
+.pcard:hover{transform:translateY(-2px);box-shadow:0 18px 34px -20px rgba(15,23,42,.4);border-color:#d9e6df}
+.pcard-thumb{position:relative;height:104px;background:radial-gradient(120% 120% at 50% 0%,#f0fdf4,#e9f7ee);display:grid;place-items:center}
+.pcard-thumb .emoji{font-size:44px;line-height:1;filter:drop-shadow(0 6px 8px rgba(15,23,42,.12))}
+.pcard-thumb .cat{position:absolute;left:10px;top:10px;z-index:2;font-size:10.5px;font-weight:900;color:var(--green-700);background:rgba(255,255,255,.92);border:1px solid #dcf0e4;border-radius:7px;padding:3px 8px}
+.pcard-thumb .stamp{position:absolute;inset:0;z-index:1;display:grid;place-items:center;background:rgba(241,245,249,.74);color:#64748b;font-size:15px;font-weight:900;letter-spacing:.08em;border:0}
+.pcard.is-new{border-color:#f7b98a;box-shadow:0 0 0 3px rgba(249,115,22,.12)}
+.badge-new{position:absolute;right:10px;top:10px;z-index:2;background:var(--orange-600);color:#fff;font-size:10px;font-weight:900;letter-spacing:.06em;padding:3px 8px;border-radius:7px}
+.pcard-body{padding:13px 14px 15px;display:flex;flex-direction:column;flex:1}
+.pcard-name{font-size:14.5px;font-weight:900;letter-spacing:-.03em;line-height:1.35}
+.pcard-store{font-size:11.5px;color:var(--muted);font-weight:600;margin-top:4px}
+.pcard-store .dot{color:#cbd5e1}
+.price-row{display:flex;align-items:center;gap:7px;margin-top:11px}
+.price-row .was{font-size:12px;color:#94a3b8;text-decoration:line-through;font-weight:700}
+.price-row .pct{font-size:12px;font-weight:900;color:var(--orange-600)}
+.now{font-size:19px;font-weight:900;letter-spacing:-.04em;line-height:1.2;margin-top:1px}
+.now small{font-size:12px;font-weight:800;margin-left:2px}
+.stock{margin-top:10px}
+.stock-bar{height:5px;border-radius:99px;background:#eef2f5;overflow:hidden}
+.stock-bar i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#22c55e,#15803d);transition:width .35s ease}
+.pcard.soldout .stock-bar i{background:#cbd5e1}
+.stock span{display:block;font-size:11px;color:var(--muted);font-weight:700;margin-top:5px}
+.pickup{font-size:11.5px;color:var(--ink-2);font-weight:700;margin-top:8px;background:var(--soft);border-radius:8px;padding:6px 9px;margin-bottom:11px}
+.pcard .btn{margin-top:auto}
+.pcard.soldout .btn{background:#e2e8f0;color:#94a3b8}
+.pcard.flash{animation:flash 1.4s ease 2}
+@keyframes flash{0%,100%{box-shadow:0 0 0 0 rgba(249,115,22,0)}50%{box-shadow:0 0 0 6px rgba(249,115,22,.22)}}
+.empty{border:1px dashed #d7e3dc;border-radius:16px;padding:34px 18px;text-align:center;color:var(--muted);font-size:13.5px;font-weight:600;grid-column:1/-1;background:var(--mint-2)}
+
+/* ============ Modal ============ */
+.modal-backdrop{position:fixed;inset:0;z-index:200;background:rgba(15,23,42,.5);backdrop-filter:blur(3px);display:none;align-items:center;justify-content:center;padding:18px}
+.modal-backdrop.is-open{display:flex;animation:fadeIn .18s ease}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.modal{width:100%;max-width:440px;max-height:92vh;overflow-y:auto;background:#fff;border-radius:22px;box-shadow:0 40px 90px -30px rgba(15,23,42,.7);animation:pop .22s ease}
+@keyframes pop{from{transform:translateY(14px) scale(.98);opacity:0}to{transform:none;opacity:1}}
+@media(max-width:520px){
+  .modal-backdrop{align-items:flex-end;padding:0}
+  .modal{max-width:none;border-radius:22px 22px 0 0;max-height:94vh}
+}
+.m-head{display:flex;align-items:center;justify-content:space-between;padding:18px 20px 12px}
+.m-head h3{font-size:16.5px;font-weight:900;letter-spacing:-.03em}
+.x-btn{border:0;background:var(--soft);width:32px;height:32px;border-radius:9px;color:#64748b;font-size:16px;cursor:pointer;display:grid;place-items:center;line-height:1}
+.x-btn:hover{background:#eef2f6;color:var(--ink)}
+.m-body{padding:0 20px 20px}
+.m-store{display:flex;align-items:center;gap:11px;background:var(--mint);border:1px solid #dcf0e4;border-radius:13px;padding:11px 13px}
+.m-store .mt{width:44px;height:44px;border-radius:11px;background:#fff;display:grid;place-items:center;font-size:23px;border:1px solid #e6f2ea}
+.m-store h4{font-size:14px;font-weight:900;letter-spacing:-.02em}
+.m-store p{font-size:11.5px;color:var(--muted);font-weight:700}
+.m-qty{display:flex;align-items:center;justify-content:space-between;margin-top:16px;padding:12px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.m-qty .lbl{font-size:13px;font-weight:800;color:var(--ink-2)}
+.stepper-qty{display:inline-flex;align-items:center;gap:3px;border:1px solid var(--line);border-radius:11px;padding:3px;background:#fff}
+.stepper-qty button{width:32px;height:32px;border:0;background:var(--soft);border-radius:8px;font-size:16px;font-weight:900;color:var(--ink-2);cursor:pointer;line-height:1}
+.stepper-qty button:hover:not(:disabled){background:#e8eef4}
+.stepper-qty button:disabled{opacity:.4;cursor:not-allowed}
+.stepper-qty span{min-width:38px;text-align:center;font-weight:900;font-size:14px;font-variant-numeric:tabular-nums}
+.m-lines{margin-top:14px;display:grid;gap:7px}
+.m-line{display:flex;justify-content:space-between;font-size:13px;color:var(--ink-2);font-weight:600}
+.m-line b{font-weight:800;color:var(--ink)}
+.m-line.save,.m-line.save b{color:var(--orange-600)}
+.m-total{display:flex;justify-content:space-between;align-items:baseline;margin-top:12px;padding-top:12px;border-top:1px dashed var(--line)}
+.m-total span{font-size:13px;font-weight:800;color:var(--ink-2)}
+.m-total b{font-size:23px;font-weight:900;letter-spacing:-.04em}
+.m-info{background:var(--soft);border-radius:13px;padding:12px 13px;margin-top:14px;display:grid;gap:6px}
+.m-info div{display:flex;gap:8px;font-size:12px;color:var(--ink-2);font-weight:700}
+.m-info .k{color:var(--muted);min-width:62px;font-weight:700}
+.m-note{font-size:11.5px;color:var(--muted);margin-top:11px;line-height:1.55}
+.m-actions{margin-top:16px;display:grid;gap:8px}
+.spinner{width:15px;height:15px;border:2px solid rgba(255,255,255,.45);border-top-color:#fff;border-radius:50%;display:inline-block;animation:spin .7s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* success */
+.success{text-align:center;padding:6px 0 0}
+.success .check{width:56px;height:56px;border-radius:50%;background:var(--green-100);color:var(--green-700);display:grid;place-items:center;font-size:27px;margin:6px auto 0}
+.success h3{font-size:18px;font-weight:900;letter-spacing:-.03em;margin-top:12px}
+.success p{font-size:12.5px;color:var(--muted);font-weight:600;margin-top:5px}
+.code-box{position:relative;margin:16px 0 0;border:1.5px dashed #a7d9ba;background:var(--mint);border-radius:15px;padding:15px 12px}
+.code-box span{font-size:11.5px;font-weight:800;color:var(--green-700);letter-spacing:.04em}
+.code-box strong{display:block;font-size:26px;font-weight:900;letter-spacing:.06em;color:var(--green-900);margin-top:2px;font-variant-numeric:tabular-nums}
+.rcpt{margin-top:14px;text-align:left;border:1px solid var(--line);border-radius:13px;overflow:hidden}
+.rcpt div{display:flex;justify-content:space-between;padding:9px 12px;font-size:12.5px;font-weight:700;color:var(--ink-2)}
+.rcpt div:nth-child(odd){background:#fbfdfc}
+.rcpt div b{color:var(--ink)}
+.rcpt div:last-child{background:var(--mint);font-weight:900}
+
+/* ============ Owner form ============ */
+.own-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:18px;align-items:start}
+@media(max-width:900px){.own-grid{grid-template-columns:1fr}}
+.form-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px}
+.form-card h3{font-size:16px;font-weight:900;letter-spacing:-.03em}
+.form-card .sub{font-size:12px;color:var(--muted);font-weight:600;margin-top:3px}
+.field{margin-top:14px}
+.field label{display:block;font-size:12.5px;font-weight:800;color:var(--ink-2);margin-bottom:6px}
+.field label em{font-style:normal;color:var(--orange-600);margin-left:2px}
+.field input,.field select{width:100%;border:1px solid var(--line);border-radius:11px;padding:11px 12px;font-size:13.5px;font-weight:700;color:var(--ink);background:#fff;font-family:inherit;transition:border-color .15s, box-shadow .15s;-webkit-appearance:none;appearance:none}
+.field select{background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'><path d='M2 4l4 4 4-4' fill='none' stroke='%2364748b' stroke-width='1.6' stroke-linecap='round'/></svg>");background-repeat:no-repeat;background-position:right 12px center;padding-right:32px}
+.field input:focus,.field select:focus{outline:none;border-color:#7fd0a0;box-shadow:0 0 0 3px rgba(22,163,74,.13)}
+.field input.invalid{border-color:#fca5a5;box-shadow:0 0 0 3px rgba(239,68,68,.10)}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+@media(max-width:520px){.field-row{grid-template-columns:1fr}}
+.price-input{position:relative}
+.price-input input{padding-right:34px;text-align:right;font-variant-numeric:tabular-nums}
+.price-input .unit{position:absolute;right:12px;top:50%;transform:translateY(-50%);font-size:12px;font-weight:800;color:var(--muted)}
+.disc-preview{margin-top:12px;border-radius:11px;padding:10px 12px;font-size:12px;font-weight:700;background:var(--soft);color:var(--muted);display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.disc-preview.ok{background:var(--orange-100);color:#9a3412;border:1px solid #fed7aa}
+.disc-preview.ok b{font-size:16px;font-weight:900;letter-spacing:-.02em;color:var(--orange-600)}
+.disc-preview.warn{background:#fef2f2;color:#b91c1c;border:1px solid #fecaca}
+.form-msg{margin-top:12px;background:#fef2f2;border:1px solid #fecaca;color:#b91c1c;border-radius:11px;padding:10px 12px;font-size:12px;font-weight:700;line-height:1.65}
+.form-note{font-size:11px;color:var(--muted);margin-top:12px;line-height:1.6}
+.own-side{display:grid;gap:14px}
+.tip-card{background:linear-gradient(160deg,#fffaf5,#fff);border:1px solid #fde8d5;border-radius:18px;padding:18px}
+.tip-card h4{font-size:13.5px;font-weight:900;color:#9a3412;letter-spacing:-.02em;display:flex;align-items:center;gap:7px}
+.tip-card ul{margin:10px 0 0;padding-left:16px;font-size:12.5px;color:var(--ink-2);font-weight:600;line-height:1.75}
+.tip-card li::marker{color:var(--orange-500)}
+.tip-card .ex{margin-top:12px;background:#fff;border:1px dashed #f7c9a3;border-radius:10px;padding:9px 11px;font-size:11.5px;color:#9a3412;font-weight:800}
+.side-list{background:#fff;border:1px solid var(--line);border-radius:18px;padding:16px}
+.side-list h4{font-size:13px;font-weight:900;letter-spacing:-.02em}
+.side-list .row{display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:1px dashed #eef2f6;font-size:12px;font-weight:700;color:var(--ink-2)}
+.side-list .row:last-child{border-bottom:0}
+.side-list .row b{font-weight:900;color:var(--green-700)}
+
+/* ============ Dashboard ============ */
+.kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:11px}
+@media(max-width:860px){.kpi-grid{grid-template-columns:repeat(2,1fr)}}
+.kpi{background:#fff;border:1px solid var(--line);border-radius:16px;padding:15px 15px 14px;position:relative;overflow:hidden}
+.kpi .kh{display:flex;align-items:center;gap:6px;font-size:11.5px;font-weight:800;color:var(--muted)}
+.kpi .kv{font-size:clamp(19px,2.2vw,24px);font-weight:900;letter-spacing:-.045em;margin-top:7px;font-variant-numeric:tabular-nums;line-height:1.18}
+.kpi .kv small{font-size:12.5px;font-weight:800;margin-left:1px;color:var(--ink-2)}
+.kpi .ks{font-size:11px;color:var(--muted);font-weight:600;margin-top:5px}
+.kpi.pulse .kv{animation:kpulse .5s ease}
+@keyframes kpulse{0%{transform:scale(1)}45%{transform:scale(1.07);color:var(--green-700)}100%{transform:scale(1)}}
+.kpi.hi{background:linear-gradient(160deg,#f0fdf4,#fff);border-color:#d5efdf}
+.kpi-note{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:10px;background:var(--soft);border:1px solid var(--line);border-radius:11px;padding:9px 13px;font-size:11.5px;font-weight:700;color:var(--ink-2)}
+.kpi-note b{color:var(--green-700)}
+.kpi-note .sep{color:#cbd5e1}
+
+.dash-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:16px;margin-top:16px;align-items:start}
+@media(max-width:980px){.dash-grid{grid-template-columns:1fr}}
+.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px}
+.card-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px}
+.card-head h3{font-size:15px;font-weight:900;letter-spacing:-.03em}
+.card-head .cnt{font-size:11.5px;font-weight:800;color:var(--green-700);background:var(--mint);border-radius:999px;padding:4px 9px}
+.insight{background:linear-gradient(150deg,#14532d 0%,#15803d 55%,#16a34a 100%);color:#fff;border-radius:18px;padding:19px;box-shadow:0 22px 44px -28px rgba(20,83,45,.95)}
+.insight .tag{display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,.16);color:#dcfce7;font-size:10.5px;font-weight:900;padding:4px 9px;border-radius:999px;letter-spacing:.04em}
+.insight h3{font-size:15px;line-height:1.45;letter-spacing:-.025em;margin-top:11px;font-weight:900}
+.insight h3 em{font-style:normal;color:#fde68a}
+.insight .gauge{height:7px;border-radius:99px;background:rgba(255,255,255,.22);overflow:hidden;margin-top:13px}
+.insight .gauge i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#fbbf24,#fb923c);width:0;transition:width .9s ease}
+.insight .gl{display:flex;justify-content:space-between;font-size:10.5px;color:#bbf7d0;font-weight:700;margin-top:5px}
+.insight ul{margin:13px 0 0;padding:0;list-style:none;display:grid;gap:7px}
+.insight li{font-size:11.5px;font-weight:700;color:#eafaf0;background:rgba(255,255,255,.10);border-radius:9px;padding:8px 10px;display:flex;gap:7px;align-items:flex-start;line-height:1.5}
+.insight li b{color:#fff}
+.insight .foot{font-size:10px;color:#86efac;margin-top:11px;font-weight:600}
+
+.order{border:1px solid var(--line);border-radius:15px;padding:14px;background:#fff}
+.order + .order{margin-top:9px}
+.order-head{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.order-code{font-size:11.5px;font-weight:900;color:var(--green-700);background:var(--mint);border:1px solid #d7f0e0;border-radius:7px;padding:3px 8px;font-variant-numeric:tabular-nums;letter-spacing:.02em}
+.order-time{font-size:11px;color:#94a3b8;font-weight:700}
+.order-main{display:grid;grid-template-columns:38px 1fr auto;gap:10px;align-items:center;margin-top:10px}
+.order-thumb{width:38px;height:38px;border-radius:10px;background:var(--mint);display:grid;place-items:center;font-size:19px}
+.order-name{font-size:13px;font-weight:900;letter-spacing:-.02em;line-height:1.35}
+.order-name .q{font-size:11.5px;font-weight:800;color:var(--muted);margin-left:3px}
+.order-store{font-size:11px;color:var(--muted);font-weight:600;margin-top:1px}
+.order-price{font-size:13.5px;font-weight:900;letter-spacing:-.03em;white-space:nowrap}
+.stepper{display:flex;align-items:center;gap:5px;margin-top:11px}
+.stepper .step{display:flex;align-items:center;gap:5px;font-size:10.5px;font-weight:800;color:#a3aebc;white-space:nowrap}
+.stepper .step .dot{width:16px;height:16px;border-radius:50%;background:#e6ebf0;color:#fff;display:grid;place-items:center;font-size:9px;font-weight:900;transition:.2s}
+.stepper .step.on{color:var(--green-700)}
+.stepper .step.on .dot{background:var(--green-600)}
+.stepper .step.now .dot{box-shadow:0 0 0 4px rgba(22,163,74,.16)}
+.stepper .line{flex:1;height:2px;border-radius:2px;background:#e6ebf0;min-width:8px}
+.stepper .line.on{background:var(--green-600)}
+.order-foot{display:flex;justify-content:flex-end;align-items:center;gap:8px;margin-top:11px}
+.done-badge{font-size:11px;font-weight:900;color:var(--green-700);background:var(--green-100);border-radius:8px;padding:5px 10px}
+@media(max-width:420px){
+  .stepper .step{font-size:9.5px}
+  .stepper .step .dot{width:14px;height:14px}
+}
+.stock-list{display:grid;gap:10px}
+.stock-row .sr-top{display:flex;justify-content:space-between;gap:8px;font-size:11.5px;font-weight:800;color:var(--ink-2)}
+.stock-row .sr-top span{color:var(--muted);font-weight:700}
+.stock-row .sr-bar{height:6px;border-radius:99px;background:#eef2f5;overflow:hidden;margin-top:5px}
+.stock-row .sr-bar i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#22c55e,#15803d)}
+.stock-row.warn .sr-bar i{background:linear-gradient(90deg,#fb923c,#ea580c)}
+.stock-row.out .sr-bar i{background:#cbd5e1}
+.stock-row.out .sr-top b{color:#94a3b8;text-decoration:line-through}
+.sr-tag{font-size:9.5px;font-weight:900;color:var(--orange-600);background:var(--orange-100);border-radius:5px;padding:1px 5px;margin-left:5px}
+
+/* ============ Business model ============ */
+.model-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:13px}
+@media(max-width:920px){.model-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.model-grid{grid-template-columns:1fr}}
+.model{background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px 18px;box-shadow:var(--shadow);position:relative}
+.model .num{position:absolute;right:16px;top:15px;font-size:12px;font-weight:900;color:#cbd5e1;letter-spacing:.02em}
+.model .mi{width:42px;height:42px;border-radius:12px;background:var(--orange-100);display:grid;place-items:center;font-size:21px;margin-bottom:12px}
+.model h3{font-size:15px;font-weight:900;letter-spacing:-.03em;line-height:1.35}
+.model .stage{display:inline-block;font-size:10.5px;font-weight:900;color:var(--green-700);background:var(--mint);border-radius:6px;padding:3px 7px;margin-top:7px}
+.model ul{margin:10px 0 0;padding-left:15px;font-size:12px;color:var(--ink-2);font-weight:600;line-height:1.7}
+.model li::marker{color:#fdba74}
+
+.deal{margin-top:18px;background:#fff;border:1px solid var(--line);border-radius:20px;padding:20px;box-shadow:var(--shadow)}
+.deal h3{font-size:14.5px;font-weight:900;letter-spacing:-.03em;text-align:center}
+.deal .dd{font-size:11.5px;color:var(--muted);text-align:center;font-weight:600;margin-top:3px}
+.deal-row{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:16px;flex-wrap:wrap}
+.deal-box{border-radius:13px;padding:12px 18px;text-align:center;min-width:130px;border:1px solid var(--line);background:var(--soft)}
+.deal-box span{display:block;font-size:11px;font-weight:800;color:var(--muted)}
+.deal-box b{display:block;font-size:19px;font-weight:900;letter-spacing:-.04em;margin-top:2px}
+.deal-box.hot{background:#fff7ed;border-color:#fed7aa}
+.deal-box.hot b{color:var(--orange-600)}
+.deal-arrow{color:#cbd5e1;font-size:18px;font-weight:900}
+.deal-split{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:12px}
+@media(max-width:560px){.deal-split{grid-template-columns:1fr}}
+.deal-split div{background:var(--mint);border:1px solid #dcf0e4;border-radius:12px;padding:11px 12px;text-align:center}
+.deal-split div span{display:block;font-size:10.5px;font-weight:800;color:#4b7a5e}
+.deal-split div b{display:block;font-size:15px;font-weight:900;letter-spacing:-.03em;color:var(--green-900);margin-top:2px}
+.deal-split div:last-child{background:#fff7ed;border-color:#fed7aa}
+.deal-split div:last-child span{color:#b45309}
+.deal-split div:last-child b{color:var(--orange-600)}
+.deal-note{font-size:10.5px;color:var(--muted);text-align:center;margin-top:12px}
+
+/* comparison */
+.banner-line{margin:26px 0 16px;background:linear-gradient(120deg,#14532d,#15803d);color:#fff;border-radius:16px;padding:15px 20px;font-size:14px;font-weight:800;letter-spacing:-.02em;text-align:center;line-height:1.5}
+.banner-line em{font-style:normal;color:#fde68a}
+.compare{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:var(--shadow)}
+.compare table{width:100%;border-collapse:collapse;font-size:13.5px}
+.compare th,.compare td{padding:13px 15px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line);line-height:1.55}
+.compare tbody tr:last-child td{border-bottom:0}
+.compare thead th{font-size:12px;font-weight:900;color:var(--muted);background:#f8fafc;letter-spacing:.02em}
+.compare thead th.us{background:var(--mint);color:var(--green-700);font-size:14px}
+.compare td.theme{width:118px;font-weight:900;color:var(--ink);background:#fbfdfc;font-size:12.5px}
+.compare td.old{color:#8a97a8}
+.compare td.us{background:#f6fdf9;color:var(--green-900);font-weight:700}
+.compare td.us b{color:var(--green-700)}
+@media(max-width:700px){
+  .compare table{font-size:12px}
+  .compare th,.compare td{padding:10px 10px}
+  .compare td.theme{width:74px;font-size:11px}
+  .compare thead th{font-size:11px}
+}
+
+/* ============ Footer ============ */
+.site-footer{background:#0b2e1b;color:#cfe4d6;padding:44px 0 34px}
+.footer-top{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:flex-start}
+.site-footer .logo{color:#fff}
+.site-footer .logo small{color:#86b79a}
+.site-footer .fslogan{font-size:13px;color:#a8cdb6;margin-top:10px;max-width:420px;line-height:1.7}
+.footer-links{display:flex;gap:20px;font-size:12.5px;font-weight:700;color:#a8cdb6;flex-wrap:wrap}
+.footer-links a{text-decoration:none}
+.footer-links a:hover{color:#fff}
+.footer-info{margin-top:26px;padding-top:18px;border-top:1px solid rgba(255,255,255,.12);font-size:11.5px;color:#8fb69e;line-height:1.85}
+.footer-info b{color:#cfe4d6;font-weight:800}
+
+/* ============ Toast ============ */
+.toast-wrap{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);z-index:300;display:grid;gap:8px;width:min(430px,calc(100% - 28px));pointer-events:none}
+.toast{background:#0f172a;color:#fff;border-radius:13px;padding:12px 14px;font-size:13px;font-weight:700;box-shadow:0 20px 44px -20px rgba(15,23,42,.9);display:flex;align-items:center;gap:10px;pointer-events:auto;animation:toastIn .22s ease}
+@keyframes toastIn{from{transform:translateY(10px);opacity:0}to{transform:none;opacity:1}}
+.toast .tmsg{flex:1;line-height:1.45}
+.toast .tact{background:rgba(255,255,255,.16);border:0;color:#fff;font-size:12px;font-weight:900;padding:7px 11px;border-radius:8px;cursor:pointer;white-space:nowrap}
+.toast .tact:hover{background:rgba(255,255,255,.26)}
+.toast .tx{background:transparent;border:0;color:#94a3b8;font-size:15px;cursor:pointer;padding:2px 4px;line-height:1}
+
+/* print */
+@media print{
+  .site-header,.hero-actions,.toast-wrap,.modal-backdrop{display:none !important}
+  .section{padding:24px 0}
+  body{background:#fff}
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="8시마켓 홈">
+      <span class="logo-mark">8시</span>
+      <span>8시마켓<small>오늘 남은 좋은 상품, 오늘 필요한 이웃에게</small></span>
+    </a>
+    <nav class="nav" aria-label="주요 메뉴">
+      <a href="#brand">브랜드 소개</a>
+      <a href="#prototype">시제품 체험</a>
+      <a href="#model">수익 모델</a>
+      <a href="#compare">차별점</a>
+    </nav>
+    <a class="header-cta" href="#prototype">시제품 체험하기 <span aria-hidden="true">→</span></a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ================= HERO ================= -->
+  <section class="hero">
+    <div class="wrap hero-inner">
+      <div class="hero-copy">
+        <span class="eyebrow"><span class="dot-live"></span>대전 지역 로컬 커머스 · MVP 시제품</span>
+        <h1 class="hero-title">저녁 <span class="g">8시</span>,<br>우리 동네 가격이<br><span class="o">달라집니다</span></h1>
+        <p class="hero-lead">오늘 남은 좋은 상품을 오늘 필요한 이웃에게 연결합니다.<br>
+          동네마트·정육점·과일가게·빵가게·생선가게의 <b>당일 잔여상품</b>을 반경 1~3km 안에서 실시간 마감특가로 만나고, 선결제 후 가까운 매장에서 바로 픽업하세요.</p>
+        <div class="hero-actions">
+          <a href="#prototype" class="btn btn-primary btn-lg" data-goto="#prototype">시제품 바로 체험하기 <span aria-hidden="true">↓</span></a>
+          <a href="#model" class="btn btn-ghost btn-lg">수익 모델 보기</a>
+        </div>
+        <div class="hero-meta">
+          <span>🏪 점포는 배송 없이 참여</span>
+          <span>💳 선결제로 수량 자동 차감</span>
+          <span>📍 반경 1~3km 픽업</span>
+        </div>
+
+        <div class="flow" aria-label="8시마켓 운영 흐름 4단계">
+          <div class="flow-step"><b>1</b><span>점포 등록</span><small>오늘 남은 상품을<br>사진·가격·수량으로</small></div>
+          <div class="flow-step"><b>2</b><span>실시간 노출</span><small>반경 1~3km<br>소비자에게 즉시</small></div>
+          <div class="flow-step"><b>3</b><span>선결제·선점</span><small>결제 완료 순간<br>수량 자동 차감</small></div>
+          <div class="flow-step"><b>4</b><span>픽업 완료</span><small>가까운 매장에서<br>코드로 수령</small></div>
+        </div>
+      </div>
+
+      <div class="hero-visual" aria-hidden="true">
+        <div class="chip-float chip-1"><span class="ic">✓</span>선결제 완료 · 수량 차감</div>
+        <div class="chip-float chip-2"><span class="ic">!</span>SOLD OUT 자동 처리</div>
+        <div class="chip-float chip-3"><span class="ic">⏱</span>오늘 마감까지 <span class="countdown js-countdown">00:00:00</span></div>
+        <div class="phone">
+          <div class="phone-screen">
+            <div class="phone-notch"></div>
+            <div class="phone-head">
+              <div class="pb"><span>8시마켓</span><span>19:32</span></div>
+              <h4>내 주변 3km · 마감특가</h4>
+              <p>오늘 저녁, 우리 동네 가격이 달라집니다</p>
+            </div>
+            <div class="phone-body">
+              <div class="mini">
+                <div class="mi-thumb">🍅</div>
+                <div>
+                  <div class="mi-name">토마토 1kg</div>
+                  <div class="mi-store">행복한 농산물 · 0.5km</div>
+                </div>
+                <div class="mi-price"><span class="mi-was">6,900원</span><span class="mi-now">2,900원</span><span class="mi-pct">58%</span></div>
+              </div>
+              <div class="mini">
+                <div class="mi-thumb">🥩</div>
+                <div>
+                  <div class="mi-name">한돈 삼겹살 600g</div>
+                  <div class="mi-store">우리축산 · 0.7km</div>
+                </div>
+                <div class="mi-price"><span class="mi-was">19,900원</span><span class="mi-now">12,900원</span><span class="mi-pct">35%</span></div>
+              </div>
+              <div class="mini">
+                <div class="mi-thumb">🥖</div>
+                <div>
+                  <div class="mi-name">수제 바게트</div>
+                  <div class="mi-store">동네빵집 · 0.9km</div>
+                </div>
+                <div class="mi-price"><span class="mi-was">5,000원</span><span class="mi-now">2,900원</span><span class="mi-pct">42%</span></div>
+              </div>
+            </div>
+            <div class="phone-foot"><span><b>● 홈</b></span><span>주문내역</span><span>마이</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= BRAND ================= -->
+  <section class="section" id="brand">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="label green">BRAND OVERVIEW</span>
+        <h2>가게를 새로 만드는 것이 아니라,<br>이미 있는 점포를 디지털 판매거점으로 연결합니다</h2>
+        <p>동네 소상공인의 하루는 예측하기 어렵습니다. 남은 상품은 다음 날 재고가 되거나, 추가 할인과 폐기로 이어집니다.
+         8시마켓은 그 하루의 마지막 몇 시간을, 이웃의 저녁 식탁과 연결합니다.</p>
+      </div>
+      <div class="pillars">
+        <article class="pillar">
+          <div class="pi">🏪</div>
+          <h3>점포의 잔여재고 부담 ↓</h3>
+          <p>마감 시간에 남은 상품을 버리지 않고, 오늘 안에 현금으로 바꿉니다. 별도 배송 시스템 없이 매장 픽업으로 참여합니다.</p>
+          <span class="why">폐기 대신 판매</span>
+        </article>
+        <article class="pillar">
+          <div class="pi">🛍️</div>
+          <h3>소비자의 생활비 부담 ↓</h3>
+          <p>같은 동네, 같은 상품을 더 합리적인 가격에. 픽업 시간이 정해져 있어 헛걸음 없이 오늘 저녁을 준비합니다.</p>
+          <span class="why">오늘 필요한 만큼만</span>
+        </article>
+        <article class="pillar">
+          <div class="pi">🌱</div>
+          <h3>지역과 환경에 남는 이익</h3>
+          <p>음식물 폐기와 재고 손실을 줄이고, 동네 상권의 매출을 지역 안에서 순환시킵니다. 데이터는 다음 날의 판매 전략이 됩니다.</p>
+          <span class="why">지역 상권 활성화</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PROTOTYPE ================= -->
+  <section class="section mint" id="prototype">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="label">INTERACTIVE MVP</span>
+        <h2>직접 눌러보는 8시마켓 시제품</h2>
+        <p>소비자 · 점주 · 운영 화면을 탭으로 오가며 전체 거래 흐름을 체험할 수 있습니다.<br>
+          모든 데이터는 이 브라우저 안에서만 움직이며, 실제 결제는 발생하지 않습니다.</p>
+      </div>
+
+      <div class="app-shell" id="prototypeApp">
+        <div class="app-top">
+          <div class="at-left">
+            <span class="mini-logo">8시</span>
+            <div>
+              <h3>8시마켓 MVP 시뮬레이터</h3>
+              <p><span id="todayLabel">2026.11.21 (토)</span> · 대전 · 반경 3km</p>
+            </div>
+          </div>
+          <div class="at-right">
+            <span class="live-pill"><i></i>오늘 마감까지 <span class="countdown js-countdown">00:00:00</span></span>
+            <button class="btn btn-ghost btn-sm" id="resetBtn" type="button">시연 초기화</button>
+          </div>
+        </div>
+
+        <div class="tabs-holder">
+          <div class="tabs" role="tablist" aria-label="시제품 화면 선택">
+            <button class="tab-btn is-active" role="tab" id="tab-consumer" aria-selected="true" aria-controls="panel-consumer" data-tab="consumer" type="button"><span class="tn">1</span>소비자 앱</button>
+            <button class="tab-btn" role="tab" id="tab-owner" aria-selected="false" aria-controls="panel-owner" data-tab="owner" type="button"><span class="tn">2</span>점주 상품 등록</button>
+            <button class="tab-btn" role="tab" id="tab-dash" aria-selected="false" aria-controls="panel-dash" data-tab="dash" type="button"><span class="tn">3</span>결제·픽업·대시보드</button>
+          </div>
+        </div>
+
+        <!-- ---------- Panel 1: Consumer ---------- -->
+        <div class="panel" id="panel-consumer" role="tabpanel" aria-labelledby="tab-consumer">
+          <div class="filter-bar">
+            <div class="radius-group" role="group" aria-label="검색 반경">
+              <button class="r-btn" data-radius="1" type="button">내 주변 1km</button>
+              <button class="r-btn" data-radius="2" type="button">내 주변 2km</button>
+              <button class="r-btn is-active" data-radius="3" type="button">내 주변 3km</button>
+            </div>
+            <div class="result-line">내 주변 <b id="resultCount">0</b>개 상품 · 남은 수량 실시간 반영</div>
+          </div>
+          <div class="cat-row" id="catRow" role="group" aria-label="카테고리 필터"></div>
+          <div class="product-grid" id="productGrid"></div>
+        </div>
+
+        <!-- ---------- Panel 2: Owner ---------- -->
+        <div class="panel" id="panel-owner" role="tabpanel" aria-labelledby="tab-owner" hidden>
+          <div class="own-grid">
+            <form class="form-card" id="registerForm" novalidate>
+              <h3>점주 상품 등록</h3>
+              <p class="sub">남은 신선한 재료에 새로운 가치를 더해보세요. 등록 즉시 소비자 앱에 노출됩니다.</p>
+
+              <div class="field">
+                <label for="fShop">점포명 <em>*</em></label>
+                <input id="fShop" name="shop" type="text" placeholder="예: 행복한 농산물" autocomplete="organization">
+              </div>
+
+              <div class="field-row">
+                <div class="field">
+                  <label for="fCat">업종 / 카테고리 <em>*</em></label>
+                  <select id="fCat" name="cat">
+                    <option value="채소">채소</option>
+                    <option value="과일">과일</option>
+                    <option value="축산">축산</option>
+                    <option value="수산">수산</option>
+                    <option value="베이커리">베이커리</option>
+                    <option value="반찬·도시락">반찬·도시락</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label for="fQty">수량 <em>*</em></label>
+                  <div class="price-input">
+                    <input id="fQty" name="qty" type="number" min="1" step="1" placeholder="10" inputmode="numeric">
+                    <span class="unit">개</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="fName">상품명 <em>*</em></label>
+                <input id="fName" name="name" type="text" placeholder="예: 토마토 1kg">
+              </div>
+
+              <div class="field-row">
+                <div class="field">
+                  <label for="fOrig">정상가 <em>*</em></label>
+                  <div class="price-input">
+                    <input id="fOrig" name="orig" type="number" min="0" step="100" placeholder="6,900" inputmode="numeric">
+                    <span class="unit">원</span>
+                  </div>
+                </div>
+                <div class="field">
+                  <label for="fSale">마감특가 <em>*</em></label>
+                  <div class="price-input">
+                    <input id="fSale" name="sale" type="number" min="0" step="100" placeholder="2,900" inputmode="numeric">
+                    <span class="unit">원</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="disc-preview" id="discPreview"><span>정상가와 마감특가를 입력하면 할인율이 자동 계산됩니다</span></div>
+
+              <div class="field">
+                <label for="fPickup">픽업 시간 <em>*</em></label>
+                <select id="fPickup" name="pickup">
+                  <option value="오늘 18:00 ~ 20:00">오늘 18:00 ~ 20:00</option>
+                  <option value="오늘 19:00 ~ 21:00">오늘 19:00 ~ 21:00</option>
+                  <option value="오늘 20:00 ~ 22:00">오늘 20:00 ~ 22:00</option>
+                </select>
+              </div>
+
+              <div class="form-msg" id="formMsg" hidden></div>
+
+              <div style="margin-top:16px">
+                <button class="btn btn-primary btn-block btn-lg" type="submit">상품 등록하기</button>
+              </div>
+              <p class="form-note">※ 시제품 화면입니다. 등록한 상품은 이 브라우저의 소비자 앱 목록에 바로 추가되며, 실제 서비스에는 연결되지 않습니다.</p>
+            </form>
+
+            <aside class="own-side">
+              <div class="tip-card">
+                <h4>💡 AI 등록 도우미 (예시)</h4>
+                <ul>
+                  <li>오늘 오후 6시 이후 <b>채소류 등록</b>이 가장 빨리 팔립니다.</li>
+                  <li>정상가 대비 <b>40~60% 할인</b> 구간에서 완판 확률이 높습니다.</li>
+                  <li>픽업 시간은 <b>18:00~20:00</b>이 가장 많이 선택됩니다.</li>
+                </ul>
+                <div class="ex">“오늘 오후 7시 40분부터 30% 할인하면 판매 가능성이 높습니다.”</div>
+              </div>
+              <div class="side-list">
+                <h4>등록 전 체크</h4>
+                <div class="row"><span>판매 중인 상품</span><b id="sideWaived">12종</b></div>
+                <div class="row"><span>평균 마감특가 할인율</span><b id="sideAvg">45%</b></div>
+                <div class="row"><span>등록된 상품 종류</span><b id="sideToday">13종</b></div>
+              </div>
+            </aside>
+          </div>
+        </div>
+
+        <!-- ---------- Panel 3: Dashboard ---------- -->
+        <div class="panel" id="panel-dash" role="tabpanel" aria-labelledby="tab-dash" hidden>
+          <div class="kpi-grid">
+            <div class="kpi hi" id="kpiQtyCard">
+              <div class="kh">🛒 총 판매수량</div>
+              <div class="kv" id="kpiQty">0<small>개</small></div>
+              <div class="ks" id="kpiQtySub">총 0건 결제</div>
+            </div>
+            <div class="kpi" id="kpiRevCard">
+              <div class="kh">💳 총 매출액</div>
+              <div class="kv" id="kpiRevenue">0<small>원</small></div>
+              <div class="ks" id="kpiRevSub">선결제 기준</div>
+            </div>
+            <div class="kpi" id="kpiDiscCard">
+              <div class="kh">🏷️ 평균 할인율</div>
+              <div class="kv" id="kpiDiscount">0<small>%</small></div>
+              <div class="ks" id="kpiDiscSub">정상가 대비 · 주문 가중 평균</div>
+            </div>
+            <div class="kpi" id="kpiWasteCard">
+              <div class="kh">🌱 폐기 절감량</div>
+              <div class="kv" id="kpiWaste">0<small>kg</small></div>
+              <div class="ks" id="kpiWasteSub">판매된 잔여상품 환산 중량</div>
+            </div>
+          </div>
+          <div class="kpi-note">
+            <span>플랫폼 수수료(10% 가정) <b id="kpiFee">0원</b></span>
+            <span class="sep">|</span>
+            <span>점주 정산 예정 <b id="kpiPayout">0원</b></span>
+            <span class="sep">|</span>
+            <span>소비자 절약 총액 <b id="kpiSaved">0원</b></span>
+          </div>
+
+          <div class="dash-grid">
+            <div class="card">
+              <div class="card-head">
+                <h3>최근 주문 · 픽업 현황</h3>
+                <span class="cnt" id="orderCount">0건</span>
+              </div>
+              <div id="orderList"></div>
+            </div>
+
+            <div style="display:grid;gap:14px">
+              <div class="insight">
+                <span class="tag">✦ AI 데이터 인사이트</span>
+                <h3>오늘 오후 7시 40분부터 <em>30% 할인</em> 시<br>완판 확률 <em>92%</em></h3>
+                <div class="gauge"><i id="aiGauge"></i></div>
+                <div class="gl"><span>현재 예상 완판 확률 64%</span><span>제안 적용 시 92%</span></div>
+                <ul>
+                  <li><b>추천 등록 시간</b> · 채소·과일은 18:10, 베이커리는 19:50</li>
+                  <li><b>반복 잔여 상품</b> · 완숙 토마토(1.5kg)는 목요일마다 30% 이상 남음</li>
+                </ul>
+                <div class="foot">실거래 데이터가 쌓일수록 추천 정확도가 올라갑니다. (현재 예시 데이터)</div>
+              </div>
+
+              <div class="card">
+                <div class="card-head"><h3>상품별 판매 현황</h3><span class="cnt">재고</span></div>
+                <div class="stock-list" id="stockList"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p style="text-align:center;font-size:12px;color:var(--muted);font-weight:600;margin-top:16px">
+        체험 순서 추천 · ① 소비자 앱에서 <b>선결제·선점하기</b> → ② 점주 탭에서 <b>새 상품 등록</b> → ③ 대시보드에서 <b>픽업 상태 변경</b>
+      </p>
+    </div>
+  </section>
+
+  <!-- ================= BUSINESS MODEL ================= -->
+  <section class="section" id="model">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="label">REVENUE MODEL</span>
+        <h2>거래 수수료에서 데이터 기반 SaaS까지</h2>
+        <p>초기에는 거래 수수료 기반 B2B2C 플랫폼으로 시작하고, 거래와 데이터가 쌓이면 점주용 구독·광고·B2B 서비스로 확장합니다.</p>
+      </div>
+
+      <div class="model-grid">
+        <article class="model">
+          <span class="num">01</span>
+          <div class="mi">💳</div>
+          <h3>거래 수수료</h3>
+          <span class="stage">판매금액의 10~15%</span>
+          <ul>
+            <li>판매금액의 10~15% (검토)</li>
+            <li>선결제 거래 발생 시 수익</li>
+            <li>초기 수수료율은 점주 인터뷰로 검증</li>
+          </ul>
+        </article>
+        <article class="model">
+          <span class="num">02</span>
+          <div class="mi">📊</div>
+          <h3>점주용 구독 서비스</h3>
+          <span class="stage">SaaS · 월 구독</span>
+          <ul>
+            <li>판매데이터 분석</li>
+            <li>AI 할인·등록시간 추천</li>
+            <li>반복 잔여상품 리포트</li>
+          </ul>
+        </article>
+        <article class="model">
+          <span class="num">03</span>
+          <div class="mi">📣</div>
+          <h3>광고·추천 노출</h3>
+          <span class="stage">노출형 광고</span>
+          <ul>
+            <li>오늘의 마감특가</li>
+            <li>우리 동네 추천상품</li>
+            <li>상단 노출 · 반경 푸시알림</li>
+          </ul>
+        </article>
+        <article class="model">
+          <span class="num">04</span>
+          <div class="mi">🤝</div>
+          <h3>브랜드·유통 B2B</h3>
+          <span class="stage">지역 프로모션</span>
+          <ul>
+            <li>식품 제조사·유통사 협업</li>
+            <li>프랜차이즈 본사 프로모션</li>
+            <li>잔여 재고 소진 지원</li>
+          </ul>
+        </article>
+      </div>
+
+      <div class="deal">
+        <h3>예시 거래 구조 · 마감특가 5,000원 상품</h3>
+        <p class="dd">정상가 10,000원 상품을 마감특가 5,000원에 판매하면</p>
+        <div class="deal-row">
+          <div class="deal-box"><span>정상가</span><b>10,000원</b></div>
+          <span class="deal-arrow" aria-hidden="true">→</span>
+          <div class="deal-box hot"><span>마감특가</span><b>5,000원</b></div>
+        </div>
+        <div class="deal-split">
+          <div><span>점포 정산</span><b>4,500원</b></div>
+          <div><span>플랫폼 수수료 (10%)</span><b>500원</b></div>
+          <div><span>소비자 절약</span><b>5,000원</b></div>
+        </div>
+        <p class="deal-note">※ 거래 구조와 수수료율은 예시이며, 실제 운영 시 점주 인터뷰와 MVP 테스트로 조정합니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= COMPARISON ================= -->
+  <section class="section mint" id="compare">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="label green">WHY 8시마켓</span>
+        <h2>기존 서비스 vs 8시마켓</h2>
+        <p>기존 커머스가 “무엇을 살 수 있는가”를 물었다면, 8시마켓은 “오늘 안에 팔고 싶은 상품을 지금 필요한 가까운 소비자에게 연결할 수 있는가”를 해결합니다.</p>
+      </div>
+
+      <div class="banner-line">가게를 새로 만드는 것이 아니라, <em>이미 존재하는 점포를 디지털 판매거점으로 연결</em>합니다.</div>
+
+      <div class="compare">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col" class="theme" style="background:#f8fafc;color:var(--muted)">구분</th>
+              <th scope="col">기존 커머스 서비스</th>
+              <th scope="col" class="us">8시마켓</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="theme">상품</td>
+              <td class="old">다양한 상품을 싸게, 하지만 특별하지 않은 할인</td>
+              <td class="us"><b>당일 잔여상품</b> · 오늘의 신선 잔여상품을 합리적인 가격으로</td>
+            </tr>
+            <tr>
+              <td class="theme">수령 방식</td>
+              <td class="old">전국 배송 중심 · 주문 후 배송까지 시간 소요</td>
+              <td class="us"><b>근거리 픽업</b> · 우리 동네 가게에서 바로 찾아가는 편리함</td>
+            </tr>
+            <tr>
+              <td class="theme">가격</td>
+              <td class="old">상시 할인 · 시간에 따른 긴장감이 부족</td>
+              <td class="us"><b>실시간 마감특가</b> · 시간이 지날수록 더 커지는 할인 폭</td>
+            </tr>
+            <tr>
+              <td class="theme">결제·재고</td>
+              <td class="old">예약·찜 기능 중심 · 실제 구매로 이어지지 않는 관심 위주</td>
+              <td class="us"><b>선결제·선점</b> · 결제 완료 순간 수량 자동 차감, 매진 시 SOLD OUT</td>
+            </tr>
+            <tr>
+              <td class="theme">데이터</td>
+              <td class="old">실시간 선결제·재고 차감 기능 미흡</td>
+              <td class="us"><b>실거래 데이터 · AI 추천</b> · 상품별 판매시간·할인율·판매속도 분석</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <div>
+        <a class="logo" href="#top" aria-label="8시마켓">
+          <span class="logo-mark">8시</span>
+          <span>8시마켓<small>좋은 오늘, 내일은 더 좋은 거래</small></span>
+        </a>
+        <p class="fslogan">저녁 8시, 우리 동네 가격이 달라집니다.<br>오늘 남은 좋은 상품을 오늘 필요한 이웃에게 연결합니다.</p>
+      </div>
+      <nav class="footer-links" aria-label="바로가기">
+        <a href="#brand">브랜드 소개</a>
+        <a href="#prototype">시제품 체험</a>
+        <a href="#model">수익 모델</a>
+        <a href="#compare">차별점</a>
+      </nav>
+    </div>
+    <div class="footer-info">
+      <b>8시마켓</b> · 지원 지역: 대전 · 사업 분야: IT (로컬 커머스 플랫폼)<br>
+      본 페이지는 ‘모두의 창업’ 지원용 <b>시제품(MVP) 데모</b>입니다. 화면의 상품·주문·매출 데이터는 체험을 위한 예시이며 실제 결제나 배송은 발생하지 않습니다.
+    </div>
+  </div>
+</footer>
+
+<!-- ================= CHECKOUT MODAL ================= -->
+<div class="modal-backdrop" id="checkoutModal" aria-hidden="true">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="coTitle" id="checkoutBody"></div>
+</div>
+
+<div class="toast-wrap" id="toastWrap" aria-live="polite" aria-atomic="false"></div>
+
+<script>
+(function(){
+  'use strict';
+
+  /* ---------------- constants ---------------- */
+  var STORAGE_KEY = '8si-market-proto-v1';
+  var STATUS = ['결제완료', '픽업준비', '픽업완료'];
+  var PICKUPS = ['오늘 18:00 ~ 20:00', '오늘 19:00 ~ 21:00', '오늘 20:00 ~ 22:00'];
+  var CATS = ['전체', '채소', '과일', '축산', '수산', '베이커리', '반찬·도시락'];
+  var EMOJI = { '채소':'🥬', '과일':'🍎', '축산':'🥩', '수산':'🐟', '베이커리':'🥖', '반찬·도시락':'🍱' };
+
+  /* ---------------- seed data ---------------- */
+  function seed(){
+    return {
+      seq: 20,
+      products: [
+        { id:'p1',  name:'토마토 1kg',        cat:'채소',      store:'행복한 농산물', dist:0.5, orig:6900,  sale:2900,  total:12, left:3,  weight:1.0, pickup:PICKUPS[0], emoji:'🍅' },
+        { id:'p2',  name:'한돈 삼겹살 600g', cat:'축산',      store:'우리축산',     dist:0.7, orig:19900, sale:12900, total:15, left:5,  weight:0.6, pickup:PICKUPS[0], emoji:'🥩' },
+        { id:'p3',  name:'바나나 1송이',      cat:'과일',      store:'신선마트',     dist:1.2, orig:4500,  sale:2000,  total:20, left:0,  weight:0.9, pickup:PICKUPS[1], emoji:'🍌' },
+        { id:'p4',  name:'고등어 2마리',      cat:'수산',      store:'바다수산',     dist:1.2, orig:7900,  sale:3900,  total:10, left:4,  weight:0.8, pickup:PICKUPS[0], emoji:'🐟' },
+        { id:'p5',  name:'완숙 토마토 1.5kg', cat:'채소',      store:'싱싱청과',     dist:1.4, orig:12000, sale:8900,  total:10, left:6,  weight:1.5, pickup:PICKUPS[1], emoji:'🍅' },
+        { id:'p6',  name:'수제 바게트',       cat:'베이커리',  store:'동네빵집',     dist:0.9, orig:5000,  sale:2900,  total:16, left:7,  weight:0.3, pickup:PICKUPS[2], emoji:'🥖' },
+        { id:'p7',  name:'마트 도시락',       cat:'반찬·도시락', store:'한밭마트',   dist:1.1, orig:7900,  sale:3900,  total:14, left:2,  weight:0.4, pickup:PICKUPS[0], emoji:'🍱' },
+        { id:'p8',  name:'친환경 상추 3종',   cat:'채소',      store:'대전로컬팜',   dist:1.6, orig:4500,  sale:2200,  total:12, left:8,  weight:0.4, pickup:PICKUPS[0], emoji:'🥬' },
+        { id:'p9',  name:'국내산 딸기 500g',  cat:'과일',      store:'햇살과일',     dist:1.9, orig:13900, sale:7900,  total:8,  left:5,  weight:0.5, pickup:PICKUPS[1], emoji:'🍓' },
+        { id:'p10', name:'훈제오리 400g',     cat:'축산',      store:'대전정육',     dist:2.1, orig:11500, sale:6900,  total:10, left:6,  weight:0.4, pickup:PICKUPS[1], emoji:'🦆' },
+        { id:'p11', name:'손질 새우 500g',    cat:'수산',      store:'한밭수산',     dist:2.4, orig:15900, sale:8900,  total:8,  left:4,  weight:0.5, pickup:PICKUPS[0], emoji:'🦐' },
+        { id:'p12', name:'크루아상 3개',      cat:'베이커리',  store:'온기빵집',     dist:2.6, orig:7500,  sale:3900,  total:12, left:9,  weight:0.2, pickup:PICKUPS[2], emoji:'🥐' },
+        { id:'p13', name:'열무김치 1kg',      cat:'반찬·도시락', store:'엄마손반찬', dist:2.9, orig:9000,  sale:5500,  total:10, left:7,  weight:1.0, pickup:PICKUPS[0], emoji:'🫙' }
+      ],
+      orders: [
+        { id:'o1', code:'8시-3102', name:'한돈 삼겹살 600g', store:'우리축산',  qty:1, orig:19900, sale:12900, weight:0.6, pickup:PICKUPS[0], status:'픽업완료', time:'18:55', emoji:'🥩' },
+        { id:'o2', code:'8시-3187', name:'수제 바게트',       store:'동네빵집',  qty:2, orig:5000,  sale:2900,  weight:0.3, pickup:PICKUPS[2], status:'픽업준비', time:'19:12', emoji:'🥖' },
+        { id:'o3', code:'8시-3210', name:'마트 도시락',       store:'한밭마트',  qty:1, orig:7900,  sale:3900,  weight:0.4, pickup:PICKUPS[0], status:'결제완료', time:'19:24', emoji:'🍱' }
+      ]
+    };
+  }
+
+  /* ---------------- state ---------------- */
+  function load(){
+    try{
+      var raw = window.localStorage.getItem(STORAGE_KEY);
+      if(raw){
+        var parsed = JSON.parse(raw);
+        if(parsed && Array.isArray(parsed.products) && Array.isArray(parsed.orders) && typeof parsed.seq === 'number'){
+          return parsed;
+        }
+      }
+    }catch(e){ /* 저장소를 쓸 수 없으면 메모리 상태로 동작 */ }
+    return seed();
+  }
+  function save(){
+    try{ window.localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }catch(e){}
+  }
+
+  var state = load();
+  var ui = { tab:'consumer', radius:3, cat:'전체' };
+  var co = { pid:null, qty:1, phase:'form', order:null, processing:false };
+  var paySeq = 0;
+
+  /* ---------------- helpers ---------------- */
+  function $(sel, root){ return (root || document).querySelector(sel); }
+  function $$(sel, root){ return Array.prototype.slice.call((root || document).querySelectorAll(sel)); }
+  function won(n){ return Math.round(n).toLocaleString('ko-KR') + '원'; }
+  function num(n){ return Math.round(n).toLocaleString('ko-KR'); }
+  function pad(n){ return (n < 10 ? '0' : '') + n; }
+  function disc(p){ return Math.round((1 - p.sale / p.orig) * 100); }
+  function esc(s){
+    return String(s).replace(/[&<>"']/g, function(c){
+      return { '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c];
+    });
+  }
+  function byId(id){ return state.products.filter(function(p){ return p.id === id; })[0]; }
+  function nowTime(){
+    var d = new Date();
+    return pad(d.getHours()) + ':' + pad(d.getMinutes());
+  }
+
+  /* ---------------- tabs ---------------- */
+  function setTab(name){
+    ui.tab = name;
+    $$('.tab-btn').forEach(function(b){
+      var on = b.getAttribute('data-tab') === name;
+      b.classList.toggle('is-active', on);
+      b.setAttribute('aria-selected', on ? 'true' : 'false');
+    });
+    $$('.panel').forEach(function(p){ p.hidden = (p.id !== 'panel-' + name); });
+  }
+  $$('.tab-btn').forEach(function(b){
+    b.addEventListener('click', function(){ setTab(b.getAttribute('data-tab')); });
+  });
+
+  /* ---------------- consumer filters ---------------- */
+  function renderCatRow(){
+    var row = $('#catRow');
+    row.innerHTML = CATS.map(function(c){
+      return '<button class="cat-pill' + (c === ui.cat ? ' is-active' : '') + '" type="button" data-cat="' + esc(c) + '" aria-pressed="' + (c === ui.cat) + '">' + esc(c) + '</button>';
+    }).join('');
+  }
+  function setCat(c){
+    ui.cat = c;
+    $$('#catRow .cat-pill').forEach(function(b){
+      var on = b.getAttribute('data-cat') === c;
+      b.classList.toggle('is-active', on);
+      b.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+    renderProducts();
+  }
+  function setRadius(r){
+    ui.radius = r;
+    $$('#panel-consumer .r-btn').forEach(function(b){
+      b.classList.toggle('is-active', Number(b.getAttribute('data-radius')) === r);
+    });
+    renderProducts();
+  }
+  $('#catRow').addEventListener('click', function(e){
+    var b = e.target.closest('.cat-pill');
+    if(b) setCat(b.getAttribute('data-cat'));
+  });
+  $$('#panel-consumer .r-btn').forEach(function(b){
+    b.addEventListener('click', function(){ setRadius(Number(b.getAttribute('data-radius'))); });
+  });
+
+  function visibleProducts(){
+    return state.products.filter(function(p){
+      return p.dist <= ui.radius && (ui.cat === '전체' || p.cat === ui.cat);
+    });
+  }
+
+  /* ---------------- product render ---------------- */
+  function cardHTML(p){
+    var d = disc(p);
+    var sold = p.left <= 0;
+    var ratio = p.total > 0 ? Math.max(0, Math.min(100, Math.round(p.left / p.total * 100))) : 0;
+    return '' +
+      '<article class="pcard' + (sold ? ' soldout' : '') + (p.isNew ? ' is-new' : '') + '" data-id="' + p.id + '">' +
+        (p.isNew ? '<span class="badge-new">NEW</span>' : '') +
+        '<div class="pcard-thumb">' +
+          '<span class="emoji">' + p.emoji + '</span>' +
+          '<span class="cat">' + esc(p.cat) + '</span>' +
+          (sold ? '<span class="stamp">SOLD OUT</span>' : '') +
+        '</div>' +
+        '<div class="pcard-body">' +
+          '<h3 class="pcard-name">' + esc(p.name) + '</h3>' +
+          '<p class="pcard-store">' + esc(p.store) + ' <span class="dot">·</span> 내 주변 ' + p.dist + 'km</p>' +
+          '<div class="price-row"><span class="was">' + won(p.orig) + '</span><span class="pct">' + d + '%</span></div>' +
+          '<div class="now">' + won(p.sale) + '</div>' +
+          '<div class="stock"><div class="stock-bar"><i style="width:' + ratio + '%"></i></div><span>남은 수량 ' + p.left + ' / ' + p.total + '</span></div>' +
+          '<p class="pickup">🕕 ' + esc(p.pickup) + ' 픽업</p>' +
+          '<button class="btn btn-primary btn-block btn-sm" type="button" data-action="checkout"' + (sold ? ' disabled' : '') + '>' + (sold ? '품절 · 선점 마감' : '선결제 · 선점하기') + '</button>' +
+        '</div>' +
+      '</article>';
+  }
+
+  function renderProducts(){
+    var list = visibleProducts();
+    var grid = $('#productGrid');
+    $('#resultCount').textContent = list.length;
+    if(!list.length){
+      grid.innerHTML = '<div class="empty">이 반경 안에 남은 상품이 없습니다.<br>반경을 넓히거나 다른 카테고리를 선택해 보세요.</div>';
+      return;
+    }
+    grid.innerHTML = list.map(cardHTML).join('');
+  }
+
+  $('#productGrid').addEventListener('click', function(e){
+    var btn = e.target.closest('[data-action="checkout"]');
+    if(!btn) return;
+    var card = btn.closest('.pcard');
+    if(!card) return;
+    openCheckout(card.getAttribute('data-id'));
+  });
+
+  /* ---------------- modal ---------------- */
+  var modal = $('#checkoutModal');
+
+  function openCheckout(id){
+    var p = byId(id);
+    if(!p || p.left <= 0){ toast('이미 판매가 마감된 상품입니다.'); return; }
+    paySeq++;
+    co = { pid:id, qty:1, phase:'form', order:null, processing:false };
+    renderCheckout();
+    modal.classList.add('is-open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    var firstBtn = modal.querySelector('button');
+    if(firstBtn) firstBtn.focus();
+  }
+
+  function closeCheckout(){
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    co = { pid:null, qty:1, phase:'form', order:null, processing:false };
+  }
+
+  function renderCheckout(){
+    var p = byId(co.pid);
+    if(!p){ closeCheckout(); return; }
+    var body = $('#checkoutBody');
+
+    if(co.phase === 'done' && co.order){
+      var o = co.order;
+      body.innerHTML = '' +
+        '<div class="m-head"><h3 id="coTitle">선결제 완료</h3><button class="x-btn" type="button" data-x aria-label="닫기">✕</button></div>' +
+        '<div class="m-body">' +
+          '<div class="success">' +
+            '<div class="check">✓</div>' +
+            '<h3>선결제가 완료되었습니다</h3>' +
+            '<p>상품이 선점되었습니다. 매장에서 아래 픽업 코드를 보여주세요.</p>' +
+            '<div class="code-box"><span>PICKUP CODE</span><strong>' + esc(o.code) + '</strong></div>' +
+            '<div class="rcpt">' +
+              '<div><span>' + esc(o.name) + ' × ' + o.qty + '</span><b>' + won(o.sale * o.qty) + '</b></div>' +
+              '<div><span>픽업 매장</span><b>' + esc(o.store) + ' · ' + p.dist + 'km</b></div>' +
+              '<div><span>픽업 시간</span><b>' + esc(o.pickup) + '</b></div>' +
+              '<div><span>결제 금액</span><b>' + won(o.sale * o.qty) + '</b></div>' +
+            '</div>' +
+            '<p class="m-note">픽업 시간 안에 매장을 방문해 코드를 제시하면 수령이 완료됩니다. 남은 수량은 자동으로 차감되었습니다.</p>' +
+            '<div class="m-actions">' +
+              '<button class="btn btn-primary btn-block" type="button" data-goto-dash>대시보드에서 주문 확인</button>' +
+              '<button class="btn btn-ghost btn-block" type="button" data-x>닫기</button>' +
+            '</div>' +
+          '</div>' +
+        '</div>';
+      return;
+    }
+
+    var total = p.sale * co.qty;
+    var saveAmt = (p.orig - p.sale) * co.qty;
+    body.innerHTML = '' +
+      '<div class="m-head"><h3 id="coTitle">선결제 · 선점하기</h3><button class="x-btn" type="button" data-x aria-label="닫기">✕</button></div>' +
+      '<div class="m-body">' +
+        '<div class="m-store">' +
+          '<div class="mt">' + p.emoji + '</div>' +
+          '<div style="flex:1">' +
+            '<h4>' + esc(p.name) + '</h4>' +
+            '<p>' + esc(p.store) + ' · 내 주변 ' + p.dist + 'km · ' + esc(p.cat) + '</p>' +
+          '</div>' +
+          '<div style="text-align:right">' +
+            '<div style="font-size:10.5px;color:var(--muted);font-weight:700;text-decoration:line-through">' + won(p.orig) + '</div>' +
+            '<div style="font-size:16px;font-weight:900;letter-spacing:-.03em">' + won(p.sale) + '</div>' +
+          '</div>' +
+        '</div>' +
+        '<div class="m-qty">' +
+          '<span class="lbl">수량 선택 <span style="color:var(--muted);font-weight:700">(남은 ' + p.left + '개)</span></span>' +
+          '<div class="stepper-qty">' +
+            '<button type="button" data-q="minus"' + (co.qty <= 1 ? ' disabled' : '') + ' aria-label="수량 줄이기">−</button>' +
+            '<span>' + co.qty + '</span>' +
+            '<button type="button" data-q="plus"' + (co.qty >= p.left ? ' disabled' : '') + ' aria-label="수량 늘리기">+</button>' +
+          '</div>' +
+        '</div>' +
+        '<div class="m-lines">' +
+          '<div class="m-line"><span>정가 합계</span><b>' + won(p.orig * co.qty) + '</b></div>' +
+          '<div class="m-line"><span>마감특가 적용 (' + disc(p) + '%)</span><b>− ' + won((p.orig - p.sale) * co.qty) + '</b></div>' +
+          '<div class="m-line save"><span>오늘 절약 금액</span><b>' + won(saveAmt) + '</b></div>' +
+        '</div>' +
+        '<div class="m-total"><span>결제 금액</span><b>' + won(total) + '</b></div>' +
+        '<div class="m-info">' +
+          '<div><span class="k">픽업 시간</span><span>' + esc(p.pickup) + '</span></div>' +
+          '<div><span class="k">픽업 장소</span><span>' + esc(p.store) + ' (내 주변 ' + p.dist + 'km)</span></div>' +
+          '<div><span class="k">재고 처리</span><span>결제 완료 시 수량 자동 차감 · 매진 시 SOLD OUT</span></div>' +
+        '</div>' +
+        '<p class="m-note">※ 시제품 화면으로 실제 결제는 발생하지 않습니다.</p>' +
+        '<div class="m-actions">' +
+          '<button class="btn btn-orange btn-block btn-lg" type="button" id="payBtn">선결제 완료하기 · ' + won(total) + '</button>' +
+        '</div>' +
+      '</div>';
+  }
+
+  function completeCheckout(){
+    if(co.processing) return;
+    var p = byId(co.pid);
+    if(!p){ closeCheckout(); return; }
+    if(p.left <= 0){ toast('이미 판매가 마감된 상품입니다.'); closeCheckout(); renderProducts(); return; }
+    if(co.qty > p.left) co.qty = p.left;
+
+    var pid = p.id;
+    var qty = co.qty;
+    var myToken = ++paySeq;
+    co.processing = true;
+
+    var btn = $('#payBtn');
+    if(btn){
+      btn.disabled = true;
+      btn.innerHTML = '<span class="spinner"></span> 결제 처리 중…';
+    }
+
+    window.setTimeout(function(){
+      var prod = byId(pid);
+      if(!prod){ return; }
+      prod.left = Math.max(0, prod.left - qty);
+
+      var order = {
+        id: 'o' + (state.seq++),
+        code: genCode(),
+        name: prod.name,
+        store: prod.store,
+        qty: qty,
+        orig: prod.orig,
+        sale: prod.sale,
+        weight: prod.weight,
+        pickup: prod.pickup,
+        status: '결제완료',
+        time: nowTime(),
+        emoji: prod.emoji
+      };
+      state.orders.unshift(order);
+      save();
+
+      renderProducts();
+      renderDashboard();
+      renderStock();
+
+      if(myToken === paySeq && co.pid === pid && modal.classList.contains('is-open')){
+        co.processing = false;
+        co.phase = 'done';
+        co.order = order;
+        renderCheckout();
+      }
+
+      toast('선결제 완료 · 픽업 코드 ' + order.code);
+    }, 560);
+  }
+
+  function genCode(){
+    var code = '', tries = 0;
+    do{
+      code = '8시-' + String(Math.floor(1000 + Math.random() * 9000));
+      tries++;
+    }while(state.orders.some(function(o){ return o.code === code; }) && tries < 30);
+    return code;
+  }
+
+  /* modal event delegation */
+  $('#checkoutBody').addEventListener('click', function(e){
+    if(e.target.closest('[data-x]')){ closeCheckout(); return; }
+    if(e.target.closest('[data-goto-dash]')){
+      closeCheckout();
+      setTab('dash');
+      return;
+    }
+    var q = e.target.closest('[data-q]');
+    if(q){
+      var p = byId(co.pid);
+      if(!p) return;
+      var dir = q.getAttribute('data-q');
+      if(dir === 'plus' && co.qty < p.left) co.qty++;
+      if(dir === 'minus' && co.qty > 1) co.qty--;
+      renderCheckout();
+      return;
+    }
+    if(e.target.closest('#payBtn')){ completeCheckout(); }
+  });
+
+  modal.addEventListener('click', function(e){
+    if(e.target === modal) closeCheckout();
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && modal.classList.contains('is-open')) closeCheckout();
+  });
+
+  /* ---------------- owner form ---------------- */
+  var form = $('#registerForm');
+
+  function discountPreview(){
+    var o = parseInt($('#fOrig').value, 10);
+    var s = parseInt($('#fSale').value, 10);
+    var badge = $('#discPreview');
+    if(o > 0 && s > 0 && s < o){
+      badge.className = 'disc-preview ok';
+      badge.innerHTML = '<b>-' + Math.round((1 - s / o) * 100) + '%</b><span>' + won(o - s) + ' 절약 · 소비자에게 이 가격으로 노출됩니다</span>';
+    }else if(o > 0 && s > 0 && s >= o){
+      badge.className = 'disc-preview warn';
+      badge.innerHTML = '<span>마감특가는 정상가보다 낮아야 합니다.</span>';
+    }else{
+      badge.className = 'disc-preview';
+      badge.innerHTML = '<span>정상가와 마감특가를 입력하면 할인율이 자동 계산됩니다</span>';
+    }
+  }
+  $('#fOrig').addEventListener('input', discountPreview);
+  $('#fSale').addEventListener('input', discountPreview);
+
+  function showFormMsg(errs){
+    var el = $('#formMsg');
+    el.hidden = false;
+    el.innerHTML = errs.map(function(m){ return '<div>• ' + m + '</div>'; }).join('');
+  }
+  function clearFormMsg(){
+    var el = $('#formMsg');
+    el.hidden = true;
+    el.innerHTML = '';
+  }
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    [ '#fShop', '#fName', '#fOrig', '#fSale', '#fQty' ].forEach(function(s){ $(s).classList.remove('invalid'); });
+
+    var shop = $('#fShop').value.trim();
+    var cat = $('#fCat').value;
+    var name = $('#fName').value.trim();
+    var orig = parseInt($('#fOrig').value, 10);
+    var sale = parseInt($('#fSale').value, 10);
+    var qty = parseInt($('#fQty').value, 10);
+    var pickup = $('#fPickup').value;
+    var errs = [];
+
+    if(!shop){ errs.push('점포명을 입력해 주세요.'); $('#fShop').classList.add('invalid'); }
+    if(!name){ errs.push('상품명을 입력해 주세요.'); $('#fName').classList.add('invalid'); }
+    if(!(orig > 0)){ errs.push('정상가를 1원 이상 입력해 주세요.'); $('#fOrig').classList.add('invalid'); }
+    if(!(sale > 0)){ errs.push('마감특가를 1원 이상 입력해 주세요.'); $('#fSale').classList.add('invalid'); }
+    if(orig > 0 && sale > 0 && sale >= orig){ errs.push('마감특가는 정상가보다 낮아야 합니다.'); $('#fSale').classList.add('invalid'); }
+    if(!(qty > 0)){ errs.push('수량을 1개 이상 입력해 주세요.'); $('#fQty').classList.add('invalid'); }
+
+    if(errs.length){ showFormMsg(errs); return; }
+    clearFormMsg();
+
+    var dist = Math.round((0.3 + Math.random() * 0.6) * 10) / 10;
+    var item = {
+      id: 'p' + (state.seq++),
+      name: name,
+      cat: cat,
+      store: shop,
+      dist: dist,
+      orig: orig,
+      sale: sale,
+      total: qty,
+      left: qty,
+      weight: 0.5,
+      pickup: pickup,
+      emoji: EMOJI[cat] || '🛒',
+      isNew: true
+    };
+    state.products.push(item);
+    save();
+
+    renderProducts();
+    renderDashboard();
+    renderStock();
+    updateOwnerSide();
+    form.reset();
+    [ '#fShop', '#fName', '#fOrig', '#fSale', '#fQty' ].forEach(function(s){ $(s).classList.remove('invalid'); });
+    discountPreview();
+
+    toast('‘' + name + '’ 등록 완료! 소비자 앱에 바로 노출됩니다.', '소비자 앱에서 보기', function(){
+      if(item.dist > ui.radius) setRadius(Math.ceil(item.dist));
+      setCat('전체');
+      setTab('consumer');
+      var app = $('#prototypeApp');
+      if(app) app.scrollIntoView({ behavior:'smooth', block:'start' });
+      window.setTimeout(function(){ highlightProduct(item.id); }, 320);
+    });
+  });
+
+  function highlightProduct(id){
+    var card = $('#productGrid .pcard[data-id="' + id + '"]');
+    if(!card) return;
+    card.classList.add('flash');
+    card.scrollIntoView({ behavior:'smooth', block:'center' });
+  }
+
+  function updateOwnerSide(){
+    var lefts = state.products.filter(function(p){ return p.left > 0; });
+    $('#sideWaived').textContent = lefts.length + '종';
+    var avg = state.products.length
+      ? Math.round(state.products.reduce(function(a, p){ return a + disc(p); }, 0) / state.products.length)
+      : 0;
+    $('#sideAvg').textContent = avg + '%';
+    $('#sideToday').textContent = state.products.length + '종';
+  }
+
+  /* ---------------- dashboard ---------------- */
+  function kpi(){
+    var qty = 0, revenue = 0, saved = 0, origTotal = 0, weight = 0;
+    state.orders.forEach(function(o){
+      qty += o.qty;
+      revenue += o.sale * o.qty;
+      saved += (o.orig - o.sale) * o.qty;
+      origTotal += o.orig * o.qty;
+      weight += o.weight * o.qty;
+    });
+    return {
+      qty: qty,
+      revenue: revenue,
+      saved: saved,
+      weight: weight,
+      disc: origTotal > 0 ? Math.round(saved / origTotal * 100) : 0,
+      count: state.orders.length
+    };
+  }
+
+  function renderDashboard(){
+    var k = kpi();
+    $('#kpiQty').innerHTML = num(k.qty) + '<small>개</small>';
+    $('#kpiQtySub').textContent = '총 ' + k.count + '건 결제';
+    $('#kpiRevenue').innerHTML = num(k.revenue) + '<small>원</small>';
+    $('#kpiRevSub').textContent = '선결제 기준 · 소비자 절약 ' + won(k.saved);
+    $('#kpiDiscount').innerHTML = k.disc + '<small>%</small>';
+    $('#kpiWaste').innerHTML = k.weight.toFixed(1) + '<small>kg</small>';
+    $('#kpiFee').textContent = won(k.revenue * 0.1);
+    $('#kpiPayout').textContent = won(k.revenue * 0.9);
+    $('#kpiSaved').textContent = won(k.saved);
+    $('#aiGauge').style.width = '92%';
+    renderOrders();
+  }
+
+  function orderHTML(o){
+    var si = STATUS.indexOf(o.status);
+    if(si < 0) si = 0;
+
+    var steps = '';
+    for(var i = 0; i < STATUS.length; i++){
+      steps += '<div class="step' + (i <= si ? ' on' : '') + (i === si ? ' now' : '') + '"><span class="dot">' + (i < si ? '✓' : (i + 1)) + '</span><span>' + STATUS[i] + '</span></div>';
+      if(i < STATUS.length - 1) steps += '<span class="line' + (si > i ? ' on' : '') + '"></span>';
+    }
+
+    var nextLabel = si === 0 ? '픽업준비 시작' : '픽업완료 처리';
+    var action = si < 2
+      ? '<button class="btn btn-primary btn-sm" type="button" data-action="advance" data-id="' + o.id + '">' + nextLabel + '</button>'
+      : '<span class="done-badge">픽업 완료</span>';
+
+    return '' +
+      '<div class="order">' +
+        '<div class="order-head">' +
+          '<span class="order-code">' + esc(o.code) + '</span>' +
+          '<span class="order-time">' + esc(o.time) + ' 결제</span>' +
+        '</div>' +
+        '<div class="order-main">' +
+          '<div class="order-thumb">' + o.emoji + '</div>' +
+          '<div>' +
+            '<div class="order-name">' + esc(o.name) + '<span class="q">× ' + o.qty + '</span></div>' +
+            '<div class="order-store">' + esc(o.store) + ' · ' + esc(o.pickup) + '</div>' +
+          '</div>' +
+          '<div class="order-price">' + won(o.sale * o.qty) + '</div>' +
+        '</div>' +
+        '<div class="stepper">' + steps + '</div>' +
+        '<div class="order-foot">' + action + '</div>' +
+      '</div>';
+  }
+
+  function renderOrders(){
+    var box = $('#orderList');
+    $('#orderCount').textContent = state.orders.length + '건';
+    if(!state.orders.length){
+      box.innerHTML = '<div class="empty">아직 주문이 없습니다.<br>소비자 앱에서 상품을 선결제하면 이곳에 주문이 표시됩니다.</div>';
+      return;
+    }
+    box.innerHTML = state.orders.map(orderHTML).join('');
+  }
+
+  $('#orderList').addEventListener('click', function(e){
+    var btn = e.target.closest('[data-action="advance"]');
+    if(!btn) return;
+    advanceOrder(btn.getAttribute('data-id'));
+  });
+
+  function advanceOrder(id){
+    var o = state.orders.filter(function(x){ return x.id === id; })[0];
+    if(!o) return;
+    var si = STATUS.indexOf(o.status);
+    if(si < 0 || si >= 2) return;
+    o.status = STATUS[si + 1];
+    save();
+    renderOrders();
+    renderDashboard();
+    toast('‘' + o.name + '’ 주문 상태 · ' + o.status);
+  }
+
+  function renderStock(){
+    var box = $('#stockList');
+    var items = state.products.slice().sort(function(a, b){
+      return ((b.total - b.left) / b.total) - ((a.total - a.left) / a.total);
+    }).slice(0, 5);
+
+    box.innerHTML = items.map(function(p){
+      var sold = p.total - p.left;
+      var pct = p.total > 0 ? Math.round(sold / p.total * 100) : 0;
+      var cls = p.left <= 0 ? ' out' : (p.left <= 2 ? ' warn' : '');
+      var tag = p.left <= 0 ? '' : (p.left <= 2 ? '<span class="sr-tag">완판 임박</span>' : '');
+      return '' +
+        '<div class="stock-row' + cls + '">' +
+          '<div class="sr-top"><b>' + esc(p.name) + tag + '</b><span>' + sold + '/' + p.total + ' 판매 · ' + pct + '%</span></div>' +
+          '<div class="sr-bar"><i style="width:' + pct + '%"></i></div>' +
+        '</div>';
+    }).join('');
+  }
+
+  /* ---------------- countdown / date ---------------- */
+  function tickCountdown(){
+    var now = new Date();
+    var target = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 20, 0, 0);
+    if(now.getTime() >= target.getTime()){
+      target = new Date(target.getTime() + 24 * 60 * 60 * 1000);
+    }
+    var diff = Math.max(0, target.getTime() - now.getTime());
+    var h = Math.floor(diff / 3600000);
+    var m = Math.floor((diff % 3600000) / 60000);
+    var s = Math.floor((diff % 60000) / 1000);
+    var txt = pad(h) + ':' + pad(m) + ':' + pad(s);
+    $$('.js-countdown').forEach(function(el){ el.textContent = txt; });
+  }
+
+  function renderToday(){
+    var d = new Date();
+    var w = '일월화수목금토'.charAt(d.getDay());
+    var el = $('#todayLabel');
+    if(el) el.textContent = d.getFullYear() + '.' + pad(d.getMonth() + 1) + '.' + pad(d.getDate()) + ' (' + w + ')';
+  }
+
+  /* ---------------- toast ---------------- */
+  function toast(msg, actionLabel, action){
+    var wrap = $('#toastWrap');
+    var el = document.createElement('div');
+    el.className = 'toast';
+
+    var span = document.createElement('span');
+    span.className = 'tmsg';
+    span.textContent = msg;
+    el.appendChild(span);
+
+    if(actionLabel && typeof action === 'function'){
+      var act = document.createElement('button');
+      act.className = 'tact';
+      act.type = 'button';
+      act.textContent = actionLabel;
+      act.addEventListener('click', function(){
+        action();
+        remove();
+      });
+      el.appendChild(act);
+    }
+
+    var x = document.createElement('button');
+    x.className = 'tx';
+    x.type = 'button';
+    x.setAttribute('aria-label', '알림 닫기');
+    x.textContent = '✕';
+    el.appendChild(x);
+
+    var timer = window.setTimeout(remove, actionLabel ? 7000 : 4200);
+    function remove(){
+      window.clearTimeout(timer);
+      if(el.parentNode) el.parentNode.removeChild(el);
+    }
+    x.addEventListener('click', remove);
+
+    wrap.appendChild(el);
+  }
+
+  /* ---------------- reset ---------------- */
+  $('#resetBtn').addEventListener('click', function(){
+    if(!window.confirm('시연 데이터를 처음 상태로 되돌릴까요? 등록·결제한 내용이 모두 사라집니다.')) return;
+    state = seed();
+    save();
+    ui.radius = 3;
+    ui.cat = '전체';
+    setRadius(3);
+    setCat('전체');
+    renderDashboard();
+    renderStock();
+    renderOrders();
+    updateOwnerSide();
+    clearFormMsg();
+    setTab('consumer');
+    toast('시연 데이터를 초기화했습니다.');
+  });
+
+  /* ---------------- smooth scroll ---------------- */
+  $$('[data-goto]').forEach(function(el){
+    el.addEventListener('click', function(e){
+      var target = el.getAttribute('data-goto');
+      var node = target ? document.querySelector(target) : null;
+      if(!node) return;
+      e.preventDefault();
+      if(target === '#prototype') setTab('consumer');
+      node.scrollIntoView({ behavior:'smooth', block:'start' });
+    });
+  });
+
+  /* ---------------- init ---------------- */
+  renderToday();
+  renderCatRow();
+  setRadius(3);
+  setCat('전체');
+  renderDashboard();
+  renderStock();
+  updateOwnerSide();
+  discountPreview();
+  tickCountdown();
+  window.setInterval(tickCountdown, 1000);
+
+  /* 오늘의 예시 데이터 기준 NEW 배지 정리 (24시간 이상 지난 등록 표시는 초기화) */
+  try{
+    var stamp = window.localStorage.getItem(STORAGE_KEY + '-new');
+    if(stamp && (Date.now() - Number(stamp)) > 86400000){
+      state.products.forEach(function(p){ p.isNew = false; });
+      save();
+    }
+    window.localStorage.setItem(STORAGE_KEY + '-new', String(Date.now()));
+  }catch(e){}
+})();
+</script>
+</body>
+</html>
