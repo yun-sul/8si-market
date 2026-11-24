@@ -6,6 +6,12 @@
 <title>8시마켓 — 저녁 8시, 우리 동네 장보기가 달라집니다</title>
 <meta name="description" content="퇴근길 동네마트·정육점·과일가게·빵집·반찬가게의 오늘 남은 신선식품을 마감특가로 연결하고, 선결제 후 가까운 매장에서 픽업하는 로컬 커머스 플랫폼 8시마켓의 시제품 앱입니다.">
 <meta name="theme-color" content="#0B7A46">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="8시마켓">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon-192.png">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='9' fill='%230B7A46'/><text x='16' y='23' font-size='16' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='bold'>8</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -153,6 +159,9 @@ h1,h2,h3,h4,p{margin:0}
 .ob-foot{margin-top:auto;padding-top:26px;text-align:center;font-size:10.5px;color:var(--muted2);font-weight:600;line-height:1.6}
 .ob-feats{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;margin-top:30px}
 .ob-feats span{display:inline-flex;align-items:center;gap:4px;font-size:10.5px;font-weight:800;color:#5E6B65;background:#F6F9F6;border:1px solid #E9EFEA;border-radius:999px;padding:6px 10px}
+.ob-contrast{margin:14px 0 0;font-size:10.5px;font-weight:800;color:#4E6B5A;background:#F2FBF6;border:1px solid #D8EEE1;border-radius:9px;padding:8px 10px;text-align:center;letter-spacing:-.01em}
+.ob-contrast b{color:var(--brand-d);font-weight:900}
+.onboard .ob-sub b{color:var(--ink2);font-weight:800}
 
 /* ================= common ui ================= */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;border:0;border-radius:14px;font-weight:900;font-size:14.5px;letter-spacing:-.02em;padding:14px 18px;transition:transform .12s, box-shadow .2s, background .2s;line-height:1.2;text-decoration:none}
@@ -367,6 +376,7 @@ h1,h2,h3,h4,p{margin:0}
 .air-cell small{display:block;font-size:9px;color:var(--muted);font-weight:700}
 .air-cell b{display:block;font-size:11.5px;font-weight:900;color:var(--brand-d);margin-top:1px;letter-spacing:-.02em}
 .air-note{font-size:9.5px;color:#7C9488;font-weight:600;margin-top:7px;line-height:1.5}
+.air-flag{display:flex;flex-wrap:wrap;align-items:center;gap:4px;margin-top:6px;font-size:8.5px;font-weight:700;color:#9A7C31;line-height:1.5}
 
 .form-card{margin:11px 16px 0;background:#fff;border-radius:19px;border:1px solid #E9EDEA;box-shadow:var(--sh-card);padding:15px 14px}
 .form-head{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:2px}
@@ -634,6 +644,100 @@ h1,h2,h3,h4,p{margin:0}
   .promo-info{max-height:none;overflow:visible;padding:20px 18px calc(26px + env(safe-area-inset-bottom))}
   .promo-info h2{font-size:22px}
 }
+
+/* ================= v2.1 additions ================= */
+.side-vs{display:flex;gap:6px;margin-top:15px;flex-wrap:wrap}
+.side-vs span{font-size:11.5px;font-weight:900;border-radius:9px;padding:7px 10px;letter-spacing:-.02em;line-height:1.3}
+.side-vs .no{background:#F1F3F1;color:#8E9A94;text-decoration:line-through}
+.side-vs .yes{background:var(--brand-l);color:var(--brand-d);border:1px solid #CFE9DA}
+.demo-tag{display:inline-flex;align-items:center;gap:3px;background:#FFF6E8;color:#B45309;border:1px solid #FBE3C4;font-size:8.5px;font-weight:900;border-radius:5px;padding:2px 6px;letter-spacing:.01em;white-space:nowrap}
+.ai-demo-note{margin-top:9px;font-size:9px;color:#9A7C31;font-weight:700;line-height:1.55;background:#FFFBF2;border:1px solid #F7EBD2;border-radius:8px;padding:7px 9px}
+/* dynamic pricing */
+.pricing{margin:12px 16px 0;background:#fff;border:1px solid #E9EDEA;border-radius:19px;padding:14px;box-shadow:var(--sh-card)}
+.pc-head{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.pc-head h2{font-size:13px;font-weight:900;letter-spacing:-.03em}
+.pc-sub{font-size:10px;color:var(--muted);font-weight:600;margin-top:4px;line-height:1.6}
+.pc-prod{display:flex;align-items:center;gap:8px;margin-top:10px;background:#F7FAF7;border:1px solid #EBF1EC;border-radius:11px;padding:8px 10px}
+.pc-prod .e{font-size:18px;flex:0 0 auto}
+.pc-prod .m{min-width:0;flex:1}
+.pc-prod .m b{display:block;font-size:11.5px;font-weight:900;letter-spacing:-.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pc-prod .m small{display:block;font-size:9.5px;color:var(--muted);font-weight:700;margin-top:1px}
+.pc-prod .p{text-align:right;flex:0 0 auto}
+.pc-prod .p b{display:block;font-size:12.5px;font-weight:900;letter-spacing:-.03em}
+.pc-prod .p small{display:block;font-size:9px;color:var(--muted);font-weight:700}
+.pc-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:5px;margin-top:9px}
+.pc-step{border:1px solid #E7EDE8;background:#fff;border-radius:10px;padding:7px 3px;text-align:center;transition:.15s}
+.pc-step b{display:block;font-size:9px;font-weight:900;color:#6B7872;letter-spacing:-.02em}
+.pc-step span{display:block;font-size:11.5px;font-weight:900;color:var(--ink2);margin-top:2px;font-variant-numeric:tabular-nums}
+.pc-step:hover{border-color:#C6B9F5}
+.pc-step.is-on{border-color:#6C52E8;background:#F7F4FF}
+.pc-step.is-on b{color:#5B3FE0}
+.pc-step.is-on span{color:#4B34C9}
+.pc-out{margin-top:9px;border-radius:11px;padding:10px 11px;background:linear-gradient(135deg,#F3FBF6,#fff);border:1px solid #DDF0E5}
+.pc-out .row{display:flex;align-items:baseline;justify-content:space-between;gap:8px;font-size:10px;font-weight:800;color:#5E6B65}
+.pc-out .row .big{font-size:20px;font-weight:900;letter-spacing:-.045em;color:var(--brand-d);font-variant-numeric:tabular-nums}
+.pc-out .row .big small{font-size:10px;color:var(--muted);font-weight:800;margin-left:2px}
+.pc-bar{height:6px;border-radius:99px;background:#EDF1ED;margin-top:8px;overflow:hidden}
+.pc-bar i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#8B6CF7,#5B3FE0);transition:width .3s}
+.pc-save{font-size:9.5px;font-weight:800;color:var(--price);margin-top:5px}
+.pc-rec{margin-top:9px;display:flex;align-items:center;gap:8px;background:#FBF8EE;border:1px solid #F2E7C9;border-radius:10px;padding:8px 10px}
+.pc-rec .ic{font-size:14px;flex:0 0 auto}
+.pc-rec .t{min-width:0;flex:1}
+.pc-rec .t small{display:block;font-size:8.5px;font-weight:900;color:#9A7C31;letter-spacing:.02em}
+.pc-rec .t b{display:block;font-size:11.5px;font-weight:900;color:#7A5A08;margin-top:1px}
+.pc-rec .t span{display:block;font-size:8.5px;color:#A08A4C;font-weight:700;margin-top:1px}
+.pc-note{font-size:8.5px;color:var(--muted2);font-weight:600;margin-top:8px;line-height:1.6}
+/* owner login store */
+.store-pick{display:flex;align-items:center;gap:7px}
+.store-pick .sp-cur{flex:1;min-width:0;display:flex;align-items:center;gap:6px;border:1px solid #E4EAE6;background:#F8FAF8;border-radius:10px;padding:9px 10px;font-size:12px;font-weight:900;letter-spacing:-.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.store-pick .sp-cur .ic{font-size:14px;flex:0 0 auto}
+.store-pick .sp-tog{flex:0 0 auto;max-width:92px;border:1px dashed #CBD7D0;background:#fff;border-radius:8px;font-size:8.5px;font-weight:800;color:#7C8A83;padding:6px 6px;line-height:1.3}
+.store-pick .sp-tog:hover{border-color:#9FCBB2;color:var(--brand-d)}
+.store-pick .sp-tog.is-on{border-style:solid;border-color:var(--brand);color:var(--brand-d);background:#F4FBF7}
+.store-select{margin-top:6px}
+.sp-note{font-size:8.5px;color:var(--muted2);font-weight:600;margin-top:4px;line-height:1.55}
+.live-badge{display:inline-flex;align-items:center;gap:3px;background:var(--brand-l);color:var(--brand-d);font-size:8.5px;font-weight:900;border-radius:5px;padding:2px 5px;margin-left:4px}
+/* roadmap */
+.roadmap{margin-top:12px;border:1px dashed #D9E6DD;border-radius:12px;padding:10px 11px;background:#F8FBF9}
+.roadmap .rm-h{display:flex;align-items:center;gap:5px;font-size:10px;font-weight:900;color:var(--brand-d)}
+.roadmap ul{list-style:none;margin:6px 0 0;padding:0;display:grid;gap:4px}
+.roadmap li{font-size:9.5px;font-weight:700;color:#5E6B65;line-height:1.55;display:flex;gap:5px}
+.roadmap li::before{content:"→";color:var(--brand-mid);font-weight:900;flex:0 0 auto}
+/* promo vs table */
+.pi-vs{margin-top:12px;border:1px solid #E7EDE8;border-radius:10px;overflow:hidden;font-size:9.5px}
+.pi-vs .vs-h{display:grid;grid-template-columns:46px 1fr 1fr;gap:5px;background:#F4F8F5;font-weight:900;color:#5E6B65;padding:6px 8px;font-size:8.5px}
+.pi-vs .vs-r{display:grid;grid-template-columns:46px 1fr 1fr;gap:5px;padding:6px 8px;border-top:1px solid #F0F4F0;font-weight:700;color:#5E6B65;line-height:1.45}
+.pi-vs .vs-r .k{color:#8A9690;font-weight:800;font-size:8.5px}
+.pi-vs .vs-r .a{color:#A9B4AE}
+.pi-vs .vs-r .b{color:var(--brand-d);font-weight:800}
+.pi-stats{display:flex;gap:6px;margin-top:10px}
+.pi-stats span{flex:1;background:#F7FAF7;border:1px solid #EDF2ED;border-radius:9px;padding:7px 8px;text-align:center;font-size:9px;font-weight:800;color:var(--muted)}
+.pi-stats b{display:block;font-size:14px;font-weight:900;color:var(--brand-d);letter-spacing:-.03em}
+.dh-demo{display:inline-flex;align-items:center;gap:3px;margin-left:5px;background:rgba(255,255,255,.16);color:#FFE8C9;font-size:8.5px;font-weight:900;padding:3px 6px;border-radius:5px;vertical-align:1px}
+.dash-note{margin:8px 16px 0;font-size:8.5px;color:var(--muted2);font-weight:600;line-height:1.6}
+.dash-note b{color:#7C8A83;font-weight:800}
+.dash-roadmap{margin:10px 16px 0;border:1px dashed #D9E6DD;border-radius:12px;padding:10px 11px;background:#F8FBF9}
+.dash-roadmap .rm-h{display:flex;align-items:center;gap:5px;font-size:9.5px;font-weight:900;color:var(--brand-d)}
+.dash-roadmap p{font-size:9px;font-weight:700;color:#5E6B65;line-height:1.6;margin-top:4px}
+/* nationwide scale-up roadmap */
+.scale{margin-top:12px;border:1px solid #DDEEDF;border-radius:12px;padding:11px;background:linear-gradient(180deg,#F7FCF8,#fff)}
+.scale .sc-h{display:flex;align-items:center;gap:5px;font-size:10.5px;font-weight:900;color:var(--brand-d)}
+.scale .sc-lead{font-size:9.5px;color:#5E6B65;font-weight:700;line-height:1.6;margin-top:4px}
+.scale .sc-lead b{color:var(--ink);font-weight:900}
+.scale ol{list-style:none;margin:9px 0 0;padding:0;display:grid;gap:6px}
+.scale li{display:grid;grid-template-columns:36px 1fr;gap:7px;align-items:start;font-size:9.5px;font-weight:700;color:#6D7A74;line-height:1.5}
+.scale li .n{display:inline-grid;place-items:center;height:16px;border-radius:5px;background:#EDF4EF;color:#7C8A83;font-size:8px;font-weight:900;letter-spacing:-.01em}
+.scale li b{display:block;font-size:10px;color:var(--ink);font-weight:900;letter-spacing:-.02em;margin-bottom:1px}
+.scale li.now .n{background:var(--brand);color:#fff}
+.scale li.now b{color:var(--brand-d)}
+.scale li.now b::after{content:" · 지금";color:var(--brand-mid);font-size:8.5px;font-weight:900}
+.side .scale{margin-top:18px;padding:14px 15px}
+.side .scale .sc-h{font-size:12.5px;letter-spacing:-.02em}
+.side .scale .sc-lead{font-size:11.5px;margin-top:6px;line-height:1.65}
+.side .scale ol{margin-top:11px;gap:8px}
+.side .scale li{font-size:11px;grid-template-columns:44px 1fr;gap:9px;line-height:1.55}
+.side .scale li .n{height:18px;font-size:9px}
+.side .scale li b{font-size:12px}
 </style>
 </head>
 <body>
@@ -645,13 +749,14 @@ h1,h2,h3,h4,p{margin:0}
       <span><b>8시마켓</b><small>8SI MARKET · 대전 로컬 커머스</small></span>
     </div>
     <h1>저녁 8시,<br>우리 동네 <em>장보기</em>가<br>달라집니다.</h1>
-    <p class="lead">퇴근길 <b>동네마트·정육점·과일가게·빵집·반찬가게</b>의 오늘 남은 신선식품을 마감특가로 연결합니다. 반경 1~3km 이웃이 <b>선결제 후 픽업</b>하는 로컬 커머스 플랫폼.</p>
+    <p class="lead">대학가 한 끼 할인이 아닌, <b>퇴근길 저녁 장바구니</b>. 둔산·탄방 주거·업무지구 <b>3040 가구와 직장인</b>이 정육·수산·채소·반찬을 마감특가로 사서 <b>선결제 후 픽업</b>하는 동네 장보기 플랫폼입니다.</p>
+    <div class="side-vs"><span class="no">대학가 한 끼 할인</span><span class="yes">✓ 퇴근길 저녁 장바구니</span></div>
     <div class="side-owner">
       <img src="owner-seonjin.jpg" alt="8시마켓 대표 강선진">
       <div class="so-txt">
         <b>대표 강선진</b>
         <small>전 카페 매니저 · 더본코리아 슈퍼바이저</small>
-        <p>오늘 남은 좋은 상품이 이웃의 저녁 식탁에 닿도록</p>
+        <p>매장 운영·품질·위생 관리 노하우로 점주님과 함께 만듭니다</p>
       </div>
     </div>
     <button class="side-promo" type="button" data-act="promo">
@@ -660,26 +765,35 @@ h1,h2,h3,h4,p{margin:0}
       <span class="sp-play">▶</span>
     </button>
     <ul class="diff">
-      <li><span class="ic">🥬</span><span><b>신선식품·장보기 특화</b> — 카페·간식이 아닌 퇴근길 장바구니</span></li>
-      <li><span class="ic">🤖</span><span><b>AI 10초 등록</b> — 사진 한 장에 할인가·픽업시간까지</span></li>
-      <li><span class="ic">📍</span><span><b>동네 지도</b> — 반경 1~3km 매장 핀과 실시간 잔여 수량</span></li>
-      <li><span class="ic">📉</span><span><b>폐기 절감 대시보드</b> — 예상 매출·절감 kg·적정 할인율</span></li>
+      <li><span class="ic">🥬</span><span><b>퇴근길 저녁 장바구니</b> — 둔산·탄방 3040 가구·직장인의 정육·수산·채소·반찬</span></li>
+      <li><span class="ic">📉</span><span><b>AI 가격 결정</b> — 8시 이후 시간이 지날수록 할인율 자동 상승</span></li>
+      <li><span class="ic">📍</span><span><b>동네 지도</b> — 반경 1~3km, 도보·자전거·차량 픽업 시간 내 방문</span></li>
+      <li><span class="ic">♻️</span><span><b>폐기 절감 대시보드</b> — 예상 매출·절감 kg·점주별 적정 할인율</span></li>
     </ul>
+    <div class="scale">
+      <div class="sc-h">🌱 전국 확장 로드맵</div>
+      <p class="sc-lead">우리 동네에서 시작해 <b>당근처럼 전국 동네 생활권</b>으로 넓히는 퇴근길 저녁 장바구니 플랫폼. 지금 화면은 대전 둔산·탄방 <b>1호 거점</b> 파일롯입니다.</p>
+      <ol>
+        <li class="now"><span class="n">1단계</span><span><b>대전 거점 검증</b>둔산·탄방 주거·업무지구에서 모델 검증 (현재 시제품)</span></li>
+        <li><span class="n">2단계</span><span><b>충청·수도권 주거지 확장</b>같은 모델을 인구 밀집 주거·업무지구로 복제</span></li>
+        <li><span class="n">3단계</span><span><b>전국 동네 상권</b>지역화폐·지자체 ESG 연계로 전국 생활권 확대</span></li>
+      </ol>
+    </div>
     <div class="side-guide">
       <h2>이렇게 체험해 보세요</h2>
       <ol>
         <li>첫 화면에서 <b>할인 장보기</b> 또는 <b>매장 등록</b>을 고르고 다음</li>
         <li>할인율·업종 필터로 피드를 보고 <b>지도로 보기</b>로 전환</li>
         <li>매장 핀 또는 <b>지금 예약</b> → 수량 선택 → 선결제 완료</li>
-        <li>점주 탭에서 <b>AI 사진 분석</b>으로 상품 등록 → 피드 즉시 반영</li>
-        <li>AI 대시보드에서 예상 매출·폐기 절감량 확인</li>
+        <li>점주 탭에서 <b>단계 할인 시뮬레이터</b>와 <b>AI 사진 분석</b>을 차례로 체험</li>
+        <li>AI 대시보드에서 예상 매출·폐기 절감량·점주별 적정 할인율 확인</li>
       </ol>
       <div class="side-tools">
         <button class="tool-btn" type="button" data-act="restart">↺ 첫 화면(역할 선택) 다시 보기</button>
         <button class="tool-btn" type="button" data-act="reset">데모 데이터 초기화</button>
       </div>
     </div>
-    <p class="side-foot"><b>‘모두의 창업’ 지원용 시제품(MVP) 데모</b>입니다. 화면의 상품·주문·매출은 체험용 예시이며 실제 결제나 배송은 발생하지 않습니다.</p>
+    <p class="side-foot"><b>‘모두의 창업’ 지원용 시제품(MVP) 데모</b>입니다. 화면의 상품·주문·매출은 체험용 예시이며 실제 결제나 배송은 발생하지 않습니다. AI 분석 결과도 시연용 예시로, 실제 서비스에서는 비전 AI API를 연동합니다.</p>
   </aside>
 
   <!-- ================= phone ================= -->
@@ -734,7 +848,7 @@ h1,h2,h3,h4,p{margin:0}
               </div>
               <div class="live-line">
                 <span class="pulse"></span>
-                <span>지금 우리 동네 <b id="liveStoreCount">10</b>개 매장 · <b id="liveDealCount">13</b>개 상품 마감할인 중</span>
+                <span>지금 내 반경 <b id="liveRadiusTxt">2km</b> 안 · <b id="liveStoreCount">8</b>개 매장 · <b id="liveDealCount">15</b>개 상품 마감할인 중</span>
               </div>
               <div class="chip-wrap">
                 <div class="chips" id="dealChips" role="group" aria-label="할인율 필터"></div>
@@ -809,7 +923,7 @@ h1,h2,h3,h4,p{margin:0}
                     <svg class="pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11Z"/><circle cx="12" cy="10" r="2.4"/></svg>
                     둔산동 일대
                   </div>
-                  <div class="map-sub" id="mapSub">반경 2km · 10개 매장</div>
+                  <div class="map-sub" id="mapSub">반경 2km · 8개 매장</div>
                 </div>
                 <button class="map-link" type="button" data-act="go-home">
                   목록으로
@@ -818,7 +932,7 @@ h1,h2,h3,h4,p{margin:0}
               </div>
               <div class="map-radius" id="mapRadius" role="group" aria-label="반경"></div>
             </div>
-            <div class="map-count" id="mapCount">이 지역 13개 상품</div>
+            <div class="map-count" id="mapCount">이 지역 15개 상품</div>
             <button class="me-btn" type="button" data-act="recenter" aria-label="내 위치로">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="7"/><circle cx="12" cy="12" r="2"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg>
             </button>
@@ -851,21 +965,23 @@ h1,h2,h3,h4,p{margin:0}
             <div class="page-head">
               <div>
                 <h1>점주 센터</h1>
-                <p>오늘 남은 재료, 사진 한 장으로 마감 판매</p>
+                <p>남은 재고, AI가 마감까지 가격을 정합니다</p>
               </div>
               <button class="link-btn" type="button" data-act="info">서비스 소개 ›</button>
             </div>
             <div class="owner-store">
               <span class="os-ic">🥩</span>
               <div>
-                <h3>우리축산 · 둔산점</h3>
-                <p>오늘 마감 20:00 · 정육·수산</p>
+                <h3><span id="ownerStoreName">우리축산 · 둔산동</span></h3>
+                <p id="ownerStoreMeta">현재 로그인 점주 · 오늘 마감 20:00 · 정육·수산</p>
               </div>
               <div class="os-r">잔여 상품<b id="ownerLeftCount">3종</b></div>
             </div>
 
+            <div id="pricingOwner"></div>
+
             <div class="ai-card">
-              <div class="ai-head"><span class="ai-badge">AI</span><h2>10초 상품 등록</h2></div>
+              <div class="ai-head"><span class="ai-badge">AI</span><h2>10초 상품 등록</h2><span class="demo-tag">시연용</span></div>
               <p class="ai-sub">오늘 남은 식재료 사진을 올리면 품목·권장 할인가·픽업 시간을 AI가 자동으로 채워요.</p>
               <button class="upload" type="button" id="uploadZone">
                 <span class="up-ic">📷</span>
@@ -874,12 +990,13 @@ h1,h2,h3,h4,p{margin:0}
               </button>
               <input type="file" id="fileInput" accept="image/*" hidden>
               <div class="samples" id="samples"></div>
+              <p class="ai-demo-note">※ 샘플 선택·사진 업로드 결과는 <b>시연용 예시 결과</b>입니다. 실제 서비스에서는 비전 AI API를 연동해 매장이 올린 사진을 인식합니다.</p>
               <div class="analyzing" id="analyzing" hidden>
                 <div class="an-head"><span class="spin"></span>AI가 사진을 분석하고 있어요…</div>
                 <div class="an-steps" id="anSteps">
                   <div class="an-step" data-step="0"><i>✓</i>품목·중량 인식</div>
                   <div class="an-step" data-step="1"><i>✓</i>인근 마감 시세 조회</div>
-                  <div class="an-step" data-step="2"><i>✓</i>적정 할인율·픽업 시간 산정</div>
+                  <div class="an-step" data-step="2"><i>✓</i>단계 할인율·픽업 시간 산정</div>
                 </div>
               </div>
               <div class="ai-result" id="aiResult" hidden></div>
@@ -931,15 +1048,20 @@ h1,h2,h3,h4,p{margin:0}
                   </select>
                 </div>
                 <div class="field">
-                  <label for="fStore">노출 매장</label>
-                  <select id="fStore"></select>
+                <label>노출 매장 <span>현재 로그인 점주</span></label>
+                <div class="store-pick">
+                  <div class="sp-cur"><span class="ic" id="ownerStoreIc">🥩</span><span id="ownerStorePickName">우리축산 · 둔산동</span></div>
+                  <button class="sp-tog" type="button" id="storeToggle" aria-expanded="false">(시연용 다른 매장 체험 전환)</button>
                 </div>
+                <select id="fStore" class="store-select" hidden aria-label="시연용 매장 전환"></select>
+                <p class="sp-note" id="storeNote" hidden>시연 편의를 위한 전환입니다. 실제 서비스에서는 로그인한 점주 계정의 매장으로 고정됩니다.</p>
+              </div>
               </div>
               <div class="form-msg" id="formMsg" hidden></div>
               <div class="form-actions">
                 <button class="btn btn-primary btn-block" type="submit" id="submitBtn">이 상품 등록하기</button>
               </div>
-              <p class="form-note">등록 즉시 소비자 피드·지도·AI 대시보드에 반영됩니다. AI 추천가는 최근 4주 판매·폐기 데이터 기반 예시입니다.</p>
+              <p class="form-note">등록 즉시 소비자 피드·지도·AI 대시보드에 반영됩니다. AI 추천가·단계 할인율은 시연용 예시 값이며, 실제 서비스에서는 매장 POS·판매·폐기 데이터를 학습해 산정합니다.</p>
             </form>
 
             <div class="owner-list">
@@ -951,23 +1073,25 @@ h1,h2,h3,h4,p{margin:0}
           <!-- ===== AI dashboard ===== -->
           <section class="screen" id="screen-ai" aria-label="AI 대시보드">
             <div class="dash-head">
-              <span class="dh-tag">AI INSIGHT</span>
+              <span class="dh-tag">AI INSIGHT</span><span class="dh-demo">시연용 예시 데이터</span>
               <span class="dh-live"><i></i>실시간</span>
-              <h1>오늘 마감, 이만큼<br>더 벌고 덜 버립니다</h1>
-              <p id="dashDate">11월 24일 · 둔산동 12개 점포</p>
+              <h1>오늘 마감, AI가 가격을 정해<br>더 벌고 덜 버립니다</h1>
+              <p id="dashDate">11월 24일 · 둔산동 8개 점포 · 15개 상품</p>
             </div>
             <div class="kpis" id="kpis"></div>
+            <p class="dash-note" id="co2Note"><b>CO₂ 환산 계수</b> — 음식물 폐기 1kg당 약 2.5kg CO₂e (환경부·FAO 음식물류 폐기물 온실가스 환산 계수 참고)</p>
             <div class="insight" id="insightCard">
-              <span class="in-tag">✦ AI 추천</span>
+              <span class="in-tag">✦ AI 추천</span> <span class="demo-tag">시연용 예시</span>
               <h2>오늘 19시 이후 <em>정육·도시락</em>은<br><em>45~55%</em> 할인이 가장 잘 팔려요</h2>
               <div class="gauge"><i id="insightBar"></i></div>
               <div class="gl"><span>현재 평균 할인 <b id="avgDiscLab">47%</b></span><span>AI 적정 구간 45~55%</span></div>
               <ul>
-                <li><span class="lb">수요</span><span>퇴근 시간대(18~20시) 동네 유입이 지난주보다 <b>32%</b> 늘었어요</span></li>
-                <li><span class="lb">시세</span><span>반경 3km 동일 품목 평균 할인은 <b>41%</b> — 5%p 더 공격적으로 붙여도 됩니다</span></li>
-                <li><span class="lb">재고</span><span>정육·도시락 잔여 <b>12개</b> 중 <b>9개</b> 소진이 예상돼요. 20시 이후 10%p 추가 할인 권장</span></li>
+                <li><span class="lb">수요</span><span>퇴근 시간대(18~20시) 유입 <b>+30%</b>를 도입 목표로 잡았어요 (시연용 예시)</span></li>
+                <li><span class="lb">시세</span><span>인근 동일 품목 평균 할인은 <b>41%</b> 수준 — 5%p 더 공격적으로 붙이는 것을 권장 (시연용 예시)</span></li>
+                <li><span class="lb">재고</span><span>정육·도시락 잔여 <b>12개</b> 중 <b>9개</b> 소진 예상 · 20시 이후 10%p 추가 할인 권장 (시연용 예시)</span></li>
               </ul>
             </div>
+            <div id="pricingDash"></div>
             <div class="dash-card">
               <div class="dc-head"><h2>실시간 주문</h2><span id="dashOrderCnt">0건</span></div>
               <div id="dashOrders"></div>
@@ -976,8 +1100,12 @@ h1,h2,h3,h4,p{margin:0}
               <div class="dc-head"><h2>잔여 재고 · AI 소진 예측</h2><span id="stockCnt"></span></div>
               <div id="stockList"></div>
             </div>
+            <div class="dash-roadmap">
+              <div class="rm-h">🧭 향후 계획</div>
+              <p>대전사랑카드 결제 연동 · 구청/푸드뱅크 미판매 상품 기부(폐기 0, 지자체 ESG 보고)</p>
+            </div>
             <div class="dash-foot">
-              AI는 최근 4주 판매·폐기 데이터를 학습해 매장별 적정 할인율을 추천합니다. (시제품 예시 데이터)
+              화면의 수치·추천은 <b>시연용 예시 데이터</b>입니다. 실제 서비스에서는 매장별 POS·판매·폐기 데이터를 학습해 점주별 적정 할인율과 단계 할인 시점을 추천합니다(도입 목표).
               <div class="dash-tools">
                 <button type="button" data-act="info">서비스 소개</button>
                 <button type="button" data-act="reset">데모 데이터 초기화</button>
@@ -1018,22 +1146,23 @@ h1,h2,h3,h4,p{margin:0}
         <div class="onboard" id="onboard">
           <div class="ob-brand"><span class="mark">8</span>8시마켓</div>
           <h1>어떤 목적으로<br>사용하시나요?</h1>
-          <p class="ob-sub">퇴근길 우리 동네, 오늘 남은 신선식품을<br>가장 좋은 가격으로.</p>
+          <p class="ob-sub">퇴근길 <b>저녁 장바구니</b>.<br>둔산·탄방 주거·업무지구 3040 가구와 직장인이<br>정육·수산·채소·반찬을 마감특가로 픽업합니다.</p>
+          <p class="ob-contrast">대학가 한 끼 할인이 아니라, <b>퇴근길 저녁 장바구니</b></p>
           <div class="roles" id="roles">
             <button class="role" type="button" data-role="consumer">
               <span class="ri">🛒</span>
-              <span class="rt"><b>할인 장보기 · 픽업</b><small>우리 동네 마감 임박 신선식품을 특가로 구매해요</small></span>
+              <span class="rt"><b>할인 장보기 · 픽업</b><small>퇴근길 저녁 장바구니를 특가로 구매해요</small></span>
               <span class="check">✓</span>
             </button>
             <button class="role" type="button" data-role="owner">
               <span class="ri">🏪</span>
-              <span class="rt"><b>우리 매장 마감 등록</b><small>오늘 남은 식재료를 AI로 10초 만에 판매해요</small></span>
+              <span class="rt"><b>우리 매장 마감 판매</b><small>남은 재고를 AI 가격 결정으로 마감까지 소진해요</small></span>
               <span class="check">✓</span>
             </button>
           </div>
           <button class="btn btn-primary btn-block ob-next" type="button" id="obNext" disabled>다음</button>
           <button class="ob-skip" type="button" id="obSkip">둘러보기로 바로 시작</button>
-          <div class="ob-feats"><span>🥬 오늘 남은 신선식품</span><span>💳 선결제 후 픽업</span><span>🤖 AI 10초 등록</span></div>
+          <div class="ob-feats"><span>🥩 정육·수산·채소·반찬</span><span>🕕 퇴근길 18~21시 픽업</span><span>📉 시간 지날수록 자동 할인</span></div>
           <p class="ob-foot">로그인 없이 체험하는 시제품입니다 · 실제 결제는 발생하지 않아요</p>
         </div>
 
@@ -1055,17 +1184,42 @@ h1,h2,h3,h4,p{margin:0}
     <div class="promo-info">
       <span class="pi-tag">8시마켓 브랜드 소개</span>
       <h2>저녁 8시,<br>우리 동네 <em>장보기</em>가 달라집니다</h2>
-      <p class="pi-lead">퇴근길 동네마트·정육점·과일가게·빵집·반찬가게의 오늘 남은 신선식품을 마감특가로 연결하는 대전 로컬 커머스 플랫폼입니다.</p>
+      <p class="pi-lead">대전 둔산·탄방에서 시작해 <b>전국 동네 생활권으로 확장</b>하는 로컬 커머스 플랫폼입니다. 둔산·탄방 주거·업무지구의 퇴근길 장바구니를 위해 정육·수산·채소·반찬에 집중합니다.</p>
+      <div class="pi-vs">
+        <div class="vs-h"><span></span><span>들고가유</span><span>8시마켓</span></div>
+        <div class="vs-r"><span class="k">상권</span><span class="a">대학가 (궁동 등)</span><span class="b">둔산·탄방 주거·업무지구</span></div>
+        <div class="vs-r"><span class="k">고객</span><span class="a">대학생 · 한 끼</span><span class="b">퇴근길 직장인·3040 가구</span></div>
+        <div class="vs-r"><span class="k">품목</span><span class="a">카페·간식 중심</span><span class="b">정육·수산·채소·반찬·빵</span></div>
+      </div>
+      <div class="pi-stats"><span><b id="promoStoreCount">11</b>개 매장</span><span><b id="promoDealCount">19</b>개 상품</span><span><b id="promoRadiusTxt">1~3km</b> 반경</span></div>
       <div class="pi-owner">
         <img src="owner-seonjin.jpg" alt="8시마켓 대표 강선진">
         <div><b>대표 강선진</b><small>전 카페 매니저 · 더본코리아 슈퍼바이저</small></div>
       </div>
-      <p class="pi-quote">8시마켓이 지향하는 것 — 오늘 남은 좋은 상품이 버려지지 않고, 이웃의 저녁 식탁에 닿도록.</p>
+      <p class="pi-quote">점포 운영·품질·위생 관리 노하우로 함께합니다. 오늘 남은 좋은 상품이 버려지지 않고, 이웃의 저녁 식탁에 닿도록.</p>
       <ul class="pi-list">
-        <li>마트·정육점·과일·빵·생선가게 최대 50% 마감특가</li>
-        <li>반경 1~3km, 픽업 시간 안에 걸어갈 수 있는 매장만</li>
-        <li>AI 10초 등록 · 폐기 절감 대시보드</li>
+        <li>마트·정육점·과일·빵·생선가게 최대 60% 마감특가</li>
+        <li>반경 1~3km, 도보·자전거·차량으로 픽업 시간 내 방문 가능한 동네 매장</li>
+        <li>AI 가격 결정 — 8시 이후 시간이 지날수록 할인율이 자동으로 올라갑니다</li>
+        <li>점주별 적정 할인율 추천 · 폐기 절감 대시보드</li>
       </ul>
+      <div class="scale">
+        <div class="sc-h">🌱 전국 확장 로드맵</div>
+        <p class="sc-lead">대전 둔산·탄방 <b>1호 거점</b>에서 시작해, <b>당근처럼 전국 동네 생활권</b>으로 넓혀가는 퇴근길 저녁 장바구니 플랫폼입니다.</p>
+        <ol>
+          <li class="now"><span class="n">1단계</span><span><b>대전 거점 검증</b>둔산·탄방 주거·업무지구 파일롯 (지금 이 시제품)</span></li>
+          <li><span class="n">2단계</span><span><b>충청·수도권 주거지 확장</b>동일 모델을 인구 밀집 주거·업무지구로 복제</span></li>
+          <li><span class="n">3단계</span><span><b>전국 동네 상권</b>지역화폐·지자체 ESG 연계로 전국 생활권 확대</span></li>
+        </ol>
+      </div>
+      <div class="roadmap">
+        <div class="rm-h">🧭 향후 계획</div>
+        <ul>
+          <li>대전사랑카드 결제 연동</li>
+          <li>구청/푸드뱅크 미판매 상품 기부로 폐기 0 · 지자체 ESG 보고 데이터 제공</li>
+          <li>PWA(홈 화면 앱) 설치 지원 — 지금 이 화면을 홈 화면에 추가할 수 있어요</li>
+        </ul>
+      </div>
       <div class="promo-actions">
         <button class="btn btn-primary btn-block" type="button" data-act="close-promo">8시마켓 둘러보기</button>
       </div>
@@ -1100,30 +1254,30 @@ var STORES = [
 function seedProducts(){
   return [
     {id:'p1',  name:'토마토 1kg',          store:'s1',  cat:'과일·채소', orig:6900,  sale:2900,  total:12, left:3,  weight:1.0, pickup:'18:00~20:00', emoji:'🍅'},
-    {id:'p2',  name:'한돈 삼겹살 600g',    store:'s2',  cat:'정육·수산', orig:19900, sale:12900, total:15, left:5,  weight:0.6, pickup:'20:00~22:00', emoji:'🥩'},
+    {id:'p2',  name:'한돈 삼겹살 600g',    store:'s2',  cat:'정육·수산', orig:19900, sale:12900, total:15, left:5,  weight:0.6, pickup:'18:00~20:00', emoji:'🥩'},
     {id:'p3',  name:'바나나 1송이',        store:'s4',  cat:'동네마트',  orig:4500,  sale:2000,  total:20, left:0,  weight:0.9, pickup:'19:00~21:00', emoji:'🍌'},
     {id:'p4',  name:'고등어 2마리',        store:'s5',  cat:'정육·수산', orig:7900,  sale:3900,  total:10, left:4,  weight:0.8, pickup:'18:00~20:00', emoji:'🐟'},
-    {id:'p5',  name:'완숙 토마토 1.5kg',   store:'s7',  cat:'과일·채소', orig:12000, sale:8900,  total:10, left:6,  weight:1.5, pickup:'19:00~21:00', emoji:'🍅'},
-    {id:'p6',  name:'수제 바게트',         store:'s3',  cat:'빵·반찬',  orig:5000,  sale:2900,  total:16, left:7,  weight:0.3, pickup:'20:00~22:00', emoji:'🥖'},
+    {id:'p5',  name:'완숙 토마토 1.5kg',   store:'s7',  cat:'과일·채소', orig:12000, sale:8900,  total:10, left:6,  weight:1.5, pickup:'17:00~19:00', emoji:'🍅'},
+    {id:'p6',  name:'수제 바게트',         store:'s3',  cat:'빵·반찬',  orig:5000,  sale:2900,  total:16, left:7,  weight:0.3, pickup:'19:00~21:00', emoji:'🥖'},
     {id:'p7',  name:'마트 도시락',         store:'s6',  cat:'동네마트',  orig:7900,  sale:3900,  total:14, left:2,  weight:0.4, pickup:'18:00~20:00', emoji:'🍱'},
-    {id:'p8',  name:'친환경 상추 3종',     store:'s7',  cat:'과일·채소', orig:4500,  sale:2200,  total:12, left:8,  weight:0.4, pickup:'18:00~20:00', emoji:'🥬'},
+    {id:'p8',  name:'친환경 상추 3종',     store:'s7',  cat:'과일·채소', orig:4500,  sale:2200,  total:12, left:8,  weight:0.4, pickup:'17:00~19:00', emoji:'🥬'},
     {id:'p9',  name:'국내산 딸기 500g',    store:'s8',  cat:'과일·채소', orig:13900, sale:7900,  total:8,  left:5,  weight:0.5, pickup:'19:00~21:00', emoji:'🍓'},
-    {id:'p10', name:'훈제오리 400g',       store:'s11', cat:'정육·수산', orig:11500, sale:6900,  total:10, left:6,  weight:0.4, pickup:'19:00~21:00', emoji:'🦆'},
+    {id:'p10', name:'훈제오리 400g',       store:'s11', cat:'정육·수산', orig:11500, sale:6900,  total:10, left:6,  weight:0.4, pickup:'18:00~20:00', emoji:'🦆'},
     {id:'p11', name:'손질 새우 500g',      store:'s5',  cat:'정육·수산', orig:15900, sale:8900,  total:8,  left:4,  weight:0.5, pickup:'18:00~20:00', emoji:'🦐'},
-    {id:'p12', name:'크루아상 3개',        store:'s10', cat:'빵·반찬',  orig:7500,  sale:3900,  total:12, left:9,  weight:0.2, pickup:'20:00~22:00', emoji:'🥐'},
+    {id:'p12', name:'크루아상 3개',        store:'s10', cat:'빵·반찬',  orig:7500,  sale:3900,  total:12, left:9,  weight:0.2, pickup:'19:00~21:00', emoji:'🥐'},
     {id:'p13', name:'열무김치 1kg',        store:'s9',  cat:'빵·반찬',  orig:9000,  sale:5500,  total:10, left:7,  weight:1.0, pickup:'18:00~20:00', emoji:'🫙'},
     {id:'p14', name:'계란 10구',           store:'s6',  cat:'동네마트',  orig:6900,  sale:4500,  total:12, left:6,  weight:0.7, pickup:'19:00~21:00', emoji:'🥚'},
     {id:'p15', name:'우유 1L',             store:'s4',  cat:'동네마트',  orig:3200,  sale:1990,  total:15, left:9,  weight:1.0, pickup:'18:00~20:00', emoji:'🥛'},
     {id:'p16', name:'잡채 500g',           store:'s9',  cat:'빵·반찬',  orig:8000,  sale:4900,  total:9,  left:5,  weight:0.5, pickup:'18:00~20:00', emoji:'🍲'},
-    {id:'p17', name:'구운 식빵 1斤',       store:'s3',  cat:'빵·반찬',  orig:4800,  sale:2900,  total:14, left:6,  weight:0.4, pickup:'20:00~22:00', emoji:'🍞'},
-    {id:'p18', name:'냉장 닭다리 1kg',      store:'s2',  cat:'정육·수산', orig:9900,  sale:5900,  total:12, left:7,  weight:1.0, pickup:'20:00~22:00', emoji:'🍗'},
-    {id:'p19', name:'국내산 목살 500g',     store:'s2',  cat:'정육·수산', orig:15900, sale:9900,  total:8,  left:4,  weight:0.5, pickup:'19:00~21:00', emoji:'🥩'}
+    {id:'p17', name:'구운 식빵 1근',       store:'s3',  cat:'빵·반찬',  orig:4800,  sale:2900,  total:14, left:6,  weight:0.4, pickup:'19:00~21:00', emoji:'🍞'},
+    {id:'p18', name:'냉장 닭다리 1kg',      store:'s2',  cat:'정육·수산', orig:9900,  sale:5900,  total:12, left:7,  weight:1.0, pickup:'18:00~20:00', emoji:'🍗'},
+    {id:'p19', name:'국내산 목살 500g',     store:'s2',  cat:'정육·수산', orig:15900, sale:9900,  total:8,  left:4,  weight:0.5, pickup:'18:00~20:00', emoji:'🥩'}
   ];
 }
 function seedOrders(){
   return [
-    {id:'o1', code:'8시-3102', pid:'p2', name:'한돈 삼겹살 600g', store:'s2', qty:1, orig:19900, sale:12900, weight:0.6, pickup:'20:00~22:00', status:'픽업완료', time:'18:55', emoji:'🥩'},
-    {id:'o2', code:'8시-3187', pid:'p6', name:'수제 바게트', store:'s3', qty:2, orig:5000, sale:2900, weight:0.3, pickup:'20:00~22:00', status:'픽업준비', time:'19:12', emoji:'🥖'},
+    {id:'o1', code:'8시-3102', pid:'p2', name:'한돈 삼겹살 600g', store:'s2', qty:1, orig:19900, sale:12900, weight:0.6, pickup:'18:00~20:00', status:'픽업완료', time:'18:55', emoji:'🥩'},
+    {id:'o2', code:'8시-3187', pid:'p6', name:'수제 바게트', store:'s3', qty:2, orig:5000, sale:2900, weight:0.3, pickup:'19:00~21:00', status:'픽업준비', time:'19:12', emoji:'🥖'},
     {id:'o3', code:'8시-3210', pid:'p7', name:'마트 도시락', store:'s6', qty:1, orig:7900, sale:3900, weight:0.4, pickup:'18:00~20:00', status:'결제완료', time:'19:24', emoji:'🍱'}
   ];
 }
@@ -1146,7 +1300,8 @@ function load(){
 function save(){ try{ window.localStorage.setItem(KEY, JSON.stringify(state)); }catch(e){} }
 
 var state = load();
-var ui = {tab:'home', radius:2, deal:0, cat:'전체', orderFilter:'all', ownerStore:'s2', sheetOpen:false, lastOrder:null};
+sanitizeState();
+var ui = {tab:'home', radius:2, deal:0, cat:'전체', orderFilter:'all', ownerStore:'s2', sheetOpen:false, lastOrder:null, priceStep:2};
 var co = {pid:null, qty:1, phase:'form', order:null, busy:false};
 var aiBusy = false;
 
@@ -1162,8 +1317,33 @@ function orderById(id){ for(var i=0;i<state.orders.length;i++){ if(state.orders[
 function esc(s){ return String(s).replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
 function nowTime(){ var d=new Date(); return (d.getHours()<10?'0':'')+d.getHours()+':'+(d.getMinutes()<10?'0':'')+d.getMinutes(); }
 function walkMin(d){ return Math.max(2, Math.round(d*11)+1); }
+function bikeMin(d){ return Math.max(3, Math.round(d*4.2)); }
 function driveMin(d){ return d<=0.5?2 : d<=1.0?3 : d<=1.5?5 : d<=2.0?6 : d<=2.5?7 : 8; }
 function catClass(c){ return c==='정육·수산'?'cat-meat' : c==='빵·반찬'?'cat-bakery' : c==='동네마트'?'cat-mart' : 'cat-veg'; }
+function toMin(t){ var p=String(t).split(':'); return (parseInt(p[0],10)||0)*60 + (parseInt(p[1],10)||0); }
+function hhmm(m){ m=((m%1440)+1440)%1440; var h=Math.floor(m/60), mi=m%60; return (h<10?'0':'')+h+':'+(mi<10?'0':'')+mi; }
+function pickupEnd(v){ var a=String(v).split('~'); return toMin(a[a.length-1]); }
+/* 픽업 창은 항상 매장 마감 시간 안에서만 만들어진다 (마감 -4h~-2h / -3h~-1h / -2h~마감) */
+function pickupWindows(close){
+  var c = toMin(close);
+  return [hhmm(c-240)+'~'+hhmm(c-120), hhmm(c-180)+'~'+hhmm(c-60), hhmm(c-120)+'~'+hhmm(c)];
+}
+function hashStr(s){ var h=0; s=String(s); for(var i=0;i<s.length;i++){ h=(h*31 + s.charCodeAt(i))>>>0; } return h; }
+function storeCountIn(list){ var m={}; list.forEach(function(p){ m[p.store]=1; }); return Object.keys(m).length; }
+function liveProducts(list){ return list.filter(function(p){ return p.left>0; }); }
+/* 이전 버전 localStorage에 남은 픽업 시간·한자를 현재 매장 마감 기준으로 보정 */
+function sanitizeState(){
+  if(!state) return;
+  (state.products||[]).forEach(function(p){
+    var st = storeById(p.store);
+    if(st && pickupEnd(p.pickup) > toMin(st.close)) p.pickup = pickupWindows(st.close)[2];
+    if(p.name) p.name = String(p.name).replace(/1斤/g, '1근');
+  });
+  (state.orders||[]).forEach(function(o){
+    var st = storeById(o.store);
+    if(st && pickupEnd(o.pickup) > toMin(st.close)) o.pickup = pickupWindows(st.close)[2];
+  });
+}
 
 /* ================= toast ================= */
 var toastTimer = null;
@@ -1276,15 +1456,19 @@ function renderFeed(){
 }
 function renderHomeLive(){
   var within = state.products.filter(inRadius);
-  var live = within.filter(function(p){ return p.left>0; });
-  var stores = {};
-  within.forEach(function(p){ stores[p.store]=1; });
-  $('#liveStoreCount').textContent = Object.keys(stores).length;
+  var live = liveProducts(within);
+  $('#liveStoreCount').textContent = storeCountIn(within);
   $('#liveDealCount').textContent = live.length;
+  $('#liveRadiusTxt').textContent = ui.radius+'km';
   $('#radiusLabel').textContent = ui.radius+'km';
   $('#abDong').textContent = '대전 둔산동 · 반경 '+ui.radius+'km';
 }
-function renderHome(){ renderChips(); renderHomeLive(); renderFeed(); }
+function renderHome(){ renderChips(); renderHomeLive(); renderFeed(); renderCounts(); }
+function renderCounts(){
+  var ps = $('#promoStoreCount'), pd = $('#promoDealCount');
+  if(ps) ps.textContent = storeCountIn(state.products);
+  if(pd) pd.textContent = liveProducts(state.products).length;
+}
 
 /* ================= map ================= */
 var MAP = {cx:195, cy:355, scale:62, w:390, h:700};
@@ -1293,8 +1477,7 @@ function pinPos(st){
   return { x: MAP.cx + Math.sin(a)*r, y: MAP.cy - Math.cos(a)*r };
 }
 function renderMap(){
-  var rings = '';
-  [1,2,3].forEach(function(km){
+  var rings = '';  [1,2,3].forEach(function(km){
     var r = km * MAP.scale;
     rings += '<circle class="ring" cx="'+MAP.cx+'" cy="'+MAP.cy+'" r="'+r+'"/>';
     rings += '<text class="ring-lab" x="'+(MAP.cx - r*0.707)+'" y="'+(MAP.cy - r*0.707)+'">'+km+'km</text>';
@@ -1355,7 +1538,7 @@ function openRadius(){
   [1,2,3].forEach(function(km){
     var n = state.products.filter(function(p){ return storeById(p.store).dist<=km; }).length;
     html += '<button class="radius-opt'+(ui.radius===km?' is-on':'')+'" type="button" data-act="set-radius" data-v="'+km+'">'+
-      '<span class="ro-ic">'+km+'km</span><span class="ro-main"><b>반경 '+km+'km</b><small>도보 '+(km*13)+'분 거리 · 상품 '+n+'개</small></span><span class="ro-check">✓</span></button>';
+      '<span class="ro-ic">'+km+'km</span><span class="ro-main"><b>반경 '+km+'km</b><small>도보 '+(km*13)+'분 · 자전거 '+bikeMin(km)+'분 · 상품 '+n+'개</small></span><span class="ro-check">✓</span></button>';
   });
   html += '<p class="sheet-note">대전 둔산동 기준 예시 위치입니다. 실서비스에서는 GPS로 자동 설정됩니다.</p></div>';
   openSheet(html);
@@ -1457,7 +1640,7 @@ function openStore(sid){
   var live = items.filter(function(p){ return p.left>0; });
   var best = items.reduce(function(a,p){ return !a || disc(p)>disc(a) ? p : a; }, null);
   var html = sheetHead(esc(st.name), esc(st.cat)+' · '+st.addr)+'<div class="sheet-body">'+
-    '<div class="ss-meta"><span>거리<b>'+st.dist+'km</b></span><span>도보<b>'+walkMin(st.dist)+'분</b></span><span>차량<b>'+driveMin(st.dist)+'분</b></span><span>마감<b>'+st.close+'</b></span></div>'+
+    '<div class="ss-meta"><span>거리<b>'+st.dist+'km</b></span><span>도보<b>'+walkMin(st.dist)+'분</b></span><span>자전거<b>'+bikeMin(st.dist)+'분</b></span><span>차량<b>'+driveMin(st.dist)+'분</b></span><span>마감<b>'+st.close+'</b></span></div>'+
     '<div class="ss-list">'+ items.map(function(p){
       var d = disc(p), sold = p.left<=0;
       return '<div class="ss-item"><span class="si-e '+catClass(p.cat)+'">'+p.emoji+'</span>'+
@@ -1518,25 +1701,95 @@ var SAMPLES = [
   {key:'dosirak', emoji:'🍱', label:'도시락', name:'오늘 만든 도시락', cat:'빵·반찬', orig:7900, sale:4400, qty:5, pickup:'18:00~20:00', conf:97, note:'조리 후 4시간 이내 · 당일 판매'}
 ];
 
+/* 사진 파일명 키워드/해시 기반 추론 풀 — 실제 비전 AI가 아니라 시연용 분기 */
+var UPLOAD_POOL = {
+  bread:[{n:'버터 크루아상 4개', c:'빵·반찬', o:8000, s:4200, e:'🥐', w:0.25, note:'당일 구운 빵 · 마감 후 할인'},
+         {n:'식빵 1근', c:'빵·반찬', o:4800, s:2700, e:'🍞', w:0.4, note:'당일 생산 식빵 · 식감 유지 확인'},
+         {n:'소금빵 3개', c:'빵·반찬', o:6000, s:3300, e:'🥖', w:0.3, note:'당일 생산 · 마감 임박'}],
+  meat:[{n:'한돈 삼겹살 500g', c:'정육·수산', o:15900, s:9900, e:'🥩', w:0.5, note:'냉장 상태 확인 · 당일 손질'},
+        {n:'닭다리살 800g', c:'정육·수산', o:9900, s:5900, e:'🍗', w:0.8, note:'냉장 보관 · 오늘 소진 권장'},
+        {n:'국내산 목살 400g', c:'정육·수산', o:13900, s:8900, e:'🥩', w:0.4, note:'1등급 국내산 · 마감 할인'}],
+  fish:[{n:'고등어 2마리', c:'정육·수산', o:7900, s:3900, e:'🐟', w:0.8, note:'당일 입고 · 손질 완료'},
+        {n:'손질 새우 500g', c:'정육·수산', o:15900, s:8900, e:'🦐', w:0.5, note:'냉동 보관 · 당일 해동'},
+        {n:'오징어 2마리', c:'정육·수산', o:9900, s:5900, e:'🦑', w:0.7, note:'당일 손질 · 냉장 보관'}],
+  fruit:[{n:'국내산 딸기 500g', c:'과일·채소', o:13900, s:7900, e:'🍓', w:0.5, note:'당일 입고 · 무름 확인'},
+         {n:'바나나 1송이', c:'과일·채소', o:4500, s:2500, e:'🍌', w:0.9, note:'숙도 진행 · 오늘 소진 권장'},
+         {n:'사과 1.5kg', c:'과일·채소', o:9900, s:5900, e:'🍎', w:1.5, note:'경미한 흠집 · 맛은 동일'}],
+  veg:[{n:'국산 시금치 1단', c:'과일·채소', o:3200, s:1900, e:'🥬', w:0.3, note:'저장성 짧은 잎채소 · 오늘 소진 권장'},
+       {n:'친환경 상추 3종', c:'과일·채소', o:4500, s:2400, e:'🥬', w:0.4, note:'당일 수확 · 냉장 보관'},
+       {n:'대파 1단', c:'과일·채소', o:3000, s:1800, e:'🌿', w:0.5, note:'당일 입고 · 손질 전'}],
+  banchan:[{n:'열무김치 1kg', c:'빵·반찬', o:9000, s:5500, e:'🫙', w:1.0, note:'당일 담금 · 냉장 숙성'},
+           {n:'잡채 500g', c:'빵·반찬', o:8000, s:4900, e:'🍲', w:0.5, note:'당일 조리 · 냉장 보관'},
+           {n:'오늘 만든 도시락', c:'빵·반찬', o:7900, s:4400, e:'🍱', w:0.4, note:'조리 후 4시간 이내'}]
+};
+var POOL_RULES = [
+  ['bread', /빵|bread|베이커|크루아상|croissant|식빵|바게트|baguette|도넛|케이크/],
+  ['meat',  /고기|정육|삼겹|목살|돼지|소고기|beef|pork|meat|닭|치킨|chicken|불고기/],
+  ['fish',  /생선|수산|고등어|새우|오징어|연어|조기|fish|shrimp|seafood/],
+  ['fruit', /과일|사과|딸기|바나나|포도|복숭아|fruit|apple|berry|grape/],
+  ['veg',   /야채|채소|상추|시금치|대파|양파|오이|토마토|버섯|나물|veg|spinach|tomato|cucumber/],
+  ['banchan', /반찬|김치|도시락|조리|찌개|banchan|kimchi/]
+];
+var POOL_LABEL = {bread:'빵', meat:'정육', fish:'수산', fruit:'과일', veg:'채소', banchan:'반찬'};
+function pickPoolKey(name){
+  var k = String(name).toLowerCase();
+  for(var i=0;i<POOL_RULES.length;i++){ if(POOL_RULES[i][1].test(k)) return POOL_RULES[i][0]; }
+  var keys = Object.keys(UPLOAD_POOL);
+  return keys[hashStr(k) % keys.length];
+}
+function buildUploadSample(fileName){
+  var raw = String(fileName || '');
+  var dot = raw.lastIndexOf('.');
+  if(dot > 0) raw = raw.slice(0, dot);
+  if(!raw) raw = 'photo';
+  var h = hashStr(raw);
+  var key = pickPoolKey(raw);
+  var pool = UPLOAD_POOL[key];
+  var b = pool[h % pool.length];
+  var orig = b.o + ((h % 5) - 2) * 100;
+  if(orig < 500) orig = b.o;
+  var sale = b.s + ((h >> 3) % 4) * 100;
+  if(sale >= orig * 0.85) sale = Math.round(orig * 0.6 / 100) * 100;
+  var koreanName = /[가-힣]/.test(raw) && raw.length >= 2 && raw.length <= 24;
+  return {
+    key:'upload', emoji:b.e, label:b.n, name:koreanName ? raw : b.n,
+    cat:b.c, orig:orig, sale:sale, qty:4 + (h % 6), weight:b.w,
+    conf:86 + (h % 12),
+    note:'파일명 키워드(' + POOL_LABEL[key] + ') 기반 추론 · 시연용 예시'
+  };
+}
+
 function renderSamples(){
   $('#samples').innerHTML = SAMPLES.map(function(s){
     return '<button class="sample" type="button" data-act="sample" data-key="'+s.key+'"><span class="se">'+s.emoji+'</span><small>'+s.label+'</small></button>';
   }).join('');
 }
+function storeLabel(st){ return st.name + ' · ' + st.addr.split(' ')[0]; }
 function renderStoreSelect(){
   var sel = $('#fStore');
   sel.innerHTML = STORES.map(function(s){
-    return '<option value="'+s.id+'"'+(s.id===ui.ownerStore?' selected':'')+'>'+esc(s.name)+'</option>';
+    return '<option value="'+s.id+'">'+esc(s.name)+' · '+esc(s.addr.split(' ')[0])+'</option>';
   }).join('');
+  sel.value = ui.ownerStore;
+}
+function renderPickupOptions(forceDefault){
+  var sel = $('#fPickup');
+  if(!sel) return;
+  var st = storeById(ui.ownerStore);
+  var wins = pickupWindows(st.close);
+  var prev = forceDefault ? null : sel.value;
+  sel.innerHTML = wins.map(function(w){ return '<option>'+w+'</option>'; }).join('');
+  sel.value = (prev && wins.indexOf(prev) > -1) ? prev : wins[wins.length-1];
 }
 function renderOwnerHeader(){
   var st = storeById(ui.ownerStore);
-  var h = document.querySelector('.owner-store h3');
-  var p = document.querySelector('.owner-store p');
-  var ic = document.querySelector('.owner-store .os-ic');
-  if(h) h.textContent = st.name + ' · ' + (st.addr.split(' ')[0]);
-  if(p) p.textContent = '오늘 마감 ' + st.close + ' · ' + st.cat;
+  var name = storeLabel(st);
+  var h = $('#ownerStoreName'), p = $('#ownerStoreMeta'), ic = $('.owner-store .os-ic');
+  if(h) h.textContent = name;
+  if(p) p.textContent = '현재 로그인 점주 · 오늘 마감 ' + st.close + ' · ' + st.cat;
   if(ic) ic.textContent = st.emoji;
+  var pick = $('#ownerStorePickName'); if(pick) pick.textContent = name;
+  var pic = $('#ownerStoreIc'); if(pic) pic.textContent = st.emoji;
   var mine = state.products.filter(function(p){ return p.store===ui.ownerStore; });
   $('#ownerLeftCount').textContent = mine.filter(function(p){ return p.left>0; }).length + '종';
 }
@@ -1555,7 +1808,59 @@ function renderOwnerList(){
       '<div class="ol-qty"><b>'+p.left+' / '+p.total+'</b>잔여</div></div>';
   }).join('');
 }
-function renderOwner(){ renderStoreSelect(); renderOwnerHeader(); renderOwnerList(); }
+/* ---- dynamic pricing (AI의 핵심 역할) ---- */
+var PRICE_RULE = [{off:180,pct:20},{off:120,pct:30},{off:60,pct:45},{off:30,pct:60}];
+function priceSteps(close){
+  var c = toMin(close);
+  return PRICE_RULE.map(function(r){ return {time:hhmm(c-r.off), pct:r.pct, off:r.off}; });
+}
+function stepLabel(off){ return off===180?'마감 3시간 전':off===120?'마감 2시간 전':off===60?'마감 1시간 전':'마감 30분 전'; }
+function ownerPick(){
+  var mine = state.products.filter(function(p){ return p.store===ui.ownerStore; });
+  return liveProducts(mine)[0] || mine[0] || null;
+}
+function catRange(cat){
+  if(cat==='정육·수산') return [45,55];
+  if(cat==='빵·반찬') return [50,60];
+  if(cat==='과일·채소') return [40,50];
+  return [30,45];
+}
+function pricingHTML(){
+  var st = storeById(ui.ownerStore);
+  var steps = priceSteps(st.close);
+  var idx = Math.max(0, Math.min(steps.length-1, ui.priceStep||0));
+  var step = steps[idx];
+  var p = ownerPick();
+  var base = p ? p.orig : 10000;
+  var price = Math.round(base*(100-step.pct)/100/100)*100;
+  var saveAmt = base - price;
+  var rec = catRange(st.cat);
+  var mine = state.products.filter(function(x){ return x.store===ui.ownerStore; });
+  var avg = mine.length ? Math.round(mine.reduce(function(a,x){ return a+disc(x); },0)/mine.length) : 0;
+  var curSale = p ? p.sale : base;
+  var chips = steps.map(function(s,i){
+    return '<button class="pc-step'+(i===idx?' is-on':'')+'" type="button" data-act="price-step" data-v="'+i+'">'+
+      '<b>'+s.time+'</b><span>'+s.pct+'%</span></button>';
+  }).join('');
+  return '<div class="pricing">'+
+    '<div class="pc-head"><span class="ai-badge">AI</span><h2>단계 할인 시뮬레이터</h2><span class="demo-tag">시연용</span></div>'+
+    '<p class="pc-sub">8시 이후 시간이 지날수록 할인율이 자동으로 올라갑니다. 점주는 최저가만 정하고, 마감까지 AI가 단계별 가격을 조정해요.</p>'+
+    '<div class="pc-prod"><span class="e">'+(p?p.emoji:'🧺')+'</span><div class="m"><b>'+(p?esc(p.name):'등록 상품 없음')+'</b><small>정상가 '+won(base)+' · 남은 '+(p?p.left:0)+'개</small></div>'+
+      '<div class="p"><b>'+won(curSale)+'</b><small>현재 등록가'+(p?' '+disc(p)+'%':'')+'</small></div></div>'+
+    '<div class="pc-steps">'+chips+'</div>'+
+    '<div class="pc-out"><div class="row"><span>'+stepLabel(step.off)+' · '+step.time+' 자동 적용가</span><span class="big">'+num(price)+'<small>원</small></span></div>'+
+      '<div class="pc-bar"><i style="width:'+step.pct+'%"></i></div>'+
+      '<div class="row" style="margin-top:6px;font-size:9px"><span>정상가 대비 '+step.pct+'% 할인</span><span class="pc-save">'+won(saveAmt)+' 절약</span></div></div>'+
+    '<div class="pc-rec"><span class="ic">🎯</span><div class="t"><small>점주별 적정 할인율 추천</small><b>'+esc(st.name)+' · '+esc(st.cat)+' '+rec[0]+'~'+rec[1]+'%</b><span>현재 평균 '+avg+'% · 남은 재고 '+liveProducts(mine).length+'종 · 마감 '+st.close+'</span></div></div>'+
+    '<p class="pc-note">마감 '+st.close+' 기준 — 마감 3시간 전 20% → 2시간 전 30% → 1시간 전 45% → 마감 30분 전 60%로 자동 상승합니다. 표시 가격·추천은 시연용 예시입니다.</p>'+
+  '</div>';
+}
+function renderPricing(){
+  var html = pricingHTML();
+  var a = $('#pricingOwner'); if(a) a.innerHTML = html;
+  var b = $('#pricingDash'); if(b) b.innerHTML = html;
+}
+function renderOwner(){ renderStoreSelect(); renderOwnerHeader(); renderPickupOptions(); renderOwnerList(); renderPricing(); }
 
 /* ---- AI analysis ---- */
 function startAnalysis(sample){
@@ -1581,14 +1886,17 @@ function fillAI(sample){
   $('#fOrig').value = sample.orig;
   $('#fSale').value = sample.sale;
   $('#fQty').value = sample.qty;
-  $('#fPickup').value = sample.pickup;
+  renderPickupOptions(true);
+  var wins = pickupWindows(storeById(ui.ownerStore).close);
+  $('#fPickup').value = wins[wins.length-1];
   ['#fName','#fOrig','#fSale','#fQty'].forEach(function(sel){ $(sel).classList.add('ai-filled'); });
   var d = Math.round((1 - sample.sale/sample.orig)*100);
   var extra = Math.round((sample.sale*sample.qty)/100)*100;
   $('#aiResult').hidden = false;
-  $('#aiResult').innerHTML = '<div class="air-head"><b>✦ AI 분석 완료</b><span class="conf">신뢰도 '+sample.conf+'%</span></div>'+
+  $('#aiResult').innerHTML = '<div class="air-head"><b>✦ AI 분석 결과</b><span class="conf">신뢰도 '+sample.conf+'%</span></div>'+
+    '<div class="air-flag"><span class="demo-tag">시연용 예시 결과</span> 실제 서비스에서는 비전 AI API가 사진을 인식합니다</div>'+
     '<div class="air-grid"><div class="air-cell"><small>권장 할인율</small><b>'+d+'%</b></div><div class="air-cell"><small>권장 판매가</small><b>'+num(sample.sale)+'원</b></div><div class="air-cell"><small>예상 추가매출</small><b>'+num(extra)+'원</b></div></div>'+
-    '<p class="air-note">'+sample.note+' · 인근 3km 동일 품목 평균 할인 '+(d-4)+'%보다 4%p 높게 책정했어요.</p>';
+    '<p class="air-note">'+sample.note+' · 인근 동일 품목 평균 할인 '+(d-4)+'% 수준보다 4%p 높게 책정(시연용 예시)</p>';
   $('#autoTag').textContent = 'AI 자동 입력 완료';
   discountPreview();
   $('#fName').scrollIntoView({behavior:'smooth', block:'center'});
@@ -1627,6 +1935,9 @@ function submitProduct(e){
   if(!(qty>0)){ errs.push('판매 수량을 1개 이상 입력해 주세요.'); $('#fQty').classList.add('invalid'); }
   if(errs.length){ showFormMsg(errs); return; }
   clearFormMsg();
+  var st = storeById(sid) || storeById(ui.ownerStore);
+  sid = st.id;
+  if(!pickup || pickupEnd(pickup) > toMin(st.close)) pickup = pickupWindows(st.close)[2];
   var emoji = '🥬';
   for(var i=0;i<SAMPLES.length;i++){ if(SAMPLES[i].name===name) emoji = SAMPLES[i].emoji; }
   if(emoji==='🥬' && cat==='정육·수산') emoji='🥩';
@@ -1640,8 +1951,7 @@ function submitProduct(e){
   save();
   renderHome(); renderMap(); renderOwner(); renderDash(); renderOrders();
   $('#regForm').reset();
-  ui.ownerStore = sid; renderStoreSelect();
-  $('#fPickup').value = '20:00~22:00';
+  ui.ownerStore = sid; renderStoreSelect(); renderPickupOptions(true);
   $('#aiResult').hidden = true; $('#autoTag').textContent = 'AI 자동 입력 대기';
   $('#analyzing').hidden = true;
   $$('#anSteps .an-step').forEach(function(s){ s.classList.remove('on'); });
@@ -1682,12 +1992,13 @@ function metrics(){
 function renderDash(){
   var m = metrics();
   var d = new Date();
-  $('#dashDate').textContent = (d.getMonth()+1)+'월 '+d.getDate()+'일 · 둔산동 '+STORES.length+'개 점포';
+  var within = state.products.filter(inRadius);
+  $('#dashDate').textContent = (d.getMonth()+1)+'월 '+d.getDate()+'일 · 둔산동 반경 '+ui.radius+'km '+storeCountIn(within)+'개 점포 · '+liveProducts(within).length+'개 상품';
   $('#kpis').innerHTML =
-    '<div class="kpi hero-kpi pulse"><div class="kh"><span class="ki">💰</span>예상 추가 매출</div><div class="kv">'+num(m.extra)+'<small>원</small></div><div class="ks up">마감까지 · 잔여 60% 소진 가정</div></div>'+
-    '<div class="kpi"><div class="kh"><span class="ki">♻️</span>폐기 절감량</div><div class="kv">'+m.savedKg.toFixed(1)+'<small>kg</small></div><div class="ks">오늘 판매분 기준 · CO₂ '+num(m.savedKg*2.5)+'kg↓</div></div>'+
-    '<div class="kpi"><div class="kh"><span class="ki">🎯</span>AI 적정 할인율</div><div class="kv">'+m.avgDisc+'<small>%</small></div><div class="ks">정육·도시락 권장 45~55%</div></div>'+
-    '<div class="kpi"><div class="kh"><span class="ki">📈</span>오늘 판매율</div><div class="kv">'+m.rate+'<small>%</small></div><div class="ks up">지난주 같은 요일 +12%p</div></div>';
+    '<div class="kpi hero-kpi pulse"><div class="kh"><span class="ki">💰</span>예상 추가 매출</div><div class="kv">'+num(m.extra)+'<small>원</small></div><div class="ks up">마감까지 · 잔여 60% 소진 가정 (시연 예시)</div></div>'+
+    '<div class="kpi"><div class="kh"><span class="ki">♻️</span>폐기 절감량</div><div class="kv">'+m.savedKg.toFixed(1)+'<small>kg</small></div><div class="ks">오늘 판매분 · CO₂ '+num(m.savedKg*2.5)+'kg↓ (계수 2.5kg/1kg · 환경부·FAO)</div></div>'+
+    '<div class="kpi"><div class="kh"><span class="ki">🎯</span>AI 적정 할인율</div><div class="kv">'+m.avgDisc+'<small>%</small></div><div class="ks">정육·도시락 권장 45~55% (시연 예시)</div></div>'+
+    '<div class="kpi"><div class="kh"><span class="ki">📈</span>오늘 판매율</div><div class="kv">'+m.rate+'<small>%</small></div><div class="ks up">도입 목표 Δ+12%p (시연 예시)</div></div>';
   $('#insightBar').style.width = Math.min(100, Math.max(8, m.avgDisc)) + '%';
   $('#avgDiscLab').textContent = m.avgDisc + '%';
 
@@ -1709,6 +2020,7 @@ function renderDash(){
     var st = storeById(p.store);
     return '<div class="stock-row '+cls+'"><div class="sr-top"><b>'+esc(p.name)+'</b><span>'+st.name+' · '+p.left+'/'+p.total+'</span></div><div class="sr-bar"><i style="width:'+ratio+'%"></i></div></div>';
   }).join('');
+  renderPricing();
 }
 function advanceOrder(id){
   var o = orderById(id);
@@ -1741,17 +2053,38 @@ function closePromo(){
 
 /* ================= info sheet ================= */
 function openInfo(){
+  var within = state.products.filter(inRadius);
   var html = sheetHead('8시마켓 소개','저녁 8시, 우리 동네 장보기가 달라집니다')+
   '<div class="sheet-body info-sheet">'+
     '<div class="info-owner"><img src="owner-seonjin.jpg" alt="8시마켓 대표 강선진">'+
       '<div><b>대표 강선진</b><small>전 카페 매니저 · 더본코리아 슈퍼바이저</small></div>'+
       '<button class="link-btn" type="button" data-act="promo">홍보영상 ▶</button></div>'+
     '<p style="font-size:11px;color:#5E6B65;font-weight:600;line-height:1.7;margin-top:11px">퇴근길 동네마트·정육점·과일가게·빵집·반찬가게의 <b>오늘 남은 신선식품</b>을 마감특가로 연결하고, 반경 1~3km 이웃이 선결제 후 픽업하는 로컬 커머스 플랫폼입니다.</p>'+
+    '<div class="pi-stats"><span><b>'+storeCountIn(state.products)+'</b>개 매장</span><span><b>'+liveProducts(state.products).length+'</b>개 상품</span><span><b>'+storeCountIn(within)+'</b>곳 반경 '+ui.radius+'km</span></div>'+
     '<h4>8시마켓이 다른 점</h4>'+
-    '<ul><li><b>카페·간식이 아닌 장보기</b> — 채소·정육·수산·빵·반찬 등 저녁 식탁용 신선식품 중심</li><li><b>AI 10초 등록</b> — 사진 한 장으로 품목·적정 할인가·픽업 시간 자동 산정</li><li><b>거리·시간 기반 노출</b> — 반경 1~3km, 픽업 시간 안에 걸어갈 수 있는 매장만</li><li><b>폐기 절감 대시보드</b> — 예상 추가 매출·절감 kg·적정 할인율을 점주에게 제공</li></ul>'+
+    '<ul><li><b>대학가 한 끼 할인이 아닌 저녁 장바구니</b> — 둔산·탄방 주거·업무지구 3040 가구·직장인을 위한 정육·수산·채소·반찬</li>'+
+        '<li><b>AI 가격 결정</b> — 사진 한 장으로 등록하고, 8시 이후 시간이 지날수록 할인율을 자동으로 올립니다</li>'+
+        '<li><b>점주별 적정 할인율 추천</b> — 업종·재고·마감 시간을 반영한 권장 구간 제시</li>'+
+        '<li><b>거리·시간 기반 노출</b> — 반경 1~3km, 도보·자전거·차량으로 픽업 시간 내 방문 가능한 동네 매장</li>'+
+        '<li><b>폐기 절감 대시보드</b> — 예상 추가 매출·절감 kg·CO₂ 환산을 점주에게 제공</li></ul>'+
+    '<h4>운영·품질·위생</h4>'+
+    '<div class="mods"><div class="mod"><b>운영</b><span>대표 강선진 — 전 카페 매니저·더본코리아 슈퍼바이저 경력으로 점포 운영 노하우 전수</span></div>'+
+      '<div class="mod"><b>품질</b><span>업종별 마감·보관 기준과 사진 검수 가이드</span></div>'+
+      '<div class="mod"><b>위생</b><span>조리·냉장 상품의 판매 가능 시간 기준 안내</span></div></div>'+
+    '<div class="scale">'+
+      '<div class="sc-h">🌱 전국 확장 로드맵</div>'+
+      '<p class="sc-lead">대전 둔산·탄방 <b>1호 거점</b>에서 시작해 <b>당근처럼 전국 동네 생활권</b>으로 넓히는 퇴근길 저녁 장바구니 플랫폼입니다.</p>'+
+      '<ol><li class="now"><span class="n">1단계</span><span><b>대전 거점 검증</b>둔산·탄방 주거·업무지구 파일롯 (지금 이 시제품)</span></li>'+
+        '<li><span class="n">2단계</span><span><b>충청·수도권 주거지 확장</b>동일 모델을 인구 밀집 주거·업무지구로 복제</span></li>'+
+        '<li><span class="n">3단계</span><span><b>전국 동네 상권</b>지역화폐·지자체 ESG 연계로 전국 생활권 확대</span></li></ol>'+
+    '</div>'+
+    '<div class="roadmap"><div class="rm-h">🧭 향후 계획</div><ul>'+
+      '<li>대전사랑카드 결제 연동</li>'+
+      '<li>구청/푸드뱅크 미판매 상품 기부로 폐기 0 · 지자체 ESG 보고 데이터 제공</li>'+
+      '<li>PWA(홈 화면 앱) 설치 지원</li></ul></div>'+
     '<h4>수익 모델</h4>'+
-    '<div class="mods"><div class="mod"><b>결제 수수료</b><span>선결제 거래액의 3~5%</span></div><div class="mod"><b>점주 구독</b><span>AI 등록·대시보드 월 19,000원</span></div><div class="mod"><b>동네 광고</b><span>주변 매장 노출·쿠폰 프로모션</span></div></div>'+
-    '<p class="disc">본 화면은 ‘모두의 창업’ 지원용 시제품(MVP) 데모입니다. 상품·주문·매출 데이터는 체험용 예시이며 실제 결제·배송은 발생하지 않습니다.</p>'+
+    '<div class="mods"><div class="mod"><b>결제 수수료</b><span>선결제 거래액의 3~5%</span></div><div class="mod"><b>점주 구독</b><span>AI 가격 결정·대시보드 월 19,000원</span></div><div class="mod"><b>동네 광고</b><span>주변 매장 노출·쿠폰 프로모션</span></div></div>'+
+    '<p class="disc">본 화면은 ‘모두의 창업’ 지원용 시제품(MVP) 데모입니다. 상품·주문·매출·AI 분석 결과는 체험용 예시이며 실제 결제·배송은 발생하지 않습니다.</p>'+
   '</div>';
   openSheet(html);
 }
@@ -1811,6 +2144,7 @@ function handleAction(el){
   else if(act==='pay'){ completeCheckout(); }
   else if(act==='goto-orders'){ closeSheet(); setTab('orders'); }
   else if(act==='advance'){ advanceOrder(el.getAttribute('data-id')); }
+  else if(act==='price-step'){ ui.priceStep = parseInt(el.getAttribute('data-v'),10); renderPricing(); }
   else if(act==='sample'){ var s = SAMPLES.filter(function(x){ return x.key===el.getAttribute('data-key'); })[0]; if(s) startAnalysis(s); }
   else if(act==='info'){ closeSheet(); openInfo(); }
   else if(act==='promo'){ closeSheet(); openPromo(); }
@@ -1880,15 +2214,19 @@ function wire(){
   $('#fileInput').addEventListener('change', function(e){
     var f = e.target.files && e.target.files[0];
     if(!f) return;
-    var raw = f.name, dot = raw.lastIndexOf('.');
-    if (dot > 0) raw = raw.slice(0, dot);
-    var name = /[가-힣]/.test(raw) ? raw : '오늘의 신선식품';
-    var sample = {key:'upload', emoji:'🥗', label:'업로드 사진', name: name, cat:'과일·채소', orig:6000, sale:3500, qty:8, pickup:'19:00~21:00', conf:93, note:'직접 촬영한 사진 · 신선도 양호' };
-    startAnalysis(sample);
+    startAnalysis(buildUploadSample(f.name));
     e.target.value = '';
   });
   $('#fStore').addEventListener('change', function(){
     ui.ownerStore = this.value; renderOwner();
+  });
+  $('#storeToggle').addEventListener('click', function(){
+    var sel = $('#fStore'), note = $('#storeNote');
+    var open = sel.hidden;
+    sel.hidden = !open; note.hidden = !open;
+    this.classList.toggle('is-on', open);
+    this.setAttribute('aria-expanded', open ? 'true' : 'false');
+    this.textContent = open ? '(시연용 전환 닫기)' : '(시연용 다른 매장 체험 전환)';
   });
   $('#fOrig').addEventListener('input', discountPreview);
   $('#fSale').addEventListener('input', discountPreview);
@@ -1906,7 +2244,7 @@ function boot(){
   renderDash();
   renderMap();
   $('#sbTime').textContent = nowTime();
-  $('#homeNote').innerHTML = '<div class="home-note-card"><b>동네 점포의 오늘을 살리는 장보기</b><p>8시마켓은 대전에서 시작합니다. 퇴근길 동네마트·정육점·과일가게·빵집·반찬가게의 오늘 남은 신선식품을 이웃과 연결해, 폐기는 줄이고 저녁 장보기는 가볍게.</p><button type="button" class="link-btn" data-act="info">8시마켓 소개 보기 ›</button></div>';
+  $('#homeNote').innerHTML = '<div class="home-note-card"><b>동네 점포의 오늘을 살리는 장보기</b><p>8시마켓은 대전 둔산·탄방 1호 거점에서 시작해, 당근처럼 전국 동네 생활권으로 넓혀가는 퇴근길 저녁 장바구니 플랫폼입니다. 동네 점포의 오늘 남은 신선식품을 이웃과 연결해, 폐기는 줄이고 저녁 장보기는 가볍게.</p><button type="button" class="link-btn" data-act="info">8시마켓 소개 보기 ›</button></div>';
   if(!state.onboarded){
     showOnboard();
   }else{
@@ -1915,6 +2253,9 @@ function boot(){
     setTab(state.role === 'owner' ? 'owner' : ui.tab);
   }
   wire();
+  if('serviceWorker' in navigator && location.protocol === 'https:'){
+    try{ navigator.serviceWorker.register('sw.js').catch(function(){}); }catch(e){}
+  }
 }
 if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', boot); else boot();
 })();
