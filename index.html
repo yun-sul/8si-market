@@ -137,31 +137,64 @@ h1,h2,h3,h4,p{margin:0}
 .tab-btn .tb-live{position:absolute;top:-1px;right:-7px;min-width:14px;height:14px;border-radius:7px;background:var(--price);color:#fff;font-size:9px;font-weight:900;display:grid;place-items:center;padding:0 3px;border:1.5px solid #fff}
 
 /* ================= onboarding ================= */
-.onboard{position:absolute;inset:0;z-index:70;background:#fff;overflow-y:auto;padding:34px 24px 30px;display:flex;flex-direction:column;transition:opacity .3s ease, transform .35s cubic-bezier(.32,.72,0,1)}
-.onboard::before{content:"";position:absolute;inset:0 0 auto 0;height:280px;background:radial-gradient(340px 200px at 85% -30%, #D8F2E2 0%, rgba(216,242,226,0) 70%),radial-gradient(320px 180px at 0% 0%, #FDF1DE 0%, rgba(253,241,222,0) 70%);pointer-events:none}
+.onboard{position:absolute;inset:0;z-index:70;background:#fff;overflow-y:auto;display:block;transition:opacity .3s ease, transform .35s cubic-bezier(.32,.72,0,1)}
+.onboard::before{content:"";position:absolute;inset:0 0 auto 0;height:320px;background:radial-gradient(360px 220px at 88% -34%, #D8F2E2 0%, rgba(216,242,226,0) 70%),radial-gradient(340px 200px at 0% 0%, #FDF1DE 0%, rgba(253,241,222,0) 70%);pointer-events:none}
 .onboard.is-hidden{opacity:0;transform:translateY(-8px);pointer-events:none}
-.ob-brand{position:relative;display:flex;align-items:center;gap:9px;font-size:14px;font-weight:900;letter-spacing:-.03em;color:var(--ink)}
-.ob-brand .mark{width:34px;height:34px;border-radius:11px;background:linear-gradient(150deg,#16A85F,#0A6B3F);color:#fff;display:grid;place-items:center;font-size:15px;font-weight:900;box-shadow:0 12px 22px -14px rgba(11,122,70,.9)}
-.onboard h1{position:relative;font-size:27px;line-height:1.32;letter-spacing:-.05em;font-weight:900;margin-top:38px}
-.onboard .ob-sub{position:relative;margin-top:10px;font-size:13px;color:var(--muted);font-weight:600;line-height:1.65}
-.roles{position:relative;display:grid;gap:11px;margin-top:26px}
-.role{display:flex;align-items:flex-start;gap:13px;text-align:left;background:#fff;border:1.5px solid #E6ECE7;border-radius:18px;padding:18px 15px;transition:border-color .16s, box-shadow .2s, transform .16s;position:relative}
+.ob-step{ display:none;min-height:100%;padding:22px 22px calc(22px + env(safe-area-inset-bottom));flex-direction:column;position:relative}
+.ob-step.is-on{display:flex}
+.ob-brand{position:relative;display:flex;align-items:center;gap:8px;font-size:13.5px;font-weight:900;letter-spacing:-.03em;color:var(--ink)}
+.ob-brand .mark{width:32px;height:32px;border-radius:10px;background:linear-gradient(150deg,#16A85F,#0A6B3F);color:#fff;display:grid;place-items:center;font-size:14px;font-weight:900;box-shadow:0 12px 22px -14px rgba(11,122,70,.9)}
+.ob-brand .ob-chip{margin-left:auto;font-size:9px;font-weight:900;color:var(--brand-d);background:var(--brand-l);border:1px solid #CFE9DA;border-radius:999px;padding:4px 8px;white-space:nowrap}
+.ob-hero{position:relative;margin-top:12px;border-radius:20px;overflow:hidden;border:1px solid #DFEBE3;background:#0B2B1E;box-shadow:0 26px 46px -32px rgba(11,122,70,.9)}
+.ob-hero .ob-photo{height:176px;overflow:hidden;position:relative}
+.ob-hero .ob-photo img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 4%}
+.ob-hero .ob-photo::after{content:"";position:absolute;inset:auto 0 0 0;height:52px;background:linear-gradient(180deg,rgba(7,28,20,0),rgba(7,28,20,.6))}
+.ob-strip{position:relative;background:linear-gradient(135deg,#0E8B51,#065F36);color:#fff;padding:12px 15px 13px}
+.ob-strip h1{font-size:18.5px;font-weight:900;letter-spacing:-.05em;line-height:1.34}
+.ob-strip h1 em{font-style:normal;color:#B7F0D3}
+.ob-strip p{margin-top:3px;font-size:10.5px;font-weight:700;color:#C7EAD8}
+.ob-strip-tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:8px}
+.ob-strip-tags span{font-size:9px;font-weight:900;color:#EAFBF1;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.24);border-radius:999px;padding:3px 7px}
+.ob-q{position:relative;margin-top:18px;font-size:16px;font-weight:900;letter-spacing:-.045em;color:var(--ink)}
+.ob-resume{position:relative;margin-top:7px;font-size:10.5px;font-weight:700;color:#5C6A63;background:#F4F9F5;border:1px solid #E3EEE7;border-radius:9px;padding:7px 9px;line-height:1.5}
+.ob-resume b{color:var(--brand-d);font-weight:900}
+.roles{position:relative;display:grid;gap:9px;margin-top:11px}
+.role{display:flex;align-items:flex-start;gap:12px;text-align:left;background:#fff;border:1.5px solid #E6ECE7;border-radius:16px;padding:14px 13px;transition:border-color .16s, box-shadow .2s, transform .16s;position:relative}
 .role:hover{border-color:#CFE2D5;transform:translateY(-1px)}
 .role.is-sel{border-color:var(--brand);box-shadow:0 0 0 3px rgba(11,122,70,.09), 0 16px 30px -24px rgba(11,122,70,.8);background:linear-gradient(180deg,#F7FDF9,#fff)}
-.role .ri{flex:0 0 auto;width:46px;height:46px;border-radius:14px;background:#F2F5F1;display:grid;place-items:center;font-size:22px;transition:.16s}
+.role .ri{flex:0 0 auto;width:42px;height:42px;border-radius:13px;background:#F2F5F1;display:grid;place-items:center;font-size:20px;transition:.16s}
 .role.is-sel .ri{background:var(--brand-l)}
-.role .rt b{display:block;font-size:15.5px;font-weight:900;letter-spacing:-.03em;line-height:1.35}
-.role .rt small{display:block;margin-top:3px;font-size:11.5px;color:var(--muted);font-weight:600;line-height:1.5}
-.role .check{position:absolute;right:14px;top:15px;width:20px;height:20px;border-radius:50%;border:1.5px solid #DCE3DD;display:grid;place-items:center;color:transparent;font-size:10px;transition:.16s;background:#fff}
+.role .rt{min-width:0;padding-right:16px}
+.role .rlabel{display:inline-block;font-size:8.5px;font-weight:900;color:#7C8A83;background:#F3F6F3;border:1px solid #E7EDE8;border-radius:5px;padding:1px 5px;margin-bottom:4px;letter-spacing:0}
+.role.is-sel .rlabel{color:var(--brand-d);background:#fff;border-color:#D3E9DC}
+.role .rt b{display:block;font-size:14.5px;font-weight:900;letter-spacing:-.035em;line-height:1.35}
+.role .rt small{display:block;margin-top:2px;font-size:11px;color:var(--muted);font-weight:600;line-height:1.5}
+.role .rtags{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px}
+.role .rtags span{font-size:8.5px;font-weight:800;color:#5F6C66;background:#F5F9F6;border:1px solid #E8EFEA;border-radius:6px;padding:2px 5px}
+.role.is-sel .rtags span{background:#fff;border-color:#D6EADF;color:var(--brand-d)}
+.role .check{position:absolute;right:12px;top:13px;width:19px;height:19px;border-radius:50%;border:1.5px solid #DCE3DD;display:grid;place-items:center;color:transparent;font-size:9px;transition:.16s;background:#fff}
 .role.is-sel .check{background:var(--brand);border-color:var(--brand);color:#fff}
-.ob-next{margin-top:24px}
-.ob-skip{margin-top:12px;border:0;background:transparent;color:var(--ink2);font-size:13px;font-weight:800;text-decoration:underline;text-underline-offset:4px;padding:8px}
-.ob-foot{margin-top:auto;padding-top:26px;text-align:center;font-size:10.5px;color:var(--muted2);font-weight:600;line-height:1.6}
-.ob-feats{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;margin-top:30px}
-.ob-feats span{display:inline-flex;align-items:center;gap:4px;font-size:10.5px;font-weight:800;color:#5E6B65;background:#F6F9F6;border:1px solid #E9EFEA;border-radius:999px;padding:6px 10px}
-.ob-contrast{margin:14px 0 0;font-size:10.5px;font-weight:800;color:#4E6B5A;background:#F2FBF6;border:1px solid #D8EEE1;border-radius:9px;padding:8px 10px;text-align:center;letter-spacing:-.01em}
-.ob-contrast b{color:var(--brand-d);font-weight:900}
-.onboard .ob-sub b{color:var(--ink2);font-weight:800}
+.ob-next{margin-top:14px}
+.ob-skip{margin-top:10px;border:0;background:transparent;color:var(--ink2);font-size:12.5px;font-weight:800;text-decoration:underline;text-underline-offset:4px;padding:8px;text-align:center;width:100%}
+.ob-foot{margin-top:auto;padding-top:20px;text-align:center;font-size:10px;color:var(--muted2);font-weight:600;line-height:1.6}
+.ob-feats{display:flex;flex-wrap:wrap;justify-content:center;gap:5px;margin-top:12px}
+.ob-feats span{display:inline-flex;align-items:center;gap:4px;font-size:10px;font-weight:800;color:#5E6B65;background:#F6F9F6;border:1px solid #E9EFEA;border-radius:999px;padding:5px 9px}
+
+/* onboarding step 2 · 가입 / 매장 등록 */
+.ob-back{align-self:flex-start;display:inline-flex;align-items:center;gap:4px;border:0;background:transparent;color:var(--ink2);font-size:12px;font-weight:800;padding:6px 0 2px;position:relative}
+.ob-back:hover{color:var(--brand-d)}
+.ob-h2{position:relative;margin-top:10px;font-size:22px;font-weight:900;letter-spacing:-.05em;line-height:1.3}
+.ob-lead{position:relative;margin-top:6px;font-size:11.5px;font-weight:600;color:var(--muted);line-height:1.65}
+.ob-lead b{color:var(--ink2);font-weight:800}
+.ob-card{position:relative;margin-top:14px;background:#fff;border:1px solid #E7EEE9;border-radius:16px;padding:13px 13px 15px;box-shadow:0 18px 34px -30px rgba(17,26,23,.55)}
+.ob-card .field input,.ob-card .field select{font-size:12.5px;padding:11px 12px}
+.ob-picks{display:flex;flex-wrap:wrap;gap:6px}
+.pick{border:1px solid #E2E9E4;background:#fff;color:#5F6C66;border-radius:999px;padding:8px 12px;font-size:11.5px;font-weight:800;letter-spacing:-.02em;transition:.15s}
+.pick:hover{border-color:#C8DCCF}
+.pick.is-on{background:var(--brand);border-color:var(--brand);color:#fff;box-shadow:0 8px 16px -12px rgba(11,122,70,.95)}
+.ob-msg{margin-top:10px;background:#FEF2F1;border:1px solid #FBD5D1;color:#B42318;border-radius:9px;padding:8px 10px;font-size:10.5px;font-weight:700;line-height:1.55}
+.ob-actions{margin-top:auto;padding-top:16px;display:grid;gap:7px}
+.ob-actions ~ .ob-foot{margin-top:8px;padding-top:0}
 
 /* ================= common ui ================= */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;border:0;border-radius:14px;font-weight:900;font-size:14.5px;letter-spacing:-.02em;padding:14px 18px;transition:transform .12s, box-shadow .2s, background .2s;line-height:1.2;text-decoration:none}
@@ -278,6 +311,8 @@ h1,h2,h3,h4,p{margin:0}
 .pin .pin-c{fill:#fff;stroke:#0B7A46;stroke-width:2.2;transition:.15s}
 .pin .pin-emoji{font-size:13px;pointer-events:none}
 .pin .pin-tag rect{fill:#0B7A46;transition:.15s}
+.pin .pin-tag rect.new{fill:#E2523A}
+.pin.is-mine .pin-c{stroke-width:2.8;stroke:#0B7A46;fill:#EAF7EF}
 .pin .pin-tag text{fill:#fff;font-size:9px;font-weight:900;letter-spacing:-.02em}
 .pin:hover .pin-c{stroke-width:3}
 .pin:hover .pin-tag rect{fill:#085F37}
@@ -539,6 +574,7 @@ h1,h2,h3,h4,p{margin:0}
 .ss-meta span{flex:1;background:#F7FAF7;border-radius:9px;padding:7px 8px;font-size:9.5px;color:var(--muted);font-weight:700;text-align:center}
 .ss-meta span b{display:block;font-size:11px;color:var(--ink);font-weight:900;margin-top:1px}
 .ss-list{margin-top:11px;display:grid;gap:7px}
+.ss-empty{margin:2px 0 0;font-size:10.5px;color:var(--muted);font-weight:600;line-height:1.6;background:#F7FAF7;border:1px dashed #DEE8E1;border-radius:10px;padding:12px;text-align:center}
 .ss-item{display:flex;align-items:center;gap:9px;border:1px solid #EDF1EE;border-radius:12px;padding:8px 9px}
 .ss-item .si-e{width:34px;height:34px;border-radius:9px;display:grid;place-items:center;font-size:18px;flex:0 0 auto}
 .ss-item .si-m{min-width:0;flex:1}
@@ -841,7 +877,7 @@ h1,h2,h3,h4,p{margin:0}
               <div class="loc-row">
                 <button class="loc-btn" type="button" data-act="radius">
                   <svg class="pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11Z"/><circle cx="12" cy="10" r="2.4"/></svg>
-                  <span>반경 <span id="radiusLabel">2km</span> · 둔산동</span>
+                  <span>반경 <span id="radiusLabel">2km</span> · <span id="locDong">둔산동</span></span>
                   <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
                 </button>
                 <button class="map-link" type="button" data-act="go-map">
@@ -1147,26 +1183,125 @@ h1,h2,h3,h4,p{margin:0}
 
         <!-- ===== onboarding ===== -->
         <div class="onboard" id="onboard">
-          <div class="ob-brand"><span class="mark">8</span>8시마켓</div>
-          <h1>어떤 목적으로<br>사용하시나요?</h1>
-          <p class="ob-sub">퇴근길 <b>저녁 장바구니</b>.<br>둔산·탄방 주거·업무지구 3040 가구와 직장인이<br>정육·수산·채소·반찬을 마감특가로 픽업합니다.</p>
-          <p class="ob-contrast">대학가 한 끼 할인이 아니라, <b>퇴근길 저녁 장바구니</b></p>
-          <div class="roles" id="roles">
-            <button class="role" type="button" data-role="consumer">
-              <span class="ri">🛒</span>
-              <span class="rt"><b>할인 장보기 · 픽업</b><small>퇴근길 저녁 장바구니를 특가로 구매해요</small></span>
-              <span class="check">✓</span>
-            </button>
-            <button class="role" type="button" data-role="owner">
-              <span class="ri">🏪</span>
-              <span class="rt"><b>우리 매장 마감 판매</b><small>남은 재고를 AI 가격 결정으로 마감까지 소진해요</small></span>
-              <span class="check">✓</span>
-            </button>
+
+          <!-- step 1 · 역할 선택 -->
+          <div class="ob-step is-on" id="obStep-role">
+            <div class="ob-brand"><span class="mark">8</span>8시마켓<span class="ob-chip">모두의 창업 시제품</span></div>
+            <div class="ob-hero">
+              <div class="ob-photo"><img src="poster.jpg" alt="8시마켓 홍보 포스터 — 저녁 8시, 마감득가"></div>
+              <div class="ob-strip">
+                <h1>저녁 8시,<br>퇴근길 <em>동네 장바구니</em></h1>
+                <p>오늘 남은 좋은 상품, 동네에서 득템</p>
+                <div class="ob-strip-tags"><span>최대 58% 마감특가</span><span>반경 1~3km 픽업</span><span>18~21시</span></div>
+              </div>
+            </div>
+            <p class="ob-q">어떤 방식으로 시작할까요?</p>
+            <p class="ob-resume" id="obResume" hidden></p>
+            <div class="roles" id="roles">
+              <button class="role" type="button" data-role="consumer">
+                <span class="ri">🛒</span>
+                <span class="rt">
+                  <span class="rlabel">소비자</span>
+                  <b>할인 장보기 · 간편 가입</b>
+                  <small>내 동네 마감특가를 예약하고 퇴근길에 픽업해요</small>
+                  <span class="rtags"><span>10초 가입</span><span>동네 선택</span><span>가입 없이 둘러보기</span></span>
+                </span>
+                <span class="check">✓</span>
+              </button>
+              <button class="role" type="button" data-role="owner">
+                <span class="ri">🏪</span>
+                <span class="rt">
+                  <span class="rlabel">매장 점주</span>
+                  <b>우리 매장 입점 · 마감 등록</b>
+                  <small>남은 재고를 AI 가격 결정으로 마감까지 소진해요</small>
+                  <span class="rtags"><span>상호·업종 등록</span><span>마감시간 설정</span><span>AI 10초 상품등록</span></span>
+                </span>
+                <span class="check">✓</span>
+              </button>
+            </div>
+            <button class="btn btn-primary btn-block ob-next" type="button" id="obNext" disabled>다음</button>
+            <button class="ob-skip" type="button" id="obSkip">둘러보기로 바로 시작</button>
+            <div class="ob-feats"><span>🥩 정육·수산·채소·반찬</span><span>🕕 퇴근길 18~21시 픽업</span><span>📉 시간 지날수록 자동 할인</span></div>
+            <p class="ob-foot">로그인 없이 체험하는 시제품입니다 · 실제 결제는 발생하지 않아요</p>
           </div>
-          <button class="btn btn-primary btn-block ob-next" type="button" id="obNext" disabled>다음</button>
-          <button class="ob-skip" type="button" id="obSkip">둘러보기로 바로 시작</button>
-          <div class="ob-feats"><span>🥩 정육·수산·채소·반찬</span><span>🕕 퇴근길 18~21시 픽업</span><span>📉 시간 지날수록 자동 할인</span></div>
-          <p class="ob-foot">로그인 없이 체험하는 시제품입니다 · 실제 결제는 발생하지 않아요</p>
+
+          <!-- step 2-A · 소비자 간편 가입 -->
+          <div class="ob-step" id="obStep-consumer">
+            <button class="ob-back" type="button" data-ob="back">← 역할 선택으로</button>
+            <h2 class="ob-h2">10초 간편 가입</h2>
+            <p class="ob-lead">닉네임과 동네만 정하면 <b>내 동네 마감특가</b>가 바로 열려요. 연락처는 선택이에요.</p>
+            <div class="ob-card">
+              <div class="field">
+                <label for="obNick">닉네임 <span>필수</span></label>
+                <input type="text" id="obNick" maxlength="12" placeholder="예) 둔산동 먹보" autocomplete="nickname">
+              </div>
+              <div class="field">
+                <label for="obPhone">연락처 <span>선택 · 픽업 알림용</span></label>
+                <input type="tel" id="obPhone" maxlength="13" inputmode="tel" placeholder="010-0000-0000" autocomplete="tel">
+              </div>
+              <div class="field">
+                <label>내 동네 <span>픽업 기준</span></label>
+                <div class="ob-picks" id="obDongPick">
+                  <button class="pick" type="button" data-ob="dong" data-v="둔산동">둔산동</button>
+                  <button class="pick" type="button" data-ob="dong" data-v="탄방동">탄방동</button>
+                  <button class="pick" type="button" data-ob="dong" data-v="월평동">월평동</button>
+                </div>
+              </div>
+              <div class="field">
+                <label>관심 품목 <span>복수 선택</span></label>
+                <div class="ob-picks" id="obCatPick">
+                  <button class="pick" type="button" data-ob="cat" data-v="정육·수산">🥩 정육·수산</button>
+                  <button class="pick" type="button" data-ob="cat" data-v="과일·채소">🥬 과일·채소</button>
+                  <button class="pick" type="button" data-ob="cat" data-v="빵·반찬">🥐 빵·반찬</button>
+                  <button class="pick" type="button" data-ob="cat" data-v="동네마트">🏪 동네마트</button>
+                </div>
+              </div>
+              <p class="ob-msg" id="obConsumerMsg" hidden></p>
+            </div>
+            <div class="ob-actions">
+              <button class="btn btn-primary btn-block" type="button" data-ob="consumer-done">가입하고 마감특가 보기</button>
+              <button class="ob-skip" type="button" data-ob="consumer-skip">로그인·가입 없이 바로 둘러보기</button>
+            </div>
+            <p class="ob-foot">입력한 정보는 이 브라우저에만 저장되는 시제품용 체험 데이터입니다</p>
+          </div>
+
+          <!-- step 2-B · 매장 점주 입점 등록 -->
+          <div class="ob-step" id="obStep-owner">
+            <button class="ob-back" type="button" data-ob="back">← 역할 선택으로</button>
+            <h2 class="ob-h2">매장 입점 등록</h2>
+            <p class="ob-lead">상호명·업종·마감시간만 넣으면 <b>점주 센터</b>가 바로 열려요. 등록한 매장은 동네 지도에도 표시됩니다.</p>
+            <div class="ob-card">
+              <div class="field">
+                <label for="obStoreName">상호명 <span>필수</span></label>
+                <input type="text" id="obStoreName" maxlength="16" placeholder="예) 푸른청과" autocomplete="organization">
+              </div>
+              <div class="field-row">
+                <div class="field" style="margin-top:11px">
+                  <label for="obStoreDong">동네</label>
+                  <select id="obStoreDong"><option>둔산동</option><option>탄방동</option><option>월평동</option></select>
+                </div>
+                <div class="field" style="margin-top:11px">
+                  <label for="obStoreCat">업종</label>
+                  <select id="obStoreCat"><option>과일·채소</option><option>정육·수산</option><option>빵·반찬</option><option>동네마트</option></select>
+                </div>
+              </div>
+              <div class="field">
+                <label for="obStoreAddr">주소 <span>선택 · 번지·도로명</span></label>
+                <input type="text" id="obStoreAddr" maxlength="24" placeholder="예) 계룡로 123">
+              </div>
+              <div class="field">
+                <label for="obStoreClose">기본 마감시간</label>
+                <select id="obStoreClose"><option>19:00</option><option selected>20:00</option><option>21:00</option><option>22:00</option></select>
+              </div>
+              <p class="ob-msg" id="obOwnerMsg" hidden></p>
+            </div>
+            <div class="ob-actions">
+              <button class="btn btn-primary btn-block" type="button" data-ob="owner-done">매장 등록하고 점주 센터로</button>
+              <button class="ob-skip" type="button" data-ob="owner-skip">기존 체험 매장으로 바로 보기</button>
+            </div>
+            <p class="ob-foot">시제품 체험용 등록입니다 · 실제 심사·계약 없이 이 브라우저에만 저장돼요</p>
+          </div>
+
         </div>
 
       </div>
@@ -1284,7 +1419,7 @@ function seedOrders(){
     {id:'o3', code:'8시-3210', pid:'p7', name:'마트 도시락', store:'s6', qty:1, orig:7900, sale:3900, weight:0.4, pickup:'18:00~20:00', status:'결제완료', time:'19:24', emoji:'🍱'}
   ];
 }
-function seed(){ return {seq:30, products:seedProducts(), orders:seedOrders(), fav:[], onboarded:false, role:null}; }
+function seed(){ return {seq:30, products:seedProducts(), orders:seedOrders(), fav:[], onboarded:false, role:null, profile:null, myStore:null}; }
 
 /* ================= state ================= */
 function load(){
@@ -1304,8 +1439,12 @@ function save(){ try{ window.localStorage.setItem(KEY, JSON.stringify(state)); }
 
 var state = load();
 sanitizeState();
-var ui = {tab:'home', radius:2, deal:0, cat:'전체', orderFilter:'all', ownerStore:'s2', sheetOpen:false, lastOrder:null, priceStep:2};
+if(!('profile' in state)) state.profile = null;
+if(!('myStore' in state)) state.myStore = null;
+ensureMyStore();
+var ui = {tab:'home', radius:2, deal:0, cat:'전체', orderFilter:'all', ownerStore:(state.myStore ? state.myStore.id : 's2'), sheetOpen:false, lastOrder:null, priceStep:2};
 var co = {pid:null, qty:1, phase:'form', order:null, busy:false};
+var obsel = {dong:'둔산동', cats:[]};
 var aiBusy = false;
 
 /* ================= helpers ================= */
@@ -1315,6 +1454,12 @@ function won(n){ return Math.round(n).toLocaleString('ko-KR') + '원'; }
 function num(n){ return Math.round(n).toLocaleString('ko-KR'); }
 function disc(p){ return Math.round((1 - p.sale / p.orig) * 100); }
 function storeById(id){ for(var i=0;i<STORES.length;i++){ if(STORES[i].id===id) return STORES[i]; } return null; }
+function catEmoji(c){ return c==='정육·수산'?'🥩' : c==='빵·반찬'?'🥐' : c==='동네마트'?'🏪' : '🧺'; }
+/* 점주가 입점 등록한 매장은 localStorage에서 복원해 지도·피드에 다시 붙인다 */
+function ensureMyStore(){
+  if(state && state.myStore && state.myStore.id && !storeById(state.myStore.id)) STORES.push(state.myStore);
+}
+function storesInRadius(){ return STORES.filter(function(s){ return s.dist <= ui.radius; }); }
 function byId(id){ for(var i=0;i<state.products.length;i++){ if(state.products[i].id===id) return state.products[i]; } return null; }
 function orderById(id){ for(var i=0;i<state.orders.length;i++){ if(state.orders[i].id===id) return state.orders[i]; } return null; }
 function esc(s){ return String(s).replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
@@ -1375,26 +1520,141 @@ function setTab(name){
 }
 
 /* ================= onboarding ================= */
+function setObStep(step){
+  ['role','consumer','owner'].forEach(function(k){
+    var el = document.getElementById('obStep-'+k);
+    if(el) el.classList.toggle('is-on', k === step);
+  });
+  $$('.ob-msg').forEach(function(m){ m.hidden = true; });
+  var obEl = $('#onboard');
+  obEl.scrollTop = 0;
+}
+function renderObPicks(){
+  $$('#obDongPick .pick').forEach(function(b){ b.classList.toggle('is-on', b.getAttribute('data-v') === obsel.dong); });
+  $$('#obCatPick .pick').forEach(function(b){ b.classList.toggle('is-on', obsel.cats.indexOf(b.getAttribute('data-v')) > -1); });
+}
+function renderObResume(){
+  var el = $('#obResume');
+  if(!el) return;
+  var pf = state.profile, ms = state.myStore;
+  var parts = [];
+  if(pf && pf.nick) parts.push('<b>'+esc(pf.nick)+'</b> 님 · '+esc(pf.dong || '둔산동'));
+  if(ms) parts.push('등록 매장 <b>'+esc(ms.name)+'</b>');
+  if(!parts.length){ el.hidden = true; el.innerHTML = ''; return; }
+  el.hidden = false;
+  el.innerHTML = '이전에 쓰던 설정이 그대로 있어요 — ' + parts.join(' · ') + ' (상품·찜·예약 유지)';
+}
 function showOnboard(){
-  var ob = $('#onboard');
-  ob.classList.remove('is-hidden');
-  ob.setAttribute('aria-hidden','false');
+  var obEl = $('#onboard');
+  obEl.classList.remove('is-hidden');
+  obEl.setAttribute('aria-hidden','false');
   $$('.role').forEach(function(r){ r.classList.remove('is-sel'); });
   $('#obNext').disabled = true;
+  renderObResume();
+  setObStep('role');
 }
-function hideOnboard(role, skipped){
-  var ob = $('#onboard');
-  ob.classList.add('is-hidden');
-  ob.setAttribute('aria-hidden','true');
+/* mode: signup | skip | owner-join | owner-demo */
+function hideOnboard(role, mode){
+  var obEl = $('#onboard');
+  obEl.classList.add('is-hidden');
+  obEl.setAttribute('aria-hidden','true');
   state.role = role; state.onboarded = true; save();
+  renderHome(); renderOwner(); renderMap(); renderDash();
   setTab(role === 'owner' ? 'owner' : 'home');
-  if(role === 'owner'){
-    toast('점주 모드로 시작합니다 · 사진 한 장으로 10초 등록');
-  }else if(skipped){
+  if(mode === 'owner-demo'){
+    toast('기존 체험 매장(우리축산) 점주로 시작합니다 · AI 10초 등록을 체험해 보세요');
+  }else if(mode === 'skip'){
     toast('둘러보기 모드 · 상·하단 메뉴에서 언제든 전환할 수 있어요');
-  }else{
+  }else if(mode !== 'owner-join'){
     toast('할인 장보기 모드 · 하단 [점주]에서 매장 등록도 체험해 보세요');
   }
+}
+function obNextStep(){
+  var sel = document.querySelector('.role.is-sel');
+  if(!sel) return;
+  if(sel.getAttribute('data-role') === 'consumer') openObConsumer(); else openObOwner();
+}
+function openObConsumer(){
+  var pf = state.profile || {};
+  obsel.dong = pf.dong || '둔산동';
+  obsel.cats = (pf.cats || []).slice();
+  $('#obNick').value = pf.nick || '';
+  $('#obPhone').value = pf.phone || '';
+  $('#obNick').classList.remove('invalid');
+  renderObPicks();
+  setObStep('consumer');
+}
+function openObOwner(){
+  var ms = state.myStore;
+  $('#obStoreName').value = ms ? ms.name : '';
+  $('#obStoreDong').value = ms ? (ms.addr || '').split(' ')[0] : obsel.dong;
+  if(!$('#obStoreDong').value) $('#obStoreDong').value = '둔산동';
+  $('#obStoreCat').value = ms ? ms.cat : '과일·채소';
+  $('#obStoreAddr').value = ms ? (ms.addr || '').split(' ').slice(1).join(' ') : '';
+  $('#obStoreClose').value = ms ? ms.close : '20:00';
+  $('#obStoreName').classList.remove('invalid');
+  setObStep('owner');
+}
+function completeConsumer(skip){
+  var nick = ($('#obNick').value || '').trim();
+  var phone = ($('#obPhone').value || '').trim();
+  if(!skip && !nick){
+    var msg = $('#obConsumerMsg');
+    msg.hidden = false;
+    msg.textContent = '닉네임을 입력하면 가입이 끝나요. 그냥 둘러보려면 아래 [로그인·가입 없이 바로 둘러보기]를 눌러 주세요.';
+    $('#obNick').classList.add('invalid');
+    $('#obNick').focus();
+    return;
+  }
+  $('#obNick').classList.remove('invalid');
+  if(skip){
+    state.profile = state.profile || {nick:'', dong:obsel.dong, cats:[], phone:''};
+    if(!state.profile.dong) state.profile.dong = obsel.dong;
+    hideOnboard('consumer','skip');
+  }else{
+    state.profile = {nick:nick, dong:obsel.dong, cats:obsel.cats.slice(), phone:phone};
+    if(obsel.cats.length) ui.cat = obsel.cats[0];
+    hideOnboard('consumer','signup');
+    toast(esc(nick)+' 님, '+esc(obsel.dong)+' 마감특가를 모아뒀어요');
+  }
+}
+function completeOwner(){
+  var name = ($('#obStoreName').value || '').trim();
+  if(!name){
+    var msg = $('#obOwnerMsg');
+    msg.hidden = false;
+    msg.textContent = '상호명을 입력해 주세요. 바로 체험하려면 아래 [기존 체험 매장으로 바로 보기]를 눌러 주세요.';
+    $('#obStoreName').classList.add('invalid');
+    $('#obStoreName').focus();
+    return;
+  }
+  $('#obStoreName').classList.remove('invalid');
+  var dong = $('#obStoreDong').value, cat = $('#obStoreCat').value;
+  var tail = ($('#obStoreAddr').value || '').trim();
+  var data = {id:'me', name:name, cat:cat, dist:0.35, angle:308, emoji:catEmoji(cat), addr:dong + (tail ? ' ' + tail : ''), close:$('#obStoreClose').value};
+  var found = false;
+  STORES = STORES.map(function(s){ if(s.id === 'me'){ found = true; return data; } return s; });
+  if(!found) STORES.push(data);
+  state.myStore = data;
+  ui.ownerStore = 'me';
+  hideOnboard('owner','owner-join');
+  renderStoreSelect(); renderPickupOptions(true);
+  toast('‘'+esc(name)+'’ 입점 완료 · 점주 센터에서 첫 상품을 등록해 보세요');
+}
+function ownerDemo(){ ui.ownerStore = 's2'; hideOnboard('owner','owner-demo'); }
+function handleOb(el){
+  var k = el.getAttribute('data-ob');
+  if(k === 'back'){ setObStep('role'); }
+  else if(k === 'dong'){ obsel.dong = el.getAttribute('data-v'); renderObPicks(); }
+  else if(k === 'cat'){
+    var v = el.getAttribute('data-v'), i = obsel.cats.indexOf(v);
+    if(i > -1) obsel.cats.splice(i,1); else obsel.cats.push(v);
+    renderObPicks();
+  }
+  else if(k === 'consumer-done'){ completeConsumer(false); }
+  else if(k === 'consumer-skip'){ completeConsumer(true); }
+  else if(k === 'owner-done'){ completeOwner(); }
+  else if(k === 'owner-skip'){ ownerDemo(); }
 }
 
 /* ================= consumer ================= */
@@ -1461,16 +1721,19 @@ function renderFeed(){
 function renderHomeLive(){
   var within = state.products.filter(inRadius);
   var live = liveProducts(within);
-  $('#liveStoreCount').textContent = storeCountIn(within);
+  var pf = state.profile || {};
+  var dong = pf.dong || '둔산동';
+  $('#liveStoreCount').textContent = storesInRadius().length;
   $('#liveDealCount').textContent = live.length;
   $('#liveRadiusTxt').textContent = ui.radius+'km';
   $('#radiusLabel').textContent = ui.radius+'km';
-  $('#abDong').textContent = '대전 둔산동 · 반경 '+ui.radius+'km';
+  var ld = $('#locDong'); if(ld) ld.textContent = dong;
+  $('#abDong').textContent = pf.nick ? (pf.nick + ' 님 · 대전 ' + dong) : ('대전 '+dong+' · 반경 '+ui.radius+'km');
 }
 function renderHome(){ renderChips(); renderHomeLive(); renderFeed(); renderCounts(); }
 function renderCounts(){
   var ps = $('#promoStoreCount'), pd = $('#promoDealCount');
-  if(ps) ps.textContent = storeCountIn(state.products);
+  if(ps) ps.textContent = STORES.length;
   if(pd) pd.textContent = liveProducts(state.products).length;
 }
 
@@ -1488,26 +1751,27 @@ function renderMap(){
   });
   $('#mapRings').innerHTML = rings;
 
-  var pins = state.products.filter(function(p){ return storeById(p.store).dist <= ui.radius; });
-  var byStore = {};
-  pins.forEach(function(p){
-    if(!byStore[p.store] || disc(p) > disc(byStore[p.store])) byStore[p.store] = p;
-  });
-  $('#mapPins').innerHTML = Object.keys(byStore).map(function(sid){
-    var st = storeById(sid), p = byStore[sid], pos = pinPos(st);
-    return '<g class="pin" data-act="pin" data-store="'+sid+'" transform="translate('+pos.x.toFixed(1)+','+pos.y.toFixed(1)+')">'+
+  var stores = storesInRadius();
+  $('#mapPins').innerHTML = stores.map(function(st){
+    var items = state.products.filter(function(p){ return p.store === st.id; });
+    var best = items.reduce(function(a,p){ return (!a || disc(p) > disc(a)) ? p : a; }, null);
+    var pos = pinPos(st);
+    var tag = best
+      ? '<g class="pin-tag" transform="translate(0,-21)"><rect x="-16" y="-8.5" width="32" height="17" rx="8.5"/><text y="3" text-anchor="middle">'+disc(best)+'%</text></g>'
+      : '<g class="pin-tag" transform="translate(0,-21)"><rect class="new" x="-17" y="-8.5" width="34" height="17" rx="8.5"/><text y="3" text-anchor="middle">NEW</text></g>';
+    return '<g class="pin'+(st.id === 'me' ? ' is-mine' : '')+'" data-act="pin" data-store="'+st.id+'" transform="translate('+pos.x.toFixed(1)+','+pos.y.toFixed(1)+')">'+
       '<circle r="17" fill="rgba(255,255,255,.5)"/>'+
       '<circle class="pin-c" r="14.5"/>'+
       '<text class="pin-emoji" text-anchor="middle" y="5">'+st.emoji+'</text>'+
-      '<g class="pin-tag" transform="translate(0,-21)"><rect x="-16" y="-8.5" width="32" height="17" rx="8.5"/><text y="3" text-anchor="middle">'+disc(p)+'%</text></g>'+
+      tag +
     '</g>';
   }).join('');
 
   $('#mapRadius').innerHTML = [1,2,3].map(function(km){
     return '<button class="chip'+(ui.radius===km?' is-on':'')+'" type="button" data-act="map-radius" data-v="'+km+'">'+km+'km</button>';
   }).join('');
-  var storeCount = Object.keys(byStore).length;
-  var liveCount = pins.filter(function(p){ return p.left>0; }).length;
+  var storeCount = stores.length;
+  var liveCount = state.products.filter(function(p){ return p.left > 0 && inRadius(p); }).length;
   $('#mapSub').textContent = '반경 '+ui.radius+'km · '+storeCount+'개 매장';
   $('#mapCount').textContent = '이 지역 '+liveCount+'개 상품';
 }
@@ -1544,7 +1808,7 @@ function openRadius(){
     html += '<button class="radius-opt'+(ui.radius===km?' is-on':'')+'" type="button" data-act="set-radius" data-v="'+km+'">'+
       '<span class="ro-ic">'+km+'km</span><span class="ro-main"><b>반경 '+km+'km</b><small>도보 '+(km*13)+'분 · 자전거 '+bikeMin(km)+'분 · 상품 '+n+'개</small></span><span class="ro-check">✓</span></button>';
   });
-  html += '<p class="sheet-note">대전 둔산동 기준 예시 위치입니다. 실서비스에서는 GPS로 자동 설정됩니다.</p></div>';
+  html += '<p class="sheet-note">대전 '+esc((state.profile||{}).dong || '둔산동')+' 기준 예시 위치입니다. 실서비스에서는 GPS로 자동 설정됩니다.</p></div>';
   openSheet(html);
 }
 
@@ -1645,13 +1909,13 @@ function openStore(sid){
   var best = items.reduce(function(a,p){ return !a || disc(p)>disc(a) ? p : a; }, null);
   var html = sheetHead(esc(st.name), esc(st.cat)+' · '+st.addr)+'<div class="sheet-body">'+
     '<div class="ss-meta"><span>거리<b>'+st.dist+'km</b></span><span>도보<b>'+walkMin(st.dist)+'분</b></span><span>자전거<b>'+bikeMin(st.dist)+'분</b></span><span>차량<b>'+driveMin(st.dist)+'분</b></span><span>마감<b>'+st.close+'</b></span></div>'+
-    '<div class="ss-list">'+ items.map(function(p){
+    '<div class="ss-list">'+ (items.length ? items.map(function(p){
       var d = disc(p), sold = p.left<=0;
       return '<div class="ss-item"><span class="si-e '+catClass(p.cat)+'">'+p.emoji+'</span>'+
         '<div class="si-m"><b>'+esc(p.name)+'</b><small>정가 '+won(p.orig)+' · 남은 '+p.left+'개</small></div>'+
         '<div class="si-r"><b>'+num(p.sale)+'원</b><small>'+d+'%↓</small></div>'+
         '<button class="reserve" type="button" data-act="reserve" data-id="'+p.id+'"'+(sold?' disabled':'')+'>'+(sold?'품절':'예약')+'</button></div>';
-    }).join('') +'</div>'+
+    }).join('') : '<p class="ss-empty">오늘 등록된 마감 상품이 아직 없어요.<br>점주 센터에서 첫 상품을 올리면 이 매장에도 바로 노출됩니다.</p>') +'</div>'+
     '<p class="sheet-note">'+(best ? '최대 '+disc(best)+'% 할인 · ' : '')+'픽업 시간은 상품마다 달라요. 결제 후 픽업 코드가 발급됩니다.</p>'+
   '</div>';
   openSheet(html);
@@ -1998,7 +2262,7 @@ function renderDash(){
   var m = metrics();
   var d = new Date();
   var within = state.products.filter(inRadius);
-  $('#dashDate').textContent = (d.getMonth()+1)+'월 '+d.getDate()+'일 · 둔산동 반경 '+ui.radius+'km '+storeCountIn(within)+'개 점포 · '+liveProducts(within).length+'개 상품';
+  $('#dashDate').textContent = (d.getMonth()+1)+'월 '+d.getDate()+'일 · 둔산동 반경 '+ui.radius+'km '+storesInRadius().length+'개 점포 · '+liveProducts(within).length+'개 상품';
   $('#kpis').innerHTML =
     '<div class="kpi hero-kpi pulse"><div class="kh"><span class="ki">💰</span>예상 추가 매출</div><div class="kv">'+num(m.extra)+'<small>원</small></div><div class="ks up">마감까지 · 잔여 60% 소진 가정 (시연 예시)</div></div>'+
     '<div class="kpi"><div class="kh"><span class="ki">♻️</span>폐기 절감량</div><div class="kv">'+m.savedKg.toFixed(1)+'<small>kg</small></div><div class="ks">오늘 판매분 · CO₂ '+num(m.savedKg*2.5)+'kg↓ (계수 2.5kg/1kg · 환경부·FAO)</div></div>'+
@@ -2065,7 +2329,7 @@ function openInfo(){
       '<div><b>대표 강선진</b><small>전 카페 매니저 · 더본코리아 슈퍼바이저</small></div>'+
       '<button class="link-btn" type="button" data-act="promo">홍보영상 ▶</button></div>'+
     '<p style="font-size:11px;color:#5E6B65;font-weight:600;line-height:1.7;margin-top:11px">퇴근길 동네마트·정육점·과일가게·빵집·반찬가게의 <b>오늘 남은 신선식품</b>을 마감특가로 연결하고, 반경 1~3km 이웃이 선결제 후 픽업하는 로컬 커머스 플랫폼입니다.</p>'+
-    '<div class="pi-stats"><span><b>'+storeCountIn(state.products)+'</b>개 매장</span><span><b>'+liveProducts(state.products).length+'</b>개 상품</span><span><b>'+storeCountIn(within)+'</b>곳 · 반경 '+ui.radius+'km</span></div>'+
+    '<div class="pi-stats"><span><b>'+STORES.length+'</b>개 매장</span><span><b>'+liveProducts(state.products).length+'</b>개 상품</span><span><b>'+storesInRadius().length+'</b>곳 · 반경 '+ui.radius+'km</span></div>'+
     '<h4>8시마켓이 다른 점</h4>'+
     '<ul><li><b>대학가 한 끼 할인이 아닌 저녁 장바구니</b> — 둔산·탄방 주거·업무지구 3040 가구·직장인을 위한 정육·수산·채소·반찬</li>'+
         '<li><b>AI 가격 결정</b> — 사진 한 장으로 등록하고, 8시 이후 시간이 지날수록 할인율을 자동으로 올립니다</li>'+
@@ -2099,32 +2363,41 @@ function openInfo(){
 /* ================= me sheet ================= */
 function openMe(){
   var live = state.orders.filter(function(o){ return o.status!=='픽업완료'; }).length;
-  var html = sheetHead('내 정보','체험 계정 · 대전 둔산동')+'<div class="sheet-body">'+
+  var pf = state.profile || {};
+  var dong = pf.dong || '둔산동';
+  var sub = pf.nick ? ('간편 가입 · 대전 '+dong) : '게스트(둘러보기) · 대전 '+dong;
+  var html = sheetHead('내 정보', sub)+'<div class="sheet-body">'+
     '<div class="info-owner" style="margin-top:2px"><img src="owner-seonjin.jpg" alt="8시마켓 대표 강선진">'+
       '<div><b>8시마켓 · 대표 강선진</b><small>오늘 남은 좋은 상품, 동네에서 득템</small></div>'+
       '<button class="link-btn" type="button" data-act="promo">홍보영상 ▶</button></div>'+
     '<div class="me-role" style="margin-top:9px"><div><b>'+(state.role==='owner'?'점주 모드':'할인 장보기 모드')+'</b><small>상·하단 메뉴에서 언제든 전환할 수 있어요</small></div><span>'+ (state.role==='owner'?'🏪':'🛒') +'</span></div>'+
     '<div class="me-rows">'+
+      '<div><span>닉네임</span><b>'+ (pf.nick ? esc(pf.nick) : '게스트') +'</b></div>'+
+      '<div><span>내 동네</span><b>대전 '+esc(dong)+'</b></div>'+
+      '<div><span>관심 품목</span><b>'+ (pf.cats && pf.cats.length ? esc(pf.cats.join(' · ')) : '전체') +'</b></div>'+
+      (state.myStore ? '<div><span>내 매장</span><b>'+esc(state.myStore.name)+' · '+esc(state.myStore.close)+' 마감</b></div>' : '')+
       '<div><span>찜한 상품</span><b>'+state.fav.length+'개</b></div>'+
       '<div><span>진행 중 예약</span><b>'+live+'건</b></div>'+
       '<div><span>보고 있는 반경</span><b>'+ui.radius+'km</b></div>'+
     '</div>'+
     '<div class="sheet-actions">'+
       '<button class="btn btn-ghost btn-block" type="button" data-act="promo">🎬 8시마켓 홍보영상 & 브랜드 소개</button>'+
-      '<button class="btn btn-ghost btn-block" type="button" data-act="restart">역할 다시 선택</button>'+
+      '<button class="btn btn-ghost btn-block" type="button" data-act="restart">↺ 첫 화면(역할 선택) 다시 보기</button>'+
       '<button class="btn btn-ghost btn-block" type="button" data-act="info">서비스 소개 보기</button>'+
       '<button class="btn btn-ghost btn-block" type="button" data-act="reset">데모 데이터 초기화</button>'+
     '</div>'+
-    '<p class="sheet-note">로그인·결제 없이 체험하는 시제품입니다.</p></div>';
+    '<p class="sheet-note">로그인·결제 없이 체험하는 시제품입니다. 입력한 정보는 이 브라우저에만 저장됩니다.</p></div>';
   openSheet(html);
 }
 
 /* ================= actions ================= */
 function resetDemo(){
+  STORES = STORES.filter(function(s){ return s.id !== 'me'; });
   state = seed();
   state.onboarded = true; state.role = 'consumer';
   save();
-  ui.radius = 2; ui.deal = 0; ui.cat = '전체'; ui.orderFilter = 'all';
+  ui.radius = 2; ui.deal = 0; ui.cat = '전체'; ui.orderFilter = 'all'; ui.ownerStore = 's2';
+  obsel = {dong:'둔산동', cats:[]};
   $$('#orderSeg button').forEach(function(b){ b.classList.toggle('is-on', b.getAttribute('data-of')==='all'); });
   renderHome(); renderMap(); renderOrders(); renderOwner(); renderDash();
   setTab('home');
@@ -2144,7 +2417,7 @@ function handleAction(el){
   else if(act==='radius'){ openRadius(); }
   else if(act==='set-radius'){ ui.radius = parseInt(el.getAttribute('data-v'),10); renderHome(); renderMap(); closeSheet(); toast('반경 '+ui.radius+'km로 설정했어요'); }
   else if(act==='map-radius'){ ui.radius = parseInt(el.getAttribute('data-v'),10); renderMap(); }
-  else if(act==='recenter'){ toast('내 위치(대전 둔산동) 기준으로 보고 있어요'); }
+  else if(act==='recenter'){ toast('내 위치(대전 '+((state.profile||{}).dong || '둔산동')+') 기준으로 보고 있어요'); }
   else if(act==='pin'){ openStore(el.getAttribute('data-store')); }
   else if(act==='close-sheet'){ closeSheet(); }
   else if(act==='qty'){ changeQty(parseInt(el.getAttribute('data-v'),10)); }
@@ -2190,6 +2463,8 @@ function wire(){
       $('#obNext').disabled = false;
       return;
     }
+    var obEl = e.target.closest('[data-ob]');
+    if(obEl){ handleOb(obEl); return; }
     var actEl = e.target.closest('[data-act]');
     if(actEl){ handleAction(actEl); return; }
     var tabBtn = e.target.closest('.tab-btn');
@@ -2201,14 +2476,20 @@ function wire(){
       renderOrders();
     }
   });
-  $('#obNext').addEventListener('click', function(){
-    var sel = document.querySelector('.role.is-sel');
-    if(!sel) return;
-    hideOnboard(sel.getAttribute('data-role'), false);
-  });
+  $('#obNext').addEventListener('click', function(){ obNextStep(); });
   $('#obSkip').addEventListener('click', function(){
     var sel = document.querySelector('.role.is-sel');
-    hideOnboard(sel ? sel.getAttribute('data-role') : 'consumer', true);
+    var role = sel ? sel.getAttribute('data-role') : 'consumer';
+    hideOnboard(role, role === 'owner' ? 'owner-demo' : 'skip');
+  });
+  ['obNick','obStoreName'].forEach(function(id){
+    var el = document.getElementById(id);
+    if(!el) return;
+    el.addEventListener('keydown', function(e){
+      if(e.key !== 'Enter') return;
+      e.preventDefault();
+      if(id === 'obNick') completeConsumer(false); else completeOwner();
+    });
   });
   $('#scrim').addEventListener('click', closeSheet);
   $('#promoModal').addEventListener('click', function(e){ if(e.target === this) closePromo(); });
@@ -2252,13 +2533,9 @@ function boot(){
   renderMap();
   $('#sbTime').textContent = nowTime();
   $('#homeNote').innerHTML = '<div class="home-note-card"><b>동네 점포의 오늘을 살리는 장보기</b><p>8시마켓은 대전 둔산·탄방 1호 거점에서 시작해, 당근처럼 전국 동네 생활권으로 넓혀가는 퇴근길 저녁 장바구니 플랫폼입니다. 동네 점포의 오늘 남은 신선식품을 이웃과 연결해, 폐기는 줄이고 저녁 장보기는 가볍게.</p><button type="button" class="link-btn" data-act="info">8시마켓 소개 보기 ›</button></div>';
-  if(!state.onboarded){
-    showOnboard();
-  }else{
-    $('#onboard').classList.add('is-hidden');
-    $('#onboard').setAttribute('aria-hidden','true');
-    setTab(state.role === 'owner' ? 'owner' : ui.tab);
-  }
+  /* 링크를 새로 열 때마다 항상 첫 화면(역할 선택)부터 — 저장된 상품·찜·예약·가입 정보는 그대로 */
+  showOnboard();
+  setTab(state.role === 'owner' ? 'owner' : 'home');
   wire();
   if('serviceWorker' in navigator && location.protocol === 'https:'){
     try{ navigator.serviceWorker.register('sw.js').catch(function(){}); }catch(e){}
