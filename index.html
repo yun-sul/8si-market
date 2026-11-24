@@ -903,6 +903,17 @@ h1,h2,h3,h4,p{margin:0}
 .pick.soon:hover{border-color:var(--brand-mid);color:var(--brand-d);background:#F3FBF6}
 .pick.soon i{font-style:normal;font-size:9px;margin-left:3px;opacity:.75}
 .soon-note{font-size:9.5px;font-weight:700;color:#6B7872;background:#F6F9F6;border:1px dashed #E1E9E2;border-radius:10px;padding:7px 9px;line-height:1.6;margin-top:2px}
+/* ===== v3.3 · 오픈 예정 지역(시연용 예시) 표기 ===== */
+.demo-banner{display:flex;align-items:center;gap:7px;margin-top:9px;border:1px dashed #E9C98B;background:linear-gradient(135deg,#FFFCF3,#FDF2DD);border-radius:11px;padding:8px 9px}
+.demo-banner .db-ic{flex:0 0 auto;width:25px;height:25px;border-radius:8px;background:#FBE9C4;display:grid;place-items:center;font-size:12px}
+.demo-banner .db-tx{flex:1;min-width:0}
+.demo-banner b{display:block;font-size:10.5px;font-weight:900;color:#8A5A12;letter-spacing:-.03em;line-height:1.35}
+.demo-banner small{display:block;font-size:9px;font-weight:700;color:#A67B34;line-height:1.4;margin-top:1px}
+.demo-banner .db-go{flex:0 0 auto;border:0;background:#8A5A12;color:#fff;font-family:inherit;border-radius:999px;padding:7px 9px;font-size:9px;font-weight:900;letter-spacing:-.03em;white-space:nowrap;box-shadow:0 8px 14px -12px rgba(138,90,18,.9)}
+.demo-banner .db-go:hover{background:#6F470C}
+.demo-tag{position:absolute;left:10px;bottom:9px;z-index:2;font-size:8.5px;font-weight:900;color:#8A5A12;background:rgba(255,252,243,.95);border:1px solid #EBD3A0;border-radius:6px;padding:2px 5px;letter-spacing:-.02em}
+.demo-mini{display:inline-block;flex:0 0 auto;font-size:8px;font-weight:900;color:#9A6A18;background:#FDF2D9;border:1px solid #EBD3A0;border-radius:4px;padding:0 3px;margin-left:3px;letter-spacing:0;line-height:1.5}
+.map-demo{margin-top:7px;display:inline-flex;align-items:center;gap:4px;font-size:9.5px;font-weight:900;color:#8A5A12;background:rgba(255,252,243,.96);border:1px dashed #E9C98B;border-radius:999px;padding:4px 9px;letter-spacing:-.02em;box-shadow:0 6px 14px -12px rgba(138,90,18,.8)}
 .dh-demo{display:inline-flex;align-items:center;gap:3px;margin-left:5px;background:rgba(255,255,255,.16);color:#FFE8C9;font-size:8.5px;font-weight:900;padding:3px 6px;border-radius:5px;vertical-align:1px}
 .dash-note{margin:8px 16px 0;font-size:8.5px;color:var(--muted2);font-weight:600;line-height:1.6}
 .dash-note b{color:#7C8A83;font-weight:800}
@@ -1125,6 +1136,15 @@ h1,h2,h3,h4,p{margin:0}
                 <span class="pulse"></span>
                 <span>지금 내 반경 <b id="liveRadiusTxt">2km</b> 안 · <b id="liveStoreCount">8</b>개 매장 · <b id="liveDealCount">15</b>개 상품 마감할인 중</span>
               </div>
+              <!-- v3.3 · 오픈 예정 지역(시연용 예시) 안내 배너 -->
+              <div class="demo-banner" id="demoBanner" hidden>
+                <span class="db-ic" aria-hidden="true">🔔</span>
+                <div class="db-tx">
+                  <b id="dbTitle">오픈 예정 지역 · 시연용 예시 매장입니다</b>
+                  <small id="dbSub">사전 입장·오픈 알림 모집 중</small>
+                </div>
+                <button class="db-go" type="button" data-act="soon-join">사전 오픈 알림 신청</button>
+              </div>
               <div class="chip-wrap">
                 <div class="chip-row">
                   <div class="chips" id="dealChips" role="group" aria-label="할인율 필터"></div>
@@ -1217,6 +1237,7 @@ h1,h2,h3,h4,p{margin:0}
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 5 7 7-7 7"/></svg>
                 </button>
               </div>
+              <div class="map-demo" id="mapDemoTag" hidden>🔔 오픈 예정 지역 · 시연용 예시 매장</div>
               <div class="map-radius" id="mapRadius" role="group" aria-label="반경"></div>
             </div>
             <div class="map-count" id="mapCount">이 지역 15개 상품</div>
@@ -1699,12 +1720,85 @@ var REGIONS = [
    labels:[{x:26,y:78,t:'신현동'},{x:140,y:52,t:'태재로'},{x:280,y:518,t:'태전동'},{x:140,y:666,t:'경안동'},{x:282,y:646,t:'경안천'}]}
 ];
 
-/* ===== v3.2 · 추가 확장 지역 (오픈 예정 · 사전 요청 가능) — 매장·상품은 아직 없고 안내만 ===== */
-var SOON_REGIONS = [
-  {group:'서울',     areas:['강남','송파','마포','영등포']},
-  {group:'경기',     areas:['성남 분당','수원 영통','용인 수지','화성 동탄']},
-  {group:'충청',     areas:['세종','청주','천안']},
-  {group:'영남·호남', areas:['부산 해운대','대구 수성','광주 상무']}
+/* ===== v3.3 · 전국 23개 확장 권역 (오픈 예정 · 시연용 예시 매장) =====
+   ※ 각 권역의 매장은 지도 검색으로 확인한 실제 동네 점포(상호·주소)를 참고해 넣은 '시연용 예시'이며,
+     ㈜8시마켓의 실제 제휴·입점 매장이 아닙니다. 사전 입점·오픈 알림 모집 중입니다.
+   st 튜플: [상호, 업종, 이모지, 주소, 거리km, 방위각, 마감시간]
+   dl 튜플: [상품명, 업종, 정가, 특가, 이모지, 매장번호, 픽업창 0~2, 남은수량, 총수량, 무게kg] */
+var EXPANDED = [
+  {id:'gn', g:'서울', name:'서울 강남', dongs:['역삼동','논현동'], road:'테헤란로', land:'선릉공원',
+   st:[['강남청과','과일·채소','🧺','역삼동 759 · 역삼로 310',0.4,25,'21:00'], ['논현축산물판매장','정육·수산','🥩','논현동 27-3 · 학동로4길 27',0.7,145,'20:00'], ['베이커스트 브라운','빵·반찬','🥖','역삼동 21 · 강남대로102길 21',1.1,265,'21:00']],
+   dl:[['토마토 1kg','과일·채소',6900,2900,'🍅',0,2,3,12,1.0], ['한돈 삼겹살 600g','정육·수산',19900,11900,'🥩',1,2,5,15,0.6], ['바나나 1송이','과일·채소',4500,2200,'🍌',0,1,6,20,0.9], ['소금빵 4개','빵·반찬',7200,3900,'🥖',2,1,4,12,0.24]]},
+  {id:'sp', g:'서울', name:'서울 송파', dongs:['송파동','석촌동'], road:'송파대로', land:'석촌호수',
+   st:[['착한정육점','정육·수산','🥩','석촌동 179-4',0.5,30,'20:00'], ['흥부네싱싱과일청과','과일·채소','🍊','석촌동 254-1 102호',0.8,140,'21:00'], ['오쿠쿠베이커리','빵·반찬','🥐','송파동 459 · 백제고분로',1.0,260,'20:00']],
+   dl:[['삼겹살 500g','정육·수산',16900,9900,'🥓',0,2,4,12,0.5], ['샤인머스캣 2송이','과일·채소',18900,9900,'🍇',1,2,3,8,0.8], ['국산 딸기 500g','과일·채소',13900,7900,'🍓',1,1,4,8,0.5], ['크루아상 3개','빵·반찬',7500,4500,'🥐',2,1,5,12,0.2]]},
+  {id:'mp', g:'서울', name:'서울 마포', dongs:['망원동','성산동'], road:'월드컵로', land:'망원시장',
+   st:[['망원축산','정육·수산','🥩','망원동 47 · 망원로8길',0.4,20,'20:00'], ['희망청과','과일·채소','🍈','망원동 412-53',0.6,150,'21:00'], ['어글리베이커리','빵·반찬','🥖','망원동 73 · 월드컵로13길',0.9,270,'20:00']],
+   dl:[['목살 500g','정육·수산',15900,9900,'🥩',0,2,5,12,0.5], ['제주 감귤 1.5kg','과일·채소',12900,6900,'🍊',1,1,6,10,1.5], ['대추방울토마토 1kg','과일·채소',8900,4900,'🍅',1,2,4,10,1.0], ['통밀 식빵 1근','빵·반찬',6500,3900,'🍞',2,1,5,12,0.4]]},
+  {id:'yd', g:'서울', name:'서울 영등포', dongs:['당산동','양평동'], road:'당산로', land:'선유도공원',
+   st:[['하나로축산 당산점','정육·수산','🥩','당산동 3 · 당산로44길',0.5,25,'20:00'], ['가나안청과','과일·채소','🍎','당산동1가 191-11',0.7,145,'21:00'], ['바이웨이 베이커스','빵·반찬','🥐','당산동 16 · 당산로27길',0.9,265,'21:00']],
+   dl:[['한우 국거리 500g','정육·수산',24900,14900,'🍖',0,2,3,8,0.5], ['사과 5개','과일·채소',9900,5900,'🍎',1,1,6,14,1.2], ['손질 오징어 2마리','정육·수산',8900,4900,'🦑',0,1,4,10,0.6], ['버터 스콘 3개','빵·반찬',8400,4900,'🍪',2,2,4,8,0.3]]},
+  {id:'nw', g:'서울', name:'서울 노원', dongs:['상계동','중계동'], road:'동일로', land:'상계중앙시장',
+   st:[['스마일정육점','정육·수산','🍖','상계동 14 · 한글비석로52길',0.5,35,'20:00'], ['청춘청과 상계역점','과일·채소','🍎','상계동 34 · 한글비석로22길',0.6,150,'21:00'], ['딥크루아상','빵·반찬','🥐','상계동 21 · 동일로242나길',1.0,260,'20:00']],
+   dl:[['돼지 앞다리 600g','정육·수산',9900,5900,'🍖',0,2,6,14,0.6], ['바나나 1송이','과일·채소',4500,2400,'🍌',1,1,7,20,0.9], ['깻잎 100g','과일·채소',2500,1400,'🌿',1,2,5,15,0.1], ['딥크루아상 2개','빵·반찬',8000,4400,'🥐',2,1,4,8,0.16]]},
+  {id:'gw', g:'서울', name:'서울 관악', dongs:['신림동','봉천동'], road:'신림로', land:'관악산',
+   st:[['친절정육점','정육·수산','🥩','신림동 35 · 신림로11길',0.4,20,'20:00'], ['동우청과','과일·채소','🍊','신림동 39 · 신림로11길',0.5,150,'22:00'], ['삐에스몽테제빵소','빵·반찬','🥖','신림동 91 · 신림로',0.8,265,'20:00']],
+   dl:[['국내산 닭다리 1kg','정육·수산',9900,5900,'🍗',0,2,5,12,1.0], ['제주 감귤 1.5kg','과일·채소',12800,6400,'🍊',1,1,6,10,1.5], ['친환경 상추 3종','과일·채소',4500,2200,'🥬',1,2,6,12,0.4], ['바스크 치즈케이크','빵·반찬',8500,4900,'🍰',2,1,3,6,0.2]]},
+  /* --- 인천·경기 --- */
+  {id:'sd', g:'인천·경기', name:'인천 송도', dongs:['송도동','연수동'], road:'컨벤시아대로', land:'센트럴파크',
+   st:[['인천정육점','정육·수산','🥩','송도동 232 · 센트럴로',0.6,20,'20:00'], ['오늘청과','과일·채소','🍇','송도동 350 · 랜드마크로',0.8,145,'21:00'], ['안스베이커리 송도점','빵·반찬','🥐','송도동 160 · 센트럴로',1.1,265,'21:00']],
+   dl:[['한우 등심 300g','정육·수산',39000,25000,'🥩',0,2,2,6,0.3], ['샤인머스캣 2송이','과일·채소',18900,10900,'🍇',1,2,3,8,0.8], ['손질 새우 500g','정육·수산',15900,8900,'🦐',0,1,4,8,0.5], ['안스 소금빵 4개','빵·반찬',8000,4500,'🥐',2,1,5,12,0.24]]},
+  {id:'bd', g:'인천·경기', name:'성남 분당', dongs:['정자동','서현동'], road:'정자일로', land:'정자동 카페거리',
+   st:[['고기대장군정육점','정육·수산','🥩','정자동 46-1 종합상가 102호',0.5,30,'20:00'], ['푸른청과','과일·채소','🍈','정자동 4 · 내정로113번길',0.7,140,'21:00'], ['몽스 베이커리','빵·반찬','🥖','정자동 168 · 불정로',0.9,260,'20:00']],
+   dl:[['한돈 삼겹살 600g','정육·수산',19900,12900,'🥩',0,2,4,12,0.6], ['성주 참외 3개','과일·채소',9900,5900,'🍈',1,1,4,10,0.9], ['대파 1단','과일·채소',2980,1490,'🧅',1,2,5,12,0.3], ['몽스 크루아상 3개','빵·반찬',8500,4900,'🥐',2,1,4,10,0.2]]},
+  {id:'yt', g:'인천·경기', name:'수원 영통', dongs:['영통동','망포동'], road:'봉영로', land:'영통공원',
+   st:[['우리동네정육점','정육·수산','🍖','영통동 46 · 덕영대로1555번길',0.5,25,'20:00'], ['한샘청과야채','과일·채소','🍎','영통동 87 · 청명로',0.7,150,'21:00'], ['에덴베이커리','빵·반찬','🥐','영통동 1540 · 봉영로',1.0,265,'21:00']],
+   dl:[['한돈 목살 500g','정육·수산',15900,9900,'🥩',0,2,4,10,0.5], ['국내산 딸기 500g','과일·채소',13900,7900,'🍓',1,1,4,8,0.5], ['애호박 3개','과일·채소',3980,1990,'🥒',1,2,6,12,0.6], ['통밀 식빵 1근','빵·반찬',6500,3900,'🍞',2,1,5,12,0.4]]},
+  {id:'sj', g:'인천·경기', name:'용인 수지', dongs:['풍덕천동','상현동'], road:'수지로', land:'수지구청',
+   st:[['한우마당정육','정육·수산','🥩','풍덕천동 19 · 풍덕천로140번길',0.5,35,'20:00'], ['싱싱청과','과일·채소','🍊','풍덕천동 58 · 대지로',0.8,145,'21:00'], ['본누벨 베이커리','빵·반찬','🥖','풍덕천동 20 · 수지로',1.0,260,'21:00']],
+   dl:[['한우 불고기 400g','정육·수산',21900,12900,'🥩',0,2,3,8,0.4], ['제주 감귤 1.5kg','과일·채소',12800,6900,'🍊',1,1,5,10,1.5], ['방울토마토 1kg','과일·채소',8900,4900,'🍅',1,2,4,10,1.0], ['본누벨 바게트','빵·반찬',5500,3200,'🥖',2,1,4,8,0.35]]},
+  {id:'dt', g:'인천·경기', name:'화성 동탄', dongs:['반송동','동탄1동'], road:'동탄반석로', land:'동탄호수공원',
+   st:[['그리누리정육점','정육·수산','🥩','반송동 88-6 세림프라자 110호',0.5,20,'20:00'], ['서울청과 동탄점','과일·채소','🍇','반송동 63 · 동탄광역환승로',0.9,150,'21:00'], ['봄밀베이커리','빵·반찬','🥐','반송동 157-14',1.1,265,'20:00']],
+   dl:[['국내산 삼겹살 500g','정육·수산',16900,9900,'🥩',0,2,5,12,0.5], ['샤인머스캣 2송이','과일·채소',18900,10900,'🍇',1,2,3,8,0.8], ['계란 15구','동네마트',8900,4900,'🥚',1,1,5,10,0.9], ['봄밀 소금빵 4개','빵·반찬',7600,4200,'🥐',2,1,4,10,0.24]]},
+  {id:'il', g:'인천·경기', name:'고양 일산', dongs:['장항동','정발산동'], road:'중앙로', land:'정발산공원',
+   st:[['착한정육점','정육·수산','🍖','장항동 895-1 우신프라자 109호',0.5,30,'20:00'], ['한국청과','과일·채소','🍎','장항동 731-2',0.7,145,'21:00'], ['폼드팡 베이커리','빵·반찬','🥐','장항동 38 · 정발산로',0.9,265,'21:00']],
+   dl:[['돼지 목살 600g','정육·수산',12900,7900,'🥓',0,2,5,12,0.6], ['사과 5개','과일·채소',9900,5900,'🍎',1,1,6,14,1.2], ['국산 콩나물 500g','동네마트',3500,1900,'🌱',1,2,6,12,0.5], ['폼드팡 크루아상 3개','빵·반찬',7900,4500,'🥐',2,1,4,10,0.2]]},
+  /* --- 충청·강원 --- */
+  {id:'sej', g:'충청·강원', name:'세종', dongs:['새롬동','나성동'], road:'새롬중앙로', land:'세종호수공원',
+   st:[['행복한정육점','정육·수산','🥩','새롬동 62-15',0.4,25,'20:00'], ['세종로컬푸드 싱싱장터','과일·채소','🧺','새롬동 566',0.6,150,'21:00'], ['화이트리에 세종점','빵·반찬','🥐','새롬동 64 · 새롬중앙로',0.8,265,'21:00']],
+   dl:[['한우 국거리 500g','정육·수산',24900,14900,'🍖',0,2,3,8,0.5], ['애호박 3개','과일·채소',3980,1990,'🥒',1,1,6,12,0.6], ['친환경 상추 3종','과일·채소',4500,2200,'🥬',1,2,6,12,0.4], ['화이트리에 식빵','빵·반찬',6200,3700,'🍞',2,1,5,10,0.4]]},
+  {id:'cj', g:'충청·강원', name:'청주', dongs:['율량동','사천동'], road:'1순환로', land:'무심천',
+   st:[['락원생불고기정육점','정육·수산','🥩','율량동 731-1',0.6,35,'20:00'], ['싱싱청과 율량점','과일·채소','🍅','율량동 36 · 율량로',0.7,145,'21:00'], ['스톤폴스','빵·반찬','🍪','율량동 19-33 · 1순환로1896번길',1.0,260,'20:00']],
+   dl:[['한돈 삼겹살 600g','정육·수산',19900,11900,'🥩',0,2,4,12,0.6], ['대추방울토마토 1kg','과일·채소',8900,4900,'🍅',1,1,5,10,1.0], ['대파 1단','과일·채소',2980,1490,'🧅',1,2,6,12,0.3], ['스톤폴스 스콘 3개','빵·반찬',8700,4900,'🍪',2,1,4,8,0.3]]},
+  {id:'ca', g:'충청·강원', name:'천안', dongs:['불당동','신부동'], road:'불당대로', land:'불당중앙공원',
+   st:[['현대정육점','정육·수산','🥩','불당동 32-1 · 불당31길',0.5,25,'20:00'], ['소백산청과본점','과일·채소','🍈','불당동 846',0.7,150,'21:00'], ['뚜쥬루과자점 거북이점','빵·반찬','🥖','불당동 69-22 · 봉서산로',1.1,265,'21:00']],
+   dl:[['한우 등심 300g','정육·수산',39000,24000,'🥩',0,2,2,6,0.3], ['성주 참외 3개','과일·채소',9900,5900,'🍈',1,1,4,10,0.9], ['깻잎 100g','과일·채소',2500,1400,'🌿',1,2,5,15,0.1], ['뚜쥬루 소금빵 4개','빵·반찬',8200,4500,'🥐',2,1,5,12,0.24]]},
+  {id:'cc', g:'충청·강원', name:'춘천', dongs:['퇴계동','석사동'], road:'김유정로', land:'의암호',
+   st:[['미미축산','정육·수산','🥩','퇴계동 192-20 · 퇴계로',0.5,30,'20:00'], ['베리베리청과','과일·채소','🍓','퇴계동 133 · 퇴계로',0.6,145,'21:00'], ['블랑제리 춘천','빵·반찬','🥖','퇴계동 1852-5 · 김유정로',0.9,265,'20:00']],
+   dl:[['한돈 앞다리 600g','정육·수산',9900,5900,'🍖',0,2,5,12,0.6], ['국내산 딸기 500g','과일·채소',13900,7900,'🍓',1,1,4,8,0.5], ['감자 2kg','과일·채소',7900,4500,'🥔',1,2,5,10,2.0], ['블랑제리 바게트','빵·반찬',5800,3400,'🥖',2,1,4,8,0.35]]},
+  /* --- 영남 --- */
+  {id:'hu', g:'영남', name:'부산 해운대', dongs:['우동','중동'], road:'해운대로', land:'해운대해수욕장',
+   st:[['우리동네참치정육점','정육·수산','🐟','우동 634-2',0.5,20,'20:00'], ['88청과','과일·채소','🍊','우동 977 대우마리나 116호',0.7,145,'21:00'], ['스탠다드브레드 해운대','빵·반찬','🍞','우동 571 · 해운대로',1.0,265,'20:00']],
+   dl:[['손질 광어 1마리','정육·수산',25900,15900,'🐟',0,2,2,6,1.2], ['제주 감귤 1.5kg','과일·채소',12900,6900,'🍊',1,1,5,10,1.5], ['국산 새우젓 500g','정육·수산',12900,7900,'🦐',0,1,4,8,0.5], ['스탠다드브레드 식빵','빵·반찬',7800,4500,'🍞',2,1,5,10,0.4]]},
+  {id:'sm', g:'영남', name:'부산 서면', dongs:['부전동','전포동'], road:'중앙대로', land:'부전시장',
+   st:[['부산고기백화점','정육·수산','🥩','부전동 395-1',0.4,30,'20:00'], ['부전시장청과','과일·채소','🍎','부전동 262-2',0.6,150,'21:00'], ['어퍼이스트 베이커리','빵·반찬','🥐','부전동 62-14 · 서전로46번길',1.0,260,'20:00']],
+   dl:[['한돈 삼겹살 600g','정육·수산',19900,11900,'🥩',0,2,5,14,0.6], ['바나나 1송이','과일·채소',4500,2200,'🍌',1,1,7,20,0.9], ['사과 5개','과일·채소',9900,5900,'🍎',1,2,6,14,1.2], ['어퍼이스트 크루아상 3개','빵·반찬',8800,4900,'🥐',2,1,4,10,0.2]]},
+  {id:'ds', g:'영남', name:'대구 수성', dongs:['범어동','수성동'], road:'달구벌대로', land:'수성못',
+   st:[['영진축산','정육·수산','🥩','범어동 22 · 범어로18길',0.5,25,'20:00'], ['그루청과','과일·채소','🍇','범어동 2 · 신천동로84길',0.7,145,'21:00'], ['모리베이커리','빵·반찬','🍰','범어동 93 · 상록로11길',0.9,265,'20:00']],
+   dl:[['한우 불고기 400g','정육·수산',21900,12900,'🥩',0,2,3,8,0.4], ['샤인머스캣 2송이','과일·채소',18900,10900,'🍇',1,2,3,8,0.8], ['국내산 닭다리 1kg','정육·수산',9900,5900,'🍗',0,1,5,12,1.0], ['모리 바스크 치즈케이크','빵·반찬',8500,4900,'🍰',2,1,3,6,0.2]]},
+  {id:'us', g:'영남', name:'울산 삼산', dongs:['삼산동','달동'], road:'삼산로', land:'삼산중앙공원',
+   st:[['대복축산 삼산지점','정육·수산','🍖','삼산동 186-1 · 화합로',0.5,35,'20:00'], ['울산청과','과일·채소','🍊','삼산동 1623-10',0.7,150,'21:00'], ['밀리언하우스','빵·반찬','🥐','삼산동 88 · 삼산중로',0.9,260,'20:00']],
+   dl:[['돼지 목살 600g','정육·수산',12900,7900,'🥓',0,2,5,12,0.6], ['제주 감귤 1.5kg','과일·채소',12800,6400,'🍊',1,1,6,10,1.5], ['애호박 3개','과일·채소',3980,1990,'🥒',1,2,6,12,0.6], ['밀리언하우스 소금빵 4개','빵·반찬',7800,4400,'🥐',2,1,4,10,0.24]]},
+  /* --- 호남·제주 --- */
+  {id:'gs', g:'호남·제주', name:'광주 상무', dongs:['치평동','상무동'], road:'상무중앙로', land:'상무시민공원',
+   st:[['상무한우마트','정육·수산','🥩','치평동 112 · 치평로',0.5,20,'20:00'], ['호남청과 직판장','과일·채소','🍈','치평동 77 · 치평로',0.6,145,'21:00'], ['박종현베이커리','빵·반찬','🥖','치평동 114 · 상무중앙로',0.8,265,'20:00']],
+   dl:[['한우 등심 300g','정육·수산',39000,25000,'🥩',0,2,2,6,0.3], ['성주 참외 3개','과일·채소',9900,5900,'🍈',1,1,4,10,0.9], ['국산 콩나물 500g','동네마트',3500,1900,'🌱',1,2,6,12,0.5], ['박종현 바게트','빵·반찬',5800,3400,'🥖',2,1,4,8,0.35]]},
+  {id:'jj', g:'호남·제주', name:'전주', dongs:['효자동','서신동'], road:'홍산로', land:'전주천',
+   st:[['정다운축산','정육·수산','🥩','효자동 87 · 호암로',0.5,30,'20:00'], ['아름청과','과일·채소','🍅','효자동 203-4',0.6,150,'21:00'], ['네잎클로버','빵·반찬','🍪','효자동 23-3 · 홍산북로',0.9,265,'20:00']],
+   dl:[['한돈 삼겹살 600g','정육·수산',19900,11900,'🥩',0,2,4,12,0.6], ['대추방울토마토 1kg','과일·채소',8900,4900,'🍅',1,1,5,10,1.0], ['깻잎 100g','과일·채소',2500,1400,'🌿',1,2,5,15,0.1], ['네잎클로버 스콘 3개','빵·반찬',8600,4900,'🍪',2,1,4,8,0.3]]},
+  {id:'jeju', g:'호남·제주', name:'제주 연동', dongs:['연동','노형동'], road:'신대로', land:'한라수목원',
+   st:[['제원식육점','정육·수산','🥩','연동 252-57',0.5,25,'20:00'], ['경인청과','과일·채소','🍊','연동 2396 · 신대로15길',0.6,145,'21:00'], ['아라파파 베이커리','빵·반찬','🥐','연동 2 · 국기로3길',1.0,265,'21:00']],
+   dl:[['제주 흑돼지 목살 500g','정육·수산',18900,11900,'🥩',0,2,4,10,0.5], ['제주 감귤 3kg','과일·채소',18900,9900,'🍊',1,1,6,10,3.0], ['한라봉 2kg','과일·채소',19900,11900,'🍋',1,2,4,8,2.0], ['아라파파 소금빵 4개','빵·반찬',8000,4500,'🥐',2,1,5,12,0.24]]},
 ];
 
 var STORES = [
@@ -1745,6 +1839,37 @@ var STORES = [
   {id:'g20',region:'gj', name:'루트플랜트',       cat:'빵·반찬', dist:2.8, angle:250, emoji:'🌿', addr:'능평동 688-1',        close:'18:00', x:31.9,  y:414.4},
   {id:'g21',region:'gj', name:'타이틀 카페추자리',cat:'빵·반찬', dist:2.9, angle:285, emoji:'🍰', addr:'추자동 399-1',        close:'20:00', x:21.3,  y:308.5}
 ];
+
+/* ===== v3.3 · 확장 권역 → 권역(REGIONS)·매장(STORES) 자동 생성 =====
+   EXPANDED 한 표에서 권역·매장·상품을 만들어, 파일럿 2개 권역 데이터는 그대로 두고
+   전국 23개 오픈 예정 권역을 같은 화면(홈 피드·지도·카테고리·예약)으로 바로 체험하게 한다. */
+(function buildExpanded(){
+  EXPANDED.forEach(function(r){
+    if(regionById(r.id).id === r.id) return;
+    REGIONS.push({
+      id:r.id, name:r.name, dongs:r.dongs, demo:true, group:r.g,
+      labels:[{x:26,y:78,t:r.dongs[0]},{x:150,y:52,t:r.road},{x:282,y:518,t:r.land},{x:150,y:666,t:(r.dongs[1]||r.dongs[0])}]
+    });
+    r.st.forEach(function(s,i){
+      STORES.push({id:r.id+'-s'+(i+1), region:r.id, name:s[0], cat:s[1], dist:s[4], angle:s[5], emoji:s[2], addr:s[3], close:s[6]});
+    });
+  });
+})();
+function expandedProducts(){
+  var out = [];
+  EXPANDED.forEach(function(r){
+    r.dl.forEach(function(d,i){
+      var st = r.st[d[5]];
+      out.push({id:r.id+'-p'+(i+1), name:d[0], store:r.id+'-s'+(d[5]+1), cat:d[1], orig:d[2], sale:d[3],
+                total:d[8], left:d[7], weight:d[9], pickup:pickupWindows(st[6])[d[6]], emoji:d[4]});
+    });
+  });
+  return out;
+}
+function isDemoRegion(id){ var rg = regionById(id); return !!(rg && rg.demo && rg.id === id); }
+function demoStore(st){ return !!st && isDemoRegion(storeRegion(st)); }
+function demoCount(){ return EXPANDED.length; }
+function pilotCount(){ return REGIONS.filter(function(r){ return !r.demo; }).length; }
 
 function seedProducts(){
   return [
@@ -1810,7 +1935,7 @@ function seedProducts(){
     {id:'g38', name:'브라우니',                 store:'g20',cat:'빵·반찬',  orig:6500,  sale:3700,  total:6,  left:3,  weight:0.15,pickup:'16:00~18:00', emoji:'🍫'},
     {id:'g39', name:'시그니처 화이트롤',        store:'g21',cat:'빵·반찬',  orig:5800,  sale:3900,  total:6,  left:3,  weight:0.2, pickup:'18:00~20:00', emoji:'🍰'},
     {id:'g40', name:'클럽 샌드위치',            store:'g21',cat:'빵·반찬',  orig:6000,  sale:3900,  total:5,  left:2,  weight:0.22,pickup:'18:00~20:00', emoji:'🥪'}
-  ];
+  ].concat(expandedProducts());
 }
 function seedOrders(){
   return [
@@ -1819,9 +1944,9 @@ function seedOrders(){
     {id:'o3', code:'8시-3210', pid:'p7', name:'마트 도시락', store:'s6', qty:1, orig:7900, sale:3900, weight:0.4, pickup:'18:00~20:00', status:'결제완료', time:'19:24', emoji:'🍱'}
   ];
 }
-/* v3.0~v3.1 · 신현동 실제 매장 3곳 + 카페·베이커리 카페 10곳 시드 버전 */
-var SEED_VER = 4;
-function seed(){ return {seq:30, seedVer:SEED_VER, products:seedProducts(), orders:seedOrders(), fav:[], onboarded:false, role:null, profile:null, myStore:null, view:null}; }
+/* v3.3 · 파일럿 2개 권역 + 전국 23개 오픈 예정 권역 시드 버전 */
+var SEED_VER = 5;
+function seed(){ return {seq:30, seedVer:SEED_VER, products:seedProducts(), orders:seedOrders(), fav:[], interest:[], onboarded:false, role:null, profile:null, myStore:null, view:null}; }
 /* v2.9~v3.0 · 새 시드 상품을 기존 방문자의 브라우저 저장분에도 채워 넣는다
    (상품 id 기준 병합 + 시드 버전 기록 → 오래된 localStorage 방문자도 새 매장 특가가 바로 보인다) */
 function ensureSeedProducts(){
@@ -1856,6 +1981,7 @@ if(!('profile' in state)) state.profile = null;
 if(!('myStore' in state)) state.myStore = null;
 if(!('welcome' in state)) state.welcome = null;
 if(!('owner' in state)) state.owner = null;
+if(!Array.isArray(state.interest)) state.interest = [];
 ensureMyStore();
 if(ensureSeedProducts()) save();
 var ui = {tab:'home', radius:2, deal:0, cat:'전체', sort:'reco', mapSel:null, orderFilter:'all', ownerStore:(state.myStore ? state.myStore.id : 's2'), sheetOpen:false, lastOrder:null, priceStep:2, region:'dj', dong:'둔산동'};
@@ -1871,6 +1997,7 @@ var ui = {tab:'home', radius:2, deal:0, cat:'전체', sort:'reco', mapSel:null, 
   if(rid !== 'dj' && !state.myStore){ var firstStore = storesInRegion()[0]; if(firstStore) ui.ownerStore = firstStore.id; }
 })();
 var co = {pid:null, qty:1, phase:'form', order:null, busy:false};
+var soonSel = null;
 var obsel = {region:'dj', dong:'둔산동', cats:[], agreeC:false, agreeM:false, agreeO:false, afterAi:false};
 var aiBusy = false;
 
@@ -2320,18 +2447,20 @@ function renderChips(){
 function heartSVG(){ return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20.2S5 15.7 5 10.9A4.1 4.1 0 0 1 12 8a4.1 4.1 0 0 1 7 2.9c0 4.8-7 9.3-7 9.3Z"/></svg>'; }
 function cardHTML(p){
   var st = storeById(p.store), d = disc(p), sold = p.left <= 0, fav = state.fav.indexOf(p.id) > -1;
+  var demo = demoStore(st);
   return '<article class="pcard'+(p.isNew?' is-new':'')+'" data-card="'+p.id+'">'+
     '<div class="thumb '+catClass(p.cat)+'">'+
       '<span class="badge">'+d+'% 할인</span>'+
       '<button class="fav'+(fav?' is-on':'')+'" type="button" data-act="fav" data-id="'+p.id+'" aria-pressed="'+fav+'" aria-label="찜하기">'+heartSVG()+'</button>'+
       '<span class="emoji">'+p.emoji+'</span>'+
+      (demo ? '<span class="demo-tag">오픈예정 · 예시</span>' : '')+
       (sold ? '<span class="sold-stamp">SOLD OUT</span>' : '')+
     '</div>'+
     '<div class="cbody">'+
       '<div class="crow">'+
         '<div class="cmain">'+
           '<h3 class="pname">'+esc(p.name)+(p.isNew?' <span class="newtag">NEW</span>':'')+'</h3>'+
-          '<div class="store-row"><span class="sname">'+esc(st.name)+'</span><span class="sep">·</span>'+
+          '<div class="store-row"><span class="sname">'+esc(st.name)+'</span>'+(demo?'<span class="demo-mini">예시</span>':'')+'<span class="sep">·</span>'+
             '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13" cy="4.4" r="1.8"/><path d="M11.4 21l1.8-4.6 2 2.2V21M14.6 9.4l-2.6.8-2 4.2M14.6 9.4l2 3"/></svg>도보 '+walkMin(st.dist)+'분'+
             '<span class="sep">·</span>'+
             '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 16.5h16M5.5 16.5V18M18.5 16.5V18M4.5 16.5l1.6-5.4A2 2 0 0 1 8 9.7h8a2 2 0 0 1 1.9 1.4l1.6 5.4"/><circle cx="7.6" cy="13.4" r="1"/><circle cx="16.4" cy="13.4" r="1"/></svg>차량 '+driveMin(st.dist)+'분</div>'+
@@ -2390,6 +2519,16 @@ function renderHomeLive(){
   $('#abDong').textContent = pf.nick ? (pf.nick + ' 님 · ' + locLabel()) : (locLabel()+' · 반경 '+ui.radius+'km');
   var mem = $('#abMem');
   if(mem){ mem.hidden = !pf.nick; if(pf.nick) mem.textContent = '회원'; }
+  /* v3.3 · 오픈 예정 지역이면 시연용 예시 안내 배너 */
+  var db = $('#demoBanner');
+  if(db){
+    var demo = isDemoRegion(ui.region);
+    db.hidden = !demo;
+    if(demo){
+      $('#dbTitle').textContent = '오픈 예정 지역 · 시연용 예시 매장입니다';
+      $('#dbSub').textContent = locLabel() + ' · 사전 입점·오픈 알림 모집 중';
+    }
+  }
 }
 function renderHome(){ renderChips(); renderHomeLive(); renderWelcome(); renderFeed(); renderCounts(); renderHomeInstall(); }
 function renderCounts(){
@@ -2398,7 +2537,7 @@ function renderCounts(){
   if(ps) ps.textContent = STORES.length;
   if(pd) pd.textContent = live;
   if(pr) pr.textContent = REGIONS.length;
-  var whole = '전체 ' + REGIONS.length + '개 권역 · 총 ' + STORES.length + '개 매장 · ' + live + '개 상품';
+  var whole = '전체 ' + REGIONS.length + '개 거점 (파일럿 ' + pilotCount() + ' + 오픈 예정 ' + demoCount() + ') · 총 ' + STORES.length + '개 매장 · ' + live + '개 상품';
   $$('.whole-stats').forEach(function(el){ el.textContent = whole; });
 }
 
@@ -2471,6 +2610,7 @@ function renderMap(){
   var storeCount = stores.length;
   var liveCount = state.products.filter(function(p){ return p.left > 0 && inRadius(p); }).length;
   $('#mapSub').textContent = '반경 '+ui.radius+'km · '+storeCount+'개 매장';
+  var mapDemo = $('#mapDemoTag'); if(mapDemo) mapDemo.hidden = !isDemoRegion(ui.region);
   $('#mapCount').textContent = '이 지역 '+liveCount+'개 상품';
   if(ui.mapSel && !stores.some(function(s){ return s.id === ui.mapSel; })) ui.mapSel = null;
   syncMapPinSel();
@@ -2509,8 +2649,8 @@ function renderMapDock(anim){
   dock.innerHTML =
     '<div class="md-head">'+
       '<span class="md-thumb '+catClass(st.cat)+'">'+st.emoji+'</span>'+
-      '<div class="md-main"><div class="md-name">'+esc(st.name)+'<span class="md-cat">'+esc(st.cat)+'</span></div>'+
-        '<div class="md-meta">'+st.dist+'km · 도보 '+walkMin(st.dist)+'분 · 마감 '+esc(st.close)+'</div></div>'+
+      '<div class="md-main"><div class="md-name">'+esc(st.name)+(demoStore(st)?'<span class="demo-mini">예시</span>':'')+'<span class="md-cat">'+esc(st.cat)+'</span></div>'+
+        '<div class="md-meta">'+st.dist+'km · 도보 '+walkMin(st.dist)+'분 · 마감 '+esc(st.close)+(demoStore(st)?' · 시연용 예시':'')+'</div></div>'+
       (best ? '<button class="md-go" type="button" data-act="reserve" data-id="'+best.id+'">바로 예약</button>'
             : '<button class="md-go" type="button" disabled>오늘 마감</button>')+
     '</div>'+
@@ -2751,15 +2891,15 @@ window.addEventListener('appinstalled', function(){
   toast('홈 화면에 8시마켓 앱을 설치했어요 · 아이콘으로 열어 보세요');
 });
 
-/* ================= radius sheet (v3.2 · 내 동네 선택) ================= */
+/* ================= radius sheet (v3.3 · 내 동네 선택 · 전국 25개 거점) ================= */
 function openRadius(){
   var rg = regionById(ui.region);
   var html = sheetHead('내 동네 선택', '동네를 고르면 그 반경의 매장·상품으로 바로 바뀝니다')+'<div class="sheet-body">';
 
   /* --- 상단: 바로 체험 가능한 파일럿 거점 --- */
-  html += '<div class="sec-head"><span class="dot"></span>바로 체험 가능한 파일럿 거점<em>'+REGIONS.length+'개 권역</em></div>';
+  html += '<div class="sec-head"><span class="dot"></span>바로 체험 가능한 파일럿 거점<em>'+pilotCount()+'개 권역</em></div>';
   html += '<div class="region-switch" role="group" aria-label="권역 선택">';
-  REGIONS.forEach(function(r){
+  REGIONS.filter(function(r){ return !r.demo; }).forEach(function(r){
     var n = STORES.filter(function(s){ return storeRegion(s) === r.id && s.dist <= ui.radius; }).length;
     html += '<button class="region-opt'+(ui.region===r.id?' is-on':'')+'" type="button" data-act="set-region" data-v="'+r.id+'">'+
       '<span class="rg-top"><span class="rg-name">'+esc(r.name)+'</span><span class="rg-badge">'+(ui.region===r.id?'보고 있는 중':'바로 보기 ›')+'</span></span>'+
@@ -2778,18 +2918,60 @@ function openRadius(){
       '<span class="ro-ic">'+km+'km</span><span class="ro-main"><b>반경 '+km+'km</b><small>도보 '+(km*13)+'분 · 자전거 '+bikeMin(km)+'분 · 상품 '+n+'개</small></span><span class="ro-check">✓</span></button>';
   });
 
-  /* --- 하단: 추가 확장 지역 (오픈 예정 · 사전 요청 가능) --- */
-  html += '<div class="sec-head soon" style="margin-top:13px"><span class="dot"></span>추가 확장 지역<em>오픈 예정 · 사전 요청 가능</em></div>';
-  SOON_REGIONS.forEach(function(g){
-    html += '<div class="soon-group"><b>'+esc(g.group)+'</b><div class="ob-picks">'+
-      g.areas.map(function(a){
-        return '<button class="pick soon" type="button" data-act="soon-region" data-v="'+esc(g.group+' '+a)+'">'+esc(a)+'<i aria-hidden="true">🔔</i></button>';
-      }).join('')+'</div></div>';
+  /* --- 하단: 전국 23개 오픈 예정 지역 (누르면 바로 그 동네 화면으로 이동) --- */
+  html += '<div class="sec-head soon" style="margin-top:13px"><span class="dot"></span>전국 오픈 예정 지역<em>'+EXPANDED.length+'개 권역 · 시연용 예시</em></div>';
+  var lastG = null;
+  EXPANDED.forEach(function(r){
+    if(r.g !== lastG){
+      if(lastG !== null) html += '</div></div>';
+      html += '<div class="soon-group"><b>'+esc(r.g)+'</b><div class="ob-picks">';
+      lastG = r.g;
+    }
+    html += '<button class="pick soon'+(ui.region===r.id?' is-on':'')+'" type="button" data-act="set-region" data-v="'+r.id+'">'+esc(r.name)+'<i aria-hidden="true">›</i></button>';
   });
-  html += '<p class="soon-note">🔔 오픈 예정 지역을 누르면 사전 요청 안내를 보내드려요. 사전 회원 가입을 하시면 가장 먼저 오픈 알림을 받습니다.</p>';
+  if(lastG !== null) html += '</div></div>';
+  html += '<p class="soon-note">📍 오픈 예정 지역을 누르면 그 동네의 <b>시연용 예시 매장·마감특가</b> 화면으로 바로 이동합니다. 실제 제휴·입점 매장이 아니며 <b>사전 입점·오픈 알림</b>을 모집 중입니다.</p>';
 
   html += '<p class="sheet-note">'+esc(locLabel())+' 기준 예시 위치입니다. 실서비스에서는 GPS로 자동 설정됩니다.</p></div>';
   openSheet(html);
+}
+
+/* ===== v3.3 · 사전 오픈 알림 신청 (오픈 예정 지역) ===== */
+function openSoonJoin(){
+  var rid = isDemoRegion(ui.region) ? ui.region : (EXPANDED[0] ? EXPANDED[0].id : ui.region);
+  var rg = regionById(rid);
+  var pf = state.profile || {};
+  soonSel = rid;
+  var html = sheetHead('사전 오픈 알림 신청', esc(rg.name)+' 오픈 소식을 가장 먼저 받아보세요')+'<div class="sheet-body">'+
+    '<div class="demo-banner" style="margin-top:0"><span class="db-ic" aria-hidden="true">🔔</span><div class="db-tx">'+
+      '<b>'+esc(rg.name)+' · 오픈 예정 지역</b><small>매장·상품은 시연용 예시입니다 · 사전 입점·오픈 알림 모집 중</small></div></div>'+
+    '<div class="field"><label for="soonNick">닉네임 <span>필수</span></label>'+
+      '<input id="soonNick" type="text" placeholder="오픈 알림에 표시할 이름" autocomplete="nickname" value="'+esc(pf.nick||'')+'"></div>'+
+    '<div class="field"><label for="soonPhone">휴대폰 번호 <span>선택 · 알림 받을 번호</span></label>'+
+      '<input id="soonPhone" type="tel" inputmode="tel" placeholder="010-0000-0000" autocomplete="tel" value="'+esc(pf.phone||'')+'"></div>'+
+    '<div class="field"><label>관심 지역 <span>필수 · 23개 오픈 예정 지역</span></label><div class="ob-picks" id="soonRegionPick">'+
+      EXPANDED.map(function(r){ return '<button class="pick'+(r.id===rid?' is-on':'')+'" type="button" data-act="soon-pick" data-v="'+r.id+'">'+esc(r.name)+'</button>'; }).join('')+
+    '</div><p class="ob-hint">✓ 지역을 고르면 그 동네 오픈 알림으로 접수돼요</p></div>'+
+    '<p class="sheet-note">사전 신청은 무료이며 실제 결제·가입 의무는 없습니다. 입력한 정보는 이 브라우저와 신청 접수 DB에만 저장되고, 오픈 시 가장 먼저 알림을 보내드려요.</p>'+
+    '<div class="sheet-actions"><button class="btn btn-primary btn-block" type="button" data-act="soon-submit">사전 오픈 알림 신청하기</button>'+
+    '<button class="btn btn-ghost btn-block" type="button" data-act="close-sheet">둘러보기 계속</button></div></div>';
+  openSheet(html);
+}
+function submitSoonJoin(){
+  var nick = ($('#soonNick') ? $('#soonNick').value : '').trim();
+  var phone = ($('#soonPhone') ? $('#soonPhone').value : '').trim();
+  if(!nick){
+    toast('닉네임을 입력하면 사전 신청이 끝나요', null, null, '✍️');
+    if($('#soonNick')){ $('#soonNick').classList.add('invalid'); $('#soonNick').focus(); }
+    return;
+  }
+  var rg = regionById(soonSel || ui.region);
+  state.interest = state.interest || [];
+  state.interest.push({region:rg.id, area:rg.name, nick:nick, phone:phone, at:formStamp()});
+  save();
+  sendSignupToDB('사전 오픈 알림 신청', nick, phone, regionLabel(rg.id, rg.dongs[0]), rg.name + ' (' + rg.group + '·오픈 예정)', true);
+  closeSheet();
+  toast(esc(rg.name)+' 오픈 알림 사전 신청이 접수됐어요 · 오픈 때 가장 먼저 알려드릴게요', null, null, '🔔');
 }
 
 /* ================= checkout ================= */
@@ -3444,9 +3626,20 @@ function handleAction(el){
   else if(act==='go-home'){ setTab('home'); }
   else if(act==='orders'){ setTab('orders'); }
   else if(act==='radius'){ openRadius(); }
-  else if(act==='set-region'){ setRegion(el.getAttribute('data-v')); openRadius(); toast(regionLabel(ui.region, ui.dong)+'으로 전환했어요'); }
+  else if(act==='set-region'){
+    var rid = el.getAttribute('data-v');
+    setRegion(rid);
+    if(isDemoRegion(rid)){
+      closeSheet(); setTab('home');
+      toast(locLabel()+' · 오픈 예정 지역(시연용 예시 매장)으로 전환했어요', null, null, '🔔');
+    }else{
+      openRadius(); toast(regionLabel(ui.region, ui.dong)+'으로 전환했어요');
+    }
+  }
   else if(act==='set-dong'){ setDong(el.getAttribute('data-v')); closeSheet(); toast(locLabel()+' 기준으로 보고 있어요'); }
-  else if(act==='soon-region'){ toast(esc(el.getAttribute('data-v'))+' 지역 오픈 예정입니다! 사전 회원 가입 시 오픈 알림을 보내드려요', null, null, '🔔'); }
+  else if(act==='soon-join' || act==='soon-region'){ openSoonJoin(); }
+  else if(act==='soon-pick'){ soonSel = el.getAttribute('data-v'); $$('#soonRegionPick .pick').forEach(function(b){ b.classList.toggle('is-on', b.getAttribute('data-v')===soonSel); }); }
+  else if(act==='soon-submit'){ submitSoonJoin(); }
   else if(act==='set-radius'){ ui.radius = parseInt(el.getAttribute('data-v'),10); renderHome(); renderMap(); renderDash(); closeSheet(); toast('반경 '+ui.radius+'km로 설정했어요'); }
   else if(act==='map-radius'){ ui.radius = parseInt(el.getAttribute('data-v'),10); renderMap(); }
   else if(act==='sort'){ ui.sort = el.getAttribute('data-v'); renderChips(); renderFeed(); }
