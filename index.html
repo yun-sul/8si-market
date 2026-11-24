@@ -891,6 +891,8 @@ h1,h2,h3,h4,p{margin:0}
 .ob-brand .ob-topinstall i{font-style:normal;font-size:10.5px;line-height:1}
 .ob-brand .ob-topinstall.is-installed{background:#F1F5F2;border-color:#DFE7E1;color:#5E6B65;box-shadow:none}
 .ob-inapp{position:relative;margin-top:8px}
+.ob-step.is-inapp .ob-hero .ob-photo{height:174px}
+.ob-step.is-inapp .ob-foot{padding-top:2px}
 .inapp-bar{display:flex;align-items:center;gap:8px;background:#FFF8E9;border:1px solid #F3DDB0;border-radius:12px;padding:7px 8px 7px 10px}
 .inapp-bar .ia-ic{flex:0 0 auto;font-size:12px;line-height:1.2}
 .inapp-bar .ia-tx{min-width:0;flex:1}
@@ -2323,7 +2325,9 @@ function renderHomeInstall(){
 function renderObInApp(){
   var box = $('#obInApp');
   if(!box) return;
+  var step = $('#obStep-role');
   var d = installUA();
+  if(step) step.classList.toggle('is-inapp', !!d.app);
   if(!d.app){ box.hidden = true; box.innerHTML = ''; return; }
   box.hidden = false;
   if(d.ios){
