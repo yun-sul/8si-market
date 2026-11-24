@@ -749,6 +749,16 @@ h1,h2,h3,h4,p{margin:0}
 .promo-strip .ps-play{margin-left:auto;flex:0 0 auto;width:26px;height:26px;border-radius:50%;background:rgba(255,255,255,.18);display:grid;place-items:center;font-size:9px;padding-left:2px;position:relative}
 .home-head .promo-strip + .loc-row{margin-top:13px}
 .promo-strip.feed-promo{margin:14px 0 0}
+/* v3.5 · 홈 '내 동네 선택' 바로 아래 홍보영상 1줄 카드 */
+.promo-bar{display:flex;align-items:center;gap:9px;width:100%;margin-top:11px;background:linear-gradient(135deg,#FFFFFF 38%,#EAF7EF);border:1.5px solid #CFE7DA;border-radius:13px;padding:7px 8px;text-align:left;color:var(--ink);box-shadow:0 10px 22px -24px rgba(11,122,70,.95);position:relative;overflow:hidden;transition:transform .15s,border-color .15s,background .15s}
+.promo-bar:hover{border-color:var(--brand);background:#F6FDF9;transform:translateY(-1px)}
+.promo-bar:active{transform:none}
+.promo-bar .pb-ic{flex:0 0 auto;width:30px;height:30px;border-radius:50%;background:linear-gradient(150deg,#16A85F,#0A6B3F);color:#fff;display:grid;place-items:center;font-size:11px;line-height:1;padding-left:1px;box-shadow:0 8px 16px -12px rgba(11,122,70,.95)}
+.promo-bar .pb-tx{flex:1 1 auto;min-width:0}
+.promo-bar b{display:block;font-size:12px;font-weight:900;letter-spacing:-.03em;line-height:1.35;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.promo-bar small{display:block;font-size:9.5px;font-weight:700;color:#5E7A6A;letter-spacing:-.01em;line-height:1.4;margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.promo-bar .pb-go{flex:0 0 auto;display:inline-flex;align-items:center;gap:3px;border-radius:999px;background:var(--brand);color:#fff;font-size:10px;font-weight:900;letter-spacing:-.03em;padding:6px 9px;box-shadow:0 8px 14px -12px rgba(11,122,70,1)}
+.promo-bar .pb-go i{font-style:normal;font-size:7.5px;margin-top:1px}
 .cmeta .ctag,.cmeta .ctime{line-height:1.45;letter-spacing:-.015em}
 /* ===== v2.7 브랜드 소개 모달 · 모바일 한눈 배너 ===== */
 .promo-glance{display:none;background:#fff;border-bottom:1px solid var(--line2);padding:16px 16px 14px}
@@ -1172,6 +1182,11 @@ h1,h2,h3,h4,p{margin:0}
   .map-chip{width:56px;border-radius:16px;font-size:10px}
   .map-chip svg{width:18px;height:18px}
   .live-line{font-size:12.5px;padding:9px 14px;margin-top:13px}
+  .promo-bar{max-width:660px;margin-top:13px;padding:9px 12px;border-radius:14px}
+  .promo-bar .pb-ic{width:34px;height:34px;font-size:12px}
+  .promo-bar b{font-size:13.5px}
+  .promo-bar small{font-size:10.5px;margin-top:2px}
+  .promo-bar .pb-go{font-size:11px;padding:7px 12px;gap:4px}
   .demo-banner{padding:10px 12px;border-radius:12px}
   .demo-banner b{font-size:12px}
   .demo-banner small{font-size:10px}
@@ -1592,6 +1607,12 @@ h1,h2,h3,h4,p{margin:0}
                 </div>
                 <button class="db-go" type="button" data-act="soon-join">사전 오픈 알림 신청</button>
               </div>
+              <!-- v3.5 · 홍보영상 1줄 카드 (내 동네 선택 바로 아래) -->
+              <button class="promo-bar" type="button" data-act="promo" data-video="1" aria-label="1분 만에 보는 8시마켓 홍보영상 보기">
+                <span class="pb-ic" aria-hidden="true">▶</span>
+                <span class="pb-tx"><b>🎬 1분 만에 보는 8시마켓 홍보영상</b><small>마감특가·동네픽업, 1분 영상으로 먼저 확인하기</small></span>
+                <span class="pb-go">보기 <i aria-hidden="true">▶</i></span>
+              </button>
               <div class="chip-wrap">
                 <div class="chip-row">
                   <div class="chips" id="dealChips" role="group" aria-label="할인율 필터"></div>
@@ -1610,11 +1631,6 @@ h1,h2,h3,h4,p{margin:0}
             </div>
             <div class="feed-wrap" id="feedWrap">
               <div class="feed" id="feed"></div>
-              <button class="promo-strip feed-promo" type="button" data-act="promo">
-                <img src="poster.jpg" alt="8시마켓 홍보 포스터">
-                <span class="ps-txt"><b>🎬 8시마켓 브랜드 소개 영상</b><small>1분 22초 · 8시마켓이 무엇인지 한눈에</small></span>
-                <span class="ps-play">▶</span>
-              </button>
               <div class="home-note" id="homeNote"></div>
             </div>
           </section>
@@ -4140,13 +4156,22 @@ function advanceOrder(id){
 }
 
 /* ================= promo ================= */
-function openPromo(){
+function openPromo(expandVideo){
   var m = $('#promoModal');
   m.classList.add('is-open');
   m.setAttribute('aria-hidden','false');
   document.body.style.overflow = 'hidden';
+  var card = document.querySelector('.promo-card');
+  var pb = document.querySelector('[data-act="promo-video"]');
+  var on = !!expandVideo;
+  if(card) card.classList.toggle('video-open', on);
+  if(pb){
+    pb.classList.toggle('is-on', on);
+    pb.setAttribute('aria-expanded', on ? 'true' : 'false');
+    pb.textContent = on ? '🎬 홍보영상 접기' : '🎬 홍보영상 보기';
+  }
   var v = $('#promoVideo');
-  if(v){ try{ v.pause(); v.currentTime = 0; }catch(e){} }
+  if(v){ try{ v.pause(); v.currentTime = 0; if(on) v.play(); }catch(e){} }
 }
 function closePromo(){
   var m = $('#promoModal');
@@ -4396,7 +4421,7 @@ function handleAction(el){
   else if(act==='price-step'){ ui.priceStep = parseInt(el.getAttribute('data-v'),10); renderPricing(); }
   else if(act==='sample'){ var s = SAMPLES.filter(function(x){ return x.key===el.getAttribute('data-key'); })[0]; if(s) startAnalysis(s); }
   else if(act==='info'){ closeSheet(); openInfo(); }
-  else if(act==='promo'){ closeSheet(); openPromo(); }
+  else if(act==='promo'){ var fromCard = el.getAttribute('data-video')==='1'; closeSheet(); openPromo(fromCard); }
   else if(act==='close-promo'){ closePromo(); }
   else if(act==='promo-video'){ togglePromoVideo(); }
   else if(act==='me'){ openMe(); }
