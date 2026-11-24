@@ -868,6 +868,14 @@ h1,h2,h3,h4,p{margin:0}
 .pi-stats{display:flex;gap:6px;margin-top:10px}
 .pi-stats span{flex:1;background:#F7FAF7;border:1px solid #EDF2ED;border-radius:9px;padding:7px 8px;text-align:center;font-size:9px;font-weight:800;color:var(--muted)}
 .pi-stats b{display:block;font-size:14px;font-weight:900;color:var(--brand-d);letter-spacing:-.03em}
+.whole-stats{margin-top:7px;font-size:9.5px;font-weight:800;color:var(--brand-d);background:#F1F9F4;border:1px dashed #CFE6D8;border-radius:8px;padding:6px 9px;text-align:center;letter-spacing:-.02em;line-height:1.45}
+.region-switch{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:11px}
+.region-opt{border:1.5px solid #E7EDE8;background:#fff;border-radius:13px;padding:10px 11px;text-align:left;transition:.15s}
+.region-opt.is-on{border-color:var(--brand);background:#F7FDF9;box-shadow:0 8px 18px -16px rgba(11,122,70,1)}
+.region-opt .rg-name{display:block;font-size:13px;font-weight:900;letter-spacing:-.03em;color:var(--ink)}
+.region-opt.is-on .rg-name{color:var(--brand-d)}
+.region-opt .rg-sub{display:block;font-size:9.5px;font-weight:700;color:var(--muted);margin-top:2px}
+.region-opt .rg-n{display:block;font-size:9.5px;font-weight:800;color:var(--brand-d);margin-top:5px}
 .dh-demo{display:inline-flex;align-items:center;gap:3px;margin-left:5px;background:rgba(255,255,255,.16);color:#FFE8C9;font-size:8.5px;font-weight:900;padding:3px 6px;border-radius:5px;vertical-align:1px}
 .dash-note{margin:8px 16px 0;font-size:8.5px;color:var(--muted2);font-weight:600;line-height:1.6}
 .dash-note b{color:#7C8A83;font-weight:800}
@@ -976,10 +984,10 @@ h1,h2,h3,h4,p{margin:0}
   <aside class="side">
     <div class="side-brand">
       <span class="mark">8</span>
-      <span><b>8시마켓</b><small>8SI MARKET · 대전 로컬 커머스</small></span>
+      <span><b>8시마켓</b><small>8SI MARKET · 대전·경기 광주 로컬 커머스</small></span>
     </div>
     <h1>저녁 8시,<br>우리 동네 <em>장보기</em>가<br>달라집니다.</h1>
-    <p class="lead">대학가 한 끼 할인이 아닌, <b>퇴근길 저녁 장바구니</b>. 둔산·탄방 주거·업무지구 <b>3040 가구와 직장인</b>이 정육·수산·채소·반찬을 마감특가로 사서 <b>선결제 후 픽업</b>하는 동네 장보기 플랫폼입니다.</p>
+    <p class="lead">대학가 한 끼 할인이 아닌, <b>퇴근길 저녁 장바구니</b>. 대전 둔산·탄방과 경기 광주 신현·태전, 두 생활권의 <b>3040 가구와 직장인</b>이 정육·수산·채소·반찬을 마감특가로 사서 <b>선결제 후 픽업</b>하는 동네 장보기 플랫폼입니다.</p>
     <div class="side-vs"><span class="no">대학가 한 끼 할인</span><span class="yes">✓ 퇴근길 저녁 장바구니</span></div>
     <div class="side-owner">
       <span class="so-mark" aria-hidden="true">8</span>
@@ -1000,16 +1008,16 @@ h1,h2,h3,h4,p{margin:0}
       <span class="si-go" data-install-go>설치</span>
     </button>
     <ul class="diff">
-      <li><span class="ic">🥬</span><span><b>퇴근길 저녁 장바구니</b> — 둔산·탄방 3040 가구·직장인의 정육·수산·채소·반찬</span></li>
+      <li><span class="ic">🥬</span><span><b>퇴근길 저녁 장바구니</b> — 둔산·탄방 + 신현·태전 3040 가구·직장인의 정육·수산·채소·반찬</span></li>
       <li><span class="ic">📉</span><span><b>AI 가격 결정</b> — 8시 이후 시간이 지날수록 할인율 자동 상승</span></li>
       <li><span class="ic">📍</span><span><b>동네 지도</b> — 반경 1~3km, 도보·자전거·차량 픽업 시간 내 방문</span></li>
       <li><span class="ic">♻️</span><span><b>폐기 절감 대시보드</b> — 예상 매출·절감 kg·점주별 적정 할인율</span></li>
     </ul>
     <div class="scale">
       <div class="sc-h">🌱 전국 확장 로드맵</div>
-      <p class="sc-lead">우리 동네에서 시작해 <b>당근처럼 전국 동네 생활권</b>으로 넓히는 퇴근길 저녁 장바구니 플랫폼. 지금 화면은 대전 둔산·탄방 <b>1호 거점</b> 파일롯입니다.</p>
+      <p class="sc-lead">우리 동네에서 시작해 <b>당근처럼 전국 동네 생활권</b>으로 넓히는 퇴근길 저녁 장바구니 플랫폼. 지금 화면은 대전(둔산·탄방)과 경기 광주(신현·태전) <b>2대 파일럿</b>을 함께 검증하는 시제품입니다.</p>
       <ol>
-        <li class="now"><span class="n">1단계</span><span><b>대전 거점 검증</b>둔산·탄방 주거·업무지구에서 모델 검증 (현재 시제품)</span></li>
+        <li class="now"><span class="n">1단계</span><span><b>2대 파일럿 동시 검증</b>대전(둔산·탄방) + 경기 광주(신현·태전) — 지방 거점 + 수도권 배드타운 (현재 시제품)</span></li>
         <li><span class="n">2단계</span><span><b>충청·수도권 주거지 확장</b>같은 모델을 인구 밀집 주거·업무지구로 복제</span></li>
         <li><span class="n">3단계</span><span><b>전국 동네 상권</b>지역화폐·지자체 ESG 연계로 전국 생활권 확대</span></li>
       </ol>
@@ -1075,7 +1083,7 @@ h1,h2,h3,h4,p{margin:0}
               <div class="loc-row">
                 <button class="loc-btn" type="button" data-act="radius">
                   <svg class="pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11Z"/><circle cx="12" cy="10" r="2.4"/></svg>
-                  <span>반경 <span id="radiusLabel">2km</span> · <span id="locDong">둔산동</span></span>
+                  <span>반경 <span id="radiusLabel">2km</span> · <span id="locDong">대전 둔산동</span></span>
                   <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
                 </button>
                 <button class="map-link" type="button" data-act="go-map">
@@ -1151,7 +1159,7 @@ h1,h2,h3,h4,p{margin:0}
                   <path d="M0 212 H390"/><path d="M116 0 V700"/><path d="M266 0 V700"/><path d="M0 378 H390"/><path d="M0 528 H390"/>
                   <path d="M0 692 L390 240"/>
                 </g>
-                <g class="map-label">
+                <g class="map-label" id="mapLabels">
                   <text x="26" y="78">둔산동</text>
                   <text x="140" y="52">시청로</text>
                   <text x="280" y="518">한밭수목원</text>
@@ -1170,7 +1178,7 @@ h1,h2,h3,h4,p{margin:0}
                 <div>
                   <div class="map-title">
                     <svg class="pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11Z"/><circle cx="12" cy="10" r="2.4"/></svg>
-                    둔산동 일대
+                    <span id="mapTitle">둔산동 일대</span>
                   </div>
                   <div class="map-sub" id="mapSub">반경 2km · 8개 매장</div>
                 </div>
@@ -1325,7 +1333,7 @@ h1,h2,h3,h4,p{margin:0}
               <span class="dh-tag">AI INSIGHT</span><span class="dh-demo">시연용 예시 데이터</span>
               <span class="dh-live"><i></i>실시간</span>
               <h1>오늘 마감, AI가 가격을 정해<br>더 벌고 덜 버립니다</h1>
-              <p id="dashDate">11월 24일 · 둔산동 8개 점포 · 15개 상품</p>
+              <p id="dashDate">11월 24일 · 대전 둔산동 반경 2km 8개 매장 · 15개 상품</p>
             </div>
             <div class="kpis" id="kpis"></div>
             <p class="dash-note" id="co2Note"><b>CO₂ 환산 계수</b> — 음식물 폐기 1kg당 약 2.5kg CO₂e (환경부·FAO 음식물류 폐기물 온실가스 환산 계수 참고)</p>
@@ -1457,6 +1465,13 @@ h1,h2,h3,h4,p{margin:0}
                 <label for="obPhone">휴대폰 번호 <span>선택 · 픽업 알림용</span></label>
                 <input type="tel" id="obPhone" maxlength="13" inputmode="tel" placeholder="예) 010-1234-5678" autocomplete="tel">
               </div>
+              <div class="field" id="obRegionField">
+                <label>내 권역 <span>필수 · 픽업 기준</span></label>
+                <div class="ob-picks" id="obRegionPick">
+                  <button class="pick" type="button" data-ob="region" data-v="dj">대전</button>
+                  <button class="pick" type="button" data-ob="region" data-v="gj">경기 광주</button>
+                </div>
+              </div>
               <div class="field" id="obDongField">
                 <label>내 동네 <span>필수 · 픽업 기준</span></label>
                 <div class="ob-picks" id="obDongPick">
@@ -1516,6 +1531,10 @@ h1,h2,h3,h4,p{margin:0}
               <div class="field">
                 <label for="obStoreName">상호명 <span>필수</span></label>
                 <input type="text" id="obStoreName" maxlength="16" placeholder="예) 푸른청과" autocomplete="organization">
+              </div>
+              <div class="field">
+                <label for="obStoreRegion">권역</label>
+                <select id="obStoreRegion"><option value="dj">대전</option><option value="gj">경기 광주</option></select>
               </div>
               <div class="field-row">
                 <div class="field" style="margin-top:11px">
@@ -1584,14 +1603,15 @@ h1,h2,h3,h4,p{margin:0}
     <div class="promo-info">
       <span class="pi-tag">8시마켓 브랜드 소개</span>
       <h2>저녁 8시,<br>우리 동네 <em>장보기</em>가 달라집니다</h2>
-      <p class="pi-lead">대전 둔산·탄방에서 시작해 <b>전국 동네 생활권으로 확장</b>하는 로컬 커머스 플랫폼입니다. 둔산·탄방 주거·업무지구의 퇴근길 장바구니를 위해 정육·수산·채소·반찬에 집중합니다.</p>
+      <p class="pi-lead">대전 둔산·탄방과 경기 광주 신현·태전에서 동시에 시작해 <b>전국 동네 생활권으로 확장</b>하는 로컬 커머스 플랫폼입니다. 두 생활권의 퇴근길 장바구니를 위해 정육·수산·채소·반찬에 집중합니다.</p>
       <div class="pi-vs">
         <div class="vs-h"><span></span><span>들고가유</span><span>8시마켓</span></div>
-        <div class="vs-r"><span class="k">상권</span><span class="a">대학가 (궁동 등)</span><span class="b">둔산·탄방 주거·업무지구</span></div>
+        <div class="vs-r"><span class="k">상권</span><span class="a">대학가 (궁동 등)</span><span class="b">둔산·탄방 + 신현·태전 주거지</span></div>
         <div class="vs-r"><span class="k">고객</span><span class="a">대학생 · 한 끼</span><span class="b">퇴근길 직장인·3040 가구</span></div>
         <div class="vs-r"><span class="k">품목</span><span class="a">카페·간식 중심</span><span class="b">정육·수산·채소·반찬·빵</span></div>
       </div>
-      <div class="pi-stats"><span><b id="promoStoreCount">11</b>개 매장</span><span><b id="promoDealCount">19</b>개 상품</span><span><b id="promoRadiusTxt">1~3km</b> 반경</span></div>
+      <div class="pi-stats"><span><b id="promoRegionCount">2</b>개 권역</span><span><b id="promoStoreCount">19</b>개 매장</span><span><b id="promoDealCount">34</b>개 상품</span><span><b id="promoRadiusTxt">1~3km</b> 반경</span></div>
+      <p class="whole-stats">전체 2개 권역 · 총 19개 매장 · 34개 상품</p>
       <div class="pi-owner">
         <span class="so-mark" aria-hidden="true">8</span>
         <div><b>8시마켓 운영 기준</b><small>매장 운영 · 품질 · 위생 관리</small></div>
@@ -1605,9 +1625,9 @@ h1,h2,h3,h4,p{margin:0}
       </ul>
       <div class="scale">
         <div class="sc-h">🌱 전국 확장 로드맵</div>
-        <p class="sc-lead">대전 둔산·탄방 <b>1호 거점</b>에서 시작해, <b>당근처럼 전국 동네 생활권</b>으로 넓혀가는 퇴근길 저녁 장바구니 플랫폼입니다.</p>
+        <p class="sc-lead">대전 둔산·탄방과 경기 광주 신현·태전 <b>2대 파일럿</b>에서 시작해, <b>당근처럼 전국 동네 생활권</b>으로 넓혀가는 퇴근길 저녁 장바구니 플랫폼입니다.</p>
         <ol>
-          <li class="now"><span class="n">1단계</span><span><b>대전 거점 검증</b>둔산·탄방 주거·업무지구 파일롯 (지금 이 시제품)</span></li>
+          <li class="now"><span class="n">1단계</span><span><b>2대 파일럿 동시 검증</b>대전(둔산·탄방) + 경기 광주(신현·태전) — 지방 거점 + 수도권 배드타운 (지금 이 시제품)</span></li>
           <li><span class="n">2단계</span><span><b>충청·수도권 주거지 확장</b>동일 모델을 인구 밀집 주거·업무지구로 복제</span></li>
           <li><span class="n">3단계</span><span><b>전국 동네 상권</b>지역화폐·지자체 ESG 연계로 전국 생활권 확대</span></li>
         </ol>
@@ -1637,18 +1657,37 @@ var CATS = ['전체','동네마트','정육·수산','과일·채소','빵·반�
 var DEALS = [{v:0,l:'전체'},{v:30,l:'30% 이상'},{v:50,l:'50% 이상'}];
 var STATUS = ['결제완료','픽업준비','픽업완료'];
 
+/* ===== v2.9 · 2개 권역(대전 + 경기 광주) =====
+   대전: 둔산동·탄방동·월평동 / 경기 광주: 신현동·태전동·경안동 */
+var REGIONS = [
+  {id:'dj', name:'대전',      dongs:['둔산동','탄방동','월평동'],
+   labels:[{x:26,y:78,t:'둔산동'},{x:140,y:52,t:'시청로'},{x:280,y:518,t:'한밭수목원'},{x:140,y:666,t:'탄방동'}]},
+  {id:'gj', name:'경기 광주', dongs:['신현동','태전동','경안동'],
+   labels:[{x:26,y:78,t:'신현동'},{x:140,y:52,t:'태재로'},{x:280,y:518,t:'태전동'},{x:140,y:666,t:'경안동'},{x:282,y:646,t:'경안천'}]}
+];
+
 var STORES = [
-  {id:'s1', name:'행복한 농산물', cat:'과일·채소', dist:0.4, angle:5,   emoji:'🧺', addr:'둔산동 1043', close:'20:00'},
-  {id:'s2', name:'우리축산',     cat:'정육·수산', dist:0.7, angle:95,  emoji:'🥩', addr:'둔산동 1121', close:'20:00'},
-  {id:'s3', name:'동네빵집',     cat:'빵·반찬',  dist:0.6, angle:185, emoji:'🥖', addr:'둔산동 1077', close:'21:00'},
-  {id:'s4', name:'신선마트',     cat:'동네마트',  dist:0.9, angle:275, emoji:'🏪', addr:'둔산동 1188', close:'22:00'},
-  {id:'s5', name:'바다수산',     cat:'정육·수산', dist:1.2, angle:128, emoji:'🐟', addr:'탄방동 221',  close:'20:00'},
-  {id:'s6', name:'한밭마트',     cat:'동네마트',  dist:1.4, angle:42,  emoji:'🛒', addr:'탄방동 305',  close:'22:00'},
-  {id:'s7', name:'대전로컬팜',   cat:'과일·채소', dist:1.6, angle:165, emoji:'🌱', addr:'둔산동 1260', close:'19:00'},
-  {id:'s8', name:'햇살과일',     cat:'과일·채소', dist:1.9, angle:75,  emoji:'🍓', addr:'탄방동 412',  close:'21:00'},
-  {id:'s9', name:'엄마손반찬',   cat:'빵·반찬',  dist:2.2, angle:12,  emoji:'🍱', addr:'둔산동 1390', close:'20:00'},
-  {id:'s10', name:'온기빵집',    cat:'빵·반찬',  dist:2.6, angle:196, emoji:'🥐', addr:'탄방동 517',  close:'21:00'},
-  {id:'s11', name:'대전정육',    cat:'정육·수산', dist:2.1, angle:246, emoji:'🍖', addr:'둔산동 1344', close:'20:00'}
+  /* --- 대전 (둔산·탄방) --- */
+  {id:'s1', region:'dj', name:'행복한 농산물', cat:'과일·채소', dist:0.4, angle:5,   emoji:'🧺', addr:'둔산동 1043', close:'20:00'},
+  {id:'s2', region:'dj', name:'우리축산',     cat:'정육·수산', dist:0.7, angle:95,  emoji:'🥩', addr:'둔산동 1121', close:'20:00'},
+  {id:'s3', region:'dj', name:'동네빵집',     cat:'빵·반찬',  dist:0.6, angle:185, emoji:'🥖', addr:'둔산동 1077', close:'21:00'},
+  {id:'s4', region:'dj', name:'신선마트',     cat:'동네마트',  dist:0.9, angle:275, emoji:'🏪', addr:'둔산동 1188', close:'22:00'},
+  {id:'s5', region:'dj', name:'바다수산',     cat:'정육·수산', dist:1.2, angle:128, emoji:'🐟', addr:'탄방동 221',  close:'20:00'},
+  {id:'s6', region:'dj', name:'한밭마트',     cat:'동네마트',  dist:1.4, angle:42,  emoji:'🛒', addr:'탄방동 305',  close:'22:00'},
+  {id:'s7', region:'dj', name:'대전로컬팜',   cat:'과일·채소', dist:1.6, angle:165, emoji:'🌱', addr:'둔산동 1260', close:'19:00'},
+  {id:'s8', region:'dj', name:'햇살과일',     cat:'과일·채소', dist:1.9, angle:75,  emoji:'🍓', addr:'탄방동 412',  close:'21:00'},
+  {id:'s9', region:'dj', name:'엄마손반찬',   cat:'빵·반찬',  dist:2.2, angle:12,  emoji:'🍱', addr:'둔산동 1390', close:'20:00'},
+  {id:'s10',region:'dj', name:'온기빵집',    cat:'빵·반찬',  dist:2.6, angle:196, emoji:'🥐', addr:'탄방동 517',  close:'21:00'},
+  {id:'s11',region:'dj', name:'대전정육',    cat:'정육·수산', dist:2.1, angle:246, emoji:'🍖', addr:'둔산동 1344', close:'20:00'},
+  /* --- 경기 광주 (신현동 중심) : 지도 좌표 x,y = 지도 뷰(390x700) 기준 픽셀 --- */
+  {id:'g1', region:'gj', name:'신현우리마트',     cat:'동네마트',  dist:0.3, angle:20,  emoji:'🏪', addr:'신현동 15-4',  close:'22:00', x:201.4, y:337.5},
+  {id:'g2', region:'gj', name:'신현달빛베이커리', cat:'빵·반찬',  dist:0.5, angle:150, emoji:'🥐', addr:'신현동 62-1',  close:'21:00', x:210.5, y:381.9},
+  {id:'g3', region:'gj', name:'태전한우정육',     cat:'정육·수산', dist:1.1, angle:95,  emoji:'🥩', addr:'태전동 1240',  close:'20:00', x:262.9, y:361.0},
+  {id:'g4', region:'gj', name:'오포싱싱청과',     cat:'과일·채소', dist:1.4, angle:250, emoji:'🍈', addr:'태전동 1188',  close:'21:00', x:113.4, y:384.7},
+  {id:'g5', region:'gj', name:'경안엄마손반찬',   cat:'빵·반찬',  dist:1.8, angle:40,  emoji:'🍱', addr:'경안동 158',   close:'20:00', x:266.7, y:269.5},
+  {id:'g6', region:'gj', name:'능평수산직판장',   cat:'정육·수산', dist:2.2, angle:300, emoji:'🐟', addr:'신현동 320',   close:'19:30', x:76.9,  y:286.8},
+  {id:'g7', region:'gj', name:'신현로컬팜',       cat:'과일·채소', dist:1.6, angle:195, emoji:'🌱', addr:'신현동 210',   close:'19:00', x:169.3, y:450.8},
+  {id:'g8', region:'gj', name:'경안동네마트',     cat:'동네마트',  dist:2.6, angle:130, emoji:'🛒', addr:'경안동 302',   close:'22:00', x:318.5, y:458.6}
 ];
 
 function seedProducts(){
@@ -1671,7 +1710,25 @@ function seedProducts(){
     {id:'p16', name:'잡채 500g',           store:'s9',  cat:'빵·반찬',  orig:8000,  sale:4900,  total:9,  left:5,  weight:0.5, pickup:'18:00~20:00', emoji:'🍲'},
     {id:'p17', name:'구운 식빵 1근',       store:'s3',  cat:'빵·반찬',  orig:4800,  sale:2900,  total:14, left:6,  weight:0.4, pickup:'19:00~21:00', emoji:'🍞'},
     {id:'p18', name:'냉장 닭다리 1kg',      store:'s2',  cat:'정육·수산', orig:9900,  sale:5900,  total:12, left:7,  weight:1.0, pickup:'18:00~20:00', emoji:'🍗'},
-    {id:'p19', name:'국내산 목살 500g',     store:'s2',  cat:'정육·수산', orig:15900, sale:9900,  total:8,  left:4,  weight:0.5, pickup:'18:00~20:00', emoji:'🥩'}
+    {id:'p19', name:'국내산 목살 500g',     store:'s2',  cat:'정육·수산', orig:15900, sale:9900,  total:8,  left:4,  weight:0.5, pickup:'18:00~20:00', emoji:'🥩'},
+    /* --- 경기 광주(신현동) 샘플 : 픽업 종료 시간은 모두 매장 마감 시간 이내 --- */
+    {id:'g1',  name:'국내산 애호박 3개',        store:'g1', cat:'과일·채소', orig:3980,  sale:1990,  total:12, left:5,  weight:0.6, pickup:'20:00~22:00', emoji:'🥒'},
+    {id:'g2',  name:'신선란 15구',              store:'g1', cat:'동네마트',  orig:8900,  sale:4900,  total:10, left:4,  weight:0.9, pickup:'20:00~22:00', emoji:'🥚'},
+    {id:'g3',  name:'통밀 식빵 1근',            store:'g2', cat:'빵·반찬',  orig:6500,  sale:3900,  total:14, left:6,  weight:0.4, pickup:'19:00~21:00', emoji:'🍞'},
+    {id:'g4',  name:'소금빵 4개',               store:'g2', cat:'빵·반찬',  orig:7200,  sale:3600,  total:12, left:8,  weight:0.24,pickup:'19:00~21:00', emoji:'🥐'},
+    {id:'g5',  name:'한우 불고기 400g',         store:'g3', cat:'정육·수산', orig:21900, sale:12900, total:8,  left:3,  weight:0.4, pickup:'18:00~20:00', emoji:'🥩'},
+    {id:'g6',  name:'한돈 앞다리 500g',         store:'g3', cat:'정육·수산', orig:9900,  sale:5900,  total:12, left:5,  weight:0.5, pickup:'18:00~20:00', emoji:'🍖'},
+    {id:'g7',  name:'닭볶음탕용 1kg',           store:'g3', cat:'정육·수산', orig:8900,  sale:4900,  total:10, left:4,  weight:1.0, pickup:'18:00~20:00', emoji:'🍗'},
+    {id:'g8',  name:'성주 참외 3개',            store:'g4', cat:'과일·채소', orig:9900,  sale:5900,  total:10, left:6,  weight:0.9, pickup:'19:00~21:00', emoji:'🍈'},
+    {id:'g9',  name:'샤인머스캣 2송이',         store:'g4', cat:'과일·채소', orig:18900, sale:10900, total:8,  left:4,  weight:0.8, pickup:'19:00~21:00', emoji:'🍇'},
+    {id:'g10', name:'멸치볶음 250g',            store:'g5', cat:'빵·반찬',  orig:7000,  sale:3900,  total:12, left:7,  weight:0.25,pickup:'18:00~20:00', emoji:'🍱'},
+    {id:'g11', name:'오이무침 300g',            store:'g5', cat:'빵·반찬',  orig:4500,  sale:2500,  total:10, left:6,  weight:0.3, pickup:'18:00~20:00', emoji:'🥗'},
+    {id:'g12', name:'손질 광어 1마리',          store:'g6', cat:'정육·수산', orig:25900, sale:15900, total:6,  left:3,  weight:1.2, pickup:'17:30~19:30', emoji:'🐟'},
+    {id:'g13', name:'국산 새우젓 500g',         store:'g6', cat:'정육·수산', orig:12900, sale:7900,  total:8,  left:5,  weight:0.5, pickup:'17:30~19:30', emoji:'🦐'},
+    {id:'g14', name:'대추방울토마토 1kg',       store:'g7', cat:'과일·채소', orig:8900,  sale:4900,  total:10, left:0,  weight:1.0, pickup:'17:00~19:00', emoji:'🍅'},
+    {id:'g15', name:'깻잎 100g',                store:'g7', cat:'과일·채소', orig:2500,  sale:1400,  total:15, left:7,  weight:0.1, pickup:'17:00~19:00', emoji:'🌿'},
+    {id:'g16', name:'즉석 미역국 500g',         store:'g8', cat:'동네마트',  orig:4900,  sale:2900,  total:12, left:5,  weight:0.5, pickup:'20:00~22:00', emoji:'🍲'},
+    {id:'g17', name:'국산 콩나물 500g',         store:'g8', cat:'동네마트',  orig:3500,  sale:1900,  total:9,  left:4,  weight:0.5, pickup:'20:00~22:00', emoji:'🌱'}
   ];
 }
 function seedOrders(){
@@ -1681,7 +1738,16 @@ function seedOrders(){
     {id:'o3', code:'8시-3210', pid:'p7', name:'마트 도시락', store:'s6', qty:1, orig:7900, sale:3900, weight:0.4, pickup:'18:00~20:00', status:'결제완료', time:'19:24', emoji:'🍱'}
   ];
 }
-function seed(){ return {seq:30, products:seedProducts(), orders:seedOrders(), fav:[], onboarded:false, role:null, profile:null, myStore:null}; }
+function seed(){ return {seq:30, products:seedProducts(), orders:seedOrders(), fav:[], onboarded:false, role:null, profile:null, myStore:null, view:null}; }
+/* v2.9 · 경기 광주 샘플 상품을 기존 방문자의 브라우저 저장분에도 채워 넣는다 */
+function ensureSeedProducts(){
+  if(!state || !Array.isArray(state.products)) return false;
+  var have = {};
+  state.products.forEach(function(p){ have[p.id] = 1; });
+  var changed = false;
+  seedProducts().forEach(function(p){ if(!have[p.id]){ state.products.push(p); changed = true; } });
+  return changed;
+}
 
 /* ================= state ================= */
 function load(){
@@ -1706,9 +1772,21 @@ if(!('myStore' in state)) state.myStore = null;
 if(!('welcome' in state)) state.welcome = null;
 if(!('owner' in state)) state.owner = null;
 ensureMyStore();
-var ui = {tab:'home', radius:2, deal:0, cat:'전체', sort:'reco', mapSel:null, orderFilter:'all', ownerStore:(state.myStore ? state.myStore.id : 's2'), sheetOpen:false, lastOrder:null, priceStep:2};
+if(ensureSeedProducts()) save();
+var ui = {tab:'home', radius:2, deal:0, cat:'전체', sort:'reco', mapSel:null, orderFilter:'all', ownerStore:(state.myStore ? state.myStore.id : 's2'), sheetOpen:false, lastOrder:null, priceStep:2, region:'dj', dong:'둔산동'};
+/* 보던 권역·동네 복원 (회원은 profile, 게스트는 state.view) */
+(function initView(){
+  var v = state.view || {};
+  var rid = v.region || (state.profile && state.profile.region) || 'dj';
+  if(!regionById(rid)) rid = 'dj';
+  ui.region = rid;
+  var dong = v.dong || (state.profile && state.profile.dong) || regionById(rid).dongs[0];
+  if(regionById(rid).dongs.indexOf(dong) < 0) dong = regionById(rid).dongs[0];
+  ui.dong = dong;
+  if(rid !== 'dj' && !state.myStore){ var firstStore = storesInRegion()[0]; if(firstStore) ui.ownerStore = firstStore.id; }
+})();
 var co = {pid:null, qty:1, phase:'form', order:null, busy:false};
-var obsel = {dong:'둔산동', cats:[], agreeC:false, agreeM:false, agreeO:false, afterAi:false};
+var obsel = {region:'dj', dong:'둔산동', cats:[], agreeC:false, agreeM:false, agreeO:false, afterAi:false};
 var aiBusy = false;
 
 /* ================= helpers ================= */
@@ -1718,12 +1796,23 @@ function won(n){ return Math.round(n).toLocaleString('ko-KR') + '원'; }
 function num(n){ return Math.round(n).toLocaleString('ko-KR'); }
 function disc(p){ return Math.round((1 - p.sale / p.orig) * 100); }
 function storeById(id){ for(var i=0;i<STORES.length;i++){ if(STORES[i].id===id) return STORES[i]; } return null; }
+/* ===== v2.9 권역(대전 / 경기 광주) ===== */
+function regionById(id){ for(var i=0;i<REGIONS.length;i++){ if(REGIONS[i].id===id) return REGIONS[i]; } return REGIONS[0]; }
+function regionName(id){ return regionById(id).name; }
+function regionLabel(id, dong){ return regionName(id) + ' ' + dong; }
+function storeRegion(st){ return (st && st.region) || 'dj'; }
+function locLabel(){ return regionLabel(ui.region, ui.dong); }
+function storesInRegion(){ return STORES.filter(function(s){ return storeRegion(s) === ui.region; }); }
+function regionProducts(){ var out = []; state.products.forEach(function(p){ var st = storeById(p.store); if(st && storeRegion(st) === ui.region) out.push(p); }); return out; }
 function catEmoji(c){ return c==='정육·수산'?'🥩' : c==='빵·반찬'?'🥐' : c==='동네마트'?'🏪' : '🧺'; }
 /* 점주가 입점 등록한 매장은 localStorage에서 복원해 지도·피드에 다시 붙인다 */
 function ensureMyStore(){
-  if(state && state.myStore && state.myStore.id && !storeById(state.myStore.id)) STORES.push(state.myStore);
+  if(state && state.myStore && state.myStore.id){
+    if(!state.myStore.region) state.myStore.region = 'dj';
+    if(!storeById(state.myStore.id)) STORES.push(state.myStore);
+  }
 }
-function storesInRadius(){ return STORES.filter(function(s){ return s.dist <= ui.radius; }); }
+function storesInRadius(){ return storesInRegion().filter(function(s){ return s.dist <= ui.radius; }); }
 function byId(id){ for(var i=0;i<state.products.length;i++){ if(state.products[i].id===id) return state.products[i]; } return null; }
 function orderById(id){ for(var i=0;i<state.orders.length;i++){ if(state.orders[i].id===id) return state.orders[i]; } return null; }
 function esc(s){ return String(s).replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
@@ -1826,7 +1915,12 @@ function setObStep(step){
   obEl.scrollTop = 0;
 }
 function renderObPicks(){
-  $$('#obDongPick .pick').forEach(function(b){ b.classList.toggle('is-on', b.getAttribute('data-v') === obsel.dong); });
+  $$('#obRegionPick .pick').forEach(function(b){ b.classList.toggle('is-on', b.getAttribute('data-v') === obsel.region); });
+  var rg = regionById(obsel.region || 'dj');
+  var dp = $('#obDongPick');
+  if(dp) dp.innerHTML = rg.dongs.map(function(d){
+    return '<button class="pick'+(obsel.dong===d?' is-on':'')+'" type="button" data-ob="dong" data-v="'+d+'">'+d+'</button>';
+  }).join('');
   $$('#obCatPick .pick').forEach(function(b){ b.classList.toggle('is-on', obsel.cats.indexOf(b.getAttribute('data-v')) > -1); });
 }
 function renderObResume(){
@@ -1834,7 +1928,7 @@ function renderObResume(){
   if(!el) return;
   var pf = state.profile, ms = state.myStore;
   var parts = [];
-  if(pf && pf.nick) parts.push('<b>'+esc(pf.nick)+'</b> 님 · '+esc(pf.dong || '둔산동'));
+  if(pf && pf.nick) parts.push('<b>'+esc(pf.nick)+'</b> 님 · '+esc(regionLabel(pf.region || 'dj', pf.dong || '둔산동')));
   if(ms) parts.push('등록 매장 <b>'+esc(ms.name)+'</b>');
   if(!parts.length){ el.hidden = true; el.innerHTML = ''; return; }
   el.hidden = false;
@@ -1859,7 +1953,7 @@ function showWelcome(nick, dong){
   state.welcome = {nick:nick, dong:dong};
   save();
   renderWelcome();
-  var n = state.products.filter(function(p){ var st = storeById(p.store); return p.left > 0 && st && st.dist <= ui.radius; }).length;
+  var n = state.products.filter(function(p){ return p.left > 0 && inRadius(p); }).length;
   toast(esc(nick)+'님, 회원가입이 완료되었고 신청 정보가 접수되었습니다! '+esc(dong)+' 마감특가 '+n+'개를 모아뒀어요');
 }
 function renderWelcome(){
@@ -1867,7 +1961,7 @@ function renderWelcome(){
   if(!el) return;
   var w = state.welcome;
   if(!w || !w.nick){ el.hidden = true; return; }
-  var n = state.products.filter(function(p){ var st = storeById(p.store); return p.left > 0 && st && st.dist <= ui.radius; }).length;
+  var n = state.products.filter(function(p){ return p.left > 0 && inRadius(p); }).length;
   $('#homeWelcomeTitle').textContent = w.nick + '님, 환영합니다!';
   $('#homeWelcomeSub').textContent = w.dong + ' 반경 ' + ui.radius + 'km 마감특가 ' + n + '개 · 관심 품목 우선으로 모았어요';
   el.hidden = false;
@@ -1923,7 +2017,9 @@ function pulseOb(target){
 }
 function openObConsumer(focus){
   var pf = state.profile || {};
-  obsel.dong = pf.dong || obsel.dong || '둔산동';
+  obsel.region = pf.region || ui.region || 'dj';
+  obsel.dong = pf.dong || obsel.dong || regionById(obsel.region).dongs[0];
+  if(regionById(obsel.region).dongs.indexOf(obsel.dong) < 0) obsel.dong = regionById(obsel.region).dongs[0];
   obsel.cats = (pf.cats || obsel.cats || []).slice();
   $('#obNick').value = pf.nick || '';
   $('#obPhone').value = pf.phone || '';
@@ -1939,13 +2035,21 @@ function openObConsumer(focus){
   if(focus === 'dong') highlightOb($('#obDongField'));
   else if(focus === 'nick') pulseOb($('#obNick').closest('.field'));
 }
+function fillOwnerDong(rid, keep){
+  var rg = regionById(rid) || REGIONS[0];
+  var sel = $('#obStoreDong');
+  if(!sel) return;
+  sel.innerHTML = rg.dongs.map(function(d){ return '<option>'+d+'</option>'; }).join('');
+  sel.value = (keep && rg.dongs.indexOf(keep) > -1) ? keep : rg.dongs[0];
+}
 function openObOwner(focus, after){
   var ms = state.myStore, ow = state.owner || {};
   $('#obOwnerName').value = ow.name || '';
   $('#obOwnerPhone').value = ow.phone || '';
   $('#obStoreName').value = ms ? ms.name : '';
-  $('#obStoreDong').value = ms ? String(ms.addr || '').split(' ')[0] : obsel.dong;
-  if(!$('#obStoreDong').value) $('#obStoreDong').value = '둔산동';
+  var rid = ms ? storeRegion(ms) : (obsel.region || ui.region);
+  $('#obStoreRegion').value = rid;
+  fillOwnerDong(rid, ms ? String(ms.addr || '').split(' ')[0] : obsel.dong);
   $('#obStoreCat').value = ms ? ms.cat : '과일·채소';
   $('#obStoreAddr').value = ms ? String(ms.addr || '').split(' ').slice(1).join(' ') : '';
   $('#obStoreClose').value = ms ? ms.close : '20:00';
@@ -1968,8 +2072,10 @@ function completeConsumer(skip){
   var phone = ($('#obPhone').value || '').trim();
   var msg = $('#obConsumerMsg');
   if(skip){
-    state.profile = state.profile || {nick:'', dong:obsel.dong, cats:[], phone:''};
+    state.profile = state.profile || {nick:'', region:obsel.region, dong:obsel.dong, cats:[], phone:''};
+    if(!state.profile.region) state.profile.region = obsel.region;
     if(!state.profile.dong) state.profile.dong = obsel.dong;
+    ui.region = obsel.region; ui.dong = obsel.dong; state.view = {region:ui.region, dong:ui.dong};
     hideOnboard('consumer','skip');
     return;
   }
@@ -1990,10 +2096,12 @@ function completeConsumer(skip){
   $('#obNick').classList.remove('invalid');
   $('#obAgreeCRow').classList.remove('is-error');
   msg.hidden = true;
-  state.profile = {nick:nick, dong:obsel.dong, cats:obsel.cats.slice(), phone:phone, agree:{terms:true, marketing:!!obsel.agreeM, at:new Date().toISOString()}};
-  sendSignupToDB('소비자 회원가입', nick, phone, obsel.dong, (obsel.cats.length ? obsel.cats.join('·') : '전체'), !!obsel.agreeM);
+  state.profile = {nick:nick, region:obsel.region, dong:obsel.dong, cats:obsel.cats.slice(), phone:phone, agree:{terms:true, marketing:!!obsel.agreeM, at:new Date().toISOString()}};
+  ui.region = obsel.region; ui.dong = obsel.dong;
+  state.view = {region:ui.region, dong:ui.dong};
+  sendSignupToDB('소비자 회원가입', nick, phone, regionLabel(obsel.region, obsel.dong), (obsel.cats.length ? obsel.cats.join('·') : '전체'), !!obsel.agreeM);
   hideOnboard('consumer','signup');
-  showWelcome(nick, obsel.dong);
+  showWelcome(nick, regionLabel(obsel.region, obsel.dong));
 }
 function completeOwner(){
   var name = ($('#obStoreName').value || '').trim();
@@ -2015,9 +2123,10 @@ function completeOwner(){
   $('#obStoreName').classList.remove('invalid');
   $('#obAgreeORow').classList.remove('is-error');
   msg.hidden = true;
-  var dong = $('#obStoreDong').value, cat = $('#obStoreCat').value;
+  var rid = $('#obStoreRegion').value || 'dj';
+  var dong = $('#obStoreDong').value || regionById(rid).dongs[0], cat = $('#obStoreCat').value;
   var tail = ($('#obStoreAddr').value || '').trim();
-  var data = {id:'me', name:name, cat:cat, dist:0.95, angle:340, emoji:catEmoji(cat), addr:dong + (tail ? ' ' + tail : ''), close:$('#obStoreClose').value};
+  var data = {id:'me', region:rid, name:name, cat:cat, dist:0.95, angle:340, emoji:catEmoji(cat), addr:dong + (tail ? ' ' + tail : ''), close:$('#obStoreClose').value};
   var found = false;
   STORES = STORES.map(function(s){ if(s.id === 'me'){ found = true; return data; } return s; });
   if(!found) STORES.push(data);
@@ -2025,8 +2134,10 @@ function completeOwner(){
   var ownerName = ($('#obOwnerName').value || '').trim(), ownerPhone = ($('#obOwnerPhone').value || '').trim();
   state.owner = {name:ownerName, phone:ownerPhone, agree:{terms:true, at:new Date().toISOString()}};
   sendSignupToDB('매장 점주 입점신청', (ownerName || name), ownerPhone,
-    dong + (tail ? ' ' + tail : ''), name + ' / ' + cat + ' / 마감 ' + data.close, false);
+    regionLabel(rid, dong) + (tail ? ' ' + tail : ''), name + ' / ' + cat + ' / 마감 ' + data.close, false);
   ui.ownerStore = 'me';
+  ui.region = rid; ui.dong = dong; state.view = {region:rid, dong:dong};
+  if(state.profile){ state.profile.region = rid; state.profile.dong = dong; }
   var wantAi = obsel.afterAi;
   obsel.afterAi = false;
   hideOnboard('owner','owner-join');
@@ -2077,6 +2188,7 @@ function handleOb(el){
   var k = el.getAttribute('data-ob');
   if(k === 'back'){ setObStep('role'); }
   else if(k === 'dong'){ obsel.dong = el.getAttribute('data-v'); $('#obDongHint').hidden = false; renderObPicks(); }
+  else if(k === 'region'){ obsel.region = el.getAttribute('data-v'); obsel.dong = regionById(obsel.region).dongs[0]; $('#obDongHint').hidden = false; renderObPicks(); }
   else if(k === 'cat'){
     var v = el.getAttribute('data-v'), i = obsel.cats.indexOf(v);
     if(i > -1) obsel.cats.splice(i,1); else obsel.cats.push(v);
@@ -2093,7 +2205,7 @@ function handleOb(el){
 }
 
 /* ================= consumer ================= */
-function inRadius(p){ return storeById(p.store).dist <= ui.radius; }
+function inRadius(p){ var st = storeById(p.store); return !!st && storeRegion(st) === ui.region && st.dist <= ui.radius; }
 function visibleProducts(){
   return state.products.filter(function(p){
     return inRadius(p) && (ui.cat === '전체' || p.cat === ui.cat) && disc(p) >= ui.deal;
@@ -2176,30 +2288,65 @@ function renderHomeLive(){
   var within = state.products.filter(inRadius);
   var live = liveProducts(within);
   var pf = state.profile || {};
-  var dong = pf.dong || '둔산동';
   $('#liveStoreCount').textContent = storesInRadius().length;
   $('#liveDealCount').textContent = live.length;
   $('#liveRadiusTxt').textContent = ui.radius+'km';
   $('#radiusLabel').textContent = ui.radius+'km';
-  var ld = $('#locDong'); if(ld) ld.textContent = dong;
-  $('#abDong').textContent = pf.nick ? (pf.nick + ' 님 · 대전 ' + dong) : ('대전 '+dong+' · 반경 '+ui.radius+'km');
+  var ld = $('#locDong'); if(ld) ld.textContent = locLabel();
+  $('#abDong').textContent = pf.nick ? (pf.nick + ' 님 · ' + locLabel()) : (locLabel()+' · 반경 '+ui.radius+'km');
   var mem = $('#abMem');
   if(mem){ mem.hidden = !pf.nick; if(pf.nick) mem.textContent = '회원'; }
 }
 function renderHome(){ renderChips(); renderHomeLive(); renderWelcome(); renderFeed(); renderCounts(); renderHomeInstall(); }
 function renderCounts(){
-  var ps = $('#promoStoreCount'), pd = $('#promoDealCount');
+  var live = liveProducts(state.products).length;
+  var ps = $('#promoStoreCount'), pd = $('#promoDealCount'), pr = $('#promoRegionCount');
   if(ps) ps.textContent = STORES.length;
-  if(pd) pd.textContent = liveProducts(state.products).length;
+  if(pd) pd.textContent = live;
+  if(pr) pr.textContent = REGIONS.length;
+  var whole = '전체 ' + REGIONS.length + '개 권역 · 총 ' + STORES.length + '개 매장 · ' + live + '개 상품';
+  $$('.whole-stats').forEach(function(el){ el.textContent = whole; });
+}
+
+/* ===== v2.9 권역·동네 전환 (홈 상단 위치 선택 · 동네 변경 시트) ===== */
+function setRegion(id){
+  if(!regionById(id)) return;
+  var rg = regionById(id);
+  ui.region = id;
+  ui.dong = rg.dongs.indexOf(ui.dong) > -1 ? ui.dong : rg.dongs[0];
+  state.view = {region:id, dong:ui.dong};
+  ui.mapSel = null;
+  if(state.profile){ state.profile.region = id; state.profile.dong = ui.dong; }
+  var own = storeById(ui.ownerStore);
+  if(!own || storeRegion(own) !== id){
+    var first = storesInRegion()[0];
+    if(first) ui.ownerStore = first.id;
+  }
+  save();
+  renderHome(); renderMap(); renderOrders(); renderOwner(); renderDash();
+}
+function setDong(dong){
+  var rg = regionById(ui.region);
+  if(rg.dongs.indexOf(dong) < 0) dong = rg.dongs[0];
+  ui.dong = dong;
+  state.view = {region:ui.region, dong:dong};
+  if(state.profile) state.profile.dong = dong;
+  save();
+  renderHome(); renderMap(); renderOrders(); renderOwner(); renderDash();
 }
 
 /* ================= map ================= */
 var MAP = {cx:195, cy:355, scale:62, w:390, h:700};
 function pinPos(st){
+  if(typeof st.x === 'number' && typeof st.y === 'number') return { x: st.x, y: st.y };
   var a = st.angle * Math.PI / 180, r = st.dist * MAP.scale;
   return { x: MAP.cx + Math.sin(a)*r, y: MAP.cy - Math.cos(a)*r };
 }
 function renderMap(){
+  var rg = regionById(ui.region);
+  var lbl = $('#mapLabels');
+  if(lbl) lbl.innerHTML = rg.labels.map(function(l){ return '<text x="'+l.x+'" y="'+l.y+'">'+esc(l.t)+'</text>'; }).join('');
+  var mt = $('#mapTitle'); if(mt) mt.textContent = ui.dong + ' 일대';
   var rings = '';  [1,2,3].forEach(function(km){
     var r = km * MAP.scale;
     rings += '<circle class="ring" cx="'+MAP.cx+'" cy="'+MAP.cy+'" r="'+r+'"/>';
@@ -2512,13 +2659,25 @@ window.addEventListener('appinstalled', function(){
 
 /* ================= radius sheet ================= */
 function openRadius(){
-  var html = sheetHead('내 동네 반경', '가까운 매장만 골라 보여드려요')+'<div class="sheet-body">';
+  var rg = regionById(ui.region);
+  var html = sheetHead('내 동네 · 반경', '권역을 고르면 그 동네 매장만 보여드려요')+'<div class="sheet-body">';
+  html += '<div class="region-switch" role="group" aria-label="권역 선택">';
+  REGIONS.forEach(function(r){
+    var n = STORES.filter(function(s){ return storeRegion(s) === r.id && s.dist <= ui.radius; }).length;
+    html += '<button class="region-opt'+(ui.region===r.id?' is-on':'')+'" type="button" data-act="set-region" data-v="'+r.id+'">'+
+      '<span class="rg-name">'+esc(r.name)+'</span><span class="rg-sub">'+esc(r.dongs.join(' · '))+'</span>'+
+      '<span class="rg-n">반경 '+ui.radius+'km '+n+'개 매장</span></button>';
+  });
+  html += '</div>';
+  html += '<div class="field"><label>내 동네 <span>필수 · 픽업 기준</span></label><div class="ob-picks" id="sheetDongPick">'+
+    rg.dongs.map(function(d){ return '<button class="pick'+(ui.dong===d?' is-on':'')+'" type="button" data-act="set-dong" data-v="'+d+'">'+d+'</button>'; }).join('')+
+    '</div><p class="ob-hint">✓ 동네를 고르면 반경 '+ui.radius+'km 마감특가·픽업 시간이 바로 맞춰져요</p></div>';
   [1,2,3].forEach(function(km){
-    var n = state.products.filter(function(p){ return storeById(p.store).dist<=km; }).length;
+    var n = state.products.filter(function(p){ var st = storeById(p.store); return !!st && storeRegion(st)===ui.region && st.dist<=km; }).length;
     html += '<button class="radius-opt'+(ui.radius===km?' is-on':'')+'" type="button" data-act="set-radius" data-v="'+km+'">'+
       '<span class="ro-ic">'+km+'km</span><span class="ro-main"><b>반경 '+km+'km</b><small>도보 '+(km*13)+'분 · 자전거 '+bikeMin(km)+'분 · 상품 '+n+'개</small></span><span class="ro-check">✓</span></button>';
   });
-  html += '<p class="sheet-note">대전 '+esc((state.profile||{}).dong || '둔산동')+' 기준 예시 위치입니다. 실서비스에서는 GPS로 자동 설정됩니다.</p></div>';
+  html += '<p class="sheet-note">'+esc(locLabel())+' 기준 예시 위치입니다. 실서비스에서는 GPS로 자동 설정됩니다.</p></div>';
   openSheet(html);
 }
 
@@ -2964,7 +3123,7 @@ function highlightCard(id){
 /* ================= dashboard ================= */
 function metrics(){
   var soldQty=0, revenue=0, leftAmount=0, totalQty=0, savedKg=0, discW=0, weightSum=0;
-  state.products.forEach(function(p){
+  regionProducts().forEach(function(p){
     var s = Math.max(0, p.total - p.left);
     soldQty += s; revenue += s * p.sale; leftAmount += p.left * p.sale;
     totalQty += p.total; savedKg += s * p.weight; discW += disc(p) * p.total; weightSum += p.total;
@@ -2975,14 +3134,14 @@ function metrics(){
     extra: Math.round(leftAmount * 0.6 / 100) * 100,
     savedKg: savedKg, avgDisc: avgDisc,
     rate: totalQty ? Math.round(soldQty/totalQty*100) : 0,
-    openStores: Object.keys(state.products.reduce(function(a,p){ a[p.store]=1; return a; },{})).length
+    openStores: Object.keys(regionProducts().reduce(function(a,p){ a[p.store]=1; return a; },{})).length
   };
 }
 function renderDash(){
   var m = metrics();
   var d = new Date();
   var within = state.products.filter(inRadius);
-  $('#dashDate').textContent = (d.getMonth()+1)+'월 '+d.getDate()+'일 · 둔산동 반경 '+ui.radius+'km '+storesInRadius().length+'개 점포 · '+liveProducts(within).length+'개 상품';
+  $('#dashDate').textContent = (d.getMonth()+1)+'월 '+d.getDate()+'일 · '+locLabel()+' 반경 '+ui.radius+'km '+storesInRadius().length+'개 매장 · '+liveProducts(within).length+'개 상품';
   $('#kpis').innerHTML =
     '<div class="kpi hero-kpi pulse"><div class="kh"><span class="ki">💰</span>예상 추가 매출</div><div class="kv">'+num(m.extra)+'<small>원</small></div><div class="ks up">마감까지 · 잔여 60% 소진 가정 (시연 예시)</div></div>'+
     '<div class="kpi"><div class="kh"><span class="ki">♻️</span>폐기 절감량</div><div class="kv">'+m.savedKg.toFixed(1)+'<small>kg</small></div><div class="ks">오늘 판매분 · CO₂ '+num(m.savedKg*2.5)+'kg↓ (계수 2.5kg/1kg · 환경부·FAO)</div></div>'+
@@ -2991,8 +3150,9 @@ function renderDash(){
   $('#insightBar').style.width = Math.min(100, Math.max(8, m.avgDisc)) + '%';
   $('#avgDiscLab').textContent = m.avgDisc + '%';
 
-  var orders = state.orders.slice(0, 4);
-  $('#dashOrderCnt').textContent = state.orders.filter(function(o){ return o.status!=='픽업완료'; }).length + '건 진행 중';
+  var regOrders = state.orders.filter(function(o){ var st = storeById(o.store); return !st || storeRegion(st) === ui.region; });
+  var orders = regOrders.slice(0, 4);
+  $('#dashOrderCnt').textContent = regOrders.filter(function(o){ return o.status!=='픽업완료'; }).length + '건 진행 중';
   $('#dashOrders').innerHTML = orders.length ? orders.map(function(o){
     var idx = STATUS.indexOf(o.status);
     return '<div class="dash-order"><div class="do-top"><div class="do-name">'+esc(o.name)+' <span>×'+o.qty+'</span></div><div class="do-price">'+won(o.sale*o.qty)+'</div></div>'+
@@ -3001,7 +3161,7 @@ function renderDash(){
       '</div></div>';
   }).join('') : '<p style="font-size:10.5px;color:var(--muted);font-weight:600;padding:4px 0">아직 주문이 없어요. 소비자 화면에서 예약하면 실시간으로 표시됩니다.</p>';
 
-  var list = state.products.slice().sort(function(a,b){ return (a.left/a.total) - (b.left/b.total); }).slice(0,6);
+  var list = regionProducts().sort(function(a,b){ return (a.left/a.total) - (b.left/b.total); }).slice(0,6);
   $('#stockCnt').textContent = list.length + '종 추적';
   $('#stockList').innerHTML = list.map(function(p){
     var ratio = p.total ? Math.round(p.left/p.total*100) : 0;
@@ -3067,9 +3227,10 @@ function openInfo(){
       '<div><b>8시마켓 운영팀</b><small>매장 운영 · 품질 · 위생 관리</small></div>'+
       '<button class="link-btn" type="button" data-act="promo">홍보영상 ▶</button></div>'+
     '<p style="font-size:11px;color:#5E6B65;font-weight:600;line-height:1.7;margin-top:11px">퇴근길 동네마트·정육점·과일가게·빵집·반찬가게의 <b>오늘 남은 신선식품</b>을 마감특가로 연결하고, 반경 1~3km 이웃이 선결제 후 픽업하는 로컬 커머스 플랫폼입니다.</p>'+
-    '<div class="pi-stats"><span><b>'+STORES.length+'</b>개 매장</span><span><b>'+liveProducts(state.products).length+'</b>개 상품</span><span><b>'+storesInRadius().length+'</b>곳 · 반경 '+ui.radius+'km</span></div>'+
+    '<div class="pi-stats"><span><b>'+REGIONS.length+'</b>개 권역</span><span><b>'+STORES.length+'</b>개 매장</span><span><b>'+liveProducts(state.products).length+'</b>개 상품</span><span><b>'+storesInRadius().length+'</b>곳 · 반경 '+ui.radius+'km</span></div>'+
+    '<p class="whole-stats">전체 '+REGIONS.length+'개 권역 · 총 '+STORES.length+'개 매장 · '+liveProducts(state.products).length+'개 상품</p>'+
     '<h4>8시마켓이 다른 점</h4>'+
-    '<ul><li><b>대학가 한 끼 할인이 아닌 저녁 장바구니</b> — 둔산·탄방 주거·업무지구 3040 가구·직장인을 위한 정육·수산·채소·반찬</li>'+
+    '<ul><li><b>대학가 한 끼 할인이 아닌 저녁 장바구니</b> — 둔산·탄방 + 신현·태전 3040 가구·직장인을 위한 정육·수산·채소·반찬</li>'+
         '<li><b>AI 가격 결정</b> — 사진 한 장으로 등록하고, 8시 이후 시간이 지날수록 할인율을 자동으로 올립니다</li>'+
         '<li><b>점주별 적정 할인율 추천</b> — 업종·재고·마감 시간을 반영한 권장 구간 제시</li>'+
         '<li><b>거리·시간 기반 노출</b> — 반경 1~3km, 도보·자전거·차량으로 픽업 시간 내 방문 가능한 동네 매장</li>'+
@@ -3081,8 +3242,8 @@ function openInfo(){
       '<div class="mod"><b>위생</b><span>조리·냉장 상품의 판매 가능 시간 기준 안내</span></div></div>'+
     '<div class="scale">'+
       '<div class="sc-h">🌱 전국 확장 로드맵</div>'+
-      '<p class="sc-lead">대전 둔산·탄방 <b>1호 거점</b>에서 시작해 <b>당근처럼 전국 동네 생활권</b>으로 넓히는 퇴근길 저녁 장바구니 플랫폼입니다.</p>'+
-      '<ol><li class="now"><span class="n">1단계</span><span><b>대전 거점 검증</b>둔산·탄방 주거·업무지구 파일롯 (지금 이 시제품)</span></li>'+
+      '<p class="sc-lead">대전 둔산·탄방과 경기 광주 신현·태전 <b>2대 파일럿</b>에서 시작해 <b>당근처럼 전국 동네 생활권</b>으로 넓히는 퇴근길 저녁 장바구니 플랫폼입니다.</p>'+
+      '<ol><li class="now"><span class="n">1단계</span><span><b>2대 파일럿 동시 검증</b>대전(둔산·탄방) + 경기 광주(신현·태전) — 지방 거점 + 수도권 배드타운 (지금 이 시제품)</span></li>'+
         '<li><span class="n">2단계</span><span><b>충청·수도권 주거지 확장</b>동일 모델을 인구 밀집 주거·업무지구로 복제</span></li>'+
         '<li><span class="n">3단계</span><span><b>전국 동네 상권</b>지역화폐·지자체 ESG 연계로 전국 생활권 확대</span></li></ol>'+
     '</div>'+
@@ -3102,11 +3263,12 @@ function openInfo(){
 function openMe(){
   var live = state.orders.filter(function(o){ return o.status!=='픽업완료'; }).length;
   var pf = state.profile || {};
-  var dong = pf.dong || '둔산동';
+  var rid = pf.region || ui.region;
+  var dong = pf.dong || ui.dong;
   var joined = (pf.agree && pf.agree.at) ? String(pf.agree.at).slice(0,10).replace(/-/g,'.') : '';
-  var sub = pf.nick ? ('동네 회원 · 대전 '+dong) : '게스트(둘러보기) · 대전 '+dong;
+  var sub = (pf.nick ? '동네 회원 · ' : '게스트(둘러보기) · ') + regionLabel(rid, dong);
   var member = pf.nick
-    ? '<div class="me-member"><span class="mm-ic">✓</span><div><b>'+esc(pf.nick)+' 님 · 동네 회원</b><small>대전 '+esc(dong)+' · 회원가입 완료'+(joined?' · '+joined:'')+'</small></div><span class="mm-badge">회원</span></div>'
+    ? '<div class="me-member"><span class="mm-ic">✓</span><div><b>'+esc(pf.nick)+' 님 · 동네 회원</b><small>'+esc(regionLabel(rid, dong))+' · 회원가입 완료'+(joined?' · '+joined:'')+'</small></div><span class="mm-badge">회원</span></div>'
     : '<div class="me-member is-guest"><span class="mm-ic">?</span><div><b>게스트(둘러보기) 상태</b><small>가입하면 내 동네 특가와 찜이 계속 저장돼요</small></div><button class="mm-btn" type="button" data-act="restart">가입하기</button></div>';
   var html = sheetHead('내 정보', sub)+'<div class="sheet-body">'+ member +
     '<button class="me-install' + (isStandalone() ? ' is-installed' : '') + '" type="button" data-act="install">'+
@@ -3120,7 +3282,7 @@ function openMe(){
     '<div class="me-rows">'+
       '<div><span>회원 상태</span><b>'+ (pf.nick ? '✓ 동네 회원 (가입 완료)' : '게스트 · 둘러보기') +'</b></div>'+
       '<div><span>닉네임</span><b>'+ (pf.nick ? esc(pf.nick) : '게스트') +'</b></div>'+
-      '<div><span>내 동네</span><b>대전 '+esc(dong)+'</b></div>'+
+      '<div><span>내 동네</span><b>'+esc(regionLabel(rid, dong))+'</b></div>'+
       '<div><span>관심 품목</span><b>'+ (pf.cats && pf.cats.length ? esc(pf.cats.join(' · ')) : '전체') +'</b></div>'+
       '<div><span>동의한 약관</span><b>'+ (pf.agree && pf.agree.terms ? ('이용약관·개인정보'+(pf.agree.marketing?' · 알림':'')+' ✓') : '미동의') +'</b></div>'+
       (state.owner ? '<div><span>점주 회원</span><b>'+esc(state.owner.name || '점주')+' · 입점 완료</b></div>' : '')+
@@ -3147,7 +3309,8 @@ function resetDemo(){
   state.welcome = null; state.owner = null;
   save();
   ui.radius = 2; ui.deal = 0; ui.cat = '전체'; ui.sort = 'reco'; ui.mapSel = null; ui.orderFilter = 'all'; ui.ownerStore = 's2';
-  obsel = {dong:'둔산동', cats:[], agreeC:false, agreeM:false, agreeO:false, afterAi:false};
+  ui.region = 'dj'; ui.dong = '둔산동'; state.view = null;
+  obsel = {region:'dj', dong:'둔산동', cats:[], agreeC:false, agreeM:false, agreeO:false, afterAi:false};
   $$('.role').forEach(function(r){ r.classList.remove('is-sel'); r.setAttribute('aria-pressed','false'); });
   $('#obNext').disabled = true;
   renderObResume(); renderAgree();
@@ -3170,10 +3333,12 @@ function handleAction(el){
   else if(act==='go-home'){ setTab('home'); }
   else if(act==='orders'){ setTab('orders'); }
   else if(act==='radius'){ openRadius(); }
-  else if(act==='set-radius'){ ui.radius = parseInt(el.getAttribute('data-v'),10); renderHome(); renderMap(); closeSheet(); toast('반경 '+ui.radius+'km로 설정했어요'); }
+  else if(act==='set-region'){ setRegion(el.getAttribute('data-v')); openRadius(); toast(regionLabel(ui.region, ui.dong)+'으로 전환했어요'); }
+  else if(act==='set-dong'){ setDong(el.getAttribute('data-v')); closeSheet(); toast(locLabel()+' 기준으로 보고 있어요'); }
+  else if(act==='set-radius'){ ui.radius = parseInt(el.getAttribute('data-v'),10); renderHome(); renderMap(); renderDash(); closeSheet(); toast('반경 '+ui.radius+'km로 설정했어요'); }
   else if(act==='map-radius'){ ui.radius = parseInt(el.getAttribute('data-v'),10); renderMap(); }
   else if(act==='sort'){ ui.sort = el.getAttribute('data-v'); renderChips(); renderFeed(); }
-  else if(act==='recenter'){ toast('내 위치(대전 '+((state.profile||{}).dong || '둔산동')+') 기준으로 보고 있어요'); }
+  else if(act==='recenter'){ toast('내 위치('+locLabel()+') 기준으로 보고 있어요'); }
   else if(act==='pin'){ selectStoreInline(el.getAttribute('data-store')); }
   else if(act==='close-sheet'){ closeSheet(); }
   else if(act==='qty'){ changeQty(parseInt(el.getAttribute('data-v'),10)); }
@@ -3274,6 +3439,8 @@ function wire(){
   $('#fStore').addEventListener('change', function(){
     ui.ownerStore = this.value; renderOwner();
   });
+  var obReg = $('#obStoreRegion');
+  if(obReg) obReg.addEventListener('change', function(){ fillOwnerDong(this.value, ''); });
   $('#storeToggle').addEventListener('click', function(){
     var sel = $('#fStore'), note = $('#storeNote');
     var open = sel.hidden;
@@ -3299,7 +3466,7 @@ function boot(){
   renderMap();
   renderInstall();
   $('#sbTime').textContent = nowTime();
-  $('#homeNote').innerHTML = '<div class="home-note-card"><b>동네 점포의 오늘을 살리는 장보기</b><p>8시마켓은 대전 둔산·탄방 1호 거점에서 시작해, 당근처럼 전국 동네 생활권으로 넓혀가는 퇴근길 저녁 장바구니 플랫폼입니다. 동네 점포의 오늘 남은 신선식품을 이웃과 연결해, 폐기는 줄이고 저녁 장보기는 가볍게.</p><button type="button" class="link-btn" data-act="info">8시마켓 소개 보기 ›</button></div>';
+  $('#homeNote').innerHTML = '<div class="home-note-card"><b>동네 점포의 오늘을 살리는 장보기</b><p>8시마켓은 대전 둔산·탄방과 경기 광주 신현·태전, 2대 파일럿에서 시작해 당근처럼 전국 동네 생활권으로 넓혀가는 퇴근길 저녁 장바구니 플랫폼입니다. 동네 점포의 오늘 남은 신선식품을 이웃과 연결해, 폐기는 줄이고 저녁 장보기는 가볍게.</p><button type="button" class="link-btn" data-act="info">8시마켓 소개 보기 ›</button></div>';
   /* 링크를 새로 열 때마다 항상 첫 화면(역할 선택)부터 — 저장된 상품·찜·예약·가입 정보는 그대로 */
   showOnboard();
   setTab(state.role === 'owner' ? 'owner' : 'home');
