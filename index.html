@@ -556,6 +556,9 @@ h1,h2,h3,h4,p{margin:0}
 .info-sheet .mods{display:grid;gap:6px;margin-top:7px}
 .info-sheet .mod{display:flex;gap:8px;font-size:10.5px;font-weight:700;color:#5E6B65;background:#F7FAF7;border-radius:8px;padding:7px 9px}
 .info-sheet .mod b{color:var(--ink);font-weight:900;flex:0 0 auto}
+.info-sheet .pricing{margin:12px 0 0;padding:12px}
+.info-sheet .pc-head h2{font-size:12px}
+.info-sheet .pc-sub,.info-sheet .pc-note{font-size:9px}
 .info-sheet .disc{font-size:9.5px;color:var(--muted2);margin-top:12px;line-height:1.6}
 
 /* ================= toast ================= */
@@ -1858,8 +1861,9 @@ function pricingHTML(){
 }
 function renderPricing(){
   var html = pricingHTML();
-  var a = $('#pricingOwner'); if(a) a.innerHTML = html;
-  var b = $('#pricingDash'); if(b) b.innerHTML = html;
+  ['#pricingOwner','#pricingDash','#pricingInfo'].forEach(function(sel){
+    var el = $(sel); if(el) el.innerHTML = html;
+  });
 }
 function renderOwner(){ renderStoreSelect(); renderOwnerHeader(); renderPickupOptions(); renderOwnerList(); renderPricing(); }
 
@@ -2068,6 +2072,7 @@ function openInfo(){
         '<li><b>점주별 적정 할인율 추천</b> — 업종·재고·마감 시간을 반영한 권장 구간 제시</li>'+
         '<li><b>거리·시간 기반 노출</b> — 반경 1~3km, 도보·자전거·차량으로 픽업 시간 내 방문 가능한 동네 매장</li>'+
         '<li><b>폐기 절감 대시보드</b> — 예상 추가 매출·절감 kg·CO₂ 환산을 점주에게 제공</li></ul>'+
+    '<div id="pricingInfo"></div>'+
     '<h4>운영·품질·위생</h4>'+
     '<div class="mods"><div class="mod"><b>운영</b><span>대표 강선진 — 전 카페 매니저·더본코리아 슈퍼바이저 경력으로 점포 운영 노하우 전수</span></div>'+
       '<div class="mod"><b>품질</b><span>업종별 마감·보관 기준과 사진 검수 가이드</span></div>'+
@@ -2088,6 +2093,7 @@ function openInfo(){
     '<p class="disc">본 화면은 ‘모두의 창업’ 지원용 시제품(MVP) 데모입니다. 상품·주문·매출·AI 분석 결과는 체험용 예시이며 실제 결제·배송은 발생하지 않습니다.</p>'+
   '</div>';
   openSheet(html);
+  renderPricing();
 }
 
 /* ================= me sheet ================= */
