@@ -114,6 +114,7 @@ h1,h2,h3,h4,p{margin:0}
 .appbar .mark{width:30px;height:30px;border-radius:10px;background:linear-gradient(150deg,#16A85F,#0A6B3F);color:#fff;display:grid;place-items:center;font-weight:900;font-size:13px;box-shadow:0 8px 16px -12px rgba(11,122,70,.95)}
 .appbar .ab-name{font-size:15px;font-weight:900;letter-spacing:-.04em;line-height:1.1}
 .appbar .ab-name small{display:block;font-size:9.5px;font-weight:700;color:var(--muted);letter-spacing:.02em}
+.appbar .ab-mem{flex:0 0 auto;font-size:8.5px;font-weight:900;color:var(--brand-d);background:var(--brand-l);border:1px solid #CFE9DA;border-radius:999px;padding:3px 6px;letter-spacing:0;line-height:1.1}
 .ab-actions{display:flex;align-items:center;gap:6px}
 .ab-btn{width:34px;height:34px;border:0;background:var(--line2);border-radius:11px;display:grid;place-items:center;color:var(--ink2);position:relative;transition:.15s}
 .ab-btn:hover{background:#E8EEE9}
@@ -138,7 +139,8 @@ h1,h2,h3,h4,p{margin:0}
 
 /* ================= onboarding ================= */
 .onboard{position:absolute;inset:30px 0 0 0;z-index:70;background:#fff;overflow-y:auto;display:block;transition:opacity .3s ease, transform .35s cubic-bezier(.32,.72,0,1)}
-@media(max-width:960px){.onboard{inset:0}}
+@media(max-width:960px){.onboard{inset:0;padding-top:max(28px, calc(env(safe-area-inset-top) + 12px))}}
+@media(max-width:960px){.ob-step{padding-top:12px}}
 .onboard::before{content:"";position:absolute;inset:0 0 auto 0;height:320px;background:radial-gradient(360px 220px at 88% -34%, #D8F2E2 0%, rgba(216,242,226,0) 70%),radial-gradient(340px 200px at 0% 0%, #FDF1DE 0%, rgba(253,241,222,0) 70%);pointer-events:none}
 .onboard.is-hidden{opacity:0;transform:translateY(-8px);pointer-events:none}
 .ob-step{display:none;min-height:100%;padding:14px 22px calc(14px + env(safe-area-inset-bottom));flex-direction:column;position:relative}
@@ -160,7 +162,7 @@ h1,h2,h3,h4,p{margin:0}
 .ob-resume{position:relative;margin-top:7px;font-size:10.5px;font-weight:700;color:#5C6A63;background:#F4F9F5;border:1px solid #E3EEE7;border-radius:9px;padding:7px 9px;line-height:1.5}
 .ob-resume b{color:var(--brand-d);font-weight:900}
 .roles{position:relative;display:grid;gap:7px;margin-top:7px}
-.role{display:flex;align-items:flex-start;gap:12px;text-align:left;background:#fff;border:1.5px solid #E6ECE7;border-radius:16px;padding:9px 13px;transition:border-color .16s, box-shadow .2s, transform .16s;position:relative}
+.role{display:flex;align-items:flex-start;gap:12px;text-align:left;background:#fff;border:1.5px solid #E6ECE7;border-radius:16px;padding:9px 13px;transition:border-color .16s, box-shadow .2s, transform .16s;position:relative;cursor:pointer}
 .role:hover{border-color:#CFE2D5;transform:translateY(-1px)}
 .role.is-sel{border-color:var(--brand);box-shadow:0 0 0 3px rgba(11,122,70,.09), 0 16px 30px -24px rgba(11,122,70,.8);background:linear-gradient(180deg,#F7FDF9,#fff)}
 .role .ri{flex:0 0 auto;width:42px;height:42px;border-radius:13px;background:#F2F5F1;display:grid;place-items:center;font-size:20px;transition:.16s}
@@ -170,9 +172,14 @@ h1,h2,h3,h4,p{margin:0}
 .role.is-sel .rlabel{color:var(--brand-d);background:#fff;border-color:#D3E9DC}
 .role .rt b{display:block;font-size:14.5px;font-weight:900;letter-spacing:-.035em;line-height:1.35}
 .role .rt small{display:block;margin-top:2px;font-size:11px;color:var(--muted);font-weight:600;line-height:1.5}
-.role .rtags{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px}
-.role .rtags span{font-size:8.5px;font-weight:800;color:#5F6C66;background:#F5F9F6;border:1px solid #E8EFEA;border-radius:6px;padding:2px 5px}
-.role.is-sel .rtags span{background:#fff;border-color:#D6EADF;color:var(--brand-d)}
+.role .rtags{display:flex;flex-wrap:wrap;gap:5px;margin-top:7px}
+.role .rtag{display:inline-flex;align-items:center;gap:3px;font-size:9px;font-weight:800;color:#5F6C66;background:#F5F9F6;border:1px solid #E8EFEA;border-radius:7px;padding:4px 7px;line-height:1.15;letter-spacing:-.01em;transition:.15s;white-space:nowrap}
+.role .rtag i{font-style:normal;font-size:7.5px;font-weight:900;color:#12A05C;line-height:1}
+.role .rtag:hover{background:#fff;border-color:#BEDCCB;color:var(--brand-d);transform:translateY(-1px);box-shadow:0 6px 12px -10px rgba(11,122,70,.8)}
+.role .rtag:active{transform:none}
+.role.is-sel .rtag{background:#fff;border-color:#D6EADF;color:var(--brand-d)}
+.role .rtag.is-skip{color:#7C8A83;background:#FBFCFB;border-style:dashed}
+.role .rtag.is-skip:hover{color:var(--ink2);border-color:#C9D6CD}
 .role .check{position:absolute;right:12px;top:13px;width:19px;height:19px;border-radius:50%;border:1.5px solid #DCE3DD;display:grid;place-items:center;color:transparent;font-size:9px;transition:.16s;background:#fff}
 .role.is-sel .check{background:var(--brand);border-color:var(--brand);color:#fff}
 .ob-next{margin-top:9px}
@@ -185,6 +192,11 @@ h1,h2,h3,h4,p{margin:0}
 .ob-back{align-self:flex-start;display:inline-flex;align-items:center;gap:4px;border:0;background:transparent;color:var(--ink2);font-size:12px;font-weight:800;padding:6px 0 2px;position:relative}
 .ob-back:hover{color:var(--brand-d)}
 .ob-h2{position:relative;margin-top:10px;font-size:22px;font-weight:900;letter-spacing:-.05em;line-height:1.3}
+.ob-entry{position:relative;display:inline-flex;align-items:center;gap:5px;margin-top:9px;font-size:10.5px;font-weight:900;color:var(--brand-d);background:var(--brand-l);border:1px solid #CFE9DA;border-radius:999px;padding:5px 10px 5px 6px;letter-spacing:-.02em}
+.ob-entry i{font-style:normal;width:15px;height:15px;border-radius:50%;background:var(--brand);color:#fff;display:grid;place-items:center;font-size:8.5px;flex:0 0 auto}
+.ob-hint{position:relative;margin-top:6px;font-size:10px;font-weight:700;color:var(--brand-d);background:#F1FAF4;border:1px dashed #CDE7D8;border-radius:8px;padding:6px 8px;line-height:1.5}
+.ob-focus{animation:obPulse 1.7s ease-out 2}
+@keyframes obPulse{0%{box-shadow:0 0 0 0 rgba(18,160,92,.4)}70%{box-shadow:0 0 0 8px rgba(18,160,92,0)}100%{box-shadow:0 0 0 0 rgba(18,160,92,0)}}
 .ob-lead{position:relative;margin-top:6px;font-size:11.5px;font-weight:600;color:var(--muted);line-height:1.65}
 .ob-lead b{color:var(--ink2);font-weight:800}
 .ob-card{position:relative;margin-top:14px;background:#fff;border:1px solid #E7EEE9;border-radius:16px;padding:13px 13px 15px;box-shadow:0 18px 34px -30px rgba(17,26,23,.55)}
@@ -194,6 +206,16 @@ h1,h2,h3,h4,p{margin:0}
 .pick:hover{border-color:#C8DCCF}
 .pick.is-on{background:var(--brand);border-color:var(--brand);color:#fff;box-shadow:0 8px 16px -12px rgba(11,122,70,.95)}
 .ob-msg{margin-top:10px;background:#FEF2F1;border:1px solid #FBD5D1;color:#B42318;border-radius:9px;padding:8px 10px;font-size:10.5px;font-weight:700;line-height:1.55}
+.agree{margin-top:12px;padding-top:11px;border-top:1px dashed #E7EEE9;display:grid;gap:8px}
+.agree-row{display:flex;align-items:center;gap:8px;min-height:22px}
+.agree-box{flex:0 0 auto;width:20px;height:20px;border-radius:6px;border:1.5px solid #D3DCD6;background:#fff;display:grid;place-items:center;color:transparent;font-size:10px;font-weight:900;transition:.15s;padding:0;line-height:1}
+.agree-box.is-on{background:var(--brand);border-color:var(--brand);color:#fff;box-shadow:0 6px 12px -10px rgba(11,122,70,.9)}
+.agree-row.is-error .agree-box{border-color:#E2523A;box-shadow:0 0 0 3px rgba(226,82,58,.13)}
+.agree-tx{flex:1 1 auto;font-size:10.5px;font-weight:700;color:var(--ink2);line-height:1.5;letter-spacing:-.01em}
+.agree-tx b{color:var(--brand-d);font-weight:900}
+.agree-tx em{font-style:normal;color:var(--muted);font-weight:600}
+.agree-view{flex:0 0 auto;border:0;background:transparent;color:var(--muted);font-size:10px;font-weight:800;text-decoration:underline;text-underline-offset:3px;padding:2px 0 2px 4px}
+.agree-view:hover{color:var(--brand-d)}
 .ob-perks{margin-top:10px;display:grid;gap:6px}
 .ob-perk{display:flex;align-items:center;gap:9px;background:#F8FBF9;border:1px solid #E7F0EA;border-radius:11px;padding:8px 10px}
 .ob-perk .ic{width:26px;height:26px;border-radius:8px;background:#fff;border:1px solid #E3EDE6;display:grid;place-items:center;font-size:13px;flex:0 0 auto}
@@ -217,6 +239,12 @@ h1,h2,h3,h4,p{margin:0}
 
 /* ================= home ================= */
 .home-head{padding:14px 16px 0}
+.home-welcome{display:flex;align-items:center;gap:9px;background:linear-gradient(135deg,#0B7A46,#12945A);color:#fff;border-radius:15px;padding:10px 11px;margin-bottom:10px;box-shadow:0 18px 30px -26px rgba(11,122,70,.95);position:relative;overflow:hidden;animation:pop .3s ease}
+.home-welcome::after{content:"";position:absolute;width:110px;height:110px;border-radius:50%;background:rgba(255,255,255,.09);right:-40px;top:-56px}
+.home-welcome .hw-ic{width:27px;height:27px;border-radius:9px;background:rgba(255,255,255,.18);display:grid;place-items:center;font-size:13px;flex:0 0 auto;position:relative}
+.home-welcome b{display:block;font-size:12px;font-weight:900;letter-spacing:-.03em;line-height:1.35;position:relative}
+.home-welcome small{display:block;font-size:10px;font-weight:700;color:#C7EAD8;margin-top:1px;letter-spacing:-.01em;position:relative;line-height:1.4}
+.home-welcome .hw-x{margin-left:auto;flex:0 0 auto;border:0;background:rgba(255,255,255,.16);color:#fff;width:23px;height:23px;border-radius:50%;font-size:11px;display:grid;place-items:center;position:relative;line-height:1}
 .loc-row{display:flex;align-items:center;justify-content:space-between;gap:8px}
 .loc-btn{display:inline-flex;align-items:center;gap:6px;border:0;background:transparent;padding:2px 0;color:var(--ink);font-size:14px;font-weight:900;letter-spacing:-.03em}
 .loc-btn .pin{width:18px;height:18px;color:var(--brand)}
@@ -383,7 +411,9 @@ h1,h2,h3,h4,p{margin:0}
 .owner-store p{font-size:10.5px;color:#BFE8D3;font-weight:700;margin-top:1px}
 .owner-store .os-r{margin-left:auto;text-align:right;font-size:10px;color:#BFE8D3;font-weight:700}
 .owner-store .os-r b{display:block;font-size:14px;color:#fff;font-weight:900}
-.ai-card{margin:12px 16px 0;background:#fff;border-radius:19px;border:1px solid #E9EDEA;box-shadow:var(--sh-card);padding:15px 14px}
+.ai-card{margin:12px 16px 0;background:#fff;border-radius:19px;border:1px solid #E9EDEA;box-shadow:var(--sh-card);padding:15px 14px;transition:box-shadow .3s}
+.ai-card.is-flash{animation:aiFlash 1.7s ease-out 2}
+@keyframes aiFlash{0%{box-shadow:0 0 0 0 rgba(18,160,92,.4), var(--sh-card)}60%{box-shadow:0 0 0 6px rgba(18,160,92,.12), var(--sh-card)}100%{box-shadow:0 0 0 0 rgba(18,160,92,0), var(--sh-card)}}
 .ai-head{display:flex;align-items:center;gap:7px}
 .ai-badge{display:inline-flex;align-items:center;gap:3px;background:linear-gradient(135deg,#7C5CFC,#5B3FE0);color:#fff;font-size:9.5px;font-weight:900;letter-spacing:.03em;border-radius:6px;padding:3px 6px}
 .ai-head h2{font-size:15px;font-weight:900;letter-spacing:-.035em}
@@ -528,6 +558,11 @@ h1,h2,h3,h4,p{margin:0}
 .x-btn:hover{background:#E8EEE9;color:var(--ink)}
 .x-btn svg{width:14px;height:14px}
 .sheet-body{padding:8px 18px 0}
+.terms h4{font-size:11.5px;font-weight:900;color:var(--ink);margin:12px 0 3px;letter-spacing:-.02em}
+.terms h4:first-child{margin-top:2px}
+.terms p{font-size:10.5px;font-weight:600;color:#5E6B65;line-height:1.7}
+.terms ul{margin:3px 0 0;padding-left:15px;font-size:10.5px;font-weight:600;color:#5E6B65;line-height:1.7}
+.terms li::marker{color:var(--brand)}
 .sheet-note{font-size:9.5px;color:var(--muted2);font-weight:600;line-height:1.6;margin-top:9px}
 .sheet-actions{margin-top:12px;display:grid;gap:7px}
 
@@ -635,6 +670,15 @@ h1,h2,h3,h4,p{margin:0}
 .me-role b{display:block;font-size:13px;font-weight:900;letter-spacing:-.02em}
 .me-role small{display:block;font-size:9.5px;color:var(--muted);font-weight:700;margin-top:2px}
 .me-role span{font-size:22px}
+.me-member{display:flex;align-items:center;gap:9px;background:linear-gradient(135deg,#F0FBF5,#F9FDFB);border:1px solid #D8EEE1;border-radius:12px;padding:9px 11px}
+.me-member .mm-ic{width:25px;height:25px;border-radius:50%;background:var(--brand);color:#fff;display:grid;place-items:center;font-size:11px;font-weight:900;flex:0 0 auto}
+.me-member b{display:block;font-size:11.5px;font-weight:900;color:var(--ink);letter-spacing:-.02em;line-height:1.35}
+.me-member small{display:block;font-size:9.5px;font-weight:700;color:#5C6A63;margin-top:1px;line-height:1.4}
+.me-member .mm-badge{margin-left:auto;flex:0 0 auto;font-size:9px;font-weight:900;color:#fff;background:var(--brand);border-radius:999px;padding:3px 8px;letter-spacing:0}
+.me-member.is-guest{background:#FAFCFA;border-color:#E7EEE9}
+.me-member.is-guest .mm-ic{background:#DDE7E0;color:#7C8A83}
+.me-member.is-guest .mm-badge{background:#5C6A63}
+.me-member .mm-btn{margin-left:auto;flex:0 0 auto;border:1px solid #CFE6D8;background:#fff;color:var(--brand-d);font-size:9.5px;font-weight:900;border-radius:8px;padding:4px 8px}
 .me-rows{margin-top:10px;border:1px solid #EDF1EE;border-radius:12px;overflow:hidden}
 .me-rows div{display:flex;justify-content:space-between;padding:9px 12px;font-size:11px;font-weight:700;color:#5E6B65}
 .me-rows div:nth-child(odd){background:#FAFCFA}
@@ -860,6 +904,7 @@ h1,h2,h3,h4,p{margin:0}
           <div class="ab-brand">
             <span class="mark">8</span>
             <span class="ab-name">8시마켓<small id="abDong">대전 둔산동 · 반경 2km</small></span>
+            <span class="ab-mem" id="abMem" hidden>회원</span>
           </div>
           <div class="ab-actions">
             <button class="ab-btn" type="button" data-act="promo" aria-label="홍보영상">
@@ -880,6 +925,11 @@ h1,h2,h3,h4,p{margin:0}
           <!-- ===== consumer home ===== -->
           <section class="screen is-active" id="screen-home" aria-label="홈">
             <div class="home-head">
+              <div class="home-welcome" id="homeWelcome" hidden>
+                <span class="hw-ic">🎉</span>
+                <div><b id="homeWelcomeTitle">환영합니다!</b><small id="homeWelcomeSub"></small></div>
+                <button class="hw-x" type="button" data-act="close-welcome" aria-label="환영 안내 닫기">✕</button>
+              </div>
               <button class="promo-strip" type="button" data-act="promo">
                 <img src="poster.jpg" alt="8시마켓 홍보 포스터">
                 <span class="ps-txt"><b>🎬 8시마켓 홍보영상</b><small>대표 강선진의 브랜드 소개 · 1분 22초</small></span>
@@ -1209,26 +1259,34 @@ h1,h2,h3,h4,p{margin:0}
             <p class="ob-q">어떤 방식으로 시작할까요?</p>
             <p class="ob-resume" id="obResume" hidden></p>
             <div class="roles" id="roles">
-              <button class="role" type="button" data-role="consumer">
+              <div class="role" role="button" tabindex="0" data-role="consumer" aria-pressed="false">
                 <span class="ri">🛒</span>
                 <span class="rt">
                   <span class="rlabel">소비자</span>
                   <b>할인 장보기 · 간편 가입</b>
                   <small>내 동네 마감특가를 예약하고 퇴근길에 픽업해요</small>
-                  <span class="rtags"><span>10초 가입</span><span>동네 선택</span><span>가입 없이 둘러보기</span></span>
+                  <span class="rtags">
+                    <button class="rtag" type="button" data-rolechip="consumer-nick" aria-label="10초 가입으로 바로 시작"><i aria-hidden="true">✓</i>10초 가입</button>
+                    <button class="rtag" type="button" data-rolechip="consumer-dong" aria-label="내 동네를 고르고 가입"><i aria-hidden="true">✓</i>동네 선택</button>
+                    <button class="rtag is-skip" type="button" data-rolechip="consumer-skip" aria-label="가입 없이 둘러보기">가입 없이 둘러보기 ›</button>
+                  </span>
                 </span>
-                <span class="check">✓</span>
-              </button>
-              <button class="role" type="button" data-role="owner">
+                <span class="check" aria-hidden="true">✓</span>
+              </div>
+              <div class="role" role="button" tabindex="0" data-role="owner" aria-pressed="false">
                 <span class="ri">🏪</span>
                 <span class="rt">
                   <span class="rlabel">매장 점주</span>
                   <b>우리 매장 입점 · 마감 등록</b>
                   <small>남은 재고를 AI 가격 결정으로 마감까지 소진해요</small>
-                  <span class="rtags"><span>상호·업종 등록</span><span>마감시간 설정</span><span>AI 10초 상품등록</span></span>
+                  <span class="rtags">
+                    <button class="rtag" type="button" data-rolechip="owner-store" aria-label="상호·업종을 등록하고 입점"><i aria-hidden="true">✓</i>상호·업종 등록</button>
+                    <button class="rtag" type="button" data-rolechip="owner-close" aria-label="마감시간을 설정하고 입점"><i aria-hidden="true">✓</i>마감시간 설정</button>
+                    <button class="rtag" type="button" data-rolechip="owner-ai" aria-label="AI 10초 상품등록">AI 10초 상품등록 ›</button>
+                  </span>
                 </span>
-                <span class="check">✓</span>
-              </button>
+                <span class="check" aria-hidden="true">✓</span>
+              </div>
             </div>
             <button class="btn btn-primary btn-block ob-next" type="button" id="obNext" disabled>다음</button>
             <button class="ob-skip" type="button" id="obSkip">둘러보기로 바로 시작</button>
@@ -1238,24 +1296,26 @@ h1,h2,h3,h4,p{margin:0}
           <!-- step 2-A · 소비자 간편 가입 -->
           <div class="ob-step" id="obStep-consumer">
             <button class="ob-back" type="button" data-ob="back">← 역할 선택으로</button>
-            <h2 class="ob-h2">10초 간편 가입</h2>
-            <p class="ob-lead">닉네임과 동네만 정하면 <b>내 동네 마감특가</b>가 바로 열려요. 연락처는 선택이에요.</p>
+            <h2 class="ob-h2">소비자 회원가입</h2>
+            <p class="ob-entry" id="obConsumerEntry" hidden><i aria-hidden="true">✓</i><span id="obConsumerEntryTx">10초 가입</span></p>
+            <p class="ob-lead">닉네임과 동네만 정하면 <b>내 동네 마감특가</b>가 바로 열려요. 휴대폰 번호는 선택이에요.</p>
             <div class="ob-card">
               <div class="field">
                 <label for="obNick">닉네임 <span>필수</span></label>
                 <input type="text" id="obNick" maxlength="12" placeholder="예) 둔산동 먹보" autocomplete="nickname">
               </div>
               <div class="field">
-                <label for="obPhone">연락처 <span>선택 · 픽업 알림용</span></label>
+                <label for="obPhone">휴대폰 번호 <span>선택 · 픽업 알림용</span></label>
                 <input type="tel" id="obPhone" maxlength="13" inputmode="tel" placeholder="예) 010-1234-5678" autocomplete="tel">
               </div>
-              <div class="field">
-                <label>내 동네 <span>픽업 기준</span></label>
+              <div class="field" id="obDongField">
+                <label>내 동네 <span>필수 · 픽업 기준</span></label>
                 <div class="ob-picks" id="obDongPick">
                   <button class="pick" type="button" data-ob="dong" data-v="둔산동">둔산동</button>
                   <button class="pick" type="button" data-ob="dong" data-v="탄방동">탄방동</button>
                   <button class="pick" type="button" data-ob="dong" data-v="월평동">월평동</button>
                 </div>
+                <p class="ob-hint" id="obDongHint" hidden>✓ 동네를 고르면 반경 2km 마감특가·픽업 시간이 바로 맞춰져요</p>
               </div>
               <div class="field">
                 <label>관심 품목 <span>복수 선택</span></label>
@@ -1266,6 +1326,17 @@ h1,h2,h3,h4,p{margin:0}
                   <button class="pick" type="button" data-ob="cat" data-v="동네마트">🏪 동네마트</button>
                 </div>
               </div>
+              <div class="agree" id="obAgreeC">
+                <div class="agree-row" id="obAgreeCRow">
+                  <button class="agree-box" type="button" data-ob="agree-c" role="checkbox" aria-checked="false" aria-label="서비스 이용약관 및 개인정보 수집·이용 동의">✓</button>
+                  <span class="agree-tx"><b>[필수]</b> 서비스 이용약관 및 개인정보 수집·이용 동의</span>
+                  <button class="agree-view" type="button" data-ob="terms" data-terms="consumer">보기</button>
+                </div>
+                <div class="agree-row">
+                  <button class="agree-box" type="button" data-ob="agree-m" role="checkbox" aria-checked="false" aria-label="마감특가·픽업 알림 수신 동의(선택)">✓</button>
+                  <span class="agree-tx"><em>[선택]</em> 마감특가·픽업 준비 알림 받기</span>
+                </div>
+              </div>
               <p class="ob-msg" id="obConsumerMsg" hidden></p>
             </div>
             <div class="ob-perks">
@@ -1274,18 +1345,29 @@ h1,h2,h3,h4,p{margin:0}
               <div class="ob-perk"><span class="ic">🔔</span><div><b>픽업 준비 알림</b><small>연락처를 넣으면 준비 완료·픽업 시간을 알려드려요</small></div></div>
             </div>
             <div class="ob-actions">
-              <button class="btn btn-primary btn-block" type="button" data-ob="consumer-done">가입하고 마감특가 보기</button>
-              <button class="ob-skip" type="button" data-ob="consumer-skip">로그인·가입 없이 바로 둘러보기</button>
+              <button class="btn btn-primary btn-block" type="button" data-ob="consumer-done">회원가입 완료하고 시작하기</button>
+              <button class="ob-skip" type="button" data-ob="consumer-skip">가입 없이 둘러보기</button>
             </div>
-            <p class="ob-foot">입력한 정보는 이 브라우저에만 저장되는 시제품용 체험 데이터입니다</p>
+            <p class="ob-foot">체험용 시제품입니다 · 입력하신 회원/매장 정보는 이 브라우저에 안전하게 저장됩니다</p>
           </div>
 
           <!-- step 2-B · 매장 점주 입점 등록 -->
           <div class="ob-step" id="obStep-owner">
             <button class="ob-back" type="button" data-ob="back">← 역할 선택으로</button>
-            <h2 class="ob-h2">매장 입점 등록</h2>
+            <h2 class="ob-h2">점주 회원가입 · 입점 등록</h2>
+            <p class="ob-entry" id="obOwnerEntry" hidden><i aria-hidden="true">✓</i><span id="obOwnerEntryTx">상호·업종 등록</span></p>
             <p class="ob-lead">상호명·업종·마감시간만 넣으면 <b>점주 센터</b>가 바로 열려요. 등록한 매장은 동네 지도에도 표시됩니다.</p>
             <div class="ob-card">
+              <div class="field-row">
+                <div class="field" style="margin-top:11px">
+                  <label for="obOwnerName">점주명 <span>선택</span></label>
+                  <input type="text" id="obOwnerName" maxlength="12" placeholder="예) 김선진" autocomplete="name">
+                </div>
+                <div class="field" style="margin-top:11px">
+                  <label for="obOwnerPhone">연락처 <span>선택</span></label>
+                  <input type="tel" id="obOwnerPhone" maxlength="13" inputmode="tel" placeholder="예) 010-0000-0000" autocomplete="tel">
+                </div>
+              </div>
               <div class="field">
                 <label for="obStoreName">상호명 <span>필수</span></label>
                 <input type="text" id="obStoreName" maxlength="16" placeholder="예) 푸른청과" autocomplete="organization">
@@ -1304,9 +1386,17 @@ h1,h2,h3,h4,p{margin:0}
                 <label for="obStoreAddr">주소 <span>선택 · 번지·도로명</span></label>
                 <input type="text" id="obStoreAddr" maxlength="24" placeholder="예) 계룡로 123">
               </div>
-              <div class="field">
+              <div class="field" id="obCloseField">
                 <label for="obStoreClose">기본 마감시간</label>
                 <select id="obStoreClose"><option>19:00</option><option selected>20:00</option><option>21:00</option><option>22:00</option></select>
+                <p class="ob-hint" id="obCloseHint" hidden>✓ 마감시간을 기준으로 AI가 단계 할인 시점을 자동으로 잡아요</p>
+              </div>
+              <div class="agree" id="obAgreeO">
+                <div class="agree-row" id="obAgreeORow">
+                  <button class="agree-box" type="button" data-ob="agree-o" role="checkbox" aria-checked="false" aria-label="점주 입점 약관 및 개인정보 수집·이용 동의">✓</button>
+                  <span class="agree-tx"><b>[필수]</b> 점주 입점 약관 및 개인정보 수집·이용 동의</span>
+                  <button class="agree-view" type="button" data-ob="terms" data-terms="owner">보기</button>
+                </div>
               </div>
               <p class="ob-msg" id="obOwnerMsg" hidden></p>
             </div>
@@ -1316,10 +1406,10 @@ h1,h2,h3,h4,p{margin:0}
               <div class="ob-perk"><span class="ic">📊</span><div><b>폐기·매출 대시보드</b><small>예상 매출과 절감 kg을 AI 대시보드에서 확인할 수 있어요</small></div></div>
             </div>
             <div class="ob-actions">
-              <button class="btn btn-primary btn-block" type="button" data-ob="owner-done">매장 등록하고 점주 센터로</button>
+              <button class="btn btn-primary btn-block" type="button" data-ob="owner-done">점주 회원가입 · 입점 완료하기</button>
               <button class="ob-skip" type="button" data-ob="owner-skip">기존 체험 매장으로 바로 보기</button>
             </div>
-            <p class="ob-foot">시제품 체험용 등록입니다 · 실제 심사·계약 없이 이 브라우저에만 저장돼요</p>
+            <p class="ob-foot">체험용 시제품입니다 · 입력하신 회원/매장 정보는 이 브라우저에 안전하게 저장됩니다</p>
           </div>
 
         </div>
@@ -1461,10 +1551,12 @@ var state = load();
 sanitizeState();
 if(!('profile' in state)) state.profile = null;
 if(!('myStore' in state)) state.myStore = null;
+if(!('welcome' in state)) state.welcome = null;
+if(!('owner' in state)) state.owner = null;
 ensureMyStore();
 var ui = {tab:'home', radius:2, deal:0, cat:'전체', orderFilter:'all', ownerStore:(state.myStore ? state.myStore.id : 's2'), sheetOpen:false, lastOrder:null, priceStep:2};
 var co = {pid:null, qty:1, phase:'form', order:null, busy:false};
-var obsel = {dong:'둔산동', cats:[]};
+var obsel = {dong:'둔산동', cats:[], agreeC:false, agreeM:false, agreeO:false, afterAi:false};
 var aiBusy = false;
 
 /* ================= helpers ================= */
@@ -1568,10 +1660,48 @@ function showOnboard(){
   var obEl = $('#onboard');
   obEl.classList.remove('is-hidden');
   obEl.setAttribute('aria-hidden','false');
-  $$('.role').forEach(function(r){ r.classList.remove('is-sel'); });
+  $$('.role').forEach(function(r){ r.classList.remove('is-sel'); r.setAttribute('aria-pressed','false'); });
+  obsel.agreeC = false; obsel.agreeM = false; obsel.agreeO = false; obsel.afterAi = false;
   $('#obNext').disabled = true;
+  $('#obConsumerEntry').hidden = true; $('#obOwnerEntry').hidden = true;
+  $('#obDongHint').hidden = true; $('#obCloseHint').hidden = true;
+  $('#obAgreeCRow').classList.remove('is-error'); $('#obAgreeORow').classList.remove('is-error');
+  renderAgree();
   renderObResume();
   setObStep('role');
+}
+function showWelcome(nick, dong){
+  state.welcome = {nick:nick, dong:dong};
+  save();
+  renderWelcome();
+  var n = state.products.filter(function(p){ var st = storeById(p.store); return p.left > 0 && st && st.dist <= ui.radius; }).length;
+  toast(esc(nick)+'님 환영합니다! '+esc(dong)+' 마감특가 '+n+'개를 모아뒀어요');
+}
+function renderWelcome(){
+  var el = $('#homeWelcome');
+  if(!el) return;
+  var w = state.welcome;
+  if(!w || !w.nick){ el.hidden = true; return; }
+  var n = state.products.filter(function(p){ var st = storeById(p.store); return p.left > 0 && st && st.dist <= ui.radius; }).length;
+  $('#homeWelcomeTitle').textContent = w.nick + '님, 환영합니다!';
+  $('#homeWelcomeSub').textContent = w.dong + ' 반경 ' + ui.radius + 'km 마감특가 ' + n + '개 · 관심 품목 우선으로 모았어요';
+  el.hidden = false;
+}
+function renderAgree(){
+  var a = $('[data-ob="agree-c"]'), b = $('[data-ob="agree-m"]'), c = $('[data-ob="agree-o"]');
+  [['a',a,'agreeC'],['m',b,'agreeM'],['o',c,'agreeO']].forEach(function(x){
+    var el = x[1]; if(!el) return;
+    var on = !!obsel[x[2]];
+    el.classList.toggle('is-on', on);
+    el.setAttribute('aria-checked', on ? 'true' : 'false');
+  });
+}
+function selectRole(el){
+  if(!el) return;
+  $$('.role').forEach(function(r){ r.classList.remove('is-sel'); r.setAttribute('aria-pressed','false'); });
+  el.classList.add('is-sel');
+  el.setAttribute('aria-pressed','true');
+  $('#obNext').disabled = false;
 }
 /* mode: signup | skip | owner-join | owner-demo */
 function hideOnboard(role, mode){
@@ -1594,60 +1724,105 @@ function obNextStep(){
   if(!sel) return;
   if(sel.getAttribute('data-role') === 'consumer') openObConsumer(); else openObOwner();
 }
-function openObConsumer(){
+function highlightOb(target){
+  if(!target) return;
+  target.scrollIntoView({behavior:'smooth', block:'center'});
+  target.classList.remove('ob-focus');
+  void target.offsetWidth;
+  target.classList.add('ob-focus');
+  window.setTimeout(function(){ target.classList.remove('ob-focus'); }, 3600);
+}
+function openObConsumer(focus){
   var pf = state.profile || {};
-  obsel.dong = pf.dong || '둔산동';
-  obsel.cats = (pf.cats || []).slice();
+  obsel.dong = pf.dong || obsel.dong || '둔산동';
+  obsel.cats = (pf.cats || obsel.cats || []).slice();
   $('#obNick').value = pf.nick || '';
   $('#obPhone').value = pf.phone || '';
   $('#obNick').classList.remove('invalid');
-  renderObPicks();
+  $('#obConsumerMsg').hidden = true;
+  $('#obAgreeCRow').classList.remove('is-error');
+  renderObPicks(); renderAgree();
+  var entry = $('#obConsumerEntry'), tx = $('#obConsumerEntryTx'), hint = $('#obDongHint');
+  if(focus === 'dong'){ tx.textContent = '동네 선택 체크 · 내 동네를 골라 주세요'; entry.hidden = false; hint.hidden = false; }
+  else if(focus === 'nick'){ tx.textContent = '10초 가입 체크 · 닉네임만 정하면 끝나요'; entry.hidden = false; hint.hidden = true; }
+  else { entry.hidden = true; hint.hidden = true; }
   setObStep('consumer');
+  if(focus) highlightOb(focus === 'dong' ? $('#obDongField') : $('#obNick').closest('.field'));
 }
-function openObOwner(){
-  var ms = state.myStore;
+function openObOwner(focus, after){
+  var ms = state.myStore, ow = state.owner || {};
+  $('#obOwnerName').value = ow.name || '';
+  $('#obOwnerPhone').value = ow.phone || '';
   $('#obStoreName').value = ms ? ms.name : '';
-  $('#obStoreDong').value = ms ? (ms.addr || '').split(' ')[0] : obsel.dong;
+  $('#obStoreDong').value = ms ? String(ms.addr || '').split(' ')[0] : obsel.dong;
   if(!$('#obStoreDong').value) $('#obStoreDong').value = '둔산동';
   $('#obStoreCat').value = ms ? ms.cat : '과일·채소';
-  $('#obStoreAddr').value = ms ? (ms.addr || '').split(' ').slice(1).join(' ') : '';
+  $('#obStoreAddr').value = ms ? String(ms.addr || '').split(' ').slice(1).join(' ') : '';
   $('#obStoreClose').value = ms ? ms.close : '20:00';
   $('#obStoreName').classList.remove('invalid');
+  $('#obOwnerMsg').hidden = true;
+  $('#obAgreeORow').classList.remove('is-error');
+  renderAgree();
+  var entry = $('#obOwnerEntry'), tx = $('#obOwnerEntryTx'), hint = $('#obCloseHint');
+  if(focus === 'close'){ tx.textContent = '마감시간 설정 체크 · AI 단계 할인 기준'; entry.hidden = false; hint.hidden = false; }
+  else if(focus === 'ai'){ tx.textContent = 'AI 10초 상품등록 · 입점 후 바로 이어집니다'; entry.hidden = false; hint.hidden = true; }
+  else if(focus === 'store'){ tx.textContent = '상호·업종 등록 체크'; entry.hidden = false; hint.hidden = true; }
+  else { entry.hidden = true; hint.hidden = true; }
+  obsel.afterAi = (after === 'ai');
   setObStep('owner');
+  if(focus) highlightOb(focus === 'close' ? $('#obCloseField') : $('#obStoreName').closest('.field'));
 }
 function completeConsumer(skip){
   var nick = ($('#obNick').value || '').trim();
   var phone = ($('#obPhone').value || '').trim();
-  if(!skip && !nick){
-    var msg = $('#obConsumerMsg');
-    msg.hidden = false;
-    msg.textContent = '닉네임을 입력하면 가입이 끝나요. 그냥 둘러보려면 아래 [로그인·가입 없이 바로 둘러보기]를 눌러 주세요.';
-    $('#obNick').classList.add('invalid');
-    $('#obNick').focus();
-    return;
-  }
-  $('#obNick').classList.remove('invalid');
+  var msg = $('#obConsumerMsg');
   if(skip){
     state.profile = state.profile || {nick:'', dong:obsel.dong, cats:[], phone:''};
     if(!state.profile.dong) state.profile.dong = obsel.dong;
     hideOnboard('consumer','skip');
-  }else{
-    state.profile = {nick:nick, dong:obsel.dong, cats:obsel.cats.slice(), phone:phone};
-    hideOnboard('consumer','signup');
-    toast(esc(nick)+' 님, '+esc(obsel.dong)+' 마감특가를 모아뒀어요');
+    return;
   }
+  if(!nick){
+    msg.hidden = false;
+    msg.textContent = '닉네임을 입력하면 회원가입이 끝나요. 가입 없이 보려면 아래 [가입 없이 둘러보기]를 눌러 주세요.';
+    $('#obNick').classList.add('invalid');
+    $('#obNick').focus();
+    return;
+  }
+  if(!obsel.agreeC){
+    msg.hidden = false;
+    msg.textContent = '필수 약관(서비스 이용약관 · 개인정보 수집·이용)에 동의해야 가입할 수 있어요.';
+    $('#obAgreeCRow').classList.add('is-error');
+    highlightOb($('#obAgreeC'));
+    return;
+  }
+  $('#obNick').classList.remove('invalid');
+  $('#obAgreeCRow').classList.remove('is-error');
+  msg.hidden = true;
+  state.profile = {nick:nick, dong:obsel.dong, cats:obsel.cats.slice(), phone:phone, agree:{terms:true, marketing:!!obsel.agreeM, at:new Date().toISOString()}};
+  hideOnboard('consumer','signup');
+  showWelcome(nick, obsel.dong);
 }
 function completeOwner(){
   var name = ($('#obStoreName').value || '').trim();
+  var msg = $('#obOwnerMsg');
   if(!name){
-    var msg = $('#obOwnerMsg');
     msg.hidden = false;
     msg.textContent = '상호명을 입력해 주세요. 바로 체험하려면 아래 [기존 체험 매장으로 바로 보기]를 눌러 주세요.';
     $('#obStoreName').classList.add('invalid');
     $('#obStoreName').focus();
     return;
   }
+  if(!obsel.agreeO){
+    msg.hidden = false;
+    msg.textContent = '점주 입점 약관(입점 계약 · 개인정보 수집·이용)에 동의해야 등록할 수 있어요.';
+    $('#obAgreeORow').classList.add('is-error');
+    highlightOb($('#obAgreeO'));
+    return;
+  }
   $('#obStoreName').classList.remove('invalid');
+  $('#obAgreeORow').classList.remove('is-error');
+  msg.hidden = true;
   var dong = $('#obStoreDong').value, cat = $('#obStoreCat').value;
   var tail = ($('#obStoreAddr').value || '').trim();
   var data = {id:'me', name:name, cat:cat, dist:0.95, angle:340, emoji:catEmoji(cat), addr:dong + (tail ? ' ' + tail : ''), close:$('#obStoreClose').value};
@@ -1655,21 +1830,67 @@ function completeOwner(){
   STORES = STORES.map(function(s){ if(s.id === 'me'){ found = true; return data; } return s; });
   if(!found) STORES.push(data);
   state.myStore = data;
+  state.owner = {name:($('#obOwnerName').value || '').trim(), phone:($('#obOwnerPhone').value || '').trim(), agree:{terms:true, at:new Date().toISOString()}};
   ui.ownerStore = 'me';
+  var wantAi = obsel.afterAi;
+  obsel.afterAi = false;
   hideOnboard('owner','owner-join');
   renderStoreSelect(); renderPickupOptions(true);
-  toast('‘'+esc(name)+'’ 입점 완료 · 점주 센터에서 첫 상품을 등록해 보세요');
+  toast('‘'+esc(name)+'’ 매장 입점이 완료되었습니다! 점주 센터에서 첫 상품을 등록해 보세요');
+  if(wantAi) window.setTimeout(focusAiCard, 700);
+}
+function focusAiCard(){
+  var card = $('.ai-card');
+  if(!card) return;
+  card.scrollIntoView({behavior:'smooth', block:'center'});
+  card.classList.remove('is-flash');
+  void card.offsetWidth;
+  card.classList.add('is-flash');
+  window.setTimeout(function(){ card.classList.remove('is-flash'); }, 3800);
+  toast('AI 10초 상품등록 · 사진을 고르거나 샘플을 누르면 바로 등록돼요');
+}
+function handleRoleChip(el){
+  var k = el.getAttribute('data-rolechip');
+  if(k === 'consumer-skip'){ selectRole($('.role[data-role="consumer"]')); hideOnboard('consumer','skip'); return; }
+  if(k === 'consumer-nick' || k === 'consumer-dong'){
+    selectRole($('.role[data-role="consumer"]'));
+    openObConsumer(k === 'consumer-dong' ? 'dong' : 'nick');
+    return;
+  }
+  if(k === 'owner-ai' && state.myStore){ selectRole($('.role[data-role="owner"]')); hideOnboard('owner','owner-join'); window.setTimeout(focusAiCard, 380); return; }
+  if(k === 'owner-store' || k === 'owner-close' || k === 'owner-ai'){
+    selectRole($('.role[data-role="owner"]'));
+    openObOwner(k === 'owner-close' ? 'close' : 'store', k === 'owner-ai' ? 'ai' : '');
+  }
+}
+function openTerms(kind){
+  var owner = kind === 'owner';
+  var title = owner ? '점주 입점 약관 · 개인정보 동의' : '서비스 이용약관 · 개인정보 동의';
+  var body = owner
+    ? '<h4>제1조 (입점 계약)</h4><p>8시마켓은 동네 매장의 당일 잔여 상품을 마감특가로 연결하는 플랫폼입니다. 입점 점주는 상호·업종·마감시간 등 등록 정보를 정확히 기재하고, 판매 상품의 위생·품질을 직접 관리합니다.</p>'+
+      '<h4>제2조 (정산 · 수수료)</h4><p>시제품 단계에서는 실제 정산·수수료가 발생하지 않습니다. 정식 오픈 시 입점 수수료와 정산 주기는 별도 안내 후 동의를 받습니다.</p>'+
+      '<h4>제3조 (개인정보 수집·이용)</h4><ul><li>수집 항목: 점주명, 연락처, 상호명, 주소</li><li>이용 목적: 입점 심사·매장 노출·픽업 안내</li><li>보유 기간: 시제품 체험 기간(브라우저 저장, 초기화 시 삭제)</li></ul>'
+    : '<h4>제1조 (서비스 이용)</h4><p>8시마켓은 동네 매장의 오늘 남은 신선식품을 마감특가로 예약·선결제하고 매장에서 픽업하는 서비스입니다. 시제품 화면에서는 실제 결제·환불이 발생하지 않습니다.</p>'+
+      '<h4>제2조 (회원 정보)</h4><p>닉네임·휴대폰 번호·내 동네·관심 품목은 내 동네 추천과 픽업 알림에 사용됩니다.</p>'+
+      '<h4>제3조 (개인정보 수집·이용)</h4><ul><li>수집 항목: 닉네임, 휴대폰 번호(선택), 내 동네, 관심 품목</li><li>이용 목적: 마감특가 추천·픽업 준비 알림</li><li>보유 기간: 시제품 체험 기간(브라우저 저장, 초기화 시 삭제)</li></ul>';
+  openSheet(sheetHead(title, '시제품용 예시 약관입니다')+'<div class="sheet-body"><div class="terms">'+body+'</div></div>'+
+    '<div class="sheet-actions"><button class="btn btn-primary btn-block" type="button" data-act="close-sheet">확인했습니다</button></div>'+
+    '<p class="sheet-note">시제품 화면으로 실제 약관 효력은 없습니다. 동의 여부는 이 브라우저에만 저장됩니다.</p>');
 }
 function ownerDemo(){ ui.ownerStore = 's2'; hideOnboard('owner','owner-demo'); }
 function handleOb(el){
   var k = el.getAttribute('data-ob');
   if(k === 'back'){ setObStep('role'); }
-  else if(k === 'dong'){ obsel.dong = el.getAttribute('data-v'); renderObPicks(); }
+  else if(k === 'dong'){ obsel.dong = el.getAttribute('data-v'); $('#obDongHint').hidden = false; renderObPicks(); }
   else if(k === 'cat'){
     var v = el.getAttribute('data-v'), i = obsel.cats.indexOf(v);
     if(i > -1) obsel.cats.splice(i,1); else obsel.cats.push(v);
     renderObPicks();
   }
+  else if(k === 'agree-c'){ obsel.agreeC = !obsel.agreeC; $('#obAgreeCRow').classList.remove('is-error'); renderAgree(); }
+  else if(k === 'agree-m'){ obsel.agreeM = !obsel.agreeM; renderAgree(); }
+  else if(k === 'agree-o'){ obsel.agreeO = !obsel.agreeO; $('#obAgreeORow').classList.remove('is-error'); renderAgree(); }
+  else if(k === 'terms'){ openTerms(el.getAttribute('data-terms')); }
   else if(k === 'consumer-done'){ completeConsumer(false); }
   else if(k === 'consumer-skip'){ completeConsumer(true); }
   else if(k === 'owner-done'){ completeOwner(); }
@@ -1753,8 +1974,10 @@ function renderHomeLive(){
   $('#radiusLabel').textContent = ui.radius+'km';
   var ld = $('#locDong'); if(ld) ld.textContent = dong;
   $('#abDong').textContent = pf.nick ? (pf.nick + ' 님 · 대전 ' + dong) : ('대전 '+dong+' · 반경 '+ui.radius+'km');
+  var mem = $('#abMem');
+  if(mem){ mem.hidden = !pf.nick; if(pf.nick) mem.textContent = '회원'; }
 }
-function renderHome(){ renderChips(); renderHomeLive(); renderFeed(); renderCounts(); }
+function renderHome(){ renderChips(); renderHomeLive(); renderWelcome(); renderFeed(); renderCounts(); }
 function renderCounts(){
   var ps = $('#promoStoreCount'), pd = $('#promoDealCount');
   if(ps) ps.textContent = STORES.length;
@@ -2078,7 +2301,8 @@ function renderOwnerHeader(){
   var name = storeLabel(st);
   var h = $('#ownerStoreName'), p = $('#ownerStoreMeta'), ic = $('.owner-store .os-ic');
   if(h) h.textContent = name;
-  if(p) p.textContent = '현재 로그인 점주 · 오늘 마감 ' + st.close + ' · ' + st.cat;
+  var who = (st.id === 'me' && state.owner && state.owner.name) ? (state.owner.name + ' 점주') : '현재 로그인 점주';
+  if(p) p.textContent = who + ' · 오늘 마감 ' + st.close + ' · ' + st.cat;
   if(ic) ic.textContent = st.emoji;
   var pick = $('#ownerStorePickName'); if(pick) pick.textContent = name;
   var pic = $('#ownerStoreIc'); if(pic) pic.textContent = st.emoji;
@@ -2398,16 +2622,23 @@ function openMe(){
   var live = state.orders.filter(function(o){ return o.status!=='픽업완료'; }).length;
   var pf = state.profile || {};
   var dong = pf.dong || '둔산동';
-  var sub = pf.nick ? ('간편 가입 · 대전 '+dong) : '게스트(둘러보기) · 대전 '+dong;
-  var html = sheetHead('내 정보', sub)+'<div class="sheet-body">'+
-    '<div class="info-owner" style="margin-top:2px"><img src="owner-seonjin.jpg" alt="8시마켓 대표 강선진">'+
+  var joined = (pf.agree && pf.agree.at) ? String(pf.agree.at).slice(0,10).replace(/-/g,'.') : '';
+  var sub = pf.nick ? ('동네 회원 · 대전 '+dong) : '게스트(둘러보기) · 대전 '+dong;
+  var member = pf.nick
+    ? '<div class="me-member"><span class="mm-ic">✓</span><div><b>'+esc(pf.nick)+' 님 · 동네 회원</b><small>대전 '+esc(dong)+' · 회원가입 완료'+(joined?' · '+joined:'')+'</small></div><span class="mm-badge">회원</span></div>'
+    : '<div class="me-member is-guest"><span class="mm-ic">?</span><div><b>게스트(둘러보기) 상태</b><small>가입하면 내 동네 특가와 찜이 계속 저장돼요</small></div><button class="mm-btn" type="button" data-act="restart">가입하기</button></div>';
+  var html = sheetHead('내 정보', sub)+'<div class="sheet-body">'+ member +
+    '<div class="info-owner" style="margin-top:9px"><img src="owner-seonjin.jpg" alt="8시마켓 대표 강선진">'+
       '<div><b>8시마켓 · 대표 강선진</b><small>오늘 남은 좋은 상품, 동네에서 득템</small></div>'+
       '<button class="link-btn" type="button" data-act="promo">홍보영상 ▶</button></div>'+
     '<div class="me-role" style="margin-top:9px"><div><b>'+(state.role==='owner'?'점주 모드':'할인 장보기 모드')+'</b><small>상·하단 메뉴에서 언제든 전환할 수 있어요</small></div><span>'+ (state.role==='owner'?'🏪':'🛒') +'</span></div>'+
     '<div class="me-rows">'+
+      '<div><span>회원 상태</span><b>'+ (pf.nick ? '✓ 동네 회원 (가입 완료)' : '게스트 · 둘러보기') +'</b></div>'+
       '<div><span>닉네임</span><b>'+ (pf.nick ? esc(pf.nick) : '게스트') +'</b></div>'+
       '<div><span>내 동네</span><b>대전 '+esc(dong)+'</b></div>'+
       '<div><span>관심 품목</span><b>'+ (pf.cats && pf.cats.length ? esc(pf.cats.join(' · ')) : '전체') +'</b></div>'+
+      '<div><span>동의한 약관</span><b>'+ (pf.agree && pf.agree.terms ? ('이용약관·개인정보'+(pf.agree.marketing?' · 알림':'')+' ✓') : '미동의') +'</b></div>'+
+      (state.owner ? '<div><span>점주 회원</span><b>'+esc(state.owner.name || '점주')+' · 입점 완료</b></div>' : '')+
       (state.myStore ? '<div><span>내 매장</span><b>'+esc(state.myStore.name)+' · '+esc(state.myStore.close)+' 마감</b></div>' : '')+
       '<div><span>찜한 상품</span><b>'+state.fav.length+'개</b></div>'+
       '<div><span>진행 중 예약</span><b>'+live+'건</b></div>'+
@@ -2428,9 +2659,10 @@ function resetDemo(){
   STORES = STORES.filter(function(s){ return s.id !== 'me'; });
   state = seed();
   state.onboarded = true; state.role = 'consumer';
+  state.welcome = null; state.owner = null;
   save();
   ui.radius = 2; ui.deal = 0; ui.cat = '전체'; ui.orderFilter = 'all'; ui.ownerStore = 's2';
-  obsel = {dong:'둔산동', cats:[]};
+  obsel = {dong:'둔산동', cats:[], agreeC:false, agreeM:false, agreeO:false, afterAi:false};
   $$('#orderSeg button').forEach(function(b){ b.classList.toggle('is-on', b.getAttribute('data-of')==='all'); });
   renderHome(); renderMap(); renderOrders(); renderOwner(); renderDash();
   setTab('home');
@@ -2464,6 +2696,7 @@ function handleAction(el){
   else if(act==='close-promo'){ closePromo(); }
   else if(act==='me'){ openMe(); }
   else if(act==='restart'){ closeSheet(); showOnboard(); }
+  else if(act==='close-welcome'){ state.welcome = null; save(); renderWelcome(); }
   else if(act==='reset'){ closeSheet(); resetDemo(); }
 }
 function toggleFav(id){
@@ -2489,11 +2722,11 @@ function changeQty(delta){
 /* ================= wiring ================= */
 function wire(){
   document.addEventListener('click', function(e){
+    var roleChip = e.target.closest('[data-rolechip]');
+    if(roleChip){ handleRoleChip(roleChip); return; }
     var roleBtn = e.target.closest('.role');
     if(roleBtn){
-      $$('.role').forEach(function(r){ r.classList.remove('is-sel'); });
-      roleBtn.classList.add('is-sel');
-      $('#obNext').disabled = false;
+      selectRole(roleBtn);
       return;
     }
     var obEl = e.target.closest('[data-ob]');
@@ -2508,6 +2741,11 @@ function wire(){
       $$('#orderSeg button').forEach(function(b){ b.classList.toggle('is-on', b===seg); });
       renderOrders();
     }
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key !== 'Enter' && e.key !== ' ') return;
+    var r = e.target && e.target.classList && e.target.classList.contains('role') ? e.target : null;
+    if(r){ e.preventDefault(); selectRole(r); }
   });
   $('#obNext').addEventListener('click', function(){ obNextStep(); });
   $('#obSkip').addEventListener('click', function(){
