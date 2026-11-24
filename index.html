@@ -194,6 +194,11 @@ h1,h2,h3,h4,p{margin:0}
 .pick:hover{border-color:#C8DCCF}
 .pick.is-on{background:var(--brand);border-color:var(--brand);color:#fff;box-shadow:0 8px 16px -12px rgba(11,122,70,.95)}
 .ob-msg{margin-top:10px;background:#FEF2F1;border:1px solid #FBD5D1;color:#B42318;border-radius:9px;padding:8px 10px;font-size:10.5px;font-weight:700;line-height:1.55}
+.ob-perks{margin-top:10px;display:grid;gap:6px}
+.ob-perk{display:flex;align-items:center;gap:9px;background:#F8FBF9;border:1px solid #E7F0EA;border-radius:11px;padding:8px 10px}
+.ob-perk .ic{width:26px;height:26px;border-radius:8px;background:#fff;border:1px solid #E3EDE6;display:grid;place-items:center;font-size:13px;flex:0 0 auto}
+.ob-perk b{display:block;font-size:11px;font-weight:900;letter-spacing:-.02em;color:var(--ink2)}
+.ob-perk small{display:block;font-size:9.5px;font-weight:700;color:var(--muted);margin-top:1px}
 .ob-actions{margin-top:auto;padding-top:16px;display:grid;gap:7px}
 .ob-actions ~ .ob-foot{margin-top:8px;padding-top:0}
 
@@ -576,6 +581,10 @@ h1,h2,h3,h4,p{margin:0}
 .ss-meta span b{display:block;font-size:11px;color:var(--ink);font-weight:900;margin-top:1px}
 .ss-list{margin-top:11px;display:grid;gap:7px}
 .ss-empty{margin:2px 0 0;font-size:10.5px;color:var(--muted);font-weight:600;line-height:1.6;background:#F7FAF7;border:1px dashed #DEE8E1;border-radius:10px;padding:12px;text-align:center}
+.pc-empty{margin-top:10px;display:flex;flex-direction:column;align-items:center;gap:3px;text-align:center;background:#F7FAF7;border:1px dashed #DEE8E1;border-radius:12px;padding:16px 12px}
+.pc-empty span{font-size:22px;line-height:1.2}
+.pc-empty b{font-size:12px;font-weight:900;color:var(--ink2)}
+.pc-empty small{font-size:10px;font-weight:600;color:var(--muted);line-height:1.55}
 .ss-item{display:flex;align-items:center;gap:9px;border:1px solid #EDF1EE;border-radius:12px;padding:8px 9px}
 .ss-item .si-e{width:34px;height:34px;border-radius:9px;display:grid;place-items:center;font-size:18px;flex:0 0 auto}
 .ss-item .si-m{min-width:0;flex:1}
@@ -1258,6 +1267,11 @@ h1,h2,h3,h4,p{margin:0}
               </div>
               <p class="ob-msg" id="obConsumerMsg" hidden></p>
             </div>
+            <div class="ob-perks">
+              <div class="ob-perk"><span class="ic">📍</span><div><b>내 동네 기준 추천</b><small>둔산·탄방·월평 반경 2km 마감특가만 모아 보여드려요</small></div></div>
+              <div class="ob-perk"><span class="ic">💚</span><div><b>찜·예약 자동 저장</b><small>가입 정보와 함께 이 브라우저에 계속 남아요</small></div></div>
+              <div class="ob-perk"><span class="ic">🔔</span><div><b>픽업 준비 알림</b><small>연락처를 넣으면 준비 완료·픽업 시간을 알려드려요</small></div></div>
+            </div>
             <div class="ob-actions">
               <button class="btn btn-primary btn-block" type="button" data-ob="consumer-done">가입하고 마감특가 보기</button>
               <button class="ob-skip" type="button" data-ob="consumer-skip">로그인·가입 없이 바로 둘러보기</button>
@@ -1294,6 +1308,11 @@ h1,h2,h3,h4,p{margin:0}
                 <select id="obStoreClose"><option>19:00</option><option selected>20:00</option><option>21:00</option><option>22:00</option></select>
               </div>
               <p class="ob-msg" id="obOwnerMsg" hidden></p>
+            </div>
+            <div class="ob-perks">
+              <div class="ob-perk"><span class="ic">🗺️</span><div><b>동네 지도에 바로 노출</b><small>입점 즉시 소비자 지도·매장 목록에 매장 핀이 생깁니다</small></div></div>
+              <div class="ob-perk"><span class="ic">📉</span><div><b>AI 단계 할인</b><small>마감시간 기준으로 남은 재고 가격을 자동으로 조정해요</small></div></div>
+              <div class="ob-perk"><span class="ic">📊</span><div><b>폐기·매출 대시보드</b><small>예상 매출과 절감 kg을 AI 대시보드에서 확인할 수 있어요</small></div></div>
             </div>
             <div class="ob-actions">
               <button class="btn btn-primary btn-block" type="button" data-ob="owner-done">매장 등록하고 점주 센터로</button>
@@ -1542,7 +1561,7 @@ function renderObResume(){
   if(ms) parts.push('등록 매장 <b>'+esc(ms.name)+'</b>');
   if(!parts.length){ el.hidden = true; el.innerHTML = ''; return; }
   el.hidden = false;
-  el.innerHTML = '이전에 쓰던 설정이 그대로 있어요 — ' + parts.join(' · ') + ' (상품·찜·예약 유지)';
+  el.innerHTML = '이전 설정 유지 — ' + parts.join(' · ');
 }
 function showOnboard(){
   var obEl = $('#onboard');
@@ -2106,6 +2125,15 @@ function pricingHTML(){
   var mine = state.products.filter(function(x){ return x.store===ui.ownerStore; });
   var avg = mine.length ? Math.round(mine.reduce(function(a,x){ return a+disc(x); },0)/mine.length) : 0;
   var curSale = p ? p.sale : base;
+  if(!p){
+    return '<div class="pricing">'+
+      '<div class="pc-head"><span class="ai-badge">AI</span><h2>단계 할인 시뮬레이터</h2><span class="demo-tag">시연용</span></div>'+
+      '<p class="pc-sub">8시 이후 시간이 지날수록 할인율이 자동으로 올라갑니다. 점주는 최저가만 정하고, 마감까지 AI가 단계별 가격을 조정해요.</p>'+
+      '<div class="pc-empty"><span>🧺</span><b>아직 등록 상품이 없어요</b><small>아래 [AI 10초 상품 등록]에서 사진을 올리면<br>마감 '+st.close+' 기준 단계 할인표가 자동으로 만들어집니다.</small></div>'+
+      '<div class="pc-rec"><span class="ic">🎯</span><div class="t"><small>점주별 적정 할인율 추천</small><b>'+esc(st.name)+' · '+esc(st.cat)+' '+rec[0]+'~'+rec[1]+'%</b><span>등록 상품 0종 · 오늘 마감 '+st.close+'</span></div></div>'+
+      '<p class="pc-note">마감 '+st.close+' 기준 — 마감 3시간 전 20% → 2시간 전 30% → 1시간 전 45% → 마감 30분 전 60%로 자동 상승합니다. 표시 가격·추천은 시연용 예시입니다.</p>'+
+    '</div>';
+  }
   var chips = steps.map(function(s,i){
     return '<button class="pc-step'+(i===idx?' is-on':'')+'" type="button" data-act="price-step" data-v="'+i+'">'+
       '<b>'+s.time+'</b><span>'+s.pct+'%</span></button>';
