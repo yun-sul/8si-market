@@ -243,6 +243,7 @@ h1,h2,h3,h4,p{margin:0}
 .feed-head h2{font-size:13.5px;font-weight:900;letter-spacing:-.03em}
 .feed-head h2 span{color:var(--brand)}
 .feed-head .cnt{font-size:11px;color:var(--muted);font-weight:700}
+.pf-tag{display:inline-block;font-size:9px;font-weight:900;color:var(--brand-d);background:var(--brand-l);border:1px solid #D6EBDF;border-radius:999px;padding:2px 6px;vertical-align:1px;letter-spacing:0}
 .feed{display:grid;gap:12px}
 
 /* product card */
@@ -904,7 +905,7 @@ h1,h2,h3,h4,p{margin:0}
                 <div class="chips cats" id="catChips" role="group" aria-label="업종 필터"></div>
               </div>
               <div class="feed-head">
-                <h2><span>퇴근길</span> 마감특가</h2>
+                <h2><span>퇴근길</span> 마감특가 <span class="pf-tag" id="feedInterest" hidden></span></h2>
                 <span class="cnt" id="feedCount"></span>
               </div>
             </div>
@@ -1632,7 +1633,6 @@ function completeConsumer(skip){
     hideOnboard('consumer','skip');
   }else{
     state.profile = {nick:nick, dong:obsel.dong, cats:obsel.cats.slice(), phone:phone};
-    if(obsel.cats.length) ui.cat = obsel.cats[0];
     hideOnboard('consumer','signup');
     toast(esc(nick)+' 님, '+esc(obsel.dong)+' 마감특가를 모아뒀어요');
   }
@@ -1723,7 +1723,10 @@ function cardHTML(p){
   '</article>';
 }
 function renderFeed(){
+  var pfCats = (state.profile && state.profile.cats) || [];
+  function rank(p){ return pfCats.length && pfCats.indexOf(p.cat) > -1 ? 0 : 1; }
   var list = visibleProducts().sort(function(a,b){
+    if(rank(a) !== rank(b)) return rank(a) - rank(b);
     if(a.isNew !== b.isNew) return a.isNew ? -1 : 1;
     if((a.left<=0) !== (b.left<=0)) return a.left<=0 ? 1 : -1;
     return storeById(a.store).dist - storeById(b.store).dist;
@@ -1731,6 +1734,8 @@ function renderFeed(){
   var feed = $('#feed');
   var soldOut = list.filter(function(p){ return p.left<=0; }).length;
   $('#feedCount').textContent = list.length + '개 상품' + (soldOut ? ' · 품절 '+soldOut : '');
+  var it = $('#feedInterest');
+  if(it){ it.hidden = !pfCats.length; it.textContent = pfCats.length ? '관심 품목 우선' : ''; }
   if(!list.length){
     feed.innerHTML = '<div class="empty"><span class="em">🧺</span><b>조건에 맞는 마감특가가 없어요</b>반경을 넓히거나 다른 업종을 골라 보세요.<br><button class="link-btn" type="button" data-act="clear-filter" style="margin-top:10px">필터 초기화 ›</button></div>';
     return;
