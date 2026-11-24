@@ -149,16 +149,12 @@ h1,h2,h3,h4,p{margin:0}
 .ob-brand{position:relative;display:flex;align-items:center;gap:8px;font-size:13.5px;font-weight:900;letter-spacing:-.03em;color:var(--ink)}
 .ob-brand .mark{width:32px;height:32px;border-radius:10px;background:linear-gradient(150deg,#16A85F,#0A6B3F);color:#fff;display:grid;place-items:center;font-size:14px;font-weight:900;box-shadow:0 12px 22px -14px rgba(11,122,70,.9)}
 .ob-brand .ob-chip{margin-left:auto;font-size:9px;font-weight:900;color:var(--brand-d);background:var(--brand-l);border:1px solid #CFE9DA;border-radius:999px;padding:4px 8px;white-space:nowrap}
-.ob-hero{position:relative;margin-top:10px;border-radius:20px;overflow:hidden;border:1px solid #DFEBE3;background:#0B2B1E;box-shadow:0 26px 46px -32px rgba(11,122,70,.9)}
-.ob-hero .ob-photo{height:190px;overflow:hidden;position:relative}
-.ob-hero .ob-photo img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 0}
-.ob-hero .ob-photo::after{content:"";position:absolute;inset:auto 0 0 0;height:18px;background:linear-gradient(180deg,rgba(11,122,70,0),#0B7A46)}
-.ob-strip{position:relative;background:linear-gradient(180deg,#0B7A46 0%,#065F36 100%);color:#fff;padding:9px 15px 10px}
-.ob-strip h1{font-size:18.5px;font-weight:900;letter-spacing:-.05em;line-height:1.34}
-.ob-strip h1 em{font-style:normal;color:#B7F0D3}
-.ob-strip p{margin-top:3px;font-size:10.5px;font-weight:700;color:#C7EAD8}
-.ob-strip-tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:8px}
-.ob-strip-tags span{font-size:9px;font-weight:900;color:#EAFBF1;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.24);border-radius:999px;padding:3px 7px}
+/* v2.6 · 포스터 배너 전체 노출 (겹침·잘림 없음) */
+.ob-hero{position:relative;margin:12px auto 0;width:min(100%,var(--poster-w,300px));border-radius:0;overflow:visible;background:transparent;box-shadow:none}
+.ob-hero .ob-poster{display:block;width:100%;height:auto;border-radius:16px;background:#0B2B1E;border:1px solid #E2EDE6;box-shadow:0 26px 44px -30px rgba(11,122,70,.75),0 2px 0 rgba(255,255,255,.6) inset}
+.ob-tagrow{position:relative;display:flex;flex-wrap:wrap;justify-content:center;gap:4px;margin-top:10px}
+.ob-tagrow span{font-size:9px;font-weight:900;color:var(--brand-d);background:#fff;border:1px solid #D9EDE1;border-radius:999px;padding:4px 8px;letter-spacing:-.01em;white-space:nowrap;box-shadow:0 6px 12px -10px rgba(11,122,70,.7)}
+.ob-tagrow span i{font-style:normal;color:#12A05C;margin-right:2px}
 .ob-q{position:relative;margin-top:8px;font-size:16px;font-weight:900;letter-spacing:-.045em;color:var(--ink)}
 .ob-resume{position:relative;margin-top:5px;font-size:10.5px;font-weight:700;color:#5C6A63;background:#F4F9F5;border:1px solid #E3EEE7;border-radius:9px;padding:7px 9px;line-height:1.5}
 .ob-resume b{color:var(--brand-d);font-weight:900}
@@ -891,7 +887,7 @@ h1,h2,h3,h4,p{margin:0}
 .ob-brand .ob-topinstall i{font-style:normal;font-size:10.5px;line-height:1}
 .ob-brand .ob-topinstall.is-installed{background:#F1F5F2;border-color:#DFE7E1;color:#5E6B65;box-shadow:none}
 .ob-inapp{position:relative;margin-top:8px}
-.ob-step.is-inapp .ob-hero .ob-photo{height:174px}
+.ob-step.is-inapp{--poster-w:238px}
 .ob-step.is-inapp .ob-foot{padding-top:2px}
 .inapp-bar{display:flex;align-items:center;gap:8px;background:#FFF8E9;border:1px solid #F3DDB0;border-radius:12px;padding:7px 8px 7px 10px}
 .inapp-bar .ia-ic{flex:0 0 auto;font-size:12px;line-height:1.2}
@@ -1337,13 +1333,10 @@ h1,h2,h3,h4,p{margin:0}
           <div class="ob-step is-on" id="obStep-role">
             <div class="ob-brand"><span class="mark">8</span>8시마켓<span class="ob-chip">모두의 창업 시제품</span><button class="ob-topinstall" type="button" data-act="install" data-install aria-label="8시마켓 앱 설치"><i aria-hidden="true" data-install-ic>📲</i><span data-install-label data-compact="1">앱 설치</span></button></div>
             <div class="ob-hero">
-              <div class="ob-photo"><img src="poster.jpg" alt="8시마켓 홍보 포스터 — 저녁 8시, 마감득가"></div>
-              <div class="ob-strip">
-                <h1>저녁 8시,<br>퇴근길 <em>동네 장바구니</em></h1>
-                <p>오늘 남은 좋은 상품, 동네에서 득템</p>
-            <div class="ob-strip-tags"><span>최대 58% 마감특가</span><span>정육·수산·채소·반찬</span><span>반경 1~3km 픽업</span></div>
-              </div>
+              <h1 class="sr-only">저녁 8시, 퇴근길 동네 장바구니 — 오늘 남은 좋은 상품, 동네에서 득템</h1>
+              <img class="ob-poster" src="poster.jpg" alt="8시마켓 홍보 포스터 — 저녁 8시, 마감특가! 오늘 남은 좋은 상품, 동네에서 득템">
             </div>
+            <div class="ob-tagrow"><span><i aria-hidden="true">✓</i>최대 58% 마감특가</span><span><i aria-hidden="true">✓</i>정육·수산·채소·반찬</span><span><i aria-hidden="true">✓</i>반경 1~3km 픽업</span></div>
             <p class="ob-q">어떤 방식으로 시작할까요?</p>
             <p class="ob-resume" id="obResume" hidden></p>
             <div class="roles" id="roles">
