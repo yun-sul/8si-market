@@ -246,11 +246,21 @@ h1,h2,h3,h4,p{margin:0}
 .home-welcome b{display:block;font-size:12px;font-weight:900;letter-spacing:-.02em;line-height:1.45;position:relative}
 .home-welcome small{display:block;font-size:10px;font-weight:700;color:#C7EAD8;margin-top:2px;letter-spacing:-.01em;position:relative;line-height:1.5}
 .home-welcome .hw-x{margin-left:auto;flex:0 0 auto;border:0;background:rgba(255,255,255,.16);color:#fff;width:23px;height:23px;border-radius:50%;font-size:11px;display:grid;place-items:center;position:relative;line-height:1}
-.loc-row{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:13px}
-.loc-btn{display:inline-flex;align-items:center;gap:6px;border:0;background:transparent;padding:2px 0;color:var(--ink);font-size:14px;font-weight:900;letter-spacing:-.03em}
-.loc-btn .pin{width:18px;height:18px;color:var(--brand)}
-.loc-btn .chev{width:13px;height:13px;color:var(--muted);margin-left:-2px}
-.loc-btn small{font-size:11px;font-weight:700;color:var(--muted);letter-spacing:0}
+.loc-row{display:flex;align-items:stretch;gap:7px;margin-top:13px}
+/* v3.2 · '📍 내 동네 선택' 배너 (누를 수 있는 카드로 보이게) */
+.loc-banner{flex:1;min-width:0;display:flex;align-items:center;gap:9px;border:1.5px solid #CDE5D9;background:linear-gradient(135deg,#FFFFFF 35%,#F1FBF5);border-radius:15px;padding:9px 10px;text-align:left;box-shadow:0 12px 24px -22px rgba(11,122,70,.95),0 1px 0 rgba(255,255,255,.9) inset;transition:.16s}
+.loc-banner:hover{border-color:var(--brand);background:#F7FDF9;transform:translateY(-1px)}
+.loc-banner:active{transform:none}
+.lb-pin{flex:0 0 auto;width:31px;height:31px;border-radius:11px;background:var(--brand-l);color:var(--brand);display:grid;place-items:center;font-size:15px}
+.lb-main{flex:1;min-width:0}
+.lb-v{display:block;font-size:13.5px;font-weight:900;color:var(--ink);letter-spacing:-.04em;line-height:1.25;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lb-k{display:block;font-size:9.5px;font-weight:800;color:var(--muted);letter-spacing:-.01em;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lb-k span{color:var(--brand-d)}
+.lb-cta{flex:0 0 auto;display:inline-flex;align-items:center;gap:3px;background:var(--brand);color:#fff;border-radius:999px;padding:7px 10px;font-size:10.5px;font-weight:900;letter-spacing:-.03em;box-shadow:0 10px 18px -12px rgba(11,122,70,1)}
+.lb-cta .chev{width:11px;height:11px}
+.map-chip{flex:0 0 auto;width:40px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;border:1.5px solid #DDE7DF;background:#fff;border-radius:15px;color:var(--brand);font-size:9px;font-weight:900;letter-spacing:-.02em;padding:6px 1px;box-shadow:0 6px 14px -14px rgba(17,26,23,.7)}
+.map-chip svg{width:16px;height:16px}
+.map-chip:hover{background:var(--brand-l);border-color:#CDE5D9}
 .map-link{border:1px solid #DDE7DF;background:#fff;border-radius:999px;padding:7px 11px;font-size:11.5px;font-weight:900;color:var(--brand);display:inline-flex;align-items:center;gap:4px;box-shadow:0 4px 10px -8px rgba(17,26,23,.4)}
 .map-link svg{width:12px;height:12px}
 .map-link:hover{background:var(--brand-l)}
@@ -871,11 +881,28 @@ h1,h2,h3,h4,p{margin:0}
 .whole-stats{margin-top:7px;font-size:9.5px;font-weight:800;color:var(--brand-d);background:#F1F9F4;border:1px dashed #CFE6D8;border-radius:8px;padding:6px 9px;text-align:center;letter-spacing:-.02em;line-height:1.45}
 .region-switch{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:11px}
 .region-opt{border:1.5px solid #E7EDE8;background:#fff;border-radius:13px;padding:10px 11px;text-align:left;transition:.15s}
+.region-opt:hover{border-color:#CBE0D3}
 .region-opt.is-on{border-color:var(--brand);background:#F7FDF9;box-shadow:0 8px 18px -16px rgba(11,122,70,1)}
+.region-opt .rg-top{display:flex;align-items:center;justify-content:space-between;gap:5px}
 .region-opt .rg-name{display:block;font-size:13px;font-weight:900;letter-spacing:-.03em;color:var(--ink)}
 .region-opt.is-on .rg-name{color:var(--brand-d)}
+.region-opt .rg-badge{flex:0 0 auto;font-size:8.5px;font-weight:900;color:var(--brand-d);background:var(--brand-l);border-radius:999px;padding:2px 5px;letter-spacing:-.02em;white-space:nowrap}
+.region-opt.is-on .rg-badge{background:var(--brand);color:#fff}
 .region-opt .rg-sub{display:block;font-size:9.5px;font-weight:700;color:var(--muted);margin-top:2px}
 .region-opt .rg-n{display:block;font-size:9.5px;font-weight:800;color:var(--brand-d);margin-top:5px}
+/* v3.2 · 시트 섹션 제목 · 상단 파일럿 거점 / 하단 추가 확장 지역 */
+.sec-head{display:flex;align-items:center;gap:6px;font-size:11px;font-weight:900;color:var(--ink);letter-spacing:-.02em;margin:2px 0 8px}
+.sec-head .dot{flex:0 0 auto;width:6px;height:6px;border-radius:50%;background:var(--brand-mid);box-shadow:0 0 0 3px rgba(18,160,92,.14)}
+.sec-head em{margin-left:auto;font-style:normal;font-size:9px;font-weight:900;color:var(--brand-d);background:var(--brand-l);border-radius:999px;padding:3px 7px;letter-spacing:-.02em;white-space:nowrap}
+.sec-head.soon .dot{background:#E8A33A;box-shadow:0 0 0 3px rgba(232,163,58,.16)}
+.sec-head.soon em{color:#996414;background:#FDF2DF}
+.soon-group{display:flex;align-items:flex-start;gap:7px;margin-bottom:7px}
+.soon-group b{flex:0 0 52px;font-size:9.5px;font-weight:900;color:var(--muted);letter-spacing:-.02em;padding-top:8px}
+.soon-group .ob-picks{flex:1;min-width:0;gap:5px}
+.pick.soon{border-style:dashed;border-color:#DCE7DF;background:#FBFFFC;color:#6C7A73;font-size:10.5px;padding:7px 9px}
+.pick.soon:hover{border-color:var(--brand-mid);color:var(--brand-d);background:#F3FBF6}
+.pick.soon i{font-style:normal;font-size:9px;margin-left:3px;opacity:.75}
+.soon-note{font-size:9.5px;font-weight:700;color:#6B7872;background:#F6F9F6;border:1px dashed #E1E9E2;border-radius:10px;padding:7px 9px;line-height:1.6;margin-top:2px}
 .dh-demo{display:inline-flex;align-items:center;gap:3px;margin-left:5px;background:rgba(255,255,255,.16);color:#FFE8C9;font-size:8.5px;font-weight:900;padding:3px 6px;border-radius:5px;vertical-align:1px}
 .dash-note{margin:8px 16px 0;font-size:8.5px;color:var(--muted2);font-weight:600;line-height:1.6}
 .dash-note b{color:#7C8A83;font-weight:800}
@@ -1081,14 +1108,17 @@ h1,h2,h3,h4,p{margin:0}
               </div>
               <div id="homeInstall"></div>
               <div class="loc-row">
-                <button class="loc-btn" type="button" data-act="radius">
-                  <svg class="pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11Z"/><circle cx="12" cy="10" r="2.4"/></svg>
-                  <span>반경 <span id="radiusLabel">2km</span> · <span id="locDong">대전 둔산동</span></span>
-                  <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                <button class="loc-banner" type="button" data-act="radius" aria-label="내 동네 선택 — 현재 대전 둔산동 반경 2km">
+                  <span class="lb-pin" aria-hidden="true">📍</span>
+                  <span class="lb-main">
+                    <span class="lb-v" id="locDong">대전 둔산동</span>
+                    <span class="lb-k">반경 <span id="radiusLabel">2km</span> · 이 동네 기준</span>
+                  </span>
+                  <span class="lb-cta">내 동네 선택<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
                 </button>
-                <button class="map-link" type="button" data-act="go-map">
-                  지도로 보기
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 5 7 7-7 7"/></svg>
+                <button class="map-chip" type="button" data-act="go-map" aria-label="지도로 보기">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11Z"/><circle cx="12" cy="10" r="2.4"/></svg>
+                  <span>지도</span>
                 </button>
               </div>
               <div class="live-line">
@@ -1669,6 +1699,14 @@ var REGIONS = [
    labels:[{x:26,y:78,t:'신현동'},{x:140,y:52,t:'태재로'},{x:280,y:518,t:'태전동'},{x:140,y:666,t:'경안동'},{x:282,y:646,t:'경안천'}]}
 ];
 
+/* ===== v3.2 · 추가 확장 지역 (오픈 예정 · 사전 요청 가능) — 매장·상품은 아직 없고 안내만 ===== */
+var SOON_REGIONS = [
+  {group:'서울',     areas:['강남','송파','마포','영등포']},
+  {group:'경기',     areas:['성남 분당','수원 영통','용인 수지','화성 동탄']},
+  {group:'충청',     areas:['세종','청주','천안']},
+  {group:'영남·호남', areas:['부산 해운대','대구 수성','광주 상무']}
+];
+
 var STORES = [
   /* --- 대전 (둔산·탄방) --- */
   {id:'s1', region:'dj', name:'행복한 농산물', cat:'과일·채소', dist:0.4, angle:5,   emoji:'🧺', addr:'둔산동 1043', close:'20:00'},
@@ -1927,9 +1965,9 @@ function sendSignupToDB(kind, name, phone, dong, store, marketing){
 
 /* ================= toast ================= */
 var toastTimer = null;
-function toast(msg, actLabel, act){
+function toast(msg, actLabel, act, icon){
   var el = $('#toast');
-  el.innerHTML = '<span class="tt-ic">✓</span><span>'+msg+'</span>' + (actLabel ? '<button class="tt-act" type="button">'+esc(actLabel)+'</button>' : '');
+  el.innerHTML = '<span class="tt-ic">'+(icon||'✓')+'</span><span>'+msg+'</span>' + (actLabel ? '<button class="tt-act" type="button">'+esc(actLabel)+'</button>' : '');
   el.classList.add('is-on');
   if(actLabel && act){
     var b = el.querySelector('.tt-act');
@@ -2010,7 +2048,8 @@ function renderWelcome(){
   if(!w || !w.nick){ el.hidden = true; return; }
   var n = state.products.filter(function(p){ return p.left > 0 && inRadius(p); }).length;
   $('#homeWelcomeTitle').textContent = w.nick + '님, 환영합니다!';
-  $('#homeWelcomeSub').textContent = w.dong + ' 반경 ' + ui.radius + 'km 마감특가 ' + n + '개 · 관심 품목 우선으로 모았어요';
+  /* v3.2 · 배너 문구는 가입 시점 동네(w.dong)가 아니라 지금 보고 있는 동네(locLabel)를 따른다 */
+  $('#homeWelcomeSub').textContent = locLabel() + ' 반경 ' + ui.radius + 'km 마감특가 ' + n + '개 · 관심 품목 우선으로 모았어요';
   el.hidden = false;
 }
 function renderAgree(){
@@ -2347,6 +2386,7 @@ function renderHomeLive(){
   $('#liveRadiusTxt').textContent = ui.radius+'km';
   $('#radiusLabel').textContent = ui.radius+'km';
   var ld = $('#locDong'); if(ld) ld.textContent = locLabel();
+  var lban = $('.loc-banner'); if(lban) lban.setAttribute('aria-label', '내 동네 선택 — 현재 '+locLabel()+' 반경 '+ui.radius+'km');
   $('#abDong').textContent = pf.nick ? (pf.nick + ' 님 · ' + locLabel()) : (locLabel()+' · 반경 '+ui.radius+'km');
   var mem = $('#abMem');
   if(mem){ mem.hidden = !pf.nick; if(pf.nick) mem.textContent = '회원'; }
@@ -2711,18 +2751,24 @@ window.addEventListener('appinstalled', function(){
   toast('홈 화면에 8시마켓 앱을 설치했어요 · 아이콘으로 열어 보세요');
 });
 
-/* ================= radius sheet ================= */
+/* ================= radius sheet (v3.2 · 내 동네 선택) ================= */
 function openRadius(){
   var rg = regionById(ui.region);
-  var html = sheetHead('내 동네 · 반경', '권역을 고르면 그 동네 매장만 보여드려요')+'<div class="sheet-body">';
+  var html = sheetHead('내 동네 선택', '동네를 고르면 그 반경의 매장·상품으로 바로 바뀝니다')+'<div class="sheet-body">';
+
+  /* --- 상단: 바로 체험 가능한 파일럿 거점 --- */
+  html += '<div class="sec-head"><span class="dot"></span>바로 체험 가능한 파일럿 거점<em>'+REGIONS.length+'개 권역</em></div>';
   html += '<div class="region-switch" role="group" aria-label="권역 선택">';
   REGIONS.forEach(function(r){
     var n = STORES.filter(function(s){ return storeRegion(s) === r.id && s.dist <= ui.radius; }).length;
     html += '<button class="region-opt'+(ui.region===r.id?' is-on':'')+'" type="button" data-act="set-region" data-v="'+r.id+'">'+
-      '<span class="rg-name">'+esc(r.name)+'</span><span class="rg-sub">'+esc(r.dongs.join(' · '))+'</span>'+
-      '<span class="rg-n">반경 '+ui.radius+'km '+n+'개 매장</span></button>';
+      '<span class="rg-top"><span class="rg-name">'+esc(r.name)+'</span><span class="rg-badge">'+(ui.region===r.id?'보고 있는 중':'바로 보기 ›')+'</span></span>'+
+      '<span class="rg-sub">'+esc(r.dongs.join(' · '))+'</span>'+
+      '<span class="rg-n">반경 '+ui.radius+'km · '+n+'개 매장</span></button>';
   });
   html += '</div>';
+
+  /* --- 내 동네 · 반경 --- */
   html += '<div class="field"><label>내 동네 <span>필수 · 픽업 기준</span></label><div class="ob-picks" id="sheetDongPick">'+
     rg.dongs.map(function(d){ return '<button class="pick'+(ui.dong===d?' is-on':'')+'" type="button" data-act="set-dong" data-v="'+d+'">'+d+'</button>'; }).join('')+
     '</div><p class="ob-hint">✓ 동네를 고르면 반경 '+ui.radius+'km 마감특가·픽업 시간이 바로 맞춰져요</p></div>';
@@ -2731,6 +2777,17 @@ function openRadius(){
     html += '<button class="radius-opt'+(ui.radius===km?' is-on':'')+'" type="button" data-act="set-radius" data-v="'+km+'">'+
       '<span class="ro-ic">'+km+'km</span><span class="ro-main"><b>반경 '+km+'km</b><small>도보 '+(km*13)+'분 · 자전거 '+bikeMin(km)+'분 · 상품 '+n+'개</small></span><span class="ro-check">✓</span></button>';
   });
+
+  /* --- 하단: 추가 확장 지역 (오픈 예정 · 사전 요청 가능) --- */
+  html += '<div class="sec-head soon" style="margin-top:13px"><span class="dot"></span>추가 확장 지역<em>오픈 예정 · 사전 요청 가능</em></div>';
+  SOON_REGIONS.forEach(function(g){
+    html += '<div class="soon-group"><b>'+esc(g.group)+'</b><div class="ob-picks">'+
+      g.areas.map(function(a){
+        return '<button class="pick soon" type="button" data-act="soon-region" data-v="'+esc(g.group+' '+a)+'">'+esc(a)+'<i aria-hidden="true">🔔</i></button>';
+      }).join('')+'</div></div>';
+  });
+  html += '<p class="soon-note">🔔 오픈 예정 지역을 누르면 사전 요청 안내를 보내드려요. 사전 회원 가입을 하시면 가장 먼저 오픈 알림을 받습니다.</p>';
+
   html += '<p class="sheet-note">'+esc(locLabel())+' 기준 예시 위치입니다. 실서비스에서는 GPS로 자동 설정됩니다.</p></div>';
   openSheet(html);
 }
@@ -3389,6 +3446,7 @@ function handleAction(el){
   else if(act==='radius'){ openRadius(); }
   else if(act==='set-region'){ setRegion(el.getAttribute('data-v')); openRadius(); toast(regionLabel(ui.region, ui.dong)+'으로 전환했어요'); }
   else if(act==='set-dong'){ setDong(el.getAttribute('data-v')); closeSheet(); toast(locLabel()+' 기준으로 보고 있어요'); }
+  else if(act==='soon-region'){ toast(esc(el.getAttribute('data-v'))+' 지역 오픈 예정입니다! 사전 회원 가입 시 오픈 알림을 보내드려요', null, null, '🔔'); }
   else if(act==='set-radius'){ ui.radius = parseInt(el.getAttribute('data-v'),10); renderHome(); renderMap(); renderDash(); closeSheet(); toast('반경 '+ui.radius+'km로 설정했어요'); }
   else if(act==='map-radius'){ ui.radius = parseInt(el.getAttribute('data-v'),10); renderMap(); }
   else if(act==='sort'){ ui.sort = el.getAttribute('data-v'); renderChips(); renderFeed(); }
