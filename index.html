@@ -692,6 +692,8 @@ h1,h2,h3,h4,p{margin:0}
 /* ================= brand & promo ================= */
 .side-owner{display:flex;align-items:center;gap:11px;margin-top:18px;background:#fff;border:1px solid #E4EDE6;border-radius:16px;padding:10px 12px;box-shadow:0 10px 24px -22px rgba(17,26,23,.6)}
 .side-owner img{width:50px;height:50px;border-radius:13px;object-fit:cover;object-position:50% 22%;flex:0 0 auto;border:1px solid #E9EFEA}
+.side-owner .so-mark,.info-owner .so-mark,.pi-owner .so-mark{flex:0 0 auto;width:42px;height:42px;border-radius:11px;background:linear-gradient(150deg,#16A85F,#0A6B3F);color:#fff;display:grid;place-items:center;font-weight:900;font-size:16px;box-shadow:0 8px 16px -12px rgba(11,122,70,.95)}
+.side-owner .so-mark{width:50px;height:50px;border-radius:13px;font-size:19px}
 .side-owner .so-txt{min-width:0}
 .side-owner b{display:block;font-size:12.5px;font-weight:900;letter-spacing:-.02em}
 .side-owner small{display:block;font-size:10px;color:var(--muted);font-weight:700;margin-top:1px}
@@ -922,11 +924,11 @@ h1,h2,h3,h4,p{margin:0}
     <p class="lead">대학가 한 끼 할인이 아닌, <b>퇴근길 저녁 장바구니</b>. 둔산·탄방 주거·업무지구 <b>3040 가구와 직장인</b>이 정육·수산·채소·반찬을 마감특가로 사서 <b>선결제 후 픽업</b>하는 동네 장보기 플랫폼입니다.</p>
     <div class="side-vs"><span class="no">대학가 한 끼 할인</span><span class="yes">✓ 퇴근길 저녁 장바구니</span></div>
     <div class="side-owner">
-      <img src="owner-seonjin.jpg" alt="8시마켓 대표 강선진">
+      <span class="so-mark" aria-hidden="true">8</span>
       <div class="so-txt">
-        <b>대표 강선진</b>
-        <small>전 카페 매니저 · 더본코리아 슈퍼바이저</small>
-        <p>매장 운영·품질·위생 관리 노하우로 점주님과 함께 만듭니다</p>
+        <b>8시마켓 운영팀</b>
+        <small>매장 운영 · 품질 · 위생 관리</small>
+        <p>점포 운영·품질·위생 관리 노하우로 점주님과 함께 만듭니다</p>
       </div>
     </div>
     <button class="side-promo" type="button" data-act="promo">
@@ -1013,7 +1015,7 @@ h1,h2,h3,h4,p{margin:0}
               </div>
               <button class="promo-strip" type="button" data-act="promo">
                 <img src="poster.jpg" alt="8시마켓 홍보 포스터">
-                <span class="ps-txt"><b>🎬 8시마켓 홍보영상</b><small>대표 강선진의 브랜드 소개 · 1분 22초</small></span>
+                <span class="ps-txt"><b>🎬 8시마켓 홍보영상</b><small>8시마켓 브랜드 소개 · 1분 22초</small></span>
                 <span class="ps-play">▶</span>
               </button>
               <div id="homeInstall"></div>
@@ -1442,7 +1444,7 @@ h1,h2,h3,h4,p{margin:0}
               <div class="field-row">
                 <div class="field" style="margin-top:11px">
                   <label for="obOwnerName">점주명 <span>선택</span></label>
-                  <input type="text" id="obOwnerName" maxlength="12" placeholder="예) 김선진" autocomplete="name">
+                  <input type="text" id="obOwnerName" maxlength="12" placeholder="예) 박성실" autocomplete="name">
                 </div>
                 <div class="field" style="margin-top:11px">
                   <label for="obOwnerPhone">연락처 <span>선택</span></label>
@@ -1518,8 +1520,8 @@ h1,h2,h3,h4,p{margin:0}
       </div>
       <div class="pi-stats"><span><b id="promoStoreCount">11</b>개 매장</span><span><b id="promoDealCount">19</b>개 상품</span><span><b id="promoRadiusTxt">1~3km</b> 반경</span></div>
       <div class="pi-owner">
-        <img src="owner-seonjin.jpg" alt="8시마켓 대표 강선진">
-        <div><b>대표 강선진</b><small>전 카페 매니저 · 더본코리아 슈퍼바이저</small></div>
+        <span class="so-mark" aria-hidden="true">8</span>
+        <div><b>8시마켓 운영 기준</b><small>매장 운영 · 품질 · 위생 관리</small></div>
       </div>
       <p class="pi-quote">점포 운영·품질·위생 관리 노하우로 함께합니다. 오늘 남은 좋은 상품이 버려지지 않고, 이웃의 저녁 식탁에 닿도록.</p>
       <ul class="pi-list">
@@ -2875,8 +2877,8 @@ function openInfo(){
   var within = state.products.filter(inRadius);
   var html = sheetHead('8시마켓 소개','저녁 8시, 우리 동네 장보기가 달라집니다')+
   '<div class="sheet-body info-sheet">'+
-    '<div class="info-owner"><img src="owner-seonjin.jpg" alt="8시마켓 대표 강선진">'+
-      '<div><b>대표 강선진</b><small>전 카페 매니저 · 더본코리아 슈퍼바이저</small></div>'+
+    '<div class="info-owner"><span class="so-mark" aria-hidden="true">8</span>'+
+      '<div><b>8시마켓 운영팀</b><small>매장 운영 · 품질 · 위생 관리</small></div>'+
       '<button class="link-btn" type="button" data-act="promo">홍보영상 ▶</button></div>'+
     '<p style="font-size:11px;color:#5E6B65;font-weight:600;line-height:1.7;margin-top:11px">퇴근길 동네마트·정육점·과일가게·빵집·반찬가게의 <b>오늘 남은 신선식품</b>을 마감특가로 연결하고, 반경 1~3km 이웃이 선결제 후 픽업하는 로컬 커머스 플랫폼입니다.</p>'+
     '<div class="pi-stats"><span><b>'+STORES.length+'</b>개 매장</span><span><b>'+liveProducts(state.products).length+'</b>개 상품</span><span><b>'+storesInRadius().length+'</b>곳 · 반경 '+ui.radius+'km</span></div>'+
@@ -2888,7 +2890,7 @@ function openInfo(){
         '<li><b>폐기 절감 대시보드</b> — 예상 추가 매출·절감 kg·CO₂ 환산을 점주에게 제공</li></ul>'+
     '<div id="pricingInfo"></div>'+
     '<h4>운영·품질·위생</h4>'+
-    '<div class="mods"><div class="mod"><b>운영</b><span>대표 강선진 — 전 카페 매니저·더본코리아 슈퍼바이저 경력으로 점포 운영 노하우 전수</span></div>'+
+    '<div class="mods"><div class="mod"><b>운영</b><span>8시마켓 운영 기준 — 매장 운영·품질·위생 노하우로 점포 운영을 지원</span></div>'+
       '<div class="mod"><b>품질</b><span>업종별 마감·보관 기준과 사진 검수 가이드</span></div>'+
       '<div class="mod"><b>위생</b><span>조리·냉장 상품의 판매 가능 시간 기준 안내</span></div></div>'+
     '<div class="scale">'+
@@ -2925,8 +2927,8 @@ function openMe(){
       '<span class="mi-ic" aria-hidden="true">' + (isStandalone() ? '✓' : '📲') + '</span>'+
       '<span class="mi-tx"><b>' + (isStandalone() ? '✓ 앱으로 실행 중' : '휴대폰에 앱으로 설치하기') + '</b><small>' + (isStandalone() ? '홈 화면 아이콘으로 열려 있어요' : '홈 화면에 추가하면 앱처럼 열려요 · 3초면 끝') + '</small></span>'+
       '<span class="mi-go">' + (isStandalone() ? '실행 중' : '설치') + '</span></button>'+
-    '<div class="info-owner" style="margin-top:9px"><img src="owner-seonjin.jpg" alt="8시마켓 대표 강선진">'+
-      '<div><b>8시마켓 · 대표 강선진</b><small>오늘 남은 좋은 상품, 동네에서 득템</small></div>'+
+    '<div class="info-owner" style="margin-top:9px"><span class="so-mark" aria-hidden="true">8</span>'+
+      '<div><b>8시마켓</b><small>오늘 남은 좋은 상품, 동네에서 득템</small></div>'+
       '<button class="link-btn" type="button" data-act="promo">홍보영상 ▶</button></div>'+
     '<div class="me-role" style="margin-top:9px"><div><b>'+(state.role==='owner'?'점주 모드':'할인 장보기 모드')+'</b><small>상·하단 메뉴에서 언제든 전환할 수 있어요</small></div><span>'+ (state.role==='owner'?'🏪':'🛒') +'</span></div>'+
     '<div class="me-rows">'+
