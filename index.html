@@ -1991,7 +1991,8 @@ function hideOnboard(role, mode){
   renderHome(); renderOwner(); renderMap(); renderDash();
   setTab(role === 'owner' ? 'owner' : 'home');
   if(mode === 'owner-demo'){
-    toast('기존 체험 매장(우리축산) 점주로 시작합니다 · AI 10초 등록을 체험해 보세요');
+    var demoSt = storeById(ui.ownerStore);
+    toast('기존 체험 매장(' + (demoSt ? demoSt.name : '체험 매장') + ') 점주로 시작합니다 · AI 10초 등록을 체험해 보세요');
   }else if(mode === 'skip'){
     toast('둘러보기 모드 · 상·하단 메뉴에서 언제든 전환할 수 있어요');
   }else if(mode !== 'owner-join'){
@@ -2183,7 +2184,13 @@ function openTerms(kind){
     '<div class="sheet-actions"><button class="btn btn-primary btn-block" type="button" data-act="close-sheet">확인했습니다</button></div>'+
     '<p class="sheet-note">시제품 화면으로 실제 약관 효력은 없습니다. 동의 여부는 이 브라우저에만 저장됩니다.</p>');
 }
-function ownerDemo(){ ui.ownerStore = 's2'; hideOnboard('owner','owner-demo'); }
+function ownerDemo(){
+  /* 지금 보는 권역의 체험 매장으로 점주 센터를 연다 (경기 광주면 신현 매장) */
+  var cur = storeById('s2');
+  var pick = (cur && storeRegion(cur) === ui.region) ? 's2' : (storesInRegion()[0] ? storesInRegion()[0].id : 's2');
+  ui.ownerStore = pick;
+  hideOnboard('owner','owner-demo');
+}
 function handleOb(el){
   var k = el.getAttribute('data-ob');
   if(k === 'back'){ setObStep('role'); }
@@ -3411,7 +3418,7 @@ function wire(){
   $('#obSkip').addEventListener('click', function(){
     var sel = document.querySelector('.role.is-sel');
     var role = sel ? sel.getAttribute('data-role') : 'consumer';
-    hideOnboard(role, role === 'owner' ? 'owner-demo' : 'skip');
+    if(role === 'owner') ownerDemo(); else hideOnboard('consumer','skip');
   });
   ['obNick','obStoreName'].forEach(function(id){
     var el = document.getElementById(id);
