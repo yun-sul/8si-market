@@ -216,6 +216,9 @@ h1,h2,h3,h4,p{margin:0}
 .agree-tx em{font-style:normal;color:var(--muted);font-weight:600}
 .agree-view{flex:0 0 auto;border:0;background:transparent;color:var(--muted);font-size:10px;font-weight:800;text-decoration:underline;text-underline-offset:3px;padding:2px 0 2px 4px}
 .agree-view:hover{color:var(--brand-d)}
+.ob-note{position:relative;margin-top:10px;background:#F8FBF9;border:1px solid #E7F0EA;border-radius:10px;padding:8px 10px;font-size:9.5px;font-weight:700;color:#5E6B65;line-height:1.6;letter-spacing:-.01em}
+.ob-note b{color:var(--brand-d);font-weight:900}
+.ob-card .field{margin-top:9px}
 .ob-perks{margin-top:10px;display:grid;gap:6px}
 .ob-perk{display:flex;align-items:center;gap:9px;background:#F8FBF9;border:1px solid #E7F0EA;border-radius:11px;padding:8px 10px}
 .ob-perk .ic{width:26px;height:26px;border-radius:8px;background:#fff;border:1px solid #E3EDE6;display:grid;place-items:center;font-size:13px;flex:0 0 auto}
@@ -1293,7 +1296,7 @@ h1,h2,h3,h4,p{margin:0}
             <p class="ob-foot">로그인 없이 체험하는 시제품입니다 · 실제 결제는 발생하지 않아요</p>
           </div>
 
-          <!-- step 2-A · 소비자 간편 가입 -->
+          <!-- step 2-A · 소비자 회원가입 -->
           <div class="ob-step" id="obStep-consumer">
             <button class="ob-back" type="button" data-ob="back">← 역할 선택으로</button>
             <h2 class="ob-h2">소비자 회원가입</h2>
@@ -1339,11 +1342,7 @@ h1,h2,h3,h4,p{margin:0}
               </div>
               <p class="ob-msg" id="obConsumerMsg" hidden></p>
             </div>
-            <div class="ob-perks">
-              <div class="ob-perk"><span class="ic">📍</span><div><b>내 동네 기준 추천</b><small>둔산·탄방·월평 반경 2km 마감특가만 모아 보여드려요</small></div></div>
-              <div class="ob-perk"><span class="ic">💚</span><div><b>찜·예약 자동 저장</b><small>가입 정보와 함께 이 브라우저에 계속 남아요</small></div></div>
-              <div class="ob-perk"><span class="ic">🔔</span><div><b>픽업 준비 알림</b><small>연락처를 넣으면 준비 완료·픽업 시간을 알려드려요</small></div></div>
-            </div>
+            <div class="ob-note">📍 <b>내 동네 2km</b> 마감특가만 모아 보여드리고 · 💚 찜·예약 자동 저장 · 🔔 픽업 준비 알림까지 — 가입 정보는 이 브라우저에 계속 남아요</div>
             <div class="ob-actions">
               <button class="btn btn-primary btn-block" type="button" data-ob="consumer-done">회원가입 완료하고 시작하기</button>
               <button class="ob-skip" type="button" data-ob="consumer-skip">가입 없이 둘러보기</button>
@@ -1356,7 +1355,7 @@ h1,h2,h3,h4,p{margin:0}
             <button class="ob-back" type="button" data-ob="back">← 역할 선택으로</button>
             <h2 class="ob-h2">점주 회원가입 · 입점 등록</h2>
             <p class="ob-entry" id="obOwnerEntry" hidden><i aria-hidden="true">✓</i><span id="obOwnerEntryTx">상호·업종 등록</span></p>
-            <p class="ob-lead">상호명·업종·마감시간만 넣으면 <b>점주 센터</b>가 바로 열려요. 등록한 매장은 동네 지도에도 표시됩니다.</p>
+            <p class="ob-lead">상호명·마감시간만 넣으면 <b>점주 센터</b>가 바로 열려요.</p>
             <div class="ob-card">
               <div class="field-row">
                 <div class="field" style="margin-top:11px">
@@ -1400,11 +1399,7 @@ h1,h2,h3,h4,p{margin:0}
               </div>
               <p class="ob-msg" id="obOwnerMsg" hidden></p>
             </div>
-            <div class="ob-perks">
-              <div class="ob-perk"><span class="ic">🗺️</span><div><b>동네 지도에 바로 노출</b><small>입점 즉시 소비자 지도·매장 목록에 매장 핀이 생깁니다</small></div></div>
-              <div class="ob-perk"><span class="ic">📉</span><div><b>AI 단계 할인</b><small>마감시간 기준으로 남은 재고 가격을 자동으로 조정해요</small></div></div>
-              <div class="ob-perk"><span class="ic">📊</span><div><b>폐기·매출 대시보드</b><small>예상 매출과 절감 kg을 AI 대시보드에서 확인할 수 있어요</small></div></div>
-            </div>
+            <div class="ob-note">🗺️ 입점 즉시 <b>동네 지도·매장 목록</b>에 노출 · 📉 마감시간 기준 AI 단계 할인 · 📊 폐기·매출 대시보드까지 — 등록 매장은 이 브라우저에 저장됩니다</div>
             <div class="ob-actions">
               <button class="btn btn-primary btn-block" type="button" data-ob="owner-done">점주 회원가입 · 입점 완료하기</button>
               <button class="ob-skip" type="button" data-ob="owner-skip">기존 체험 매장으로 바로 보기</button>
@@ -1727,6 +1722,10 @@ function obNextStep(){
 function highlightOb(target){
   if(!target) return;
   target.scrollIntoView({behavior:'smooth', block:'center'});
+  pulseOb(target);
+}
+function pulseOb(target){
+  if(!target) return;
   target.classList.remove('ob-focus');
   void target.offsetWidth;
   target.classList.add('ob-focus');
@@ -1747,7 +1746,8 @@ function openObConsumer(focus){
   else if(focus === 'nick'){ tx.textContent = '10초 가입 체크 · 닉네임만 정하면 끝나요'; entry.hidden = false; hint.hidden = true; }
   else { entry.hidden = true; hint.hidden = true; }
   setObStep('consumer');
-  if(focus) highlightOb(focus === 'dong' ? $('#obDongField') : $('#obNick').closest('.field'));
+  if(focus === 'dong') highlightOb($('#obDongField'));
+  else if(focus === 'nick') pulseOb($('#obNick').closest('.field'));
 }
 function openObOwner(focus, after){
   var ms = state.myStore, ow = state.owner || {};
@@ -1770,7 +1770,8 @@ function openObOwner(focus, after){
   else { entry.hidden = true; hint.hidden = true; }
   obsel.afterAi = (after === 'ai');
   setObStep('owner');
-  if(focus) highlightOb(focus === 'close' ? $('#obCloseField') : $('#obStoreName').closest('.field'));
+  if(focus === 'close') highlightOb($('#obCloseField'));
+  else if(focus) pulseOb($('#obStoreName').closest('.field'));
 }
 function completeConsumer(skip){
   var nick = ($('#obNick').value || '').trim();
@@ -2663,6 +2664,11 @@ function resetDemo(){
   save();
   ui.radius = 2; ui.deal = 0; ui.cat = '전체'; ui.orderFilter = 'all'; ui.ownerStore = 's2';
   obsel = {dong:'둔산동', cats:[], agreeC:false, agreeM:false, agreeO:false, afterAi:false};
+  $$('.role').forEach(function(r){ r.classList.remove('is-sel'); r.setAttribute('aria-pressed','false'); });
+  $('#obNext').disabled = true;
+  renderObResume(); renderAgree();
+  $('#obConsumerEntry').hidden = true; $('#obOwnerEntry').hidden = true;
+  $('#obDongHint').hidden = true; $('#obCloseHint').hidden = true;
   $$('#orderSeg button').forEach(function(b){ b.classList.toggle('is-on', b.getAttribute('data-of')==='all'); });
   renderHome(); renderMap(); renderOrders(); renderOwner(); renderDash();
   setTab('home');
