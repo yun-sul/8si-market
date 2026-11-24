@@ -823,7 +823,6 @@ h1,h2,h3,h4,p{margin:0}
 /* ================= v2.1 additions ================= */
 .side-vs{display:flex;gap:6px;margin-top:15px;flex-wrap:wrap}
 .side-vs span{font-size:11.5px;font-weight:900;border-radius:9px;padding:7px 10px;letter-spacing:-.02em;line-height:1.3}
-.side-vs .no{background:#F1F3F1;color:#8E9A94;text-decoration:line-through}
 .side-vs .yes{background:var(--brand-l);color:var(--brand-d);border:1px solid #CFE9DA}
 .demo-tag{display:inline-flex;align-items:center;gap:3px;background:#FFF6E8;color:#B45309;border:1px solid #FBE3C4;font-size:8.5px;font-weight:900;border-radius:5px;padding:2px 6px;letter-spacing:.01em;white-space:nowrap}
 .ai-demo-note{margin-top:9px;font-size:9px;color:#9A7C31;font-weight:700;line-height:1.55;background:#FFFBF2;border:1px solid #F7EBD2;border-radius:8px;padding:7px 9px}
@@ -880,10 +879,9 @@ h1,h2,h3,h4,p{margin:0}
 .roadmap li::before{content:"→";color:var(--brand-mid);font-weight:900;flex:0 0 auto}
 /* promo vs table */
 .pi-vs{margin-top:12px;border:1px solid #E7EDE8;border-radius:10px;overflow:hidden;font-size:9.5px}
-.pi-vs .vs-h{display:grid;grid-template-columns:46px 1fr 1fr;gap:5px;background:#F4F8F5;font-weight:900;color:#5E6B65;padding:6px 8px;font-size:8.5px}
-.pi-vs .vs-r{display:grid;grid-template-columns:46px 1fr 1fr;gap:5px;padding:6px 8px;border-top:1px solid #F0F4F0;font-weight:700;color:#5E6B65;line-height:1.45}
+.pi-vs .vs-h{display:grid;grid-template-columns:1fr;gap:5px;background:#F4F8F5;font-weight:900;color:#5E6B65;padding:6px 8px;font-size:8.5px}
+.pi-vs .vs-r{display:grid;grid-template-columns:46px 1fr;gap:5px;padding:6px 8px;border-top:1px solid #F0F4F0;font-weight:700;color:#5E6B65;line-height:1.45}
 .pi-vs .vs-r .k{color:#8A9690;font-weight:800;font-size:8.5px}
-.pi-vs .vs-r .a{color:#A9B4AE}
 .pi-vs .vs-r .b{color:var(--brand-d);font-weight:800}
 .pi-stats{display:flex;gap:6px;margin-top:10px}
 .pi-stats span{flex:1;background:#F7FAF7;border:1px solid #EDF2ED;border-radius:9px;padding:7px 8px;text-align:center;font-size:9px;font-weight:800;color:var(--muted)}
@@ -1462,8 +1460,8 @@ h1,h2,h3,h4,p{margin:0}
       <span><b>8시마켓</b><small>8SI MARKET · 대전·경기 광주 로컬 커머스</small></span>
     </div>
     <h1>저녁 8시,<br>우리 동네 <em>장보기</em>가<br>달라집니다.</h1>
-    <p class="lead">대학가 한 끼 할인이 아닌, <b>퇴근길 저녁 장바구니</b>. 대전 둔산·탄방과 경기 광주 신현·태전, 두 생활권의 <b>3040 가구와 직장인</b>이 정육·수산·채소·반찬을 마감특가로 사서 <b>선결제 후 픽업</b>하는 동네 장보기 플랫폼입니다.</p>
-    <div class="side-vs"><span class="no">대학가 한 끼 할인</span><span class="yes">✓ 퇴근길 저녁 장바구니</span></div>
+    <p class="lead"><b>퇴근길 저녁 장바구니</b>. 대전 둔산·탄방과 경기 광주 신현·태전, 두 생활권의 <b>3040 가구와 직장인</b>이 정육·수산·채소·반찬을 마감특가로 사서 <b>선결제 후 픽업</b>하는 동네 장보기 플랫폼입니다.</p>
+    <div class="side-vs"><span class="yes">✓ 퇴근길 저녁 장바구니 · 정육·수산·채소·반찬</span></div>
     <div class="side-owner">
       <span class="so-mark" aria-hidden="true">8</span>
       <div class="so-txt">
@@ -2182,10 +2180,10 @@ h1,h2,h3,h4,p{margin:0}
       <h2>저녁 8시,<br>우리 동네 <em>장보기</em>가 달라집니다</h2>
       <p class="pi-lead">대전 둔산·탄방과 경기 광주 신현·태전에서 동시에 시작해 <b>전국 동네 생활권으로 확장</b>하는 로컬 커머스 플랫폼입니다. 두 생활권의 퇴근길 장바구니를 위해 정육·수산·채소·반찬에 집중합니다.</p>
       <div class="pi-vs">
-        <div class="vs-h"><span></span><span>들고가유</span><span>8시마켓</span></div>
-        <div class="vs-r"><span class="k">상권</span><span class="a">대학가 (궁동 등)</span><span class="b">둔산·탄방 + 신현·태전 주거지</span></div>
-        <div class="vs-r"><span class="k">고객</span><span class="a">대학생 · 한 끼</span><span class="b">퇴근길 직장인·3040 가구</span></div>
-        <div class="vs-r"><span class="k">품목</span><span class="a">카페·간식 중심</span><span class="b">정육·수산·채소·반찬·빵</span></div>
+        <div class="vs-h"><span>8시마켓 핵심 강점 3가지</span></div>
+        <div class="vs-r"><span class="k">상권</span><span class="b">둔산·탄방 + 신현·태전 주거지</span></div>
+        <div class="vs-r"><span class="k">고객</span><span class="b">퇴근길 직장인·3040 가구</span></div>
+        <div class="vs-r"><span class="k">품목</span><span class="b">정육·수산·채소·반찬·빵</span></div>
       </div>
       <div class="pi-stats"><span><b id="promoRegionCount">2</b>개 권역</span><span><b id="promoStoreCount">32</b>개 매장</span><span><b id="promoDealCount">57</b>개 상품</span><span><b id="promoRadiusTxt">1~3km</b> 반경</span></div>
       <p class="whole-stats">전체 2개 권역 · 총 32개 매장 · 57개 상품</p>
@@ -4212,7 +4210,7 @@ function openInfo(){
     '<div class="pi-stats"><span><b>'+REGIONS.length+'</b>개 권역</span><span><b>'+STORES.length+'</b>개 매장</span><span><b>'+liveProducts(state.products).length+'</b>개 상품</span><span><b>'+storesInRadius().length+'</b>곳 · 반경 '+ui.radius+'km</span></div>'+
     '<p class="whole-stats">전체 '+REGIONS.length+'개 거점 (파일럿 '+pilotCount()+' + 오픈 예정 '+demoCount()+') · 총 '+STORES.length+'개 매장 · '+liveProducts(state.products).length+'개 상품</p>'+
     '<h4>8시마켓이 다른 점</h4>'+
-    '<ul><li><b>대학가 한 끼 할인이 아닌 저녁 장바구니</b> — 둔산·탄방 + 신현·태전 3040 가구·직장인을 위한 정육·수산·채소·반찬</li>'+
+    '<ul><li><b>퇴근길 저녁 장바구니</b> — 둔산·탄방 + 신현·태전 3040 가구·직장인을 위한 정육·수산·채소·반찬</li>'+
         '<li><b>AI 가격 결정</b> — 사진 한 장으로 등록하고, 8시 이후 시간이 지날수록 할인율을 자동으로 올립니다</li>'+
         '<li><b>점주별 적정 할인율 추천</b> — 업종·재고·마감 시간을 반영한 권장 구간 제시</li>'+
         '<li><b>거리·시간 기반 노출</b> — 반경 1~3km, 도보·자전거·차량으로 픽업 시간 내 방문 가능한 동네 매장</li>'+
