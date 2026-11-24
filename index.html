@@ -2103,6 +2103,7 @@ function sheetHead(title, sub){
 
 /* ================= 휴대폰 앱 설치(PWA) ================= */
 var installPrompt = null;
+var installTried = false;
 function isStandalone(){
   try{ if(window.matchMedia && window.matchMedia('(display-mode: standalone)').matches) return true; }catch(e){}
   return window.navigator.standalone === true;
@@ -2193,7 +2194,8 @@ function openInstallGuide(){
 function startInstall(){
   if(isStandalone()){ toast('이미 홈 화면 앱으로 실행 중이에요'); return; }
   var p = installPrompt;
-  if(p && typeof p.prompt === 'function'){
+  if(p && typeof p.prompt === 'function' && !installTried){
+    installTried = true;
     installPrompt = null;
     try{ p.prompt(); }catch(e){}
     var choice = p.userChoice;
