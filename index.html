@@ -243,10 +243,10 @@ h1,h2,h3,h4,p{margin:0}
 .home-welcome{display:flex;align-items:center;gap:9px;background:linear-gradient(135deg,#0B7A46,#12945A);color:#fff;border-radius:15px;padding:10px 11px;margin-bottom:10px;box-shadow:0 18px 30px -26px rgba(11,122,70,.95);position:relative;overflow:hidden;animation:pop .3s ease}
 .home-welcome::after{content:"";position:absolute;width:110px;height:110px;border-radius:50%;background:rgba(255,255,255,.09);right:-40px;top:-56px}
 .home-welcome .hw-ic{width:27px;height:27px;border-radius:9px;background:rgba(255,255,255,.18);display:grid;place-items:center;font-size:13px;flex:0 0 auto;position:relative}
-.home-welcome b{display:block;font-size:12px;font-weight:900;letter-spacing:-.03em;line-height:1.35;position:relative}
-.home-welcome small{display:block;font-size:10px;font-weight:700;color:#C7EAD8;margin-top:1px;letter-spacing:-.01em;position:relative;line-height:1.4}
+.home-welcome b{display:block;font-size:12px;font-weight:900;letter-spacing:-.02em;line-height:1.45;position:relative}
+.home-welcome small{display:block;font-size:10px;font-weight:700;color:#C7EAD8;margin-top:2px;letter-spacing:-.01em;position:relative;line-height:1.5}
 .home-welcome .hw-x{margin-left:auto;flex:0 0 auto;border:0;background:rgba(255,255,255,.16);color:#fff;width:23px;height:23px;border-radius:50%;font-size:11px;display:grid;place-items:center;position:relative;line-height:1}
-.loc-row{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.loc-row{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:13px}
 .loc-btn{display:inline-flex;align-items:center;gap:6px;border:0;background:transparent;padding:2px 0;color:var(--ink);font-size:14px;font-weight:900;letter-spacing:-.03em}
 .loc-btn .pin{width:18px;height:18px;color:var(--brand)}
 .loc-btn .chev{width:13px;height:13px;color:var(--muted);margin-left:-2px}
@@ -265,6 +265,12 @@ h1,h2,h3,h4,p{margin:0}
 .chip:hover{border-color:#C8DCCF}
 .chip.is-on{background:var(--brand);border-color:var(--brand);color:#fff;box-shadow:0 8px 16px -12px rgba(11,122,70,.95)}
 .chip.deal.is-on{background:linear-gradient(180deg,#12945A,#0A6B3F);border-color:#0A6B3F}
+/* v2.7 홈 피드 정렬 */
+.chip-row{display:flex;align-items:center;gap:6px}
+.chip-row .chips{flex:1 1 auto;min-width:0}
+.sort-seg{flex:0 0 auto;display:flex;align-items:center;gap:2px;background:#F1F5F2;border:1px solid #E4EBE6;border-radius:999px;padding:2px}
+.sort-seg button{border:0;background:transparent;color:#69766F;font-family:inherit;font-size:9.5px;font-weight:900;letter-spacing:-.02em;line-height:1.2;padding:5px 7px;border-radius:999px;white-space:nowrap;transition:.15s}
+.sort-seg button.is-on{background:#fff;color:var(--brand-d);box-shadow:0 3px 8px -5px rgba(17,26,23,.5)}
 .cats{margin-top:7px}
 .cats .chip{padding:6px 11px;font-size:11.5px;color:#6D7A74}
 .cats .chip.is-on{background:#EEF6F1;border-color:#CFE6D8;color:var(--brand-d)}
@@ -300,8 +306,8 @@ h1,h2,h3,h4,p{margin:0}
 .cbody{padding:11px 13px 13px}
 .crow{display:flex;align-items:flex-start;justify-content:space-between;gap:8px}
 .cmain{min-width:0}
-.pname{font-size:14.5px;font-weight:900;letter-spacing:-.035em;line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.store-row{display:flex;align-items:center;gap:5px;margin-top:2px;font-size:11px;color:var(--muted);font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pname{font-size:14.5px;font-weight:900;letter-spacing:-.02em;line-height:1.42;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.store-row{display:flex;align-items:center;gap:5px;margin-top:3px;font-size:11px;color:var(--muted);font-weight:700;letter-spacing:-.015em;line-height:1.5;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .store-row .sname{color:#5E6B65;font-weight:800}
 .store-row .sep{color:#D3DBD6}
 .store-row svg{width:11px;height:11px;flex:0 0 auto;color:#A6B2AC}
@@ -341,10 +347,30 @@ h1,h2,h3,h4,p{margin:0}
 .map-count{position:absolute;left:50%;top:118px;transform:translateX(-50%);z-index:4;background:rgba(17,26,23,.82);color:#fff;font-size:11px;font-weight:800;padding:6px 12px;border-radius:999px;white-space:nowrap;backdrop-filter:blur(6px);box-shadow:0 10px 20px -12px rgba(0,0,0,.5)}
 .me-btn{position:absolute;right:14px;bottom:88px;z-index:6;width:40px;height:40px;border-radius:50%;border:1px solid #DEE7E1;background:#fff;display:grid;place-items:center;color:var(--brand);box-shadow:0 10px 22px -14px rgba(17,26,23,.6)}
 .me-btn svg{width:19px;height:19px}
-.map-hint{position:absolute;left:50%;bottom:18px;transform:translateX(-50%);z-index:6;background:rgba(255,255,255,.95);border:1px solid #E2EAE4;color:var(--ink2);font-size:10.5px;font-weight:800;padding:8px 14px;border-radius:999px;white-space:nowrap;box-shadow:0 14px 26px -18px rgba(17,26,23,.5);display:flex;align-items:center;gap:6px}
-.map-hint .dot{width:5px;height:5px;border-radius:50%;background:var(--brand-mid)}
+/* ===== v2.7 지도 인라인 카드 (핀 선택 시 지도를 가리지 않고 카드만 교체) ===== */
+.map-dock{position:absolute;left:10px;right:10px;bottom:10px;z-index:7;background:#fff;border:1px solid #E4EDE7;border-radius:16px;padding:9px 10px;box-shadow:0 18px 38px -24px rgba(17,26,23,.62)}
+.map-dock.is-empty{padding:11px 12px;background:rgba(255,255,255,.97)}
+.map-dock .md-empty{display:flex;align-items:center;gap:5px;font-size:10px;font-weight:800;line-height:1.45;letter-spacing:-.015em;color:var(--muted)}
+.map-dock .md-empty b{color:var(--brand-d);font-weight:900}
+.md-head{display:flex;align-items:center;gap:8px}
+.md-thumb{width:32px;height:32px;border-radius:10px;display:grid;place-items:center;font-size:16px;flex:0 0 auto}
+.md-main{min-width:0;flex:1}
+.md-name{display:flex;align-items:center;gap:4px;font-size:12px;font-weight:900;letter-spacing:-.025em;line-height:1.35;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.md-name .md-cat{flex:0 0 auto;font-size:8px;font-weight:900;color:var(--muted);background:#F2F6F3;border-radius:5px;padding:1px 4px;letter-spacing:0}
+.md-meta{margin-top:1px;font-size:9.5px;font-weight:700;letter-spacing:-.01em;line-height:1.4;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.md-go{flex:0 0 auto;border:0;border-radius:10px;background:linear-gradient(180deg,#12945A,#0A6B3F);color:#fff;font-family:inherit;font-size:10.5px;font-weight:900;letter-spacing:-.02em;padding:8px 11px;box-shadow:0 8px 16px -12px rgba(11,122,70,.9)}
+.md-go:disabled{background:#E4E9E5;color:#98A49D;box-shadow:none}
+.md-rows{margin-top:6px;display:grid;gap:3px}
+.md-row{display:flex;align-items:center;gap:6px;width:100%;border:0;background:#F7FAF7;border-radius:8px;padding:4px 8px;font-family:inherit;text-align:left}
+.md-row .md-e{font-size:12px;flex:0 0 auto}
+.md-row .md-n{min-width:0;flex:1;font-size:10.5px;font-weight:800;letter-spacing:-.015em;color:#41504A;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.md-row .md-d{flex:0 0 auto;font-size:9px;font-weight:900;color:var(--brand);background:var(--brand-l);border-radius:5px;padding:1px 4px}
+.md-row .md-p{flex:0 0 auto;font-size:10.5px;font-weight:900;color:var(--price)}
+.md-swap{animation:mdSwap .24s ease}
+@keyframes mdSwap{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:none}}
+#screen-map.has-sel .me-btn{bottom:130px}
 .pin{cursor:pointer}
-.pin .pin-c{fill:#fff;stroke:#0B7A46;stroke-width:2.2;transition:.15s}
+.pin .pin-c{fill:#fff;stroke:#0B7A46;stroke-width:2.2;transform-box:fill-box;transform-origin:center;transition:transform .18s,fill .15s,stroke .15s}
 .pin .pin-emoji{font-size:13px;pointer-events:none}
 .pin .pin-tag rect{fill:#0B7A46;transition:.15s}
 .pin .pin-tag rect.new{fill:#E2523A}
@@ -352,10 +378,13 @@ h1,h2,h3,h4,p{margin:0}
 .pin .pin-tag text{fill:#fff;font-size:9px;font-weight:900;letter-spacing:-.02em}
 .pin:hover .pin-c{stroke-width:3}
 .pin:hover .pin-tag rect{fill:#085F37}
-.pin.is-sel .pin-c{fill:#0B7A46;stroke:#fff;stroke-width:3}
+.pin.is-sel .pin-c{fill:#0B7A46;stroke:#fff;stroke-width:3;transform:scale(1.1)}
 .pin.is-sel .pin-emoji{font-size:15px}
 .pin.is-sel .pin-tag rect{fill:#E2523A}
 .pin.dim{opacity:.25;pointer-events:none}
+.pin .pin-halo{fill:none;stroke:#0B7A46;stroke-width:2;opacity:0;pointer-events:none}
+.pin.is-sel .pin-halo{opacity:.5;animation:pinHalo 1.8s ease-out infinite}
+@keyframes pinHalo{0%{stroke-width:2;opacity:.5}75%{stroke-width:7;opacity:0}100%{stroke-width:2;opacity:0}}
 .ring{fill:none;stroke:#8FB6A0;stroke-dasharray:4 5;stroke-width:1;opacity:.65}
 .ring-lab{fill:#7C978A;font-size:8.5px;font-weight:800}
 .map-label{fill:#93A69B;font-size:9px;font-weight:800;letter-spacing:.02em}
@@ -704,10 +733,24 @@ h1,h2,h3,h4,p{margin:0}
 .promo-strip::after{content:"";position:absolute;width:120px;height:120px;border-radius:50%;background:rgba(255,255,255,.07);right:-40px;top:-60px}
 .promo-strip img{width:34px;height:44px;border-radius:6px;object-fit:cover;object-position:50% 10%;flex:0 0 auto}
 .promo-strip .ps-txt{min-width:0;position:relative}
-.promo-strip b{display:block;font-size:11.5px;font-weight:900;letter-spacing:-.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.promo-strip small{display:block;font-size:9.5px;color:#BFE8D3;font-weight:700;margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.promo-strip b{display:block;font-size:11.5px;font-weight:900;letter-spacing:-.02em;line-height:1.4;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.promo-strip small{display:block;font-size:9.5px;color:#BFE8D3;font-weight:700;margin-top:1px;line-height:1.4;letter-spacing:-.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .promo-strip .ps-play{margin-left:auto;flex:0 0 auto;width:26px;height:26px;border-radius:50%;background:rgba(255,255,255,.18);display:grid;place-items:center;font-size:9px;padding-left:2px;position:relative}
 .home-head .promo-strip + .loc-row{margin-top:13px}
+.promo-strip.feed-promo{margin:14px 0 0}
+.cmeta .ctag,.cmeta .ctime{line-height:1.45;letter-spacing:-.015em}
+/* ===== v2.7 브랜드 소개 모달 · 모바일 한눈 배너 ===== */
+.promo-glance{display:none;background:#fff;border-bottom:1px solid var(--line2);padding:16px 16px 14px}
+.pg-top{display:flex;align-items:flex-start;gap:11px;padding-right:34px}
+.pg-copy{min-width:0;flex:1}
+.pg-tag{display:inline-block;font-size:9.5px;font-weight:900;letter-spacing:.05em;line-height:1.3;color:var(--brand-d);background:var(--brand-l);border-radius:6px;padding:3px 7px}
+.pg-h{margin-top:8px;font-size:19px;line-height:1.34;letter-spacing:-.04em;font-weight:900}
+.pg-h em{font-style:normal;color:var(--brand)}
+.pg-thumb{flex:0 0 auto;width:62px;height:82px;border-radius:10px;object-fit:cover;object-position:50% 8%;box-shadow:0 10px 20px -16px rgba(17,26,23,.8)}
+.pg-chips{display:flex;gap:5px;flex-wrap:wrap;margin-top:10px}
+.pg-chips span{font-size:10px;font-weight:900;letter-spacing:-.02em;line-height:1.3;color:var(--brand-d);background:var(--brand-l);border:1px solid #CFE9DA;border-radius:999px;padding:5px 9px}
+.pg-play{display:flex;align-items:center;justify-content:center;gap:5px;width:100%;margin-top:9px;padding:9px;border:1px solid #CFE9DA;border-radius:11px;background:#fff;color:var(--brand-d);font-family:inherit;font-size:11.5px;font-weight:900;letter-spacing:-.02em;line-height:1.3}
+.pg-play.is-on{background:var(--brand-l)}
 .promo-modal{position:fixed;inset:0;z-index:900;display:none;align-items:center;justify-content:center;padding:24px;background:rgba(6,22,15,.74);backdrop-filter:blur(10px)}
 .promo-modal.is-open{display:flex;animation:fadeIn .2s ease}
 .promo-card{position:relative;display:grid;grid-template-columns:minmax(0,400px) minmax(0,1fr);width:min(880px,100%);max-height:92vh;background:#fff;border-radius:24px;overflow:hidden;box-shadow:0 50px 100px -40px rgba(0,0,0,.75)}
@@ -736,10 +779,24 @@ h1,h2,h3,h4,p{margin:0}
 .info-owner .link-btn{margin-left:auto;flex:0 0 auto;font-size:10.5px}
 @media(max-width:900px){
   .promo-modal{padding:0;align-items:stretch}
-  .promo-card{grid-template-columns:1fr;width:100%;height:100%;max-height:none;border-radius:0;overflow-y:auto}
-  .promo-stage video{height:auto;max-height:none;aspect-ratio:3/4;object-fit:cover}
-  .promo-info{max-height:none;overflow:visible;padding:20px 18px calc(26px + env(safe-area-inset-bottom))}
-  .promo-info h2{font-size:22px}
+  .promo-card{display:flex;flex-direction:column;width:100%;height:100%;max-height:none;border-radius:0;overflow-y:auto}
+  .promo-x{right:10px;top:10px;background:#EDF2EE;color:#5E6B65;backdrop-filter:none}
+  .promo-x:hover{background:#E2E9E4}
+  .promo-glance{display:block;flex:0 0 auto}
+  .promo-stage{display:none}
+  .promo-card.video-open .promo-stage{display:flex;flex:0 0 auto}
+  .promo-stage video{height:200px;max-height:200px;aspect-ratio:auto;width:100%;object-fit:cover}
+  .promo-info{display:flex;flex-direction:column;flex:0 0 auto;max-height:none;overflow:visible;padding:16px 16px calc(26px + env(safe-area-inset-bottom))}
+  .promo-info .pi-tag,.promo-info h2{display:none}
+  .promo-info .pi-list{display:none}
+  .promo-info .pi-lead{order:1;margin-top:0;font-size:12px;line-height:1.72;letter-spacing:-.012em}
+  .promo-info .pi-vs{order:2;margin-top:12px}
+  .promo-info .scale{order:3}
+  .promo-info .roadmap{order:4}
+  .promo-info .pi-stats{order:5}
+  .promo-info .pi-owner{order:6}
+  .promo-info .pi-quote{order:7}
+  .promo-info .promo-actions{order:8}
 }
 
 /* ================= v2.1 additions ================= */
@@ -1013,11 +1070,6 @@ h1,h2,h3,h4,p{margin:0}
                 <div><b id="homeWelcomeTitle">환영합니다!</b><small id="homeWelcomeSub"></small></div>
                 <button class="hw-x" type="button" data-act="close-welcome" aria-label="환영 안내 닫기">✕</button>
               </div>
-              <button class="promo-strip" type="button" data-act="promo">
-                <img src="poster.jpg" alt="8시마켓 홍보 포스터">
-                <span class="ps-txt"><b>🎬 8시마켓 홍보영상</b><small>8시마켓 브랜드 소개 · 1분 22초</small></span>
-                <span class="ps-play">▶</span>
-              </button>
               <div id="homeInstall"></div>
               <div class="loc-row">
                 <button class="loc-btn" type="button" data-act="radius">
@@ -1035,7 +1087,14 @@ h1,h2,h3,h4,p{margin:0}
                 <span>지금 내 반경 <b id="liveRadiusTxt">2km</b> 안 · <b id="liveStoreCount">8</b>개 매장 · <b id="liveDealCount">15</b>개 상품 마감할인 중</span>
               </div>
               <div class="chip-wrap">
-                <div class="chips" id="dealChips" role="group" aria-label="할인율 필터"></div>
+                <div class="chip-row">
+                  <div class="chips" id="dealChips" role="group" aria-label="할인율 필터"></div>
+                  <div class="sort-seg" id="sortSeg" role="group" aria-label="정렬 기준">
+                    <button type="button" data-act="sort" data-v="reco">추천</button>
+                    <button type="button" data-act="sort" data-v="dist">거리순</button>
+                    <button type="button" data-act="sort" data-v="disc">할인율순</button>
+                  </div>
+                </div>
                 <div class="chips cats" id="catChips" role="group" aria-label="업종 필터"></div>
               </div>
               <div class="feed-head">
@@ -1045,6 +1104,11 @@ h1,h2,h3,h4,p{margin:0}
             </div>
             <div class="feed-wrap" id="feedWrap">
               <div class="feed" id="feed"></div>
+              <button class="promo-strip feed-promo" type="button" data-act="promo">
+                <img src="poster.jpg" alt="8시마켓 홍보 포스터">
+                <span class="ps-txt"><b>🎬 8시마켓 브랜드 소개 영상</b><small>1분 22초 · 8시마켓이 무엇인지 한눈에</small></span>
+                <span class="ps-play">▶</span>
+              </button>
               <div class="home-note" id="homeNote"></div>
             </div>
           </section>
@@ -1120,7 +1184,7 @@ h1,h2,h3,h4,p{margin:0}
             <button class="me-btn" type="button" data-act="recenter" aria-label="내 위치로">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="7"/><circle cx="12" cy="12" r="2"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg>
             </button>
-            <div class="map-hint"><span class="dot"></span>핀을 누르면 매장 상품이 보여요</div>
+            <div class="map-dock is-empty" id="mapDock" role="status" aria-live="polite"></div>
           </section>
 
           <!-- ===== orders ===== -->
@@ -1499,7 +1563,18 @@ h1,h2,h3,h4,p{margin:0}
 <div class="promo-modal" id="promoModal" aria-hidden="true">
   <div class="promo-card" role="dialog" aria-modal="true" aria-label="8시마켓 홍보영상 및 브랜드 소개">
     <button class="promo-x" type="button" data-act="close-promo" aria-label="닫기">✕</button>
-    <div class="promo-stage">
+    <div class="promo-glance">
+      <div class="pg-top">
+        <div class="pg-copy">
+          <span class="pg-tag">8시마켓 브랜드 소개</span>
+          <h2 class="pg-h">저녁 8시,<br>퇴근길 <em>동네 장바구니</em></h2>
+        </div>
+        <img class="pg-thumb" src="poster.jpg" alt="8시마켓 홍보 포스터">
+      </div>
+      <div class="pg-chips"><span>최대 58% 특가</span><span>AI 단계할인</span><span>반경 1~3km</span></div>
+      <button class="pg-play" type="button" data-act="promo-video" aria-expanded="false" aria-controls="promoStage">🎬 홍보영상 보기</button>
+    </div>
+    <div class="promo-stage" id="promoStage">
       <video id="promoVideo" controls playsinline preload="none" poster="poster.jpg">
         <source src="promo.mp4" type="video/mp4">
         브라우저가 동영상을 재생할 수 없습니다. <a href="promo.mp4">영상 파일 내려받기</a>
@@ -1630,7 +1705,7 @@ if(!('myStore' in state)) state.myStore = null;
 if(!('welcome' in state)) state.welcome = null;
 if(!('owner' in state)) state.owner = null;
 ensureMyStore();
-var ui = {tab:'home', radius:2, deal:0, cat:'전체', orderFilter:'all', ownerStore:(state.myStore ? state.myStore.id : 's2'), sheetOpen:false, lastOrder:null, priceStep:2};
+var ui = {tab:'home', radius:2, deal:0, cat:'전체', sort:'reco', mapSel:null, orderFilter:'all', ownerStore:(state.myStore ? state.myStore.id : 's2'), sheetOpen:false, lastOrder:null, priceStep:2};
 var co = {pid:null, qty:1, phase:'form', order:null, busy:false};
 var obsel = {dong:'둔산동', cats:[], agreeC:false, agreeM:false, agreeO:false, afterAi:false};
 var aiBusy = false;
@@ -2030,6 +2105,11 @@ function renderChips(){
   $('#catChips').innerHTML = CATS.map(function(c){
     return '<button class="chip'+(ui.cat===c?' is-on':'')+'" type="button" data-act="cat" data-v="'+esc(c)+'">'+esc(c)+'</button>';
   }).join('');
+  $$('#sortSeg button').forEach(function(b){
+    var on = b.getAttribute('data-v') === ui.sort;
+    b.classList.toggle('is-on', on);
+    b.setAttribute('aria-pressed', on ? 'true' : 'false');
+  });
 }
 function heartSVG(){ return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20.2S5 15.7 5 10.9A4.1 4.1 0 0 1 12 8a4.1 4.1 0 0 1 7 2.9c0 4.8-7 9.3-7 9.3Z"/></svg>'; }
 function cardHTML(p){
@@ -2066,9 +2146,18 @@ function renderFeed(){
   var pfCats = (state.profile && state.profile.cats) || [];
   function rank(p){ return pfCats.length && pfCats.indexOf(p.cat) > -1 ? 0 : 1; }
   var list = visibleProducts().sort(function(a,b){
+    if((a.left<=0) !== (b.left<=0)) return a.left<=0 ? 1 : -1;
+    if(ui.sort === 'disc'){
+      if(disc(a) !== disc(b)) return disc(b) - disc(a);
+      return storeById(a.store).dist - storeById(b.store).dist;
+    }
+    if(ui.sort === 'dist'){
+      var da = storeById(a.store).dist, db = storeById(b.store).dist;
+      if(da !== db) return da - db;
+      return disc(b) - disc(a);
+    }
     if(rank(a) !== rank(b)) return rank(a) - rank(b);
     if(a.isNew !== b.isNew) return a.isNew ? -1 : 1;
-    if((a.left<=0) !== (b.left<=0)) return a.left<=0 ? 1 : -1;
     return storeById(a.store).dist - storeById(b.store).dist;
   });
   var feed = $('#feed');
@@ -2126,6 +2215,7 @@ function renderMap(){
       ? '<g class="pin-tag" transform="translate(0,-21)"><rect x="-16" y="-8.5" width="32" height="17" rx="8.5"/><text y="3" text-anchor="middle">'+disc(best)+'%</text></g>'
       : '<g class="pin-tag" transform="translate(0,-21)"><rect class="new" x="-17" y="-8.5" width="34" height="17" rx="8.5"/><text y="3" text-anchor="middle">NEW</text></g>';
     return '<g class="pin'+(st.id === 'me' ? ' is-mine' : '')+'" data-act="pin" data-store="'+st.id+'" transform="translate('+pos.x.toFixed(1)+','+pos.y.toFixed(1)+')">'+
+      '<circle class="pin-halo" r="20"/>'+
       '<circle r="17" fill="rgba(255,255,255,.5)"/>'+
       '<circle class="pin-c" r="14.5"/>'+
       '<text class="pin-emoji" text-anchor="middle" y="5">'+st.emoji+'</text>'+
@@ -2140,6 +2230,49 @@ function renderMap(){
   var liveCount = state.products.filter(function(p){ return p.left > 0 && inRadius(p); }).length;
   $('#mapSub').textContent = '반경 '+ui.radius+'km · '+storeCount+'개 매장';
   $('#mapCount').textContent = '이 지역 '+liveCount+'개 상품';
+  if(ui.mapSel && !stores.some(function(s){ return s.id === ui.mapSel; })) ui.mapSel = null;
+  syncMapPinSel();
+  renderMapDock(false);
+}
+
+/* ===== v2.7 지도 인라인 카드 : 핀을 눌러도 화면을 덮지 않고 하단 카드만 교체 ===== */
+function selectStoreInline(sid){
+  ui.mapSel = (ui.mapSel === sid) ? null : sid;
+  syncMapPinSel();
+  renderMapDock(true);
+}
+function syncMapPinSel(){
+  $$('.pin').forEach(function(g){ g.classList.toggle('is-sel', g.getAttribute('data-store') === ui.mapSel); });
+}
+function renderMapDock(anim){
+  var dock = $('#mapDock');
+  if(!dock) return;
+  var scr = $('#screen-map');
+  var st = ui.mapSel ? storeById(ui.mapSel) : null;
+  if(scr) scr.classList.toggle('has-sel', !!st);
+  if(!st){
+    dock.className = 'map-dock is-empty' + (anim ? ' md-swap' : '');
+    dock.innerHTML = '<div class="md-empty">📍 매장 핀을 누르면 <b>여기서 바로</b> 상품·예약이 바뀝니다 · 반경 내 '+storesInRadius().length+'개 매장</div>';
+    return;
+  }
+  var live = state.products.filter(function(p){ return p.store === st.id && p.left > 0; })
+    .sort(function(a,b){ return disc(b) - disc(a); });
+  var best = live[0] || null;
+  var rows = live.slice(0,2).map(function(p){
+    return '<button class="md-row" type="button" data-act="reserve" data-id="'+p.id+'">'+
+      '<span class="md-e">'+p.emoji+'</span><span class="md-n">'+esc(p.name)+'</span>'+
+      '<span class="md-d">'+disc(p)+'%↓</span><span class="md-p">'+won(p.sale)+'</span></button>';
+  }).join('');
+  dock.className = 'map-dock' + (anim ? ' md-swap' : '');
+  dock.innerHTML =
+    '<div class="md-head">'+
+      '<span class="md-thumb '+catClass(st.cat)+'">'+st.emoji+'</span>'+
+      '<div class="md-main"><div class="md-name">'+esc(st.name)+'<span class="md-cat">'+esc(st.cat)+'</span></div>'+
+        '<div class="md-meta">'+st.dist+'km · 도보 '+walkMin(st.dist)+'분 · 마감 '+esc(st.close)+'</div></div>'+
+      (best ? '<button class="md-go" type="button" data-act="reserve" data-id="'+best.id+'">바로 예약</button>'
+            : '<button class="md-go" type="button" disabled>오늘 마감</button>')+
+    '</div>'+
+    (rows ? '<div class="md-rows">'+rows+'</div>' : '');
 }
 
 /* ================= sheets ================= */
@@ -2904,6 +3037,24 @@ function closePromo(){
   document.body.style.overflow = '';
   var v = $('#promoVideo');
   if(v){ try{ v.pause(); }catch(e){} }
+  var card = document.querySelector('.promo-card');
+  if(card) card.classList.remove('video-open');
+  var pb = document.querySelector('[data-act="promo-video"]');
+  if(pb){ pb.classList.remove('is-on'); pb.setAttribute('aria-expanded','false'); pb.textContent = '🎬 홍보영상 보기'; }
+}
+function togglePromoVideo(){
+  var card = document.querySelector('.promo-card');
+  if(!card) return;
+  var btn = document.querySelector('[data-act="promo-video"]');
+  var v = $('#promoVideo');
+  var on = !card.classList.contains('video-open');
+  card.classList.toggle('video-open', on);
+  if(btn){
+    btn.classList.toggle('is-on', on);
+    btn.setAttribute('aria-expanded', on ? 'true' : 'false');
+    btn.textContent = on ? '🎬 홍보영상 접기' : '🎬 홍보영상 보기';
+  }
+  if(v){ try{ if(on) v.play(); else v.pause(); }catch(e){} }
 }
 
 /* ================= info sheet ================= */
@@ -2994,7 +3145,7 @@ function resetDemo(){
   state.onboarded = true; state.role = 'consumer';
   state.welcome = null; state.owner = null;
   save();
-  ui.radius = 2; ui.deal = 0; ui.cat = '전체'; ui.orderFilter = 'all'; ui.ownerStore = 's2';
+  ui.radius = 2; ui.deal = 0; ui.cat = '전체'; ui.sort = 'reco'; ui.mapSel = null; ui.orderFilter = 'all'; ui.ownerStore = 's2';
   obsel = {dong:'둔산동', cats:[], agreeC:false, agreeM:false, agreeO:false, afterAi:false};
   $$('.role').forEach(function(r){ r.classList.remove('is-sel'); r.setAttribute('aria-pressed','false'); });
   $('#obNext').disabled = true;
@@ -3020,8 +3171,9 @@ function handleAction(el){
   else if(act==='radius'){ openRadius(); }
   else if(act==='set-radius'){ ui.radius = parseInt(el.getAttribute('data-v'),10); renderHome(); renderMap(); closeSheet(); toast('반경 '+ui.radius+'km로 설정했어요'); }
   else if(act==='map-radius'){ ui.radius = parseInt(el.getAttribute('data-v'),10); renderMap(); }
+  else if(act==='sort'){ ui.sort = el.getAttribute('data-v'); renderChips(); renderFeed(); }
   else if(act==='recenter'){ toast('내 위치(대전 '+((state.profile||{}).dong || '둔산동')+') 기준으로 보고 있어요'); }
-  else if(act==='pin'){ openStore(el.getAttribute('data-store')); }
+  else if(act==='pin'){ selectStoreInline(el.getAttribute('data-store')); }
   else if(act==='close-sheet'){ closeSheet(); }
   else if(act==='qty'){ changeQty(parseInt(el.getAttribute('data-v'),10)); }
   else if(act==='pay'){ completeCheckout(); }
@@ -3032,6 +3184,7 @@ function handleAction(el){
   else if(act==='info'){ closeSheet(); openInfo(); }
   else if(act==='promo'){ closeSheet(); openPromo(); }
   else if(act==='close-promo'){ closePromo(); }
+  else if(act==='promo-video'){ togglePromoVideo(); }
   else if(act==='me'){ openMe(); }
   else if(act==='restart'){ closeSheet(); showOnboard(); }
   else if(act==='install'){ if(ui.sheetOpen) closeSheet(); startInstall(); }
