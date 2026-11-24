@@ -2926,7 +2926,7 @@ function completeOwner(){
   obsel.afterAi = false;
   hideOnboard('owner','owner-join');
   renderStoreSelect(); renderPickupOptions(true);
-  toast('‘'+esc(name)+'’ 매장 입점이 완료되었고 신청 정보가 접수되었습니다! 점주 센터에서 첫 상품을 등록해 보세요');
+  toast('‘'+esc(name)+'’ 매장 입점이 완료되었고 신청 정보가 접수되었습니다! 제휴 매장 센터에서 첫 상품을 등록해 보세요');
   if(wantAi) window.setTimeout(focusAiCard, 700);
 }
 function focusAiCard(){
@@ -3696,7 +3696,7 @@ function openStore(sid){
         '<div class="si-m"><b>'+esc(p.name)+'</b><small>정가 '+won(p.orig)+' · 남은 '+p.left+'개</small></div>'+
         '<div class="si-r"><b>'+num(p.sale)+'원</b><small>'+d+'%↓</small></div>'+
         '<button class="reserve" type="button" data-act="reserve" data-id="'+p.id+'"'+(sold?' disabled':'')+'>'+(sold?'품절':'예약')+'</button></div>';
-    }).join('') : '<p class="ss-empty">오늘 등록된 마감 상품이 아직 없어요.<br>점주 센터에서 첫 상품을 올리면 이 매장에도 바로 노출됩니다.</p>') +'</div>'+
+    }).join('') : '<p class="ss-empty">오늘 등록된 마감 상품이 아직 없어요.<br>제휴 매장 센터에서 첫 상품을 올리면 이 매장에도 바로 노출됩니다.</p>') +'</div>'+
     '<p class="sheet-note">'+(best ? '최대 '+disc(best)+'% 할인 · ' : '')+'픽업 시간은 상품마다 달라요. 결제 후 픽업 코드가 발급됩니다.</p>'+
   '</div>';
   openSheet(html);
