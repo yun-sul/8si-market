@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>8시마켓 — 저녁 8시, 우리 동네 장보기가 달라집니다</title>
-<meta name="description" content="퇴근길 동네마트·정육점·과일가게·빵집·반찬가게의 오늘 남은 신선식품을 마감특가로 연결하고, 선결제 후 가까운 매장에서 픽업하는 로컬 커머스 플랫폼 8시마켓의 시제품 앱입니다.">
+<meta name="description" content="퇴근길 동네마트·정육점·과일가게·빵집·반찬가게의 오늘 남은 신선식품을 마감특가로 연결하고, 선결제 후 가까운 매장에서 픽업하는 로컬 커머스 플랫폼 8시마켓 MVP 웹앱입니다.">
 <meta name="theme-color" content="#0B7A46">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -1014,6 +1014,415 @@ h1,h2,h3,h4,p{margin:0}
 .home-install.is-chrome{background:linear-gradient(135deg,#1E7BEA,#0B57C7);box-shadow:0 16px 28px -24px rgba(8,60,150,1)}
 .home-install.is-chrome small{color:#D8E8FF}
 .home-install.is-chrome .hi-go{color:#0B57C7}
+/* ================= v3.4 · PC full-width + partner center + login ================= */
+/* base (mobile) extras ------------------------------------------------ */
+.pcnav{display:none}
+.ob-left,.ob-right{display:contents}
+.ob-bottom{display:grid;grid-template-columns:1fr;gap:6px}
+.ob-login-m{display:inline-flex;align-items:center;justify-content:center;gap:5px;border:1.5px solid #CFE6D8;background:#fff;border-radius:12px;padding:10px 12px;font-size:12.5px;font-weight:900;color:var(--brand-d);letter-spacing:-.02em;transition:.15s}
+.ob-login-m:hover{background:var(--brand-l);border-color:#B7DCC6}
+
+/* ===== 파트너센터 ===== */
+.partner-hero{position:relative;margin:12px 16px 0;border-radius:20px;padding:18px 17px 16px;color:#fff;overflow:hidden;background:linear-gradient(140deg,#0F7C4A 0%,#0A5F39 58%,#0B6B40 100%);box-shadow:0 22px 40px -30px rgba(6,63,37,.95)}
+.partner-hero::before{content:"";position:absolute;width:190px;height:190px;border-radius:50%;background:rgba(255,255,255,.08);right:-70px;top:-100px}
+.partner-hero::after{content:"";position:absolute;width:130px;height:130px;border-radius:50%;background:rgba(255,255,255,.06);right:60px;bottom:-90px}
+.partner-hero .ph-tag{position:relative;display:inline-flex;align-items:center;gap:4px;background:rgba(255,255,255,.16);color:#D6F2E2;font-size:9px;font-weight:900;letter-spacing:.06em;border-radius:5px;padding:4px 8px}
+.partner-hero h2{position:relative;margin-top:9px;font-size:19px;line-height:1.32;letter-spacing:-.045em;font-weight:900}
+.partner-hero .ph-lead{position:relative;margin-top:6px;font-size:11px;color:#C7EAD8;font-weight:600;line-height:1.65}
+.partner-hero .ph-lead b{color:#fff;font-weight:900}
+.ph-actions{position:relative;display:flex;flex-wrap:wrap;gap:7px;margin-top:13px}
+.ph-btn{display:inline-flex;align-items:center;justify-content:center;gap:5px;border:0;border-radius:11px;padding:10px 14px;font-size:12px;font-weight:900;letter-spacing:-.02em;background:#fff;color:#064E2D;box-shadow:0 12px 22px -16px rgba(0,0,0,.6)}
+.ph-btn.ghost{background:rgba(255,255,255,.14);color:#fff;border:1px solid rgba(255,255,255,.34);box-shadow:none}
+.ph-btn:hover{transform:translateY(-1px)}
+.ph-stats{position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-top:14px}
+.ph-stats div{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.16);border-radius:12px;padding:9px 10px}
+.ph-stats b{display:block;font-size:17px;font-weight:900;letter-spacing:-.04em;line-height:1.15}
+.ph-stats small{display:block;font-size:9px;color:#C7EAD8;font-weight:700;margin-top:2px;letter-spacing:-.01em}
+.partner-grid{display:grid;gap:10px;margin:11px 16px 0}
+.partner-flow,.partner-pg{background:#fff;border:1px solid #E9EDEA;border-radius:17px;padding:15px 14px;box-shadow:var(--sh-card)}
+.pt-h{display:flex;align-items:center;gap:7px;font-size:13px;font-weight:900;letter-spacing:-.03em}
+.pt-h .n{flex:0 0 auto;width:21px;height:21px;border-radius:7px;background:var(--brand-l);color:var(--brand-d);display:grid;place-items:center;font-size:10.5px;font-weight:900}
+.pt-h .pt-sub{margin-left:auto;font-size:9px;color:var(--muted);font-weight:800}
+.psteps{display:grid;gap:7px;margin-top:11px}
+.pstep{display:flex;gap:10px;align-items:flex-start;background:#F9FCFA;border:1px solid #EDF3EF;border-radius:12px;padding:10px 11px}
+.pstep .n{flex:0 0 auto;width:23px;height:23px;border-radius:50%;background:var(--brand);color:#fff;display:grid;place-items:center;font-size:10.5px;font-weight:900;box-shadow:0 8px 14px -10px rgba(11,122,70,.9)}
+.pstep b{display:block;font-size:11.5px;font-weight:900;letter-spacing:-.02em;line-height:1.4}
+.pstep small{display:block;font-size:9.5px;color:var(--muted);font-weight:700;line-height:1.55;margin-top:2px}
+.pg-list{display:grid;gap:7px;margin-top:11px}
+.pg-item{display:flex;gap:9px;align-items:flex-start;font-size:10.5px;font-weight:700;color:#5E6B65;line-height:1.55}
+.pg-item .ic{flex:0 0 auto;width:24px;height:24px;border-radius:8px;background:#F1F7F3;display:grid;place-items:center;font-size:12px}
+.pg-item b{color:var(--ink);font-weight:900}
+.pg-badge{display:inline-flex;align-items:center;gap:4px;margin-top:11px;font-size:9.5px;font-weight:900;color:#0B4FA8;background:#EFF5FF;border:1px solid #D6E4FA;border-radius:999px;padding:4px 9px;letter-spacing:-.01em}
+.pg-note{margin-top:8px;font-size:9px;color:var(--muted2);font-weight:600;line-height:1.5}
+.partner-ops{display:grid;gap:10px;margin:11px 16px 0}
+.ops-card{background:#fff;border:1px solid #E9EDEA;border-radius:17px;padding:15px 14px;box-shadow:var(--sh-card)}
+.ops-card .oh{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:9px}
+.ops-card h3{font-size:12.5px;font-weight:900;letter-spacing:-.03em}
+.ops-card .oh span{font-size:9.5px;font-weight:900;color:var(--brand-d);background:var(--brand-l);border-radius:99px;padding:3px 7px}
+.settle-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}
+.settle-grid div{background:#F7FAF7;border:1px solid #EDF2ED;border-radius:10px;padding:9px 8px;text-align:center}
+.settle-grid small{display:block;font-size:8.5px;color:var(--muted);font-weight:800;letter-spacing:-.01em}
+.settle-grid b{display:block;font-size:13.5px;font-weight:900;letter-spacing:-.04em;margin-top:2px;font-variant-numeric:tabular-nums}
+.settle-grid div.is-key{background:linear-gradient(160deg,#F1FBF5,#fff);border-color:#D8EEE1}
+.settle-grid div.is-key b{color:var(--brand-d)}
+.settle-line{margin-top:9px;display:flex;align-items:center;gap:6px;font-size:9.5px;font-weight:700;color:var(--muted);background:#F9FBF9;border-radius:8px;padding:7px 9px;line-height:1.5}
+.settle-line b{color:var(--ink2);font-weight:900}
+.ops-empty{font-size:10.5px;color:var(--muted);font-weight:600;line-height:1.6;padding:6px 0 2px}
+
+/* ===== 로그인 모달 ===== */
+.login-modal{position:fixed;inset:0;z-index:120;display:none;align-items:flex-end;justify-content:center;background:rgba(8,20,14,.62);backdrop-filter:blur(7px);padding:0}
+.login-modal.is-open{display:flex;animation:fadeIn .18s ease}
+.lm-card{position:relative;width:100%;max-height:94vh;overflow-y:auto;background:#fff;border-radius:24px 24px 0 0;padding:22px 20px calc(20px + env(safe-area-inset-bottom));box-shadow:0 -30px 70px -40px rgba(0,0,0,.8);animation:lmUp .3s cubic-bezier(.32,.72,0,1);scrollbar-width:none}
+.lm-card::-webkit-scrollbar{display:none}
+@keyframes lmUp{from{transform:translateY(24px);opacity:.4}to{transform:none;opacity:1}}
+.lm-x{position:absolute;right:14px;top:14px;width:30px;height:30px;border-radius:50%;border:0;background:#F2F5F2;color:#7C8A83;font-size:13px;display:grid;place-items:center;line-height:1}
+.lm-x:hover{background:#E8EEE9;color:var(--ink)}
+.lm-brand{display:flex;align-items:center;gap:8px}
+.lm-brand .mark{width:34px;height:34px;border-radius:11px;background:linear-gradient(150deg,#16A85F,#0A6B3F);color:#fff;display:grid;place-items:center;font-weight:900;font-size:15px;box-shadow:0 10px 20px -14px rgba(11,122,70,.95)}
+.lm-brand b{display:block;font-size:14px;font-weight:900;letter-spacing:-.04em;line-height:1.15}
+.lm-brand small{display:block;font-size:9.5px;font-weight:800;color:var(--muted);letter-spacing:.02em}
+.login-modal h2{margin-top:14px;font-size:21px;font-weight:900;letter-spacing:-.05em;line-height:1.25}
+.lm-sub{margin-top:4px;font-size:11px;color:var(--muted);font-weight:600;line-height:1.6}
+.lm-tabs{display:flex;gap:4px;margin-top:14px;background:#F1F5F2;border:1px solid #E4EBE6;border-radius:12px;padding:3px}
+.lm-tabs button{flex:1;border:0;background:transparent;border-radius:9px;padding:8px 6px;font-size:12px;font-weight:900;color:#77847D;letter-spacing:-.02em;transition:.15s}
+.lm-tabs button.is-on{background:#fff;color:var(--brand-d);box-shadow:0 3px 9px -5px rgba(17,26,23,.45)}
+.lm-field{margin-top:11px}
+.lm-field label{display:block;font-size:10.5px;font-weight:800;color:#6B7872;margin-bottom:5px}
+.lm-field input{width:100%;border:1px solid #E4EAE6;border-radius:10px;padding:11px 12px;font-size:13px;font-weight:700;color:var(--ink);background:#fff;transition:.15s}
+.lm-field input:focus{outline:none;border-color:#8FD0AC;box-shadow:0 0 0 3px rgba(18,160,92,.11)}
+.lm-field input.invalid{border-color:#F3B4AE;box-shadow:0 0 0 3px rgba(226,82,58,.1)}
+.lm-pw{position:relative}
+.lm-pw input{padding-right:52px}
+.lm-pw button{position:absolute;right:6px;top:50%;transform:translateY(-50%);border:0;background:transparent;color:var(--muted);font-size:10.5px;font-weight:900;padding:6px 8px;border-radius:7px}
+.lm-pw button:hover{background:#F2F5F2;color:var(--brand-d)}
+.lm-row{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:11px}
+.lm-keep{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;color:#5E6B65;cursor:pointer}
+.lm-keep input{width:15px;height:15px;accent-color:#0B7A46;margin:0}
+.lm-link{border:0;background:transparent;color:var(--muted);font-size:11px;font-weight:800;text-decoration:underline;text-underline-offset:3px;padding:2px}
+.lm-link:hover{color:var(--brand-d)}
+.lm-msg{margin-top:10px;font-size:10.5px;font-weight:700;line-height:1.6;border-radius:9px;padding:9px 10px;background:#F1FAF4;border:1px solid #CDE7D8;color:#0B5F3A}
+.lm-msg.is-error{background:#FEF2F1;border-color:#FBD5D1;color:#B42318}
+.login-modal .lm-submit{margin-top:12px;padding:13px 16px;font-size:14px}
+.lm-alt{margin-top:11px;text-align:center;font-size:11px;font-weight:700;color:var(--muted)}
+.lm-alt button{border:0;background:transparent;color:var(--brand-d);font-size:11px;font-weight:900;text-decoration:underline;text-underline-offset:3px;padding:2px 3px}
+.lm-guest{display:flex;align-items:center;justify-content:center;gap:5px;width:100%;margin-top:9px;border:1px solid #E4EAE6;background:#fff;border-radius:12px;padding:11px 12px;font-size:12px;font-weight:900;color:var(--ink2);letter-spacing:-.02em}
+.lm-guest:hover{background:#F7FAF7;border-color:#CFE0D6;color:var(--brand-d)}
+.lm-partner{margin-top:12px;border-top:1px dashed #E4EAE6;padding-top:12px}
+.lm-partner .lp-flow{display:grid;gap:5px}
+.lm-partner .lp-step{display:flex;align-items:center;gap:7px;font-size:10px;font-weight:700;color:#5E6B65;background:#F8FBF9;border:1px solid #EDF3EF;border-radius:9px;padding:7px 9px;line-height:1.5}
+.lm-partner .lp-step i{font-style:normal;flex:0 0 auto;width:17px;height:17px;border-radius:50%;background:var(--brand);color:#fff;display:grid;place-items:center;font-size:8.5px;font-weight:900}
+.lm-partner .lp-step b{color:var(--ink);font-weight:900}
+.lm-partner .lp-benefit{margin-top:7px;display:flex;align-items:center;gap:6px;font-size:10px;font-weight:800;color:#0B4FA8;background:#EFF5FF;border:1px solid #D6E4FA;border-radius:9px;padding:8px 9px;line-height:1.5}
+.lm-partner .lp-apply{width:100%;margin-top:8px}
+.lm-note{margin-top:12px;font-size:9.5px;color:var(--muted2);font-weight:600;line-height:1.55;text-align:center}
+
+/* ================= PC (>=1024px) ================= */
+@media(min-width:1024px){
+  body{background:#F1F5F0}
+  .stage{display:block;padding:0;min-height:100vh}
+  .side{display:none}
+  .device-wrap{height:auto;min-height:100vh}
+  .device{width:auto;height:auto;min-height:100vh;border-radius:0;padding:0;box-shadow:none;background:var(--bg)}
+  .device::after{display:none}
+  .app{height:auto;min-height:100vh;border-radius:0;overflow:visible;display:block}
+  .statusbar,.appbar,.tabbar{display:none!important}
+  .app-main{overflow:visible;flex:none;min-height:0}
+  .screen{position:relative;inset:auto;overflow:visible;padding:0 0 56px}
+  .screen.is-active{display:block}
+
+  /* ---- PC header ---- */
+  .pcnav{display:block;position:sticky;top:0;z-index:60;background:rgba(255,255,255,.95);backdrop-filter:blur(16px) saturate(1.15);border-bottom:1px solid var(--line);box-shadow:0 12px 30px -26px rgba(17,26,23,.6)}
+  .pn-inner{max-width:1440px;margin:0 auto;display:flex;align-items:center;gap:16px;padding:0 20px;height:74px}
+  .pn-brand{display:flex;align-items:center;gap:9px;border:0;background:transparent;padding:0;flex:0 0 auto}
+  .pn-brand .mark{width:38px;height:38px;border-radius:12px;background:linear-gradient(150deg,#16A85F,#0A6B3F);color:#fff;display:grid;place-items:center;font-weight:900;font-size:17px;box-shadow:0 10px 20px -14px rgba(11,122,70,.95)}
+  .pn-brand .pn-tx{text-align:left}
+  .pn-brand b{display:block;font-size:17px;font-weight:900;letter-spacing:-.045em;line-height:1.12}
+  .pn-brand small{display:block;font-size:9px;font-weight:800;color:var(--muted);letter-spacing:.1em}
+  .pn-loc{display:flex;align-items:center;gap:8px;border:1.5px solid #D8E7DE;background:#F7FBF8;border-radius:12px;padding:6px 12px 6px 7px;flex:0 0 auto;transition:.15s}
+  .pn-loc:hover{border-color:var(--brand);background:#fff;box-shadow:0 10px 20px -18px rgba(11,122,70,.9)}
+  .pn-loc .pl-ic{width:27px;height:27px;border-radius:9px;background:var(--brand-l);display:grid;place-items:center;font-size:13px;flex:0 0 auto}
+  .pn-loc .pl-tx{text-align:left;min-width:0}
+  .pn-loc b{display:block;font-size:12.5px;font-weight:900;letter-spacing:-.03em;line-height:1.2;white-space:nowrap}
+  .pn-loc small{display:block;font-size:9.5px;font-weight:800;color:var(--muted);margin-top:1px;white-space:nowrap}
+  .pn-menu{display:flex;align-items:center;gap:2px;flex:1 1 auto;justify-content:center;min-width:0}
+  .pn-menu button{position:relative;border:0;background:transparent;padding:10px 12px;border-radius:10px;font-size:13.5px;font-weight:800;color:#5C6A63;letter-spacing:-.025em;transition:.15s;white-space:nowrap}
+  .pn-menu button:hover{background:#F1F7F3;color:var(--brand-d)}
+  .pn-menu button.is-on{color:var(--brand-d);background:var(--brand-l);font-weight:900}
+  .pn-dot{display:inline-grid;place-items:center;min-width:16px;height:16px;padding:0 4px;margin-left:4px;border-radius:8px;background:var(--price);color:#fff;font-size:9.5px;font-weight:900;vertical-align:1px}
+  .pn-right{display:flex;align-items:center;gap:8px;flex:0 0 auto}
+  .pn-login{border:1px solid #CFE0D6;background:#fff;color:var(--brand-d);font-size:12.5px;font-weight:900;border-radius:10px;padding:9px 14px;letter-spacing:-.02em;transition:.15s;white-space:nowrap}
+  .pn-login:hover{background:var(--brand-l);border-color:#B7DCC6}
+  .pn-me{display:flex;align-items:center;gap:7px;border:1px solid #CFE0D6;background:#fff;border-radius:10px;padding:5px 11px 5px 5px;font-size:12.5px;font-weight:900;color:var(--ink2)}
+  .pn-me .pm-av{width:26px;height:26px;border-radius:50%;background:var(--brand);color:#fff;display:grid;place-items:center;font-size:11px;font-weight:900;flex:0 0 auto}
+  .pn-cta{border:0;background:linear-gradient(180deg,#12945A,#0A6B3F);color:#fff;font-size:12.5px;font-weight:900;border-radius:10px;padding:9px 14px;box-shadow:0 12px 22px -16px rgba(11,122,70,.95);white-space:nowrap}
+  .pn-cta:hover{filter:brightness(1.06)}
+
+  /* ---- PC home ---- */
+  #screen-home{padding:0 max(20px,calc((100% - 1400px)/2)) 60px}
+  .home-head{padding:26px 0 0}
+  .home-welcome{padding:14px 18px;border-radius:18px;margin-bottom:12px}
+  .home-welcome b{font-size:14px}
+  .home-welcome small{font-size:11.5px}
+  .loc-row{gap:10px;margin-top:16px}
+  .loc-banner{padding:12px 16px;border-radius:16px}
+  .lb-pin{width:34px;height:34px;font-size:16px}
+  .lb-v{font-size:15.5px}
+  .lb-k{font-size:10.5px}
+  .lb-cta{font-size:11.5px;padding:8px 13px}
+  .map-chip{width:56px;border-radius:16px;font-size:10px}
+  .map-chip svg{width:18px;height:18px}
+  .live-line{font-size:12.5px;padding:9px 14px;margin-top:13px}
+  .demo-banner{padding:10px 12px;border-radius:12px}
+  .demo-banner b{font-size:12px}
+  .demo-banner small{font-size:10px}
+  .chip-wrap{margin-top:16px}
+  .chip{font-size:12.5px;padding:8px 15px}
+  .chip-row .chip.deal{padding:7px 12px;font-size:12px}
+  .sort-seg button{font-size:11px;padding:6px 12px}
+  .cats .chip{font-size:12px;padding:7px 13px}
+  .feed-head{margin:24px 0 13px}
+  .feed-head h2{font-size:19px}
+  .feed-head .cnt{font-size:12.5px}
+  .feed-wrap{padding:0}
+  .feed{grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+  .pcard{display:flex;flex-direction:column;border-radius:20px}
+  .thumb{height:172px}
+  .thumb .emoji{font-size:68px}
+  .badge{font-size:12.5px;padding:6px 10px}
+  .cbody{padding:14px 16px 16px;display:flex;flex-direction:column;flex:1}
+  .pname{font-size:15.5px;white-space:normal;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;line-height:1.4}
+  .store-row{font-size:11.5px;margin-top:5px}
+  .crow{display:block}
+  .cside{flex-direction:row;align-items:center;justify-content:space-between;width:100%;margin-top:9px;padding-top:9px;border-top:1px dashed var(--line);text-align:left;gap:8px}
+  .leftq{font-size:11.5px}
+  .leftq b{font-size:12.5px}
+  .reserve{padding:9px 16px;font-size:12.5px;border-radius:10px}
+  .prices{margin-top:9px}
+  .prices strong{font-size:22px}
+  .prices s,.prices .r{font-size:12.5px}
+  .cmeta{margin-top:10px;padding-top:10px}
+  .ctag,.ctime{font-size:11px}
+  .promo-strip.feed-promo{margin:18px 0 0;padding:14px 18px 14px 14px;border-radius:16px}
+  .promo-strip img{width:44px;height:58px;border-radius:8px}
+  .promo-strip b{font-size:14px}
+  .promo-strip small{font-size:11px}
+  .promo-strip .ps-play{width:34px;height:34px;font-size:11px}
+  .home-note-card{padding:18px 20px;border-radius:18px}
+  .home-note-card b{font-size:14px}
+  .home-note-card p{font-size:12px;line-height:1.75}
+  .empty{padding:70px 24px;font-size:14px}
+
+  /* ---- PC map: split view ---- */
+  #screen-map{padding:0;height:calc(100vh - 74px);min-height:600px;background:#EDF2EA}
+  .map-canvas{position:absolute;left:0;right:440px;top:0;bottom:0}
+  .map-top{right:440px;padding:20px 24px 40px}
+  .map-title{font-size:17px}
+  .map-title .pin{width:19px;height:19px}
+  .map-sub{font-size:11.5px}
+  .map-link{font-size:12.5px;padding:8px 13px}
+  .map-radius{margin-top:12px}
+  .map-radius .chip{padding:7px 14px;font-size:12px}
+  .map-count{top:104px;font-size:12px;padding:7px 14px}
+  .me-btn{right:466px;bottom:24px;width:46px;height:46px}
+  .me-btn svg{width:21px;height:21px}
+  #screen-map.has-sel .me-btn{bottom:24px}
+  .map-dock{left:auto;right:0;top:0;bottom:0;width:440px;border-radius:0;border:0;border-left:1px solid #E2EAE4;padding:24px 22px 28px;overflow-y:auto;box-shadow:-24px 0 50px -40px rgba(17,26,23,.45);background:#fff}
+  .map-dock.is-empty{padding:24px 22px}
+  .mp-head h3{font-size:16px;font-weight:900;letter-spacing:-.04em;line-height:1.3}
+  .mp-head p{font-size:11px;color:var(--muted);font-weight:600;line-height:1.6;margin-top:5px}
+  .mp-list{display:grid;gap:8px;margin-top:16px}
+  .mp-item{display:flex;align-items:center;gap:11px;width:100%;text-align:left;border:1px solid #E9EFEA;background:#fff;border-radius:14px;padding:11px 12px;transition:.15s}
+  .mp-item:hover{border-color:#BEDCCB;background:#F8FCF9;transform:translateY(-1px);box-shadow:0 14px 26px -22px rgba(11,122,70,.8)}
+  .mp-item .th{flex:0 0 auto;width:46px;height:46px;border-radius:12px;display:grid;place-items:center;font-size:23px}
+  .mp-item .mn{min-width:0;flex:1}
+  .mp-item .mn b{display:block;font-size:13.5px;font-weight:900;letter-spacing:-.03em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .mp-item .mn small{display:block;font-size:10.5px;font-weight:700;color:var(--muted);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .mp-item .mr{flex:0 0 auto;text-align:right}
+  .mp-item .mr b{display:block;font-size:13px;font-weight:900;color:var(--price);letter-spacing:-.03em}
+  .mp-item .mr small{display:block;font-size:9.5px;font-weight:800;color:var(--muted);margin-top:2px}
+  .mp-sel .ms-head{display:flex;align-items:center;gap:12px}
+  .mp-sel .ms-th{flex:0 0 auto;width:58px;height:58px;border-radius:15px;display:grid;place-items:center;font-size:29px}
+  .mp-sel .ms-name{font-size:18px;font-weight:900;letter-spacing:-.04em;line-height:1.25}
+  .mp-sel .ms-meta{font-size:11px;color:var(--muted);font-weight:700;margin-top:3px;line-height:1.5}
+  .mp-sel .ms-cat{display:inline-block;font-size:9.5px;font-weight:900;color:#4B6B57;background:#F0F6F2;border-radius:6px;padding:2px 7px;margin-top:6px}
+  .mp-sel .ms-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-top:14px}
+  .mp-sel .ms-stats div{background:#F7FAF7;border:1px solid #EDF2ED;border-radius:11px;padding:10px 8px;text-align:center}
+  .mp-sel .ms-stats small{display:block;font-size:9px;font-weight:800;color:var(--muted)}
+  .mp-sel .ms-stats b{display:block;font-size:13.5px;font-weight:900;color:var(--ink);margin-top:2px;letter-spacing:-.03em}
+  .mp-sec{margin-top:18px;font-size:12px;font-weight:900;letter-spacing:-.02em;display:flex;align-items:center;justify-content:space-between;gap:8px}
+  .mp-sec span{font-size:10px;color:var(--muted);font-weight:800}
+  .mp-prods{display:grid;gap:8px;margin-top:9px}
+  .mp-prod{display:flex;align-items:center;gap:10px;border:1px solid #E9EFEA;background:#fff;border-radius:13px;padding:10px 11px;text-align:left;width:100%;transition:.15s}
+  .mp-prod:hover{border-color:#BEDCCB;background:#F8FCF9}
+  .mp-prod .e{flex:0 0 auto;font-size:21px}
+  .mp-prod .nm{min-width:0;flex:1}
+  .mp-prod .nm b{display:block;font-size:12.5px;font-weight:900;letter-spacing:-.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .mp-prod .nm small{display:block;font-size:10px;font-weight:700;color:var(--muted);margin-top:1px}
+  .mp-prod .pp{flex:0 0 auto;text-align:right}
+  .mp-prod .pp b{display:block;font-size:13.5px;font-weight:900;letter-spacing:-.03em}
+  .mp-prod .pp small{display:block;font-size:9.5px;font-weight:900;color:var(--price)}
+  .mp-prod .go{flex:0 0 auto;border:0;border-radius:9px;background:linear-gradient(180deg,#12945A,#0A6B3F);color:#fff;font-size:10.5px;font-weight:900;padding:8px 11px;letter-spacing:-.02em}
+  .mp-note{margin-top:14px;font-size:10px;color:var(--muted2);font-weight:600;line-height:1.6}
+
+  /* ---- PC orders ---- */
+  #screen-orders{padding:0 max(20px,calc((100% - 1400px)/2)) 60px}
+  .page-head{padding:30px 0 12px}
+  .page-head h1{font-size:27px}
+  .page-head p{font-size:12.5px}
+  .seg button{font-size:12px;padding:7px 12px}
+  .orders{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;padding:0}
+  .ocard{padding:16px 17px;border-radius:18px}
+  .orders-note{margin:18px 0 0;font-size:11.5px;padding:14px 16px}
+  .order-empty{padding:0}
+
+  /* ---- PC partner center ---- */
+  #screen-owner{padding:0 max(20px,calc((100% - 1400px)/2)) 60px}
+  #screen-owner.is-active{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px 20px;align-items:start}
+  #screen-owner > *{margin:0}
+  #screen-owner .page-head{grid-column:1/-1;grid-row:1;padding:30px 0 2px}
+  #screen-owner .page-head h1{font-size:27px}
+  #screen-owner .partner-hero{grid-column:1/-1;grid-row:2;padding:26px 30px 24px;border-radius:22px}
+  #screen-owner .partner-hero h2{font-size:26px;line-height:1.25}
+  #screen-owner .partner-hero .ph-lead{font-size:13px;max-width:720px}
+  #screen-owner .ph-stats{grid-template-columns:repeat(3,minmax(0,180px));margin-top:18px}
+  #screen-owner .ph-stats b{font-size:22px}
+  #screen-owner .ph-stats small{font-size:10.5px}
+  #screen-owner .partner-grid{grid-column:1/-1;grid-row:3;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:16px}
+  #screen-owner .partner-flow,#screen-owner .partner-pg{padding:20px 22px;border-radius:18px}
+  #screen-owner .pt-h{font-size:14.5px}
+  #screen-owner .pstep{padding:13px 14px}
+  #screen-owner .pstep b{font-size:12.5px}
+  #screen-owner .pstep small{font-size:10.5px}
+  #screen-owner .pg-item{font-size:11.5px}
+  #screen-owner .owner-store{grid-column:1;grid-row:4;padding:18px 20px;border-radius:18px}
+  #screen-owner .owner-store h3{font-size:16px}
+  #screen-owner #pricingOwner{grid-column:2;grid-row:4}
+  #screen-owner .pricing{margin:0;padding:20px 22px;border-radius:18px}
+  #screen-owner .pc-head h2{font-size:15px}
+  #screen-owner .pc-sub{font-size:11px}
+  #screen-owner .pc-step b{font-size:10.5px}
+  #screen-owner .pc-step span{font-size:13px}
+  #screen-owner .ai-card{grid-column:1;grid-row:5;margin:0;padding:20px 22px;border-radius:18px}
+  #screen-owner .ai-head h2{font-size:16px}
+  #screen-owner .form-card{grid-column:2;grid-row:5;margin:0;padding:20px 22px;border-radius:18px}
+  #screen-owner .form-head h2{font-size:15px}
+  #screen-owner .field input,#screen-owner .field select{font-size:13px;padding:11px 12px}
+  #screen-owner .owner-list{grid-column:1/-1;grid-row:6;margin:0;padding:20px 22px;border-radius:18px}
+  #screen-owner .owner-list h2{font-size:15px}
+  #screen-owner .ol-name{font-size:13px}
+  #screen-owner .partner-ops{grid-column:1/-1;grid-row:7;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:0}
+  #screen-owner .ops-card{padding:20px 22px;border-radius:18px}
+  #screen-owner .ops-card h3{font-size:14px}
+  #screen-owner .settle-grid div{padding:12px 10px}
+  #screen-owner .settle-grid b{font-size:16px}
+  #screen-owner .ph-btn{font-size:13px;padding:11px 18px}
+
+  /* ---- PC AI dashboard ---- */
+  #screen-ai{padding:0 max(20px,calc((100% - 1400px)/2)) 60px}
+  #screen-ai.is-active{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px 20px;align-items:start}
+  #screen-ai > *{margin:0}
+  #screen-ai .dash-head{grid-column:1/-1;grid-row:1;margin:24px 0 0;padding:28px 32px;border-radius:22px}
+  #screen-ai .dash-head h1{font-size:30px;line-height:1.22}
+  #screen-ai .dash-head p{font-size:12px}
+  #screen-ai #kpis{grid-column:1/-1;grid-row:2;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:0}
+  #screen-ai .kpi{padding:16px 17px;border-radius:16px}
+  #screen-ai .kpi .kh{font-size:11px}
+  #screen-ai .kpi .kv{font-size:27px}
+  #screen-ai .kpi .ks{font-size:10px}
+  #screen-ai #co2Note{grid-column:1/-1;grid-row:3;margin:0}
+  #screen-ai #insightCard{grid-column:1;grid-row:4;margin:0;padding:20px 22px;border-radius:18px}
+  #screen-ai #insightCard h2{font-size:19px;line-height:1.4}
+  #screen-ai #insightCard li{font-size:11.5px;padding:8px 10px}
+  #screen-ai #pricingDash{grid-column:2;grid-row:4}
+  #screen-ai #pricingDash .pricing{margin:0;padding:20px 22px;border-radius:18px}
+  #screen-ai #dashOrdersCard{grid-column:1;grid-row:5;margin:0;padding:20px 22px;border-radius:18px}
+  #screen-ai #dashStockCard{grid-column:2;grid-row:5;margin:0;padding:20px 22px;border-radius:18px}
+  #screen-ai .dash-card .dc-head h2{font-size:14px}
+  #screen-ai .do-name{font-size:12.5px}
+  #screen-ai .dash-roadmap{grid-column:1/-1;grid-row:6;margin:0}
+  #screen-ai .dash-foot{grid-column:1/-1;grid-row:7;margin:0;font-size:10px;text-align:left}
+
+  /* ---- PC overlays ---- */
+  .scrim{position:fixed}
+  .sheet{position:fixed;left:50%;top:50%;right:auto;bottom:auto;width:min(600px,92vw);max-height:86vh;border-radius:22px;transform:translate(-50%,-46%) scale(.98);opacity:0;pointer-events:none;transition:transform .28s cubic-bezier(.32,.72,0,1),opacity .22s;padding-bottom:26px}
+  .sheet.is-open{transform:translate(-50%,-50%) scale(1);opacity:1;pointer-events:auto}
+  .sheet-grab{display:none}
+  .sheet-head{padding:18px 24px 4px}
+  .sheet-head h3{font-size:18px}
+  .sheet-body{padding:10px 24px 0}
+  .sheet-note{font-size:10.5px}
+  .toast{position:fixed;left:50%;right:auto;bottom:28px;transform:translateX(-50%) translateY(14px);min-width:360px;max-width:560px;font-size:12px;border-radius:14px;padding:12px 15px}
+  .toast.is-on{transform:translateX(-50%) translateY(0)}
+  .promo-card{width:min(1000px,94vw)}
+
+  /* ---- PC landing(onboarding) ---- */
+  .onboard{position:fixed;inset:0;z-index:80;overflow-y:auto;background:#fff}
+  .onboard::before{height:420px}
+  .ob-step{padding:30px clamp(28px,4vw,64px) 48px;max-width:1280px;margin:0 auto}
+  #obStep-role.is-on{display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);column-gap:clamp(32px,4.5vw,72px);row-gap:0;align-content:start;padding-top:34px}
+  .ob-left{grid-column:1;display:block;width:100%;max-width:560px}
+  .ob-right{grid-column:2;display:block;min-width:0;padding-top:4px}
+  #obStep-role .ob-brand{grid-column:1/-1}
+  #obStep-role .ob-hero{width:100%;max-width:none;margin:0}
+  #obStep-role .ob-tagrow{justify-content:flex-start;margin-top:14px;gap:6px}
+  #obStep-role .ob-tagrow span{font-size:10.5px;padding:5px 10px}
+  #obStep-role .ob-q{font-size:26px;margin-top:2px}
+  #obStep-role .ob-resume{font-size:11.5px;padding:9px 11px;margin-top:10px}
+  #obStep-role .roles{gap:11px;margin-top:14px}
+  #obStep-role .role{padding:14px 16px;border-radius:18px}
+  #obStep-role .role .ri{width:50px;height:50px;font-size:23px;border-radius:15px}
+  #obStep-role .role .rt b{font-size:17px}
+  #obStep-role .role .rt small{font-size:12px;margin-top:3px}
+  #obStep-role .role .rlabel{font-size:9.5px;padding:2px 7px}
+  #obStep-role .role .rtags{margin-top:10px;gap:6px}
+  #obStep-role .role .rtag{font-size:10px;padding:5px 8px}
+  #obStep-role .role .check{width:22px;height:22px;right:16px;top:16px}
+  #obStep-role .ob-next{margin-top:16px;max-width:none;padding:15px 18px;font-size:15.5px}
+  #obStep-role .ob-bottom{margin-top:10px;grid-template-columns:1fr 1fr}
+  #obStep-role .ob-skip{margin-top:0;border:1px solid #E4EAE6;border-radius:12px;padding:10px 12px;text-decoration:none;font-size:12.5px}
+  #obStep-role .ob-foot{grid-column:1/-1;text-align:left;font-size:11px;margin-top:18px}
+  .ob-brand .ob-chip{font-size:9.5px;padding:5px 9px}
+  .ob-brand .ob-topinstall{font-size:11px}
+  #obStep-consumer,#obStep-owner{max-width:720px;margin:0 auto;padding:34px 0 46px;width:100%}
+  #obStep-consumer .ob-h2,#obStep-owner .ob-h2{font-size:27px}
+  #obStep-consumer .ob-lead,#obStep-owner .ob-lead{font-size:12.5px}
+  #obStep-consumer .ob-card,#obStep-owner .ob-card{padding:18px 20px 20px;border-radius:18px}
+  #obStep-consumer .ob-card .field input,#obStep-consumer .ob-card .field select,#obStep-owner .ob-card .field input,#obStep-owner .ob-card .field select{font-size:13px;padding:11px 12px}
+  #obStep-consumer .agree-tx,#obStep-owner .agree-tx{font-size:11.5px}
+  #obStep-consumer .ob-actions,#obStep-owner .ob-actions{margin-top:18px}
+  #obStep-role .ob-inapp{margin-top:10px}
+}
+@media(min-width:1440px){
+  .feed{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .thumb{height:158px}
+}
+
+
+/* v3.4 · 파트너센터 부가 요소 */
+.pt-head-actions{display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+.pt-apply{border:0;background:linear-gradient(180deg,#12945A,#0A6B3F);color:#fff;font-size:11.5px;font-weight:900;border-radius:10px;padding:8px 12px;letter-spacing:-.02em;box-shadow:0 10px 18px -14px rgba(11,122,70,.95);white-space:nowrap}
+.pt-apply:hover{filter:brightness(1.06)}
+.ops-order{display:flex;align-items:center;gap:9px;padding:9px 0;border-bottom:1px dashed #EFF2EF}
+.ops-order:last-child{border-bottom:0;padding-bottom:0}
+.oo-e{width:30px;height:30px;border-radius:9px;display:grid;place-items:center;font-size:15px;flex:0 0 auto;background:#F3F7F3}
+.oo-m{min-width:0;flex:1}
+.oo-m b{display:block;font-size:11.5px;font-weight:900;letter-spacing:-.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.oo-m small{display:block;font-size:9.5px;color:var(--muted);font-weight:700;margin-top:1px}
+.oo-r{flex:0 0 auto;display:flex;align-items:center;gap:6px}
+.oo-r b{font-size:11.5px;font-weight:900}
+.oo-go{border:0;background:var(--brand-l);color:var(--brand-d);font-size:9.5px;font-weight:900;border-radius:6px;padding:4px 7px;white-space:nowrap}
+.oo-go:hover{background:#D6EFE0}
+.settle-rows{margin-top:8px;display:grid;gap:2px}
+.settle-rows div{display:flex;justify-content:space-between;gap:8px;font-size:10px;font-weight:700;color:#5E6B65;padding:5px 0;border-bottom:1px dashed #F0F3F0}
+.settle-rows div:last-child{border-bottom:0}
+.settle-rows b{color:var(--ink2);font-weight:900}
+@media(min-width:1024px){
+  .pt-apply{font-size:13px;padding:10px 16px;border-radius:11px}
+  #screen-owner .oo-e{width:36px;height:36px;font-size:18px}
+  #screen-owner .oo-m b{font-size:13px}
+  #screen-owner .oo-m small,#screen-owner .oo-r b{font-size:11px}
+  #screen-owner .settle-rows div{font-size:11px;padding:6px 0}
+}
 </style>
 </head>
 <body>
@@ -1053,9 +1462,9 @@ h1,h2,h3,h4,p{margin:0}
     </ul>
     <div class="scale">
       <div class="sc-h">🌱 전국 확장 로드맵</div>
-      <p class="sc-lead">우리 동네에서 시작해 <b>당근처럼 전국 동네 생활권</b>으로 넓히는 퇴근길 저녁 장바구니 플랫폼. 지금 화면은 대전(둔산·탄방)과 경기 광주(신현·태전) <b>2대 파일럿</b>을 함께 검증하는 시제품입니다.</p>
+      <p class="sc-lead">우리 동네에서 시작해 <b>당근처럼 전국 동네 생활권</b>으로 넓히는 퇴근길 저녁 장바구니 플랫폼. 지금 화면은 대전(둔산·탄방)과 경기 광주(신현·태전) <b>2대 파일럿</b>을 함께 검증하는 MVP입니다.</p>
       <ol>
-        <li class="now"><span class="n">1단계</span><span><b>2대 파일럿 동시 검증</b>대전(둔산·탄방) + 경기 광주(신현·태전) — 지방 거점 + 수도권 배드타운 (현재 시제품)</span></li>
+        <li class="now"><span class="n">1단계</span><span><b>2대 파일럿 동시 검증</b>대전(둔산·탄방) + 경기 광주(신현·태전) — 지방 거점 + 수도권 배드타운 (현재 MVP)</span></li>
         <li><span class="n">2단계</span><span><b>충청·수도권 주거지 확장</b>같은 모델을 인구 밀집 주거·업무지구로 복제</span></li>
         <li><span class="n">3단계</span><span><b>전국 동네 상권</b>지역화폐·지자체 ESG 연계로 전국 생활권 확대</span></li>
       </ol>
@@ -1074,7 +1483,7 @@ h1,h2,h3,h4,p{margin:0}
         <button class="tool-btn" type="button" data-act="reset">데모 데이터 초기화</button>
       </div>
     </div>
-    <p class="side-foot"><b>‘모두의 창업’ 지원용 시제품(MVP) 데모</b>입니다. 화면의 상품·주문·매출은 체험용 예시이며 실제 결제나 배송은 발생하지 않습니다. AI 분석 결과도 시연용 예시로, 실제 서비스에서는 비전 AI API를 연동합니다.</p>
+    <p class="side-foot"><b>‘모두의 창업’ 지원용 MVP 데모</b>입니다. 화면의 상품·주문·매출은 체험용 예시이며 실제 결제나 배송은 발생하지 않습니다. AI 분석 결과도 시연용 예시로, 실제 서비스에서는 비전 AI API를 연동합니다.</p>
   </aside>
 
   <!-- ================= phone ================= -->
@@ -1104,6 +1513,31 @@ h1,h2,h3,h4,p{margin:0}
             <button class="ab-btn" type="button" data-act="me" aria-label="내 정보">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.6"/><path d="M4.8 20.5a7.2 7.2 0 0 1 14.4 0"/></svg>
             </button>
+          </div>
+        </header>
+
+        <!-- v3.4 · PC 전용 상단 헤더 내비게이션 (1024px 이상에서만 표시) -->
+        <header class="pcnav" id="pcNav" aria-label="PC 상단 메뉴">
+          <div class="pn-inner">
+            <button class="pn-brand" type="button" data-pctab="home" aria-label="8시마켓 홈 특가">
+              <span class="mark">8</span>
+              <span class="pn-tx"><b>8시마켓</b><small>8SI MARKET</small></span>
+            </button>
+            <button class="pn-loc" type="button" data-act="radius" aria-label="내 동네·반경 선택">
+              <span class="pl-ic" aria-hidden="true">📍</span>
+              <span class="pl-tx"><b id="pcLocDong">대전 둔산동</b><small>반경 <span id="pcLocRadius">2km</span> · 이 동네 기준</small></span>
+            </button>
+            <nav class="pn-menu" aria-label="메인 메뉴">
+              <button type="button" data-pctab="home">홈 특가</button>
+              <button type="button" data-pctab="map">동네 지도</button>
+              <button type="button" data-pctab="orders">내 예약<span class="pn-dot" id="pcOrderDot" hidden>0</span></button>
+              <button type="button" data-pctab="owner">제휴 매장 센터</button>
+              <button type="button" data-pctab="ai">AI 운영</button>
+            </nav>
+            <div class="pn-right">
+              <button class="pn-login" type="button" data-act="login" id="pcLoginBtn">로그인 / 회원가입</button>
+              <button class="pn-me" type="button" data-act="me" id="pcMeBtn" hidden><span class="pm-av" id="pcMeAv">8</span><span id="pcMeName">회원</span></button>
+            </div>
           </div>
         </header>
 
@@ -1264,19 +1698,60 @@ h1,h2,h3,h4,p{margin:0}
             <div class="orders-note">
               <b>선결제 · 픽업 안내</b><br>
               결제가 완료되면 매장 재고가 바로 차감되고 픽업 코드가 발급됩니다. 픽업 시간 30분 전까지 무료로 취소할 수 있어요.<br>
-              <span style="color:#A9B4AE">시제품 화면으로 실제 결제·환불은 발생하지 않습니다.</span>
+              <span style="color:#A9B4AE">MVP 화면으로 실제 결제·환불은 발생하지 않습니다.</span>
             </div>
           </section>
 
           <!-- ===== owner ===== -->
-          <section class="screen" id="screen-owner" aria-label="점주 센터">
+          <section class="screen" id="screen-owner" aria-label="제휴 매장 센터 · 파트너센터">
             <div class="page-head">
               <div>
-                <h1>점주 센터</h1>
-                <p>남은 재고, AI가 마감까지 가격을 정합니다</p>
+                <h1>제휴 매장 센터</h1>
+                <p>파트너센터 · 입점 신청부터 마감특가 등록·정산까지 한 곳에서</p>
               </div>
-              <button class="link-btn" type="button" data-act="info">서비스 소개 ›</button>
+              <div class="pt-head-actions">
+                <button class="link-btn" type="button" data-act="info">서비스 소개 ›</button>
+                <button class="pt-apply" type="button" data-act="partner-apply">제휴 입점 신청</button>
+              </div>
             </div>
+
+            <div class="partner-hero">
+              <span class="ph-tag">PARTNER CENTER · 제휴 매장 전용</span>
+              <h2>우리 매장의 저녁 재고,<br>8시마켓과 매출로 바꾸세요</h2>
+              <p class="ph-lead">입점 신청부터 <b>마감특가 AI 등록</b> · <b>예약 관리</b> · <b>정산 리포트</b>까지 파트너센터 한 곳에서. 지금 대전 둔산·탄방과 경기 광주 신현·태전에서 <b>파일럿 매장</b>을 운영하고 있습니다.</p>
+              <div class="ph-actions">
+                <button class="ph-btn" type="button" data-act="partner-apply">3분 제휴 입점 신청</button>
+                <button class="ph-btn ghost" type="button" data-act="login" data-lm-go="partner">파트너 로그인</button>
+              </div>
+              <div class="ph-stats">
+                <div><b id="phStoreCount">8</b><small>제휴 매장 · 이 권역</small></div>
+                <div><b id="phDealCount">15</b><small>오늘 마감특가</small></div>
+                <div><b id="phSettleDay">D+1</b><small>정산 주기 · 영업일</small></div>
+              </div>
+            </div>
+
+            <div class="partner-grid">
+              <div class="partner-flow">
+                <div class="pt-h"><span class="n">①</span>제휴 입점 절차 3단계<span class="pt-sub">평균 1~2일</span></div>
+                <div class="psteps">
+                  <div class="pstep"><span class="n">1</span><div><b>입점 신청</b><small>상호·업종·마감시간·연락처만 넣으면 신청 끝 (3분)</small></div></div>
+                  <div class="pstep"><span class="n">2</span><div><b>운영팀 확인 · 승인</b><small>매장 정보·위생 기준 확인 후 승인 — 승인되면 점주 계정이 열립니다</small></div></div>
+                  <div class="pstep"><span class="n">3</span><div><b>마감특가 AI 등록 · 정산</b><small>사진 한 장으로 상품 등록, 판매분은 KG이니시스 PG로 안전 정산</small></div></div>
+                </div>
+              </div>
+              <div class="partner-pg">
+                <div class="pt-h"><span class="n">②</span>KG이니시스 PG 제휴 혜택</div>
+                <div class="pg-list">
+                  <div class="pg-item"><span class="ic" aria-hidden="true">💳</span><span><b>가입비 0원</b> — PG 신규 가입비 면제</span></div>
+                  <div class="pg-item"><span class="ic" aria-hidden="true">📄</span><span><b>연회비 0원</b> — 연간 관리비 없이 시작</span></div>
+                  <div class="pg-item"><span class="ic" aria-hidden="true">🔒</span><span><b>안전 정산</b> — 결제·취소·환불이 PG를 거쳐 매장 계좌로 정산</span></div>
+                  <div class="pg-item"><span class="ic" aria-hidden="true">📊</span><span><b>정산 리포트</b> — 일별 판매·수수료·정산 예정액을 파트너센터에서 확인</span></div>
+                </div>
+                <span class="pg-badge">KG이니시스 × 8시마켓 제휴 · 가입비·연회비 면제</span>
+                <p class="pg-note">카드·간편결제 통합 결제와 정산 대행은 KG이니시스 PG를 통해 처리됩니다. 실제 계약 조건은 정식 오픈 시 확정됩니다.</p>
+              </div>
+            </div>
+
             <div class="owner-store">
               <span class="os-ic">🥩</span>
               <div>
@@ -1376,6 +1851,23 @@ h1,h2,h3,h4,p{margin:0}
               <h2>오늘 내 매장 상품 <span id="ownerListCount"></span></h2>
               <div id="ownerList"></div>
             </div>
+
+            <div class="partner-ops">
+              <div class="ops-card">
+                <div class="oh"><h3>오늘 예약 관리</h3><span id="opsOrderCnt">0건</span></div>
+                <div id="opsOrders"></div>
+              </div>
+              <div class="ops-card">
+                <div class="oh"><h3>매장 정산 리포트</h3><span>시연용 예시</span></div>
+                <div class="settle-grid">
+                  <div><small>오늘 결제액</small><b id="settlePaid">0원</b></div>
+                  <div><small>PG 수수료 3%</small><b id="settleFee">0원</b></div>
+                  <div class="is-key"><small>정산 예정액</small><b id="settleNet">0원</b></div>
+                </div>
+                <div class="settle-line"><span>🏦</span><span><b>KG이니시스 PG</b> · 가입비·연회비 면제 · <b>D+1</b> 정산(영업일 기준)</span></div>
+                <div id="settleRows"></div>
+              </div>
+            </div>
           </section>
 
           <!-- ===== AI dashboard ===== -->
@@ -1400,11 +1892,11 @@ h1,h2,h3,h4,p{margin:0}
               </ul>
             </div>
             <div id="pricingDash"></div>
-            <div class="dash-card">
+            <div class="dash-card" id="dashOrdersCard">
               <div class="dc-head"><h2>실시간 주문</h2><span id="dashOrderCnt">0건</span></div>
               <div id="dashOrders"></div>
             </div>
-            <div class="dash-card">
+            <div class="dash-card" id="dashStockCard">
               <div class="dc-head"><h2>잔여 재고 · AI 소진 예측</h2><span id="stockCnt"></span></div>
               <div id="stockList"></div>
             </div>
@@ -1436,9 +1928,9 @@ h1,h2,h3,h4,p{margin:0}
             <span class="tb-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3.4h12v17.2l-3-1.9-3 1.9-3-1.9-3 1.9z"/><path d="M9.4 8.2h5.2M9.4 11.8h5.2"/></svg><span class="tb-live" id="tabLive" hidden>0</span></span>
             내 예약
           </button>
-          <button class="tab-btn" type="button" data-tab="owner" aria-label="점주 센터">
+          <button class="tab-btn" type="button" data-tab="owner" aria-label="제휴 매장 센터">
             <span class="tb-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M4.2 9.4h15.6L18.4 4.2H5.6L4.2 9.4Z"/><path d="M5.4 9.4v10.4h13.2V9.4"/><path d="M9.4 19.8v-5.6h5.2v5.6"/></svg></span>
-            점주
+            제휴매장
           </button>
           <button class="tab-btn" type="button" data-tab="ai" aria-label="AI 대시보드">
             <span class="tb-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M11 3.6l1.7 4.9 4.9 1.7-4.9 1.7L11 16.8 9.3 11.9 4.4 10.2l4.9-1.7L11 3.6Z"/><path d="M18.4 14.6l.8 2.2 2.2.8-2.2.8-.8 2.2-.8-2.2-2.2-.8 2.2-.8.8-2.2Z"/></svg></span>
@@ -1455,12 +1947,15 @@ h1,h2,h3,h4,p{margin:0}
 
           <!-- step 1 · 역할 선택 -->
           <div class="ob-step is-on" id="obStep-role">
-            <div class="ob-brand"><span class="mark">8</span>8시마켓<span class="ob-chip">모두의 창업 시제품</span><button class="ob-topinstall" type="button" data-act="install" data-install aria-label="8시마켓 앱 설치"><i aria-hidden="true" data-install-ic>📲</i><span data-install-label data-compact="1">앱 설치</span></button></div>
-            <div class="ob-hero">
-              <h1 class="sr-only">저녁 8시, 퇴근길 동네 장바구니 — 오늘 남은 좋은 상품, 동네에서 득템</h1>
-              <img class="ob-poster" src="poster.jpg" alt="8시마켓 홍보 포스터 — 저녁 8시, 마감특가! 오늘 남은 좋은 상품, 동네에서 득템">
+            <div class="ob-brand"><span class="mark">8</span>8시마켓<span class="ob-chip">모두의 창업 MVP</span><button class="ob-topinstall" type="button" data-act="install" data-install aria-label="8시마켓 앱 설치"><i aria-hidden="true" data-install-ic>📲</i><span data-install-label data-compact="1">앱 설치</span></button></div>
+            <div class="ob-left">
+              <div class="ob-hero">
+                <h1 class="sr-only">저녁 8시, 퇴근길 동네 장바구니 — 오늘 남은 좋은 상품, 동네에서 득템</h1>
+                <img class="ob-poster" src="poster.jpg" alt="8시마켓 홍보 포스터 — 저녁 8시, 마감특가! 오늘 남은 좋은 상품, 동네에서 득템">
+              </div>
+              <div class="ob-tagrow"><span><i aria-hidden="true">✓</i>최대 58% 마감특가</span><span><i aria-hidden="true">✓</i>정육·수산·채소·반찬</span><span><i aria-hidden="true">✓</i>반경 1~3km 픽업</span></div>
             </div>
-            <div class="ob-tagrow"><span><i aria-hidden="true">✓</i>최대 58% 마감특가</span><span><i aria-hidden="true">✓</i>정육·수산·채소·반찬</span><span><i aria-hidden="true">✓</i>반경 1~3km 픽업</span></div>
+            <div class="ob-right">
             <p class="ob-q">어떤 방식으로 시작할까요?</p>
             <p class="ob-resume" id="obResume" hidden></p>
             <div class="roles" id="roles">
@@ -1496,9 +1991,11 @@ h1,h2,h3,h4,p{margin:0}
             <button class="btn btn-primary btn-block ob-next" type="button" id="obNext" disabled>다음</button>
             <div class="ob-inapp" id="obInApp" hidden></div>
             <div class="ob-bottom">
+              <button class="ob-login-m" type="button" data-act="login">로그인 / 회원가입</button>
               <button class="ob-skip" type="button" id="obSkip">둘러보기로 바로 시작</button>
             </div>
-            <p class="ob-foot">로그인 없이 체험하는 시제품입니다 · 실제 결제는 발생하지 않아요</p>
+            <p class="ob-foot">로그인 없이 체험하는 MVP입니다 · 실제 결제는 발생하지 않아요</p>
+            </div>
           </div>
 
           <!-- step 2-A · 소비자 회원가입 -->
@@ -1559,7 +2056,7 @@ h1,h2,h3,h4,p{margin:0}
               <button class="btn btn-primary btn-block" type="button" data-ob="consumer-done">회원가입 완료하고 시작하기</button>
               <button class="ob-skip" type="button" data-ob="consumer-skip">가입 없이 둘러보기</button>
             </div>
-            <p class="ob-foot">체험용 시제품입니다 · 입력하신 정보는 신청 접수처로 전달되고 이 브라우저에도 저장됩니다</p>
+            <p class="ob-foot">체험용 MVP입니다 · 입력하신 정보는 신청 접수처로 전달되고 이 브라우저에도 저장됩니다</p>
           </div>
 
           <!-- step 2-B · 매장 점주 입점 등록 -->
@@ -1620,7 +2117,7 @@ h1,h2,h3,h4,p{margin:0}
               <button class="btn btn-primary btn-block" type="button" data-ob="owner-done">점주 회원가입 · 입점 완료하기</button>
               <button class="ob-skip" type="button" data-ob="owner-skip">기존 체험 매장으로 바로 보기</button>
             </div>
-            <p class="ob-foot">체험용 시제품입니다 · 입력하신 매장 정보는 신청 접수처로 전달되고 이 브라우저에도 저장됩니다</p>
+            <p class="ob-foot">체험용 MVP입니다 · 입력하신 매장 정보는 신청 접수처로 전달되고 이 브라우저에도 저장됩니다</p>
           </div>
 
         </div>
@@ -1678,7 +2175,7 @@ h1,h2,h3,h4,p{margin:0}
         <div class="sc-h">🌱 전국 확장 로드맵</div>
         <p class="sc-lead">대전 둔산·탄방과 경기 광주 신현·태전 <b>2대 파일럿</b>에서 시작해, <b>당근처럼 전국 동네 생활권</b>으로 넓혀가는 퇴근길 저녁 장바구니 플랫폼입니다.</p>
         <ol>
-          <li class="now"><span class="n">1단계</span><span><b>2대 파일럿 동시 검증</b>대전(둔산·탄방) + 경기 광주(신현·태전) — 지방 거점 + 수도권 배드타운 (지금 이 시제품)</span></li>
+          <li class="now"><span class="n">1단계</span><span><b>2대 파일럿 동시 검증</b>대전(둔산·탄방) + 경기 광주(신현·태전) — 지방 거점 + 수도권 배드타운 (지금 이 MVP)</span></li>
           <li><span class="n">2단계</span><span><b>충청·수도권 주거지 확장</b>동일 모델을 인구 밀집 주거·업무지구로 복제</span></li>
           <li><span class="n">3단계</span><span><b>전국 동네 상권</b>지역화폐·지자체 ESG 연계로 전국 생활권 확대</span></li>
         </ol>
@@ -1695,6 +2192,51 @@ h1,h2,h3,h4,p{margin:0}
         <button class="btn btn-primary btn-block" type="button" data-act="close-promo">8시마켓 둘러보기</button>
       </div>
     </div>
+  </div>
+</div>
+
+<!-- v3.4 · 고객 / 제휴 매장 통합 로그인 -->
+<div class="login-modal" id="loginModal" role="dialog" aria-modal="true" aria-labelledby="lmTitle" aria-hidden="true">
+  <div class="lm-card">
+    <button class="lm-x" type="button" data-act="close-login" aria-label="로그인 창 닫기">✕</button>
+    <div class="lm-brand"><span class="mark">8</span><span><b>8시마켓</b><small>8SI MARKET · SIGN IN</small></span></div>
+    <h2 id="lmTitle">로그인</h2>
+    <p class="lm-sub" id="lmSub">고객과 제휴 매장이 같은 계정으로 로그인합니다.</p>
+    <div class="lm-tabs" role="tablist" aria-label="로그인 유형">
+      <button type="button" class="is-on" data-lm="user" role="tab" aria-selected="true">고객</button>
+      <button type="button" data-lm="partner" role="tab" aria-selected="false">제휴 매장</button>
+    </div>
+    <form id="loginForm" novalidate>
+      <div class="lm-field">
+        <label for="lmId">이메일 또는 휴대폰 번호</label>
+        <input id="lmId" type="text" inputmode="text" autocomplete="username" placeholder="example@8simarket.kr 또는 010-0000-0000">
+      </div>
+      <div class="lm-field">
+        <label for="lmPw">비밀번호</label>
+        <div class="lm-pw">
+          <input id="lmPw" type="password" autocomplete="current-password" placeholder="비밀번호를 입력하세요">
+          <button type="button" data-act="toggle-pw" aria-label="비밀번호 보기" aria-pressed="false">보기</button>
+        </div>
+      </div>
+      <div class="lm-row">
+        <label class="lm-keep"><input type="checkbox" id="lmKeep" checked> <span>로그인 상태 유지</span></label>
+        <button type="button" class="lm-link" data-act="find-pw">비밀번호 찾기</button>
+      </div>
+      <p class="lm-msg" id="lmMsg" hidden></p>
+      <button class="btn btn-primary btn-block lm-submit" type="submit" id="lmSubmit">로그인</button>
+    </form>
+    <div class="lm-alt">아직 계정이 없으신가요? <button type="button" data-act="signup">회원가입</button></div>
+    <button class="lm-guest" type="button" data-act="guest-browse">비회원으로 둘러보기</button>
+    <div class="lm-partner" id="lmPartner" hidden>
+      <div class="lp-flow">
+        <div class="lp-step"><i aria-hidden="true">1</i><span><b>입점 신청</b> — 상호·업종·마감시간만 입력</span></div>
+        <div class="lp-step"><i aria-hidden="true">2</i><span><b>운영팀 승인</b> — 확인 후 점주 계정 발급</span></div>
+        <div class="lp-step"><i aria-hidden="true">3</i><span><b>마감특가 등록 · 정산</b> — AI 등록 후 PG 정산</span></div>
+      </div>
+      <div class="lp-benefit"><span aria-hidden="true">💳</span><span><b>KG이니시스 PG</b> 가입비·연회비 면제 · 안전 정산</span></div>
+      <button class="btn btn-ghost btn-block lp-apply" type="button" data-act="partner-apply">제휴 입점 신청하기</button>
+    </div>
+    <p class="lm-note">MVP 시연 화면입니다 · 실제 회원 인증·결제는 정식 오픈 시 연동됩니다.</p>
   </div>
 </div>
 
@@ -2085,7 +2627,7 @@ function sendSignupToDB(kind, name, phone, dong, store, marketing){
     body.append(FORM_ENTRY.dong, dong || '-');
     body.append(FORM_ENTRY.store, store || '-');
     body.append(FORM_ENTRY.memo, '약관동의 O' + (marketing ? ' · 알림동의 O' : ' · 알림동의 -') +
-      ' · 접수 ' + formStamp() + ' · 유입경로: 8시마켓 시제품 웹(yun-sul.github.io/8si-market)');
+      ' · 접수 ' + formStamp() + ' · 유입경로: 8시마켓 MVP 웹(yun-sul.github.io/8si-market)');
     fetch(FORM_URL, {method:'POST', mode:'no-cors', body:body, keepalive:true}).catch(function(){});
   }catch(e){}
 }
@@ -2105,15 +2647,30 @@ function toast(msg, actLabel, act, icon){
 }
 
 /* ================= tabs ================= */
+function isPC(){ return window.innerWidth >= 1024; }
 function setTab(name){
   ui.tab = name;
   $$('.screen').forEach(function(s){ s.classList.toggle('is-active', s.id === 'screen-'+name); });
   $$('.tab-btn').forEach(function(b){ b.classList.toggle('is-active', b.getAttribute('data-tab') === name); });
+  $$('.pn-menu button').forEach(function(b){ b.classList.toggle('is-on', b.getAttribute('data-pctab') === name); });
   if(name === 'map') renderMap();
   if(name === 'orders') renderOrders();
   if(name === 'owner') renderOwner();
   if(name === 'ai') renderDash();
   if(name === 'home') renderHome();
+  if(isPC()){ try{ window.scrollTo({top:0, behavior:'smooth'}); }catch(e){} }
+}
+/* v3.4 · PC 상단 메뉴 — 첫 화면(랜딩)을 닫고 해당 탭으로 이동 */
+function pcGo(name){
+  var ob = $('#onboard');
+  if(ob && !ob.classList.contains('is-hidden')){
+    ob.classList.add('is-hidden');
+    ob.setAttribute('aria-hidden','true');
+    state.onboarded = true;
+    if(!state.role) state.role = (name === 'owner' ? 'owner' : 'consumer');
+    save();
+  }
+  setTab(name);
 }
 
 /* ================= onboarding ================= */
@@ -2209,7 +2766,7 @@ function hideOnboard(role, mode){
   }else if(mode === 'skip'){
     toast('둘러보기 모드 · 상·하단 메뉴에서 언제든 전환할 수 있어요');
   }else if(mode !== 'owner-join'){
-    toast('할인 장보기 모드 · 하단 [점주]에서 매장 등록도 체험해 보세요');
+    toast('할인 장보기 모드 · 상단 메뉴 [제휴 매장 센터]에서 매장 등록도 체험해 보세요');
   }
 }
 function obNextStep(){
@@ -2388,14 +2945,14 @@ function openTerms(kind){
   var title = owner ? '점주 입점 약관 · 개인정보 동의' : '서비스 이용약관 · 개인정보 동의';
   var body = owner
     ? '<h4>제1조 (입점 계약)</h4><p>8시마켓은 동네 매장의 당일 잔여 상품을 마감특가로 연결하는 플랫폼입니다. 입점 점주는 상호·업종·마감시간 등 등록 정보를 정확히 기재하고, 판매 상품의 위생·품질을 직접 관리합니다.</p>'+
-      '<h4>제2조 (정산 · 수수료)</h4><p>시제품 단계에서는 실제 정산·수수료가 발생하지 않습니다. 정식 오픈 시 입점 수수료와 정산 주기는 별도 안내 후 동의를 받습니다.</p>'+
+      '<h4>제2조 (정산 · 수수료)</h4><p>MVP 단계에서는 실제 정산·수수료가 발생하지 않습니다. 정식 오픈 시 입점 수수료와 정산 주기는 별도 안내 후 동의를 받습니다.</p>'+
       '<h4>제3조 (개인정보 수집·이용)</h4><ul><li>수집 항목: 점주명, 연락처, 상호명, 주소</li><li>이용 목적: 입점 심사·매장 노출·픽업 안내</li><li>보유 기간: 신청 접수 후 안내 완료 시까지(접수 명단) · 이 브라우저 저장분은 초기화 시 삭제</li></ul>'
-    : '<h4>제1조 (서비스 이용)</h4><p>8시마켓은 동네 매장의 오늘 남은 신선식품을 마감특가로 예약·선결제하고 매장에서 픽업하는 서비스입니다. 시제품 화면에서는 실제 결제·환불이 발생하지 않습니다.</p>'+
+    : '<h4>제1조 (서비스 이용)</h4><p>8시마켓은 동네 매장의 오늘 남은 신선식품을 마감특가로 예약·선결제하고 매장에서 픽업하는 서비스입니다. MVP 화면에서는 실제 결제·환불이 발생하지 않습니다.</p>'+
       '<h4>제2조 (회원 정보)</h4><p>닉네임·휴대폰 번호·내 동네·관심 품목은 내 동네 추천과 픽업 알림에 사용됩니다.</p>'+
       '<h4>제3조 (개인정보 수집·이용)</h4><ul><li>수집 항목: 닉네임, 휴대폰 번호(선택), 내 동네, 관심 품목</li><li>이용 목적: 사전 회원 명단 접수·마감특가 추천·픽업 준비 알림</li><li>보유 기간: 신청 접수 후 안내 완료 시까지(접수 명단) · 이 브라우저 저장분은 초기화 시 삭제</li></ul>';
-  openSheet(sheetHead(title, '시제품용 예시 약관입니다')+'<div class="sheet-body"><div class="terms">'+body+'</div></div>'+
+  openSheet(sheetHead(title, 'MVP용 예시 약관입니다')+'<div class="sheet-body"><div class="terms">'+body+'</div></div>'+
     '<div class="sheet-actions"><button class="btn btn-primary btn-block" type="button" data-act="close-sheet">확인했습니다</button></div>'+
-    '<p class="sheet-note">시제품 화면으로 실제 약관 효력은 없습니다. 동의 여부는 이 브라우저에만 저장됩니다.</p>');
+    '<p class="sheet-note">MVP 화면으로 실제 약관 효력은 없습니다. 동의 여부는 이 브라우저에만 저장됩니다.</p>');
 }
 function ownerDemo(){
   /* 지금 보는 권역의 체험 매장으로 점주 센터를 연다 (경기 광주면 신현 매장) */
@@ -2519,6 +3076,17 @@ function renderHomeLive(){
   $('#abDong').textContent = pf.nick ? (pf.nick + ' 님 · ' + locLabel()) : (locLabel()+' · 반경 '+ui.radius+'km');
   var mem = $('#abMem');
   if(mem){ mem.hidden = !pf.nick; if(pf.nick) mem.textContent = '회원'; }
+  /* v3.4 · PC 상단 헤더 동기화 */
+  var pcd = $('#pcLocDong'); if(pcd) pcd.textContent = locLabel();
+  var pcr = $('#pcLocRadius'); if(pcr) pcr.textContent = ui.radius + 'km';
+  var pLogin = $('#pcLoginBtn'), pMe = $('#pcMeBtn');
+  if(pLogin && pMe){
+    pMe.hidden = !pf.nick; pLogin.hidden = !!pf.nick;
+    if(pf.nick){
+      var pAv = $('#pcMeAv'); if(pAv) pAv.textContent = String(pf.nick).slice(0,1);
+      var pNm = $('#pcMeName'); if(pNm) pNm.textContent = pf.nick + ' 님';
+    }
+  }
   /* v3.3 · 오픈 예정 지역이면 시연용 예시 안내 배너 */
   var db = $('#demoBanner');
   if(db){
@@ -2632,6 +3200,7 @@ function renderMapDock(anim){
   var scr = $('#screen-map');
   var st = ui.mapSel ? storeById(ui.mapSel) : null;
   if(scr) scr.classList.toggle('has-sel', !!st);
+  if(isPC()){ renderMapPanel(dock, st, anim); return; }
   if(!st){
     dock.className = 'map-dock is-empty' + (anim ? ' md-swap' : '');
     dock.innerHTML = '<div class="md-empty">📍 매장 핀을 누르면 <b>여기서 바로</b> 상품·예약이 바뀝니다 · 반경 내 '+storesInRadius().length+'개 매장</div>';
@@ -2655,6 +3224,43 @@ function renderMapDock(anim){
             : '<button class="md-go" type="button" disabled>오늘 마감</button>')+
     '</div>'+
     (rows ? '<div class="md-rows">'+rows+'</div>' : '');
+}
+/* v3.4 · PC 지도 2단(좌 지도 · 우 상세 패널) */
+function renderMapPanel(dock, st, anim){
+  var stores = storesInRadius();
+  if(!st){
+    var rows = stores.map(function(s){
+      var live = state.products.filter(function(p){ return p.store === s.id && p.left > 0; });
+      var best = live.reduce(function(a,p){ return (!a || disc(p) > disc(a)) ? p : a; }, null);
+      return '<button class="mp-item" type="button" data-act="pin" data-store="'+s.id+'">'+
+        '<span class="th '+catClass(s.cat)+'">'+s.emoji+'</span>'+
+        '<span class="mn"><b>'+esc(s.name)+'</b><small>'+esc(catLabel(s.cat))+' · '+s.dist+'km · 도보 '+walkMin(s.dist)+'분 · 마감 '+esc(s.close)+'</small></span>'+
+        '<span class="mr">'+(best ? '<b>'+disc(best)+'%↓</b><small>'+live.length+'개 남음</small>' : '<b style="color:var(--muted2)">마감</b><small>오늘 종료</small>')+'</span>'+
+      '</button>';
+    }).join('');
+    dock.className = 'map-dock is-empty mp-panel' + (anim ? ' md-swap' : '');
+    dock.innerHTML = '<div class="mp-head"><h3>반경 '+ui.radius+'km · 매장 '+stores.length+'곳</h3><p>왼쪽 지도의 매장 핀을 누르면 이 패널에 매장 상품과 예약 버튼이 나타납니다.</p></div>'+
+      '<div class="mp-list">'+(rows || '<p class="ops-empty">반경 안에 오늘 마감 매장이 없어요. 반경을 3km로 넓혀 보세요.</p>')+'</div>';
+    return;
+  }
+  var live = state.products.filter(function(p){ return p.store === st.id && p.left > 0; }).sort(function(a,b){ return disc(b) - disc(a); });
+  var rows = live.map(function(p){
+    return '<div class="mp-prod"><span class="e">'+p.emoji+'</span>'+
+      '<span class="nm"><b>'+esc(p.name)+'</b><small>픽업 '+esc(p.pickup)+' · 남은 '+p.left+'개</small></span>'+
+      '<span class="pp"><b>'+won(p.sale)+'</b><small>'+disc(p)+'% 할인</small></span>'+
+      '<button class="go" type="button" data-act="reserve" data-id="'+p.id+'">예약</button></div>';
+  }).join('');
+  dock.className = 'map-dock mp-panel' + (anim ? ' md-swap' : '');
+  dock.innerHTML = '<div class="mp-sel">'+
+      '<div class="ms-head"><span class="ms-th '+catClass(st.cat)+'">'+st.emoji+'</span>'+
+        '<div><div class="ms-name">'+esc(st.name)+(demoStore(st)?' <span class="demo-mini">예시</span>':'')+'</div>'+
+        '<div class="ms-meta">'+(st.addr ? esc(st.addr)+' · ' : '')+st.dist+'km · 도보 '+walkMin(st.dist)+'분 · 마감 '+esc(st.close)+'</div>'+
+        '<span class="ms-cat">'+esc(catLabel(st.cat))+'</span></div></div>'+
+      '<div class="ms-stats"><div><small>남은 상품</small><b>'+live.length+'종</b></div><div><small>최대 할인</small><b>'+(live.length ? disc(live[0])+'%' : '—')+'</b></div><div><small>픽업 이동</small><b>도보 '+walkMin(st.dist)+'분</b></div></div>'+
+      '<div class="mp-sec">오늘 마감특가 <span>'+(live.length ? live.length+'종 · 예약 즉시 결제' : '오늘 마감')+'</span></div>'+
+      '<div class="mp-prods">'+(rows || '<p class="ops-empty">이 매장은 오늘 마감특가가 모두 소진됐어요.</p>')+'</div>'+
+      '<p class="mp-note">상품을 고르면 예약·선결제 화면으로 이어집니다. 왼쪽 지도에서 다른 핀을 누르면 이 패널이 바로 바뀝니다.</p>'+
+    '</div>';
 }
 
 /* ================= sheets ================= */
@@ -2789,7 +3395,7 @@ function openInstallGuide(){
       '<div class="inst-os">' + g.os + '</div>' +
       (g.chrome ? chromeBtn('크롬으로 바로 열어 앱 설치하기') : '') +
       '<ul class="inst-steps">' + steps + '</ul>' +
-      '<p class="inst-tip">설치하면 주소 입력 없이 홈 화면 아이콘으로 열리고, 상태바 없이 화면이 꽉 차게 보여요. 시제품이라 실제 결제는 발생하지 않습니다.</p>' +
+      '<p class="inst-tip">설치하면 주소 입력 없이 홈 화면 아이콘으로 열리고, 상태바 없이 화면이 꽉 차게 보여요. MVP 화면이라 실제 결제는 발생하지 않습니다.</p>' +
     '</div>' +
     '<div class="sheet-actions">' +
       (g.chrome
@@ -3002,7 +3608,7 @@ function renderCheckout(){
     '</div>'+
     '<div class="co-total"><span>결제 금액</span><b>'+won(total)+'</b></div>'+
     '<div class="co-info"><div><span class="k">픽업 시간</span><span>오늘 '+p.pickup+'</span></div><div><span class="k">픽업 장소</span><span>'+esc(st.name)+' ('+st.addr+')</span></div><div><span class="k">재고</span><span>결제 완료 시 자동 차감 · 매진 시 SOLD OUT</span></div></div>'+
-    '<p class="sheet-note">※ 시제품 체험용 결제입니다 · 실서비스 시 KG이니시스 PG 연동 예정 (제휴 가입비·연회비 면제)<br>실제 결제·환불은 발생하지 않으며, 픽업 30분 전까지 무료로 취소할 수 있어요.</p>'+
+    '<p class="sheet-note">※ MVP 체험용 결제입니다 · 실서비스 시 KG이니시스 PG 연동 예정 (제휴 가입비·연회비 면제)<br>실제 결제·환불은 발생하지 않으며, 픽업 30분 전까지 무료로 취소할 수 있어요.</p>'+
     '<div class="sheet-actions"><button class="btn btn-primary btn-block" type="button" data-act="pay" id="payBtn">'+won(total)+' 선결제하고 예약</button></div>'+
   '</div>';
   openSheet(html);
@@ -3121,6 +3727,8 @@ function renderOrders(){
   $('#orderDot').hidden = live===0;
   $('#tabLive').hidden = live===0;
   $('#tabLive').textContent = live;
+  var pDot = $('#pcOrderDot');
+  if(pDot){ pDot.hidden = live===0; pDot.textContent = live; }
 }
 
 /* ================= owner ================= */
@@ -3301,7 +3909,50 @@ function renderPricing(){
     var el = $(sel); if(el) el.innerHTML = html;
   });
 }
-function renderOwner(){ renderStoreSelect(); renderOwnerHeader(); renderPickupOptions(); renderOwnerList(); renderPricing(); }
+function renderOwner(){ renderStoreSelect(); renderOwnerHeader(); renderPickupOptions(); renderOwnerList(); renderPricing(); renderPartner(); }
+/* v3.4 · 파트너센터(제휴 매장 센터) 상단 지표 · 예약 관리 · 정산 리포트 */
+function renderPartner(){
+  var sc = $('#phStoreCount'); if(sc) sc.textContent = storesInRegion().length;
+  var dc = $('#phDealCount');
+  if(dc) dc.textContent = regionProducts().filter(function(p){ return p.left > 0; }).length;
+  renderPartnerOps();
+}
+function renderPartnerOps(){
+  var regOrders = state.orders.filter(function(o){ var st = storeById(o.store); return !st || storeRegion(st) === ui.region; });
+  var oc = $('#opsOrderCnt');
+  if(oc) oc.textContent = regOrders.filter(function(o){ return o.status !== '픽업완료'; }).length + '건 진행';
+  var el = $('#opsOrders');
+  if(el){
+    if(!regOrders.length){
+      el.innerHTML = '<p class="ops-empty">아직 예약이 없어요. 소비자가 예약하면 이곳에 실시간으로 표시되고, [준비]/[완료]로 픽업 상태를 바꿀 수 있습니다.</p>';
+    }else{
+      el.innerHTML = regOrders.slice(0,5).map(function(o){
+        var idx = STATUS.indexOf(o.status);
+        return '<div class="ops-order"><span class="oo-e">'+o.emoji+'</span>'+
+          '<div class="oo-m"><b>'+esc(o.name)+' ×'+o.qty+'</b><small>'+esc(o.code)+' · '+esc(o.time)+' · 픽업 '+esc(o.pickup)+'</small></div>'+
+          '<div class="oo-r"><span class="o-status st'+idx+'">'+esc(o.status)+'</span><b>'+won(o.sale*o.qty)+'</b>'+
+          (idx < 2 ? '<button class="oo-go" type="button" data-act="advance" data-id="'+o.id+'">'+(STATUS[idx+1]==='픽업준비'?'준비':'완료')+'</button>' : '')+
+          '</div></div>';
+      }).join('');
+    }
+  }
+  var paid = regOrders.reduce(function(a,o){ return a + o.sale*o.qty; }, 0);
+  var fee = Math.round(paid*0.03/10)*10;
+  var setTxt = function(id,v){ var e=$(id); if(e) e.textContent=v; };
+  setTxt('#settlePaid', won(paid));
+  setTxt('#settleFee', won(fee));
+  setTxt('#settleNet', won(paid-fee));
+  var rows = $('#settleRows');
+  if(rows){
+    var by = {};
+    regOrders.forEach(function(o){ var st = storeById(o.store); var k = st ? st.name : '기타'; by[k] = (by[k]||0) + o.sale*o.qty; });
+    var keys = Object.keys(by).slice(0,4);
+    rows.innerHTML = keys.length ? keys.map(function(k){
+      var amt = by[k], f = Math.round(amt*0.03/10)*10;
+      return '<div><span>'+esc(k)+'</span><b>'+won(amt-f)+' 정산 예정</b></div>';
+    }).join('') : '<div><span>정산 예정 내역</span><b>오늘 결제 0원</b></div>';
+  }
+}
 
 /* ---- AI analysis ---- */
 function startAnalysis(sample){
@@ -3471,7 +4122,7 @@ function advanceOrder(id){
   if(i >= STATUS.length-1){ toast('이미 픽업 완료된 주문이에요'); return; }
   o.status = STATUS[i+1];
   save();
-  renderOrders(); renderDash();
+  renderOrders(); renderDash(); renderPartnerOps();
   toast('‘'+o.name+'’ → '+o.status);
 }
 
@@ -3536,7 +4187,7 @@ function openInfo(){
     '<div class="scale">'+
       '<div class="sc-h">🌱 전국 확장 로드맵</div>'+
       '<p class="sc-lead">대전 둔산·탄방과 경기 광주 신현·태전 <b>2대 파일럿</b>에서 시작해 <b>당근처럼 전국 동네 생활권</b>으로 넓히는 퇴근길 저녁 장바구니 플랫폼입니다.</p>'+
-      '<ol><li class="now"><span class="n">1단계</span><span><b>2대 파일럿 동시 검증</b>대전(둔산·탄방) + 경기 광주(신현·태전) — 지방 거점 + 수도권 배드타운 (지금 이 시제품)</span></li>'+
+      '<ol><li class="now"><span class="n">1단계</span><span><b>2대 파일럿 동시 검증</b>대전(둔산·탄방) + 경기 광주(신현·태전) — 지방 거점 + 수도권 배드타운 (지금 이 MVP)</span></li>'+
         '<li><span class="n">2단계</span><span><b>충청·수도권 주거지 확장</b>동일 모델을 인구 밀집 주거·업무지구로 복제</span></li>'+
         '<li><span class="n">3단계</span><span><b>전국 동네 상권</b>지역화폐·지자체 ESG 연계로 전국 생활권 확대</span></li></ol>'+
     '</div>'+
@@ -3546,7 +4197,7 @@ function openInfo(){
       '<li>PWA(홈 화면 앱) 설치 — 지금 이 화면에서 [📲 앱 설치]로 바로 추가할 수 있어요</li></ul></div>'+
     '<h4>수익 모델</h4>'+
     '<div class="mods"><div class="mod"><b>결제 수수료</b><span>선결제 거래액의 3~5%</span></div><div class="mod"><b>점주 구독</b><span>AI 가격 결정·대시보드 월 19,000원</span></div><div class="mod"><b>동네 광고</b><span>주변 매장 노출·쿠폰 프로모션</span></div></div>'+
-    '<p class="disc">본 화면은 ‘모두의 창업’ 지원용 시제품(MVP) 데모입니다. 상품·주문·매출·AI 분석 결과는 체험용 예시이며 실제 결제·배송은 발생하지 않습니다.</p>'+
+    '<p class="disc">본 화면은 ‘모두의 창업’ 지원용 MVP 데모입니다. 상품·주문·매출·AI 분석 결과는 체험용 예시이며 실제 결제·배송은 발생하지 않습니다.</p>'+
   '</div>';
   openSheet(html);
   renderPricing();
@@ -3585,12 +4236,13 @@ function openMe(){
       '<div><span>보고 있는 반경</span><b>'+ui.radius+'km</b></div>'+
     '</div>'+
     '<div class="sheet-actions">'+
+      (pf.nick ? '' : '<button class="btn btn-primary btn-block" type="button" data-act="login">로그인 / 회원가입</button>')+
       '<button class="btn btn-ghost btn-block" type="button" data-act="promo">🎬 8시마켓 홍보영상 & 브랜드 소개</button>'+
       '<button class="btn btn-ghost btn-block" type="button" data-act="restart">↺ 첫 화면(역할 선택) 다시 보기</button>'+
       '<button class="btn btn-ghost btn-block" type="button" data-act="info">서비스 소개 보기</button>'+
       '<button class="btn btn-ghost btn-block" type="button" data-act="reset">데모 데이터 초기화</button>'+
     '</div>'+
-    '<p class="sheet-note">로그인·결제 없이 체험하는 시제품입니다. 입력한 정보는 이 브라우저에만 저장됩니다.</p></div>';
+    '<p class="sheet-note">로그인·결제 없이 체험하는 MVP입니다. 입력한 정보는 이 브라우저에만 저장됩니다.</p></div>';
   openSheet(html);
 }
 
@@ -3613,6 +4265,84 @@ function resetDemo(){
   renderHome(); renderMap(); renderOrders(); renderOwner(); renderDash();
   setTab('home');
   toast('데모 데이터를 처음 상태로 되돌렸어요');
+}
+/* ================= v3.4 로그인 / 회원가입 ================= */
+var lm = {mode:'user'};
+function openLogin(mode){
+  lm.mode = (mode === 'partner') ? 'partner' : 'user';
+  renderLoginMode();
+  var m = $('#loginModal');
+  if(!m) return;
+  m.classList.add('is-open');
+  m.setAttribute('aria-hidden','false');
+  document.body.style.overflow = 'hidden';
+  var msg = $('#lmMsg'); if(msg){ msg.hidden = true; msg.className = 'lm-msg'; }
+  var id = $('#lmId'), pw = $('#lmPw');
+  if(id) id.classList.remove('invalid');
+  if(pw){ pw.classList.remove('invalid'); pw.type = 'password'; }
+  var tg = $('#loginModal [data-act="toggle-pw"]'); if(tg){ tg.textContent = '보기'; tg.setAttribute('aria-pressed','false'); }
+  window.setTimeout(function(){ if(id && !id.value) id.focus(); }, 80);
+}
+function closeLogin(){
+  var m = $('#loginModal');
+  if(!m) return;
+  m.classList.remove('is-open');
+  m.setAttribute('aria-hidden','true');
+  document.body.style.overflow = '';
+}
+function renderLoginMode(){
+  var partner = lm.mode === 'partner';
+  $$('#loginModal .lm-tabs button').forEach(function(b){
+    var on = b.getAttribute('data-lm') === lm.mode;
+    b.classList.toggle('is-on', on);
+    b.setAttribute('aria-selected', on ? 'true' : 'false');
+  });
+  var t = $('#lmTitle'), sub = $('#lmSub'), sb = $('#lmSubmit'), pf = $('#lmPartner');
+  if(t) t.textContent = partner ? '제휴 매장 센터 로그인' : '로그인';
+  if(sub) sub.textContent = partner ? '입점 승인된 점주 계정으로 매장 운영·정산을 관리합니다.' : '고객과 제휴 매장이 같은 계정으로 로그인합니다.';
+  if(sb) sb.textContent = partner ? '제휴 매장 센터 로그인' : '로그인';
+  if(pf) pf.hidden = !partner;
+}
+function toggleLoginPw(btn){
+  var i = $('#lmPw'); if(!i) return;
+  var show = i.type === 'password';
+  i.type = show ? 'text' : 'password';
+  if(btn){ btn.textContent = show ? '숨김' : '보기'; btn.setAttribute('aria-pressed', show ? 'true' : 'false'); }
+}
+function loginMsg(text, isErr){
+  var m = $('#lmMsg'); if(!m) return;
+  m.hidden = false;
+  m.className = 'lm-msg' + (isErr ? ' is-error' : '');
+  m.textContent = text;
+}
+function submitLogin(){
+  var idEl = $('#lmId'), pwEl = $('#lmPw');
+  var id = (idEl.value || '').trim(), pw = (pwEl.value || '').trim();
+  idEl.classList.remove('invalid'); pwEl.classList.remove('invalid');
+  if(!id){ idEl.classList.add('invalid'); idEl.focus(); loginMsg('이메일 또는 휴대폰 번호를 입력해 주세요.', true); return; }
+  if(!pw){ pwEl.classList.add('invalid'); pwEl.focus(); loginMsg('비밀번호를 입력해 주세요.', true); return; }
+  loginMsg('MVP 시연 화면입니다 — 실제 계정 인증은 아직 연결되지 않았습니다. 아래 [회원가입]으로 가입·입점 흐름을 체험하거나 [비회원으로 둘러보기]로 바로 둘러보세요.');
+}
+function openSignup(){
+  var partner = lm.mode === 'partner';
+  closeLogin();
+  var ob = $('#onboard');
+  if(ob && ob.classList.contains('is-hidden')) showOnboard();
+  if(partner) openObOwner('store'); else openObConsumer();
+}
+function guestBrowse(){
+  closeLogin();
+  var ob = $('#onboard');
+  if(ob && !ob.classList.contains('is-hidden')) hideOnboard('consumer','skip');
+  else setTab('home');
+}
+function openPartnerApply(){
+  closeLogin();
+  closeSheet();
+  var ob = $('#onboard');
+  if(ob && ob.classList.contains('is-hidden')) showOnboard();
+  openObOwner('store');
+  toast('제휴 입점 신청 · 상호·업종·마감시간을 넣으면 접수됩니다');
 }
 function handleAction(el){
   var act = el.getAttribute('data-act');
@@ -3657,6 +4387,13 @@ function handleAction(el){
   else if(act==='close-promo'){ closePromo(); }
   else if(act==='promo-video'){ togglePromoVideo(); }
   else if(act==='me'){ openMe(); }
+  else if(act==='login'){ openLogin(el.getAttribute('data-lm-go')); }
+  else if(act==='close-login'){ closeLogin(); }
+  else if(act==='toggle-pw'){ toggleLoginPw(el); }
+  else if(act==='find-pw'){ loginMsg('비밀번호 찾기는 정식 오픈 시 문자·메일 인증으로 제공됩니다. 지금은 [회원가입]으로 새 계정을 만들어 체험해 보세요.'); }
+  else if(act==='signup'){ openSignup(); }
+  else if(act==='guest-browse'){ guestBrowse(); }
+  else if(act==='partner-apply'){ openPartnerApply(); }
   else if(act==='restart'){ closeSheet(); showOnboard(); }
   else if(act==='install'){ if(ui.sheetOpen) closeSheet(); startInstall(); }
   else if(act==='close-welcome'){ state.welcome = null; save(); renderWelcome(); }
@@ -3685,6 +4422,10 @@ function changeQty(delta){
 /* ================= wiring ================= */
 function wire(){
   document.addEventListener('click', function(e){
+    var pcTab = e.target.closest('[data-pctab]');
+    if(pcTab){ pcGo(pcTab.getAttribute('data-pctab')); return; }
+    var lmTab = e.target.closest('#loginModal .lm-tabs button');
+    if(lmTab){ lm.mode = lmTab.getAttribute('data-lm'); renderLoginMode(); return; }
     var roleChip = e.target.closest('[data-rolechip]');
     if(roleChip){ handleRoleChip(roleChip); return; }
     var roleBtn = e.target.closest('.role');
@@ -3728,9 +4469,15 @@ function wire(){
     });
   });
   $('#scrim').addEventListener('click', closeSheet);
+  var lmForm = $('#loginForm');
+  if(lmForm) lmForm.addEventListener('submit', function(e){ e.preventDefault(); submitLogin(); });
+  var lmModal = $('#loginModal');
+  if(lmModal) lmModal.addEventListener('click', function(e){ if(e.target === this) closeLogin(); });
   $('#promoModal').addEventListener('click', function(e){ if(e.target === this) closePromo(); });
   document.addEventListener('keydown', function(e){
     if(e.key !== 'Escape') return;
+    var lmod = $('#loginModal');
+    if(lmod && lmod.classList.contains('is-open')){ closeLogin(); return; }
     if($('#promoModal').classList.contains('is-open')) closePromo();
     else if(ui.sheetOpen) closeSheet();
   });
@@ -3758,6 +4505,18 @@ function wire(){
   $('#fSale').addEventListener('input', discountPreview);
   $('#regForm').addEventListener('submit', submitProduct);
   window.setInterval(function(){ $('#sbTime').textContent = nowTime(); }, 20000);
+  /* v3.4 · PC/모바일 폭이 바뀌면 지도·피드 레이아웃을 다시 그린다 */
+  var lastPC = isPC(), rzTimer = null;
+  window.addEventListener('resize', function(){
+    window.clearTimeout(rzTimer);
+    rzTimer = window.setTimeout(function(){
+      var p = isPC();
+      if(p !== lastPC){
+        lastPC = p;
+        renderHome(); renderMap(); renderOrders(); renderOwner(); renderDash();
+      }
+    }, 200);
+  });
 }
 
 /* ================= boot ================= */
