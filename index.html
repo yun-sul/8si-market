@@ -2047,7 +2047,7 @@ function openObOwner(focus, after){
   $('#obOwnerName').value = ow.name || '';
   $('#obOwnerPhone').value = ow.phone || '';
   $('#obStoreName').value = ms ? ms.name : '';
-  var rid = ms ? storeRegion(ms) : (obsel.region || ui.region);
+  var rid = ms ? storeRegion(ms) : ui.region;
   $('#obStoreRegion').value = rid;
   fillOwnerDong(rid, ms ? String(ms.addr || '').split(' ')[0] : obsel.dong);
   $('#obStoreCat').value = ms ? ms.cat : '과일·채소';
