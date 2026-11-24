@@ -1610,8 +1610,8 @@ h1,h2,h3,h4,p{margin:0}
         <div class="vs-r"><span class="k">고객</span><span class="a">대학생 · 한 끼</span><span class="b">퇴근길 직장인·3040 가구</span></div>
         <div class="vs-r"><span class="k">품목</span><span class="a">카페·간식 중심</span><span class="b">정육·수산·채소·반찬·빵</span></div>
       </div>
-      <div class="pi-stats"><span><b id="promoRegionCount">2</b>개 권역</span><span><b id="promoStoreCount">19</b>개 매장</span><span><b id="promoDealCount">34</b>개 상품</span><span><b id="promoRadiusTxt">1~3km</b> 반경</span></div>
-      <p class="whole-stats">전체 2개 권역 · 총 19개 매장 · 34개 상품</p>
+      <div class="pi-stats"><span><b id="promoRegionCount">2</b>개 권역</span><span><b id="promoStoreCount">22</b>개 매장</span><span><b id="promoDealCount">40</b>개 상품</span><span><b id="promoRadiusTxt">1~3km</b> 반경</span></div>
+      <p class="whole-stats">전체 2개 권역 · 총 22개 매장 · 40개 상품</p>
       <div class="pi-owner">
         <span class="so-mark" aria-hidden="true">8</span>
         <div><b>8시마켓 운영 기준</b><small>매장 운영 · 품질 · 위생 관리</small></div>
@@ -1687,7 +1687,11 @@ var STORES = [
   {id:'g5', region:'gj', name:'경안엄마손반찬',   cat:'빵·반찬',  dist:1.8, angle:40,  emoji:'🍱', addr:'경안동 158',   close:'20:00', x:266.7, y:269.5},
   {id:'g6', region:'gj', name:'능평수산직판장',   cat:'정육·수산', dist:2.2, angle:300, emoji:'🐟', addr:'신현동 320',   close:'19:30', x:76.9,  y:286.8},
   {id:'g7', region:'gj', name:'신현로컬팜',       cat:'과일·채소', dist:1.6, angle:195, emoji:'🌱', addr:'신현동 210',   close:'19:00', x:169.3, y:450.8},
-  {id:'g8', region:'gj', name:'경안동네마트',     cat:'동네마트',  dist:2.6, angle:130, emoji:'🛒', addr:'경안동 302',   close:'22:00', x:318.5, y:458.6}
+  {id:'g8', region:'gj', name:'경안동네마트',     cat:'동네마트',  dist:2.6, angle:130, emoji:'🛒', addr:'경안동 302',   close:'22:00', x:318.5, y:458.6},
+  /* --- v3.0 · 경기 광주 신현동 실제 동네 매장 3곳 (반경 2km 기본 화면·지도 노출) --- */
+  {id:'g9', region:'gj', name:'금름할인마트',     cat:'동네마트',  dist:0.5, angle:60,  emoji:'🏪', addr:'신현동 586-1',  close:'22:00', x:221.8, y:339.5},
+  {id:'g10',region:'gj', name:'코스마트',         cat:'동네마트',  dist:1.2, angle:168, emoji:'🛒', addr:'신현동 398-36', close:'22:00', x:210.5, y:427.8},
+  {id:'g11',region:'gj', name:'착한한우',         cat:'정육·수산', dist:1.0, angle:285, emoji:'🥩', addr:'신현동 586-11', close:'20:00', x:135.1, y:339.0}
 ];
 
 function seedProducts(){
@@ -1728,7 +1732,14 @@ function seedProducts(){
     {id:'g14', name:'대추방울토마토 1kg',       store:'g7', cat:'과일·채소', orig:8900,  sale:4900,  total:10, left:0,  weight:1.0, pickup:'17:00~19:00', emoji:'🍅'},
     {id:'g15', name:'깻잎 100g',                store:'g7', cat:'과일·채소', orig:2500,  sale:1400,  total:15, left:7,  weight:0.1, pickup:'17:00~19:00', emoji:'🌿'},
     {id:'g16', name:'즉석 미역국 500g',         store:'g8', cat:'동네마트',  orig:4900,  sale:2900,  total:12, left:5,  weight:0.5, pickup:'20:00~22:00', emoji:'🍲'},
-    {id:'g17', name:'국산 콩나물 500g',         store:'g8', cat:'동네마트',  orig:3500,  sale:1900,  total:9,  left:4,  weight:0.5, pickup:'20:00~22:00', emoji:'🌱'}
+    {id:'g17', name:'국산 콩나물 500g',         store:'g8', cat:'동네마트',  orig:3500,  sale:1900,  total:9,  left:4,  weight:0.5, pickup:'20:00~22:00', emoji:'🌱'},
+    /* --- v3.0 · 신현동 실제 매장 3곳 마감특가 (픽업 종료 ≤ 매장 마감) --- */
+    {id:'g18', name:'손두부 1모',               store:'g9', cat:'빵·반찬',  orig:3500,  sale:1900,  total:10, left:4,  weight:0.5, pickup:'19:00~21:00', emoji:'🍲'},
+    {id:'g19', name:'대파 1단',                 store:'g9', cat:'과일·채소', orig:2980,  sale:1490,  total:12, left:6,  weight:0.3, pickup:'20:00~22:00', emoji:'🧅'},
+    {id:'g20', name:'서울우유 1L',              store:'g10',cat:'동네마트',  orig:3400,  sale:1990,  total:15, left:8,  weight:1.0, pickup:'19:00~21:00', emoji:'🥛'},
+    {id:'g21', name:'제주 감귤 1.5kg',          store:'g10',cat:'과일·채소', orig:12800, sale:6400,  total:10, left:5,  weight:1.5, pickup:'20:00~22:00', emoji:'🍊'},
+    {id:'g22', name:'한우 등심 300g',           store:'g11',cat:'정육·수산', orig:39000, sale:25000, total:6,  left:3,  weight:0.3, pickup:'18:00~20:00', emoji:'🥩'},
+    {id:'g23', name:'한우 국거리 500g',         store:'g11',cat:'정육·수산', orig:24900, sale:14900, total:8,  left:4,  weight:0.5, pickup:'17:00~19:00', emoji:'🍖'}
   ];
 }
 function seedOrders(){
@@ -1738,14 +1749,18 @@ function seedOrders(){
     {id:'o3', code:'8시-3210', pid:'p7', name:'마트 도시락', store:'s6', qty:1, orig:7900, sale:3900, weight:0.4, pickup:'18:00~20:00', status:'결제완료', time:'19:24', emoji:'🍱'}
   ];
 }
-function seed(){ return {seq:30, products:seedProducts(), orders:seedOrders(), fav:[], onboarded:false, role:null, profile:null, myStore:null, view:null}; }
-/* v2.9 · 경기 광주 샘플 상품을 기존 방문자의 브라우저 저장분에도 채워 넣는다 */
+/* v3.0 · 경기 광주 신현동 실제 매장 3곳 추가 시드 버전 */
+var SEED_VER = 3;
+function seed(){ return {seq:30, seedVer:SEED_VER, products:seedProducts(), orders:seedOrders(), fav:[], onboarded:false, role:null, profile:null, myStore:null, view:null}; }
+/* v2.9~v3.0 · 새 시드 상품을 기존 방문자의 브라우저 저장분에도 채워 넣는다
+   (상품 id 기준 병합 + 시드 버전 기록 → 오래된 localStorage 방문자도 새 매장 특가가 바로 보인다) */
 function ensureSeedProducts(){
   if(!state || !Array.isArray(state.products)) return false;
   var have = {};
   state.products.forEach(function(p){ have[p.id] = 1; });
   var changed = false;
   seedProducts().forEach(function(p){ if(!have[p.id]){ state.products.push(p); changed = true; } });
+  if(state.seedVer !== SEED_VER){ state.seedVer = SEED_VER; changed = true; }
   return changed;
 }
 
