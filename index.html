@@ -1650,7 +1650,7 @@ function completeOwner(){
   $('#obStoreName').classList.remove('invalid');
   var dong = $('#obStoreDong').value, cat = $('#obStoreCat').value;
   var tail = ($('#obStoreAddr').value || '').trim();
-  var data = {id:'me', name:name, cat:cat, dist:0.35, angle:308, emoji:catEmoji(cat), addr:dong + (tail ? ' ' + tail : ''), close:$('#obStoreClose').value};
+  var data = {id:'me', name:name, cat:cat, dist:0.95, angle:340, emoji:catEmoji(cat), addr:dong + (tail ? ' ' + tail : ''), close:$('#obStoreClose').value};
   var found = false;
   STORES = STORES.map(function(s){ if(s.id === 'me'){ found = true; return data; } return s; });
   if(!found) STORES.push(data);
