@@ -1447,7 +1447,8 @@ function renderFeed(){
     return storeById(a.store).dist - storeById(b.store).dist;
   });
   var feed = $('#feed');
-  $('#feedCount').textContent = list.length + '개 상품';
+  var soldOut = list.filter(function(p){ return p.left<=0; }).length;
+  $('#feedCount').textContent = list.length + '개 상품' + (soldOut ? ' · 품절 '+soldOut : '');
   if(!list.length){
     feed.innerHTML = '<div class="empty"><span class="em">🧺</span><b>조건에 맞는 마감특가가 없어요</b>반경을 넓히거나 다른 업종을 골라 보세요.<br><button class="link-btn" type="button" data-act="clear-filter" style="margin-top:10px">필터 초기화 ›</button></div>';
     return;
@@ -1750,7 +1751,7 @@ function buildUploadSample(fileName){
   if(orig < 500) orig = b.o;
   var sale = b.s + ((h >> 3) % 4) * 100;
   if(sale >= orig * 0.85) sale = Math.round(orig * 0.6 / 100) * 100;
-  var koreanName = /[가-힣]/.test(raw) && raw.length >= 2 && raw.length <= 24;
+  var koreanName = /^[가-힣0-9 ]{2,16}$/.test(raw);
   return {
     key:'upload', emoji:b.e, label:b.n, name:koreanName ? raw : b.n,
     cat:b.c, orig:orig, sale:sale, qty:4 + (h % 6), weight:b.w,
@@ -1851,7 +1852,7 @@ function pricingHTML(){
     '<div class="pc-out"><div class="row"><span>'+stepLabel(step.off)+' · '+step.time+' 자동 적용가</span><span class="big">'+num(price)+'<small>원</small></span></div>'+
       '<div class="pc-bar"><i style="width:'+step.pct+'%"></i></div>'+
       '<div class="row" style="margin-top:6px;font-size:9px"><span>정상가 대비 '+step.pct+'% 할인</span><span class="pc-save">'+won(saveAmt)+' 절약</span></div></div>'+
-    '<div class="pc-rec"><span class="ic">🎯</span><div class="t"><small>점주별 적정 할인율 추천</small><b>'+esc(st.name)+' · '+esc(st.cat)+' '+rec[0]+'~'+rec[1]+'%</b><span>현재 평균 '+avg+'% · 남은 재고 '+liveProducts(mine).length+'종 · 마감 '+st.close+'</span></div></div>'+
+    '<div class="pc-rec"><span class="ic">🎯</span><div class="t"><small>점주별 적정 할인율 추천</small><b>'+esc(st.name)+' · '+esc(st.cat)+' '+rec[0]+'~'+rec[1]+'%</b><span>이 매장 평균 '+avg+'% · 남은 재고 '+liveProducts(mine).length+'종 · 마감 '+st.close+'</span></div></div>'+
     '<p class="pc-note">마감 '+st.close+' 기준 — 마감 3시간 전 20% → 2시간 전 30% → 1시간 전 45% → 마감 30분 전 60%로 자동 상승합니다. 표시 가격·추천은 시연용 예시입니다.</p>'+
   '</div>';
 }
@@ -2060,7 +2061,7 @@ function openInfo(){
       '<div><b>대표 강선진</b><small>전 카페 매니저 · 더본코리아 슈퍼바이저</small></div>'+
       '<button class="link-btn" type="button" data-act="promo">홍보영상 ▶</button></div>'+
     '<p style="font-size:11px;color:#5E6B65;font-weight:600;line-height:1.7;margin-top:11px">퇴근길 동네마트·정육점·과일가게·빵집·반찬가게의 <b>오늘 남은 신선식품</b>을 마감특가로 연결하고, 반경 1~3km 이웃이 선결제 후 픽업하는 로컬 커머스 플랫폼입니다.</p>'+
-    '<div class="pi-stats"><span><b>'+storeCountIn(state.products)+'</b>개 매장</span><span><b>'+liveProducts(state.products).length+'</b>개 상품</span><span><b>'+storeCountIn(within)+'</b>곳 반경 '+ui.radius+'km</span></div>'+
+    '<div class="pi-stats"><span><b>'+storeCountIn(state.products)+'</b>개 매장</span><span><b>'+liveProducts(state.products).length+'</b>개 상품</span><span><b>'+storeCountIn(within)+'</b>곳 · 반경 '+ui.radius+'km</span></div>'+
     '<h4>8시마켓이 다른 점</h4>'+
     '<ul><li><b>대학가 한 끼 할인이 아닌 저녁 장바구니</b> — 둔산·탄방 주거·업무지구 3040 가구·직장인을 위한 정육·수산·채소·반찬</li>'+
         '<li><b>AI 가격 결정</b> — 사진 한 장으로 등록하고, 8시 이후 시간이 지날수록 할인율을 자동으로 올립니다</li>'+
