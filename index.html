@@ -2654,7 +2654,7 @@ function sendSignupToDB(kind, name, phone, dong, store, marketing){
     body.append(FORM_ENTRY.dong, dong || '-');
     body.append(FORM_ENTRY.store, store || '-');
     body.append(FORM_ENTRY.memo, '약관동의 O' + (marketing ? ' · 알림동의 O' : ' · 알림동의 -') +
-      ' · 접수 ' + formStamp() + ' · 유입경로: 8시마켓 MVP 웹(yun-sul.github.io/8si-market)');
+      ' · 접수 ' + formStamp() + ' · 유입경로: 8시마켓 MVP 웹(8si-market.vercel.app)');
     fetch(FORM_URL, {method:'POST', mode:'no-cors', body:body, keepalive:true}).catch(function(){});
   }catch(e){}
 }
@@ -3322,7 +3322,7 @@ function isStandalone(){
   return window.navigator.standalone === true;
 }
 /* v2.5 · 인앱 브라우저에서 안드로이드 크롬으로 바로 열기 */
-var CHROME_INTENT = 'intent://yun-sul.github.io/8si-market/#Intent;scheme=https;package=com.android.chrome;end';
+var CHROME_INTENT = 'intent://8si-market.vercel.app/#Intent;scheme=https;package=com.android.chrome;end';
 function chromeBtn(label){
   return '<a class="chrome-btn" href="' + CHROME_INTENT + '" data-chrome-open><span class="cb-ic" aria-hidden="true">🌐</span>' + label + '</a>';
 }
