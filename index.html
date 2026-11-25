@@ -1761,7 +1761,7 @@ a{color:inherit}
 .prices{display:flex;align-items:baseline;gap:4px;margin-top:6px;flex-wrap:wrap}
 .prices .r{font-size:12px;font-weight:900;color:var(--sunset-d);letter-spacing:-.03em}
 .prices strong{font-size:17px;font-weight:900;letter-spacing:-.05em;color:var(--ink);font-variant-numeric:tabular-nums}
-.prices strong small{font-size:10px;font-weight:800;margin-left:-2px;letter-spacing:0;word-spacing:-.1em}
+.prices strong small{font-size:10px;font-weight:800;margin-left:1px;letter-spacing:0;word-spacing:-.05em}
 .prices s{font-size:10px;color:var(--faint);font-weight:700;margin-left:auto}
 .cmeta{
   display:flex;align-items:center;gap:4px;margin-top:6px;font-size:9.5px;color:var(--muted);
@@ -1913,6 +1913,7 @@ a{color:inherit}
 .disc-line{background:var(--f050);border:1px solid #E3EBE6;border-radius:10px;font-size:10.5px;color:var(--f800);font-weight:800}
 
 /* 노출 매장 칩 — 글자 잘림 0 */
+.field:has(.store-pick){grid-column:1 / -1}
 .store-pick{display:grid;grid-template-columns:minmax(0,1fr);gap:5px}
 .store-pick .sp-cur{
   display:flex;align-items:center;gap:7px;min-width:0;height:auto;min-height:42px;padding:8px 11px;
@@ -1922,8 +1923,8 @@ a{color:inherit}
 .store-pick .sp-cur span:last-child{min-width:0;overflow-wrap:anywhere}
 .store-pick .sp-tog{
   max-width:100%;width:100%;border:1px dashed var(--line);background:#fff;border-radius:9px;
-  font-size:9px;font-weight:800;color:var(--muted);padding:6px 6px;line-height:1.4;
-  white-space:normal;word-break:keep-all;overflow-wrap:anywhere;
+  font-size:9.5px;font-weight:800;color:var(--muted);padding:7px 8px;line-height:1.4;
+  white-space:normal;word-break:keep-all;overflow-wrap:anywhere;text-align:center;
 }
 .store-pick .sp-tog.is-on{border-style:solid;border-color:var(--f600);color:var(--f800);background:var(--f050)}
 
@@ -1942,12 +1943,13 @@ a{color:inherit}
 .settle-line b{color:var(--ink-2)}
 .settle-rows,#settleRows{display:grid;margin-top:8px;gap:0;min-width:0}
 .settle-rows > div,#settleRows > div{
-  display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:10px;
+  display:grid;grid-template-columns:minmax(0,1fr) auto auto;align-items:baseline;gap:8px;
   font-size:10px;font-weight:700;color:var(--ink-2);padding:7px 0;border-bottom:1px solid var(--line-2);
 }
 .settle-rows > div:last-child,#settleRows > div:last-child{border-bottom:0}
 .settle-rows > div span,#settleRows > div span{min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--muted)}
-.settle-rows b,#settleRows b{white-space:nowrap;font-variant-numeric:tabular-nums;color:var(--ink);font-weight:900;font-size:10.5px}
+.settle-rows b,#settleRows b{white-space:nowrap;font-variant-numeric:tabular-nums;color:var(--ink);font-weight:900;font-size:11px}
+.settle-rows i,#settleRows i{font-style:normal;font-size:8.5px;font-weight:800;color:var(--faint);white-space:nowrap}
 
 /* ─────────────────────────── AI 대시보드 ─────────────────────────── */
 .dash-head{
@@ -2210,7 +2212,9 @@ a{color:inherit}
   .home-head{padding:26px 0 0}
   .loc-chip{padding:11px 14px;border-radius:16px;max-width:380px}
   .loc-row{max-width:520px}
-  .search-row{max-width:520px}
+  .search-row{max-width:720px}
+  .chip-row{gap:14px}
+  .chip-row .chips{flex:0 1 auto}
   .lc-tx b{font-size:15px}
   .lc-tx small{font-size:10.5px}
   .map-toggle{width:72px;border-radius:16px;font-size:10.5px}
@@ -2281,6 +2285,28 @@ a{color:inherit}
   .feed{gap:9px}
   .prices strong{font-size:16px}
 }
+
+/* ── AI 단계 할인 시뮬레이터 · AI 분석 (v4 팔레트로 통일) ── */
+.an-head{color:var(--f800)}
+.an-head .spin{border-color:rgba(27,107,63,.22);border-top-color:var(--f600)}
+.an-step.on i{background:var(--f600);border-color:var(--f600);color:#fff}
+.air-head .conf{color:var(--f800);background:var(--f100)}
+.pc-step{border-color:var(--line);background:#fff}
+.pc-step:hover{border-color:#CFDAD2}
+.pc-step b{color:var(--muted)}
+.pc-step span{color:var(--ink-2)}
+.pc-step.is-on{border-color:var(--f600);background:var(--f050);box-shadow:0 0 0 3px rgba(27,107,63,.10)}
+.pc-step.is-on b{color:var(--f800)}
+.pc-step.is-on span{color:var(--f900)}
+.pc-bar{background:var(--ivory-2)}
+.pc-bar i{background:linear-gradient(90deg,var(--f700),var(--sunset))}
+.pc-out{background:var(--f050);border:1px solid #DFE9E2}
+.pc-out .big{color:var(--f900)}
+.pc-rec{background:var(--sunset-l);border:1px solid #FBD9BF}
+.pc-rec .t small{color:var(--sunset-d)}
+.pc-rec .t b{color:#8A3D05}
+.pc-rec .t span{color:#A2673A}
+.owner-badge,.dp-tag{background:var(--f100);color:var(--f800)}
 
 </style>
 </head>
@@ -4832,8 +4858,8 @@ function renderPartnerOps(){
     var keys = Object.keys(by).slice(0,4);
     rows.innerHTML = keys.length ? keys.map(function(k){
       var amt = by[k], f = Math.round(amt*0.03/10)*10;
-      return '<div><span>'+esc(k)+'</span><b>'+won(amt-f)+' 정산 예정</b></div>';
-    }).join('') : '<div><span>정산 예정 내역</span><b>오늘 결제 0원</b></div>';
+      return '<div><span class="sr-n">'+esc(k)+'</span><b>'+won(amt-f)+'</b><i>정산 예정</i></div>';
+    }).join('') : '<div><span class="sr-n">정산 예정 내역</span><b>0원</b><i>오늘 결제</i></div>';
   }
 }
 
