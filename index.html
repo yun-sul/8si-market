@@ -6,14 +6,17 @@
 <title>8시마켓 — 저녁 8시, 우리 동네 장보기가 달라집니다</title>
 <meta name="description" content="퇴근길 동네마트·정육점·과일가게·빵집·반찬가게의 오늘 남은 신선식품을 마감특가로 연결하고, 선결제 후 가까운 매장에서 픽업하는 로컬 커머스 플랫폼 8시마켓 MVP 웹앱입니다.">
 <meta name="theme-color" content="#0F5132">
-<meta name="app-version" content="v4.0">
+<meta name="app-version" content="v4.1">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="8시마켓">
 <link rel="manifest" href="manifest.webmanifest">
-<link rel="apple-touch-icon" href="icon-192.png">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='9' fill='%230B7A46'/><text x='16' y='23' font-size='16' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='bold'>8</text></svg>">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=4.1">
+<link rel="icon" type="image/png" sizes="48x48" href="favicon-48.png?v=4.1">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=4.1">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png?v=4.1">
+<link rel="shortcut icon" href="favicon-32.png?v=4.1">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
@@ -1498,10 +1501,12 @@ a{color:inherit}
 
 /* ─────────────────────────── desktop stage / pitch ─────────────────────────── */
 .side{width:min(408px,36vw)}
-.side-brand .mark,.mark{
-  background:linear-gradient(155deg,#1B6B3F,#0B3A24);
-  box-shadow:0 12px 24px -14px rgba(11,58,36,.9);
-}
+/* v4.1 · 시안 A 시계형 로고 마크 (헤더·모달·파트너센터 배지) */
+.mark,.so-mark{background:none!important;box-shadow:none!important;padding:0;overflow:hidden}
+.mark .mk-img,.so-mark .mk-img{display:block;width:100%;height:100%;border-radius:inherit;object-fit:cover}
+.side-brand .mark{box-shadow:0 10px 22px -16px rgba(120,72,20,.75)!important}
+.side-owner .so-mark,.info-owner .so-mark,.pi-owner .so-mark{box-shadow:0 6px 14px -12px rgba(120,72,20,.7)!important}
+.appbar .mark,.ob-brand .mark,.lm-brand .mark,.pn-brand .mark{box-shadow:0 5px 12px -10px rgba(120,72,20,.65)!important}
 .side-brand b{font-size:20px;letter-spacing:-.045em}
 .side-brand small{font-size:10.5px;color:var(--muted);letter-spacing:.06em;font-weight:800}
 .side h1{font-size:clamp(28px,2.5vw,37px);font-weight:900;letter-spacing:-.055em;line-height:1.24;margin:22px 0 0}
@@ -2060,6 +2065,8 @@ a{color:inherit}
 .ob-stats b em{font-style:normal;font-size:11px;font-weight:900;color:var(--muted);margin-left:1px}
 .ob-stats small{display:block;font-size:9px;font-weight:800;color:var(--muted);margin-top:2px;letter-spacing:-.01em}
 .ob-tagrow{display:none}
+/* v4.2 · PC 랜딩 전용 확장 영역(모바일 레이아웃은 그대로) */
+.pc-fill{display:none}
 
 .ob-right{margin-top:18px}
 .ob-q{font-size:15.5px}
@@ -2275,7 +2282,35 @@ a{color:inherit}
   .orders{padding:14px 0 0;grid-template-columns:repeat(2,minmax(0,1fr))}
   .orders-note{margin:18px 0 0}
   #screen-owner,#screen-ai,#screen-orders{padding-left:max(28px,calc((100% - 1420px)/2));padding-right:max(28px,calc((100% - 1420px)/2))}
+
+  /* ── v4.2 · PC 랜딩(첫 화면) 왼쪽 컬럼 강화 ── */
+  #obStep-role .ob-eyebrow{font-size:11.5px;padding:6px 12px;letter-spacing:.09em;border-radius:8px}
+  #obStep-role .ob-h1{font-size:clamp(34px,3.15vw,46px);line-height:1.16;letter-spacing:-.028em;margin-top:15px;color:var(--f900)}
+  #obStep-role .ob-h1 em{color:var(--sunset-d)}
+  #obStep-role .ob-h1 em::after{height:11px;bottom:3px;opacity:.24}
+  #obStep-role .ob-sub{font-size:14px;line-height:1.72;margin-top:15px;max-width:34em}
+  #obStep-role .ob-stats{gap:11px;margin-top:20px}
+  #obStep-role .ob-stats > div{padding:13px 15px;border-radius:15px}
+  #obStep-role .ob-stats b{font-size:clamp(24px,2.1vw,31px);letter-spacing:-.045em}
+  #obStep-role .ob-stats b em{font-size:13px;margin-left:2px}
+  #obStep-role .ob-stats small{font-size:10.5px;margin-top:3px}
+
+  .pc-fill{display:block;margin-top:18px}
+  .pcf-visual{position:relative;margin:0;border-radius:20px;overflow:hidden;background:#F6EBD8;border:1px solid rgba(231,229,224,.9);box-shadow:0 26px 44px -34px rgba(120,72,20,.8)}
+  .pcf-visual img{display:block;width:100%;height:auto;aspect-ratio:1120/440;object-fit:cover}
+  .pcf-visual::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,58,36,0) 40%,rgba(11,58,36,.60) 100%);pointer-events:none}
+  .pcf-badge{position:absolute;left:14px;top:14px;z-index:2;display:inline-flex;align-items:center;gap:5px;background:var(--sunset);color:#fff;font-size:12px;font-weight:900;letter-spacing:-.03em;padding:7px 12px;border-radius:999px;box-shadow:0 12px 22px -14px rgba(234,88,12,.95)}
+  .pcf-badge i{font-style:normal;font-size:12px}
+  .pcf-chips{position:absolute;left:13px;right:13px;bottom:12px;z-index:2;display:flex;flex-wrap:wrap;gap:6px;margin:0}
+  .pcf-chips span{background:rgba(255,255,255,.94);color:var(--f900);font-size:11px;font-weight:800;letter-spacing:-.02em;padding:5px 10px;border-radius:999px;box-shadow:0 8px 16px -12px rgba(0,0,0,.55)}
+  .pcf-flow{display:flex;align-items:stretch;gap:6px;margin-top:12px}
+  .pcf-step{flex:1 1 0;min-width:0;display:flex;align-items:center;gap:9px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:10px 11px;box-shadow:var(--sh-card)}
+  .pcf-step i{flex:0 0 auto;width:24px;height:24px;border-radius:50%;background:var(--f100);color:var(--f800);font-style:normal;font-size:11.5px;font-weight:900;display:grid;place-items:center}
+  .pcf-step b{display:block;font-size:12px;font-weight:900;letter-spacing:-.03em;color:var(--ink);line-height:1.25}
+  .pcf-step small{display:block;font-size:9.5px;font-weight:700;color:var(--muted);margin-top:2px;letter-spacing:-.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .pcf-ar{flex:0 0 auto;display:grid;place-items:center;color:var(--faint);font-size:16px;font-weight:900}
 }
+
 @media(min-width:1500px){
   .feed{grid-template-columns:repeat(5,minmax(0,1fr))}
 }
@@ -2315,14 +2350,14 @@ a{color:inherit}
   <!-- ================= desktop pitch ================= -->
   <aside class="side">
     <div class="side-brand">
-      <span class="mark">8</span>
+      <span class="mark"><img class="mk-img" src="logo-mark.png?v=4.1" alt="" aria-hidden="true" width="512" height="512" decoding="async"></span>
       <span><b>8시마켓</b><small>8SI MARKET · 대전·경기 광주 로컬 커머스</small></span>
     </div>
     <h1>저녁 8시,<br>우리 동네 <em>장보기</em>가<br>달라집니다.</h1>
     <p class="lead"><b>퇴근길 저녁 장바구니</b>. 대전 둔산·탄방과 경기 광주 신현·태전, 두 생활권의 <b>3040 가구와 직장인</b>이 정육·수산·채소·반찬을 마감특가로 사서 <b>선결제 후 픽업</b>하는 동네 장보기 플랫폼입니다.</p>
     <div class="side-vs"><span class="yes">✓ 퇴근길 저녁 장바구니 · 정육·수산·채소·반찬</span></div>
     <div class="side-owner">
-      <span class="so-mark" aria-hidden="true">8</span>
+      <span class="so-mark" aria-hidden="true"><img class="mk-img" src="logo-mark.png?v=4.1" alt="" width="512" height="512" decoding="async"></span>
       <div class="so-txt">
         <b>8시마켓 운영팀</b>
         <small>매장 운영 · 품질 · 위생 관리</small>
@@ -2383,7 +2418,7 @@ a{color:inherit}
 
         <header class="appbar">
           <div class="ab-brand">
-            <span class="mark">8</span>
+            <span class="mark"><img class="mk-img" src="logo-mark.png?v=4.1" alt="" aria-hidden="true" width="512" height="512" decoding="async"></span>
             <span class="ab-name">8시마켓<small id="abDong">대전 둔산동 · 반경 2km</small></span>
             <span class="ab-mem" id="abMem" hidden>회원</span>
           </div>
@@ -2405,7 +2440,7 @@ a{color:inherit}
         <header class="pcnav" id="pcNav" aria-label="PC 상단 메뉴">
           <div class="pn-inner">
             <button class="pn-brand" type="button" data-pctab="home" aria-label="8시마켓 홈 특가">
-              <span class="mark">8</span>
+              <span class="mark"><img class="mk-img" src="logo-mark.png?v=4.1" alt="" aria-hidden="true" width="512" height="512" decoding="async"></span>
               <span class="pn-tx"><b>8시마켓</b><small>8SI MARKET</small></span>
             </button>
             <button class="pn-loc" type="button" data-act="radius" aria-label="내 동네·반경 선택">
@@ -2842,7 +2877,7 @@ a{color:inherit}
           <div class="ob-step is-on" id="obStep-role">
             <div class="ob-top">
               <div class="ob-brand">
-                <span class="mark">8</span>
+                <span class="mark"><img class="mk-img" src="logo-mark.png?v=4.1" alt="" aria-hidden="true" width="512" height="512" decoding="async"></span>
                 <span class="ob-bt"><b>8시마켓</b><small>8SI MARKET</small></span>
               </div>
               <button class="ob-topinstall" type="button" data-act="install" data-install aria-label="8시마켓 앱 설치"><i aria-hidden="true" data-install-ic>📲</i><span data-install-label data-compact="1">앱 설치</span></button>
@@ -2857,6 +2892,21 @@ a{color:inherit}
                   <div><b id="obStatDeal">15<em>개</em></b><small>오늘 마감특가</small></div>
                   <div><b>25<em>곳</em></b><small>전국 거점</small></div>
                   <div><b>60<em>%</em></b><small>최대 할인</small></div>
+                </div>
+              </div>
+              <!-- v4.2 · PC(1024px 이상) 전용 — 비주얼 카드 + 3단계 이용 흐름 -->
+              <div class="pc-fill">
+                <figure class="pcf-visual">
+                  <img src="assets/pc-hero-produce.jpg" alt="동네 매장의 신선 채소·과일과 정육 마감특가 상품" width="1120" height="440" loading="lazy" decoding="async">
+                  <span class="pcf-badge"><i aria-hidden="true">🕗</i>오늘 저녁 8시 마감특가</span>
+                  <figcaption class="pcf-chips"><span>🥩 한우·정육</span><span>🥬 신선 채소·과일</span><span>🥐 수제 반찬·베이커리</span></figcaption>
+                </figure>
+                <div class="pcf-flow" role="list" aria-label="8시마켓 이용 흐름">
+                  <div class="pcf-step" role="listitem"><i aria-hidden="true">1</i><span><b>특가 확인</b><small>반경 2km 마감특가</small></span></div>
+                  <span class="pcf-ar" aria-hidden="true">›</span>
+                  <div class="pcf-step" role="listitem"><i aria-hidden="true">2</i><span><b>10초 예약</b><small>선결제 후 픽업</small></span></div>
+                  <span class="pcf-ar" aria-hidden="true">›</span>
+                  <div class="pcf-step" role="listitem"><i aria-hidden="true">3</i><span><b>퇴근길 픽업</b><small>저녁 8시 마감</small></span></div>
                 </div>
               </div>
             </div>
@@ -3071,7 +3121,7 @@ a{color:inherit}
       <div class="pi-stats"><span><b id="promoRegionCount">2</b>개 권역</span><span><b id="promoStoreCount">32</b>개 매장</span><span><b id="promoDealCount">57</b>개 상품</span><span><b id="promoRadiusTxt">1~3km</b> 반경</span></div>
       <p class="whole-stats">전체 2개 권역 · 총 32개 매장 · 57개 상품</p>
       <div class="pi-owner">
-        <span class="so-mark" aria-hidden="true">8</span>
+        <span class="so-mark" aria-hidden="true"><img class="mk-img" src="logo-mark.png?v=4.1" alt="" width="512" height="512" decoding="async"></span>
         <div><b>8시마켓 운영 기준</b><small>매장 운영 · 품질 · 위생 관리</small></div>
       </div>
       <p class="pi-quote">점포 운영·품질·위생 관리 노하우로 함께합니다. 오늘 남은 좋은 상품이 버려지지 않고, 이웃의 저녁 식탁에 닿도록.</p>
@@ -3109,7 +3159,7 @@ a{color:inherit}
 <div class="login-modal" id="loginModal" role="dialog" aria-modal="true" aria-labelledby="lmTitle" aria-hidden="true">
   <div class="lm-card">
     <button class="lm-x" type="button" data-act="close-login" aria-label="로그인 창 닫기">✕</button>
-    <div class="lm-brand"><span class="mark">8</span><span><b>8시마켓</b><small>8SI MARKET · SIGN IN</small></span></div>
+    <div class="lm-brand"><span class="mark"><img class="mk-img" src="logo-mark.png?v=4.1" alt="" aria-hidden="true" width="512" height="512" decoding="async"></span><span><b>8시마켓</b><small>8SI MARKET · SIGN IN</small></span></div>
     <h2 id="lmTitle">로그인</h2>
     <p class="lm-sub" id="lmSub">고객과 제휴 매장이 같은 계정으로 로그인합니다.</p>
     <div class="lm-tabs" role="tablist" aria-label="로그인 유형">
@@ -5085,7 +5135,7 @@ function openInfo(){
   var within = state.products.filter(inRadius);
   var html = sheetHead('8시마켓 소개','저녁 8시, 우리 동네 장보기가 달라집니다')+
   '<div class="sheet-body info-sheet">'+
-    '<div class="info-owner"><span class="so-mark" aria-hidden="true">8</span>'+
+    '<div class="info-owner"><span class="so-mark" aria-hidden="true"><img class="mk-img" src="logo-mark.png?v=4.1" alt="" width="512" height="512" decoding="async"></span>'+
       '<div><b>8시마켓 운영팀</b><small>매장 운영 · 품질 · 위생 관리</small></div>'+
       '<button class="link-btn" type="button" data-act="promo">홍보영상 ▶</button></div>'+
     '<p style="font-size:11px;color:#5E6B65;font-weight:600;line-height:1.7;margin-top:11px">퇴근길 동네마트·정육점·과일가게·빵집·반찬가게의 <b>오늘 남은 신선식품</b>을 마감특가로 연결하고, 반경 1~3km 이웃이 선결제 후 픽업하는 로컬 커머스 플랫폼입니다.</p>'+
@@ -5137,7 +5187,7 @@ function openMe(){
       '<span class="mi-ic" aria-hidden="true">' + (isStandalone() ? '✓' : '📲') + '</span>'+
       '<span class="mi-tx"><b>' + (isStandalone() ? '✓ 앱으로 실행 중' : '휴대폰에 앱으로 설치하기') + '</b><small>' + (isStandalone() ? '홈 화면 아이콘으로 열려 있어요' : '홈 화면에 추가하면 앱처럼 열려요 · 3초면 끝') + '</small></span>'+
       '<span class="mi-go">' + (isStandalone() ? '실행 중' : '설치') + '</span></button>'+
-    '<div class="info-owner" style="margin-top:9px"><span class="so-mark" aria-hidden="true">8</span>'+
+    '<div class="info-owner" style="margin-top:9px"><span class="so-mark" aria-hidden="true"><img class="mk-img" src="logo-mark.png?v=4.1" alt="" width="512" height="512" decoding="async"></span>'+
       '<div><b>8시마켓</b><small>오늘 남은 좋은 상품, 동네에서 득템</small></div>'+
       '<button class="link-btn" type="button" data-act="promo">홍보영상 ▶</button></div>'+
     '<div class="me-role" style="margin-top:9px"><div><b>'+(state.role==='owner'?'점주 모드':'할인 장보기 모드')+'</b><small>상·하단 메뉴에서 언제든 전환할 수 있어요</small></div><span>'+ (state.role==='owner'?'🏪':'🛒') +'</span></div>'+
