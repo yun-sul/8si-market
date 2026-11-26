@@ -6,7 +6,7 @@
 <title>8시마켓 — 저녁 8시, 우리 동네 장보기가 달라집니다</title>
 <meta name="description" content="퇴근길 동네마트·정육점·과일가게·빵집·반찬가게의 오늘 남은 신선식품을 마감특가로 연결하고, 선결제 후 가까운 매장에서 픽업하는 로컬 커머스 플랫폼 8시마켓 MVP 웹앱입니다.">
 <meta name="theme-color" content="#0F5132">
-<meta name="app-version" content="v4.2">
+<meta name="app-version" content="v4.3">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
@@ -780,7 +780,7 @@ h1,h2,h3,h4,p{margin:0}
 .promo-modal.is-open{display:flex;animation:fadeIn .2s ease}
 .promo-card{position:relative;display:grid;grid-template-columns:minmax(0,400px) minmax(0,1fr);width:min(880px,100%);max-height:92vh;background:#fff;border-radius:24px;overflow:hidden;box-shadow:0 50px 100px -40px rgba(0,0,0,.75)}
 .promo-stage{background:#07231A;display:flex;align-items:center;justify-content:center;min-width:0}
-.promo-stage video{width:100%;height:auto;aspect-ratio:3/4;object-fit:cover;display:block;background:#07231A}
+.promo-stage video{width:100%;height:auto;max-height:92vh;aspect-ratio:9/16;object-fit:contain;display:block;background:#07231A}
 .promo-info{padding:26px 26px 22px;overflow-y:auto;max-height:92vh}
 .promo-x{position:absolute;right:12px;top:12px;z-index:3;width:32px;height:32px;border-radius:50%;border:0;background:rgba(10,20,15,.55);color:#fff;display:grid;place-items:center;font-size:13px;backdrop-filter:blur(6px)}
 .promo-x:hover{background:rgba(10,20,15,.8)}
@@ -796,6 +796,12 @@ h1,h2,h3,h4,p{margin:0}
 .pi-list{list-style:none;margin:12px 0 0;padding:0;display:grid;gap:6px}
 .pi-list li{font-size:11px;font-weight:700;color:#5E6B65;background:#F8FAF8;border-radius:7px;padding:7px 9px;display:flex;gap:6px}
 .pi-list li::before{content:"·";color:var(--brand);font-weight:900}
+.pi-yt{display:flex;align-items:center;gap:8px;margin-top:14px;padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:#fff;color:var(--ink);text-decoration:none;font-size:12px;font-weight:900;letter-spacing:-.02em;line-height:1.35;transition:border-color .15s,background .15s}
+.pi-yt:hover{border-color:var(--brand);background:#F4FBF7}
+.pi-yt .yt-ic{flex:0 0 auto;width:26px;height:26px;border-radius:8px;background:#FF2D2D;color:#fff;display:grid;place-items:center;font-size:10px;padding-left:2px}
+.pi-yt .yt-tx{flex:1 1 auto;min-width:0}
+.pi-yt .yt-tx small{display:block;font-size:9.5px;font-weight:700;color:var(--muted);margin-top:2px;letter-spacing:-.01em}
+.pi-yt .yt-go{flex:0 0 auto;font-size:11px;color:var(--brand-d);font-weight:900}
 .promo-actions{margin-top:16px;display:grid;gap:6px}
 .info-owner{display:flex;align-items:center;gap:10px;margin-top:12px;background:#F5FAF6;border:1px solid #E1F0E7;border-radius:12px;padding:9px 10px}
 .info-owner img{width:42px;height:42px;border-radius:11px;object-fit:cover;object-position:50% 22%;flex:0 0 auto}
@@ -810,7 +816,7 @@ h1,h2,h3,h4,p{margin:0}
   .promo-glance{display:block;flex:0 0 auto}
   .promo-stage{display:none}
   .promo-card.video-open .promo-stage{display:flex;flex:0 0 auto;padding:6px 0;background:#07231A}
-  .promo-stage video{height:min(32vh,260px);width:auto;max-width:100%;aspect-ratio:3/4;object-fit:contain;margin:0 auto;border-radius:0}
+  .promo-stage video{height:min(52vh,440px);width:auto;max-width:100%;aspect-ratio:9/16;object-fit:contain;margin:0 auto;border-radius:0}
   .promo-info{display:flex;flex-direction:column;flex:0 0 auto;max-height:none;overflow:visible;padding:16px 16px calc(26px + env(safe-area-inset-bottom))}
   .promo-info .pi-tag,.promo-info h2{display:none}
   .promo-info .pi-list{display:none}
@@ -822,6 +828,7 @@ h1,h2,h3,h4,p{margin:0}
   .promo-info .pi-owner{order:6}
   .promo-info .pi-quote{order:7}
   .promo-info .promo-actions{order:8}
+  .promo-info .pi-yt{order:0;margin-top:0;margin-bottom:12px}
 }
 
 /* ================= v2.1 additions ================= */
@@ -2372,7 +2379,7 @@ a{color:inherit}
     </div>
     <button class="side-promo" type="button" data-act="promo">
       <img class="sp-thumb" src="poster.jpg" alt="8시마켓 홍보 포스터">
-      <span><b>🎬 8시마켓 홍보영상</b><small>1분 22초로 보는 8시마켓 · 브랜드 소개</small></span>
+      <span><b>🎬 8시마켓 홍보영상</b><small>30초로 보는 8시마켓 · 브랜드 소개</small></span>
       <span class="sp-play">▶</span>
     </button>
     <button class="side-install" type="button" data-act="install" data-install>
@@ -2513,9 +2520,9 @@ a{color:inherit}
                 <button class="db-go" type="button" data-act="soon-join">사전 오픈 알림 신청</button>
               </div>
               <!-- v3.5 · 홍보영상 1줄 카드 (내 동네 선택 바로 아래) -->
-              <button class="promo-bar" type="button" data-act="promo" data-video="1" aria-label="1분 만에 보는 8시마켓 홍보영상 보기">
+              <button class="promo-bar" type="button" data-act="promo" data-video="1" aria-label="30초로 보는 8시마켓 홍보영상 보기">
                 <span class="pb-ic" aria-hidden="true">▶</span>
-                <span class="pb-tx"><b>🎬 1분 만에 보는 8시마켓 홍보영상</b><small>마감특가·동네픽업, 1분 영상으로 먼저 확인하기</small></span>
+                <span class="pb-tx"><b>🎬 30초로 보는 8시마켓 홍보영상</b><small>마감특가·동네픽업, 30초 영상으로 먼저 확인하기</small></span>
                 <span class="pb-go">보기 <i aria-hidden="true">▶</i></span>
               </button>
               <div class="chip-wrap">
@@ -2958,7 +2965,7 @@ a{color:inherit}
               <p class="ob-foot">로그인 없이 체험하는 MVP입니다 · 실제 결제는 발생하지 않아요</p>
               <button class="ob-media" type="button" data-act="promo" aria-label="8시마켓 브랜드 소개와 홍보영상 보기">
                 <img src="poster.jpg" alt="8시마켓 브랜드 포스터">
-                <span class="om-tx"><b>8시마켓 브랜드 소개</b><small>포스터 · 1분 22초 홍보영상으로 먼저 보기</small></span>
+                <span class="om-tx"><b>8시마켓 브랜드 소개</b><small>포스터 · 30초 홍보영상으로 먼저 보기</small></span>
                 <span class="om-play" aria-hidden="true">▶</span>
               </button>
             </div>
@@ -3118,6 +3125,7 @@ a{color:inherit}
       <span class="pi-tag">8시마켓 브랜드 소개</span>
       <h2>저녁 8시,<br>우리 동네 <em>장보기</em>가 달라집니다</h2>
       <p class="pi-lead">대전 둔산·탄방과 경기 광주 신현·태전에서 동시에 시작해 <b>전국 동네 생활권으로 확장</b>하는 로컬 커머스 플랫폼입니다. 두 생활권의 퇴근길 장바구니를 위해 정육·수산·채소·반찬에 집중합니다.</p>
+      <a class="pi-yt" href="https://www.youtube.com/shorts/ojdKSxy_Kv4" target="_blank" rel="noopener"><span class="yt-ic" aria-hidden="true">▶</span><span class="yt-tx">유튜브 전체 영상 보기 (1분 50초)<small>이용방법 3단계 · 폐기 절감 대시보드 · 전국 확장까지</small></span><span class="yt-go" aria-hidden="true">↗</span></a>
       <div class="pi-vs">
         <div class="vs-h"><span>8시마켓 핵심 강점 3가지</span></div>
         <div class="vs-r"><span class="k">상권</span><span class="b">둔산·탄방 + 신현·태전 주거지</span></div>
