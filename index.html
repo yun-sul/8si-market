@@ -2300,7 +2300,7 @@ a{color:inherit}
   .pcf-visual img{display:block;width:100%;height:auto;aspect-ratio:1120/440;object-fit:cover}
   .pcf-visual::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,58,36,0) 40%,rgba(11,58,36,.60) 100%);pointer-events:none}
   .pcf-badge{position:absolute;left:14px;top:14px;z-index:2;display:inline-flex;align-items:center;gap:5px;background:var(--sunset);color:#fff;font-size:12px;font-weight:900;letter-spacing:-.03em;padding:7px 12px;border-radius:999px;box-shadow:0 12px 22px -14px rgba(234,88,12,.95)}
-  .pcf-badge i{font-style:normal;font-size:12px}
+  .pcf-badge svg{flex:0 0 auto}
   .pcf-chips{position:absolute;left:13px;right:13px;bottom:12px;z-index:2;display:flex;flex-wrap:wrap;gap:6px;margin:0}
   .pcf-chips span{background:rgba(255,255,255,.94);color:var(--f900);font-size:11px;font-weight:800;letter-spacing:-.02em;padding:5px 10px;border-radius:999px;box-shadow:0 8px 16px -12px rgba(0,0,0,.55)}
   .pcf-flow{display:flex;align-items:stretch;gap:6px;margin-top:12px}
@@ -2308,7 +2308,7 @@ a{color:inherit}
   .pcf-step i{flex:0 0 auto;width:24px;height:24px;border-radius:50%;background:var(--f100);color:var(--f800);font-style:normal;font-size:11.5px;font-weight:900;display:grid;place-items:center}
   .pcf-step b{display:block;font-size:12px;font-weight:900;letter-spacing:-.03em;color:var(--ink);line-height:1.25}
   .pcf-step small{display:block;font-size:9.5px;font-weight:700;color:var(--muted);margin-top:2px;letter-spacing:-.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-  .pcf-ar{flex:0 0 auto;display:grid;place-items:center;color:var(--faint);font-size:16px;font-weight:900}
+  .pcf-ar{flex:0 0 auto;display:grid;place-items:center;width:12px;color:#9DB3A6;font-size:17px;font-weight:900;line-height:1}
 }
 
 @media(min-width:1500px){
@@ -2898,7 +2898,7 @@ a{color:inherit}
               <div class="pc-fill">
                 <figure class="pcf-visual">
                   <img src="assets/pc-hero-produce.jpg" alt="동네 매장의 신선 채소·과일과 정육 마감특가 상품" width="1120" height="440" loading="lazy" decoding="async">
-                  <span class="pcf-badge"><i aria-hidden="true">🕗</i>오늘 저녁 8시 마감특가</span>
+                  <span class="pcf-badge"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7.4V12l3.3 2.1"/></svg>오늘 저녁 8시 마감특가</span>
                   <figcaption class="pcf-chips"><span>🥩 한우·정육</span><span>🥬 신선 채소·과일</span><span>🥐 수제 반찬·베이커리</span></figcaption>
                 </figure>
                 <div class="pcf-flow" role="list" aria-label="8시마켓 이용 흐름">
