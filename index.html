@@ -3364,6 +3364,35 @@ var STORES = [
 ];
 
 /* ===== v4.5 · 상권·행정구역 JSON 로더 ===== */
+/* 행정동 이름의 번호를 뗀 검색 별칭 — '역삼1동'을 '역삼동'으로도 찾게 한다 */
+function nationBase(name){
+  var t = String(name);
+  if(/동$/.test(t)) return t.replace(/\d+(?=동$)/, '');
+  if(/가$/.test(t)) return t.replace(/\d+(?=가$)/, '');
+  return t;
+}
+function buildNationIdx(){
+  if(!NATION) return;
+  NATION_IDX = [];
+  var seen = {};
+  NATION.sido.forEach(function(sd){
+    sd.g.forEach(function(sg){
+      sg.d.forEach(function(dong){
+        seen[sd.n+'|'+sg.n+'|'+dong] = 1;
+        NATION_IDX.push({s:sd.n, g:sg.n, d:dong, full:sd.n+' '+sg.n+' '+dong, base:nationBase(dong)});
+      });
+    });
+  });
+  /* 시연 상권이 쓰는 동네 이름(법정동 포함)도 검색에 넣는다 — '봉천동', '역삼동' 처럼 익숙한 이름 */
+  EXPANDED.forEach(function(m){
+    (m.dongs || []).forEach(function(dong){
+      var k = m.sido+'|'+m.sgg+'|'+dong;
+      if(seen[k]) return;
+      seen[k] = 1;
+      NATION_IDX.push({s:m.sido, g:m.sgg, d:dong, full:m.sido+' '+m.sgg+' '+dong, base:''});
+    });
+  });
+}
 function isDemoRegion(id){ var rg = regionById(id); return !!(rg && rg.demo && rg.id === id); }
 function demoStore(st){ return !!st && isDemoRegion(storeRegion(st)); }
 function demoCount(){ return EXPANDED.length; }
@@ -3389,6 +3418,7 @@ function loadMarketIndex(cb){
       if(!d || !d.markets || !d.markets.length) throw new Error('empty');
       EXPANDED = d.markets;
       d.markets.forEach(function(m){ MARKET_META[m.id] = m; ensureDemoRegion(m); });
+      buildNationIdx();
       finishIndex(true);
     })
     .catch(function(){ finishIndex(false); });
@@ -3453,14 +3483,7 @@ function loadNation(cb){
     .then(function(r){ if(!r.ok) throw new Error('HTTP '+r.status); return r.json(); })
     .then(function(d){
       NATION = d;
-      NATION_IDX = [];
-      d.sido.forEach(function(sd){
-        sd.g.forEach(function(sg){
-          sg.d.forEach(function(dong){
-            NATION_IDX.push({s:sd.n, g:sg.n, d:dong, full:sd.n+' '+sg.n+' '+dong, la:sg.la, ln:sg.ln});
-          });
-        });
-      });
+      buildNationIdx();
       NATION_STATE = 'ready';
       flush(true);
     })
@@ -3592,7 +3615,7 @@ function seedOrders(){
     {id:'o3', code:'8시-3210', pid:'p7', name:'마트 도시락', store:'s6', qty:1, orig:7900, sale:3900, weight:0.4, pickup:'18:00~20:00', status:'결제완료', time:'19:24', emoji:'🍱'}
   ];
 }
-/* v3.3 · 파일럿 2개 권역 + 전국 23개 오픈 예정 권역 시드 버전 */
+/* v4.5 · 파일럿 2개 권역 시드 + 전국 시연 상권은 data/markets/*.json 동적 로딩 */
 var SEED_VER = 5;
 function seed(){ return {seq:30, seedVer:SEED_VER, products:seedProducts(), orders:seedOrders(), fav:[], interest:[], onboarded:false, role:null, profile:null, myStore:null, view:null}; }
 /* v2.9~v3.0 · 새 시드 상품을 기존 방문자의 브라우저 저장분에도 채워 넣는다
@@ -4688,13 +4711,18 @@ function renderNatRes(q){
   box.hidden = false;
   if(!NATION){ box.innerHTML = '<p class="nat-hint">전국 행정구역을 불러오는 중…</p>'; return; }
   var hits = [], i, n;
-  for(i=0;i<NATION_IDX.length && hits.length<60;i++){
+  for(i=0;i<NATION_IDX.length && hits.length<80;i++){
     n = NATION_IDX[i];
-    if(n.d.toLowerCase().indexOf(t) > -1 || n.full.toLowerCase().indexOf(t) > -1) hits.push(n);
+    if(n.d.toLowerCase().indexOf(t) > -1 || n.full.toLowerCase().indexOf(t) > -1 || (n.base && n.base.toLowerCase().indexOf(t) > -1)) hits.push(n);
+  }
+  function rank(x){
+    var d = x.d.toLowerCase(), b = (x.base || '').toLowerCase();
+    if(d === t || b === t) return 0;
+    if(d.indexOf(t) === 0 || b.indexOf(t) === 0) return 1;
+    return 2;
   }
   hits.sort(function(a, b){
-    var ea = a.d.toLowerCase() === t ? 0 : (a.d.toLowerCase().indexOf(t) === 0 ? 1 : 2);
-    var eb = b.d.toLowerCase() === t ? 0 : (b.d.toLowerCase().indexOf(t) === 0 ? 1 : 2);
+    var ea = rank(a), eb = rank(b);
     if(ea !== eb) return ea - eb;
     return a.d.length - b.d.length;
   });
@@ -4769,7 +4797,7 @@ function openRadius(){
     rg.dongs.map(function(d){ return '<button class="pick'+(ui.dong===d?' is-on':'')+'" type="button" data-act="set-dong" data-v="'+esc(d)+'">'+esc(d)+'</button>'; }).join('')+
     '</div><p class="ob-hint">✓ 동네를 고르면 반경 '+ui.radius+'km 마감특가·픽업 시간이 바로 맞춰져요</p></div>';
 
-  html += '<div class="sec-head" style="margin-top:14px"><span class="dot"></span>전국 동네 검색<em>'+nationSummary()+'</em></div>';
+  html += '<div class="sec-head" style="margin-top:14px"><span class="dot"></span>전국 동네 검색<em id="natSum">'+nationSummary()+'</em></div>';
   html += '<div class="nat-search"><input id="natQ" type="search" autocomplete="off" enterkeyhint="search" placeholder="동네 이름으로 찾기 — 예: 역삼동, 해운대, 애월읍" value="'+esc(natQ)+'" aria-label="동네 이름 검색"><span class="ns-ic" aria-hidden="true">🔍</span></div>';
   html += '<div id="natRes" class="nat-list" hidden></div>';
 
@@ -4792,6 +4820,7 @@ function openRadius(){
   openSheet(html);
   loadNation(function(ok){
     if(!ok){ var t = $('#natSido'); if(t) t.innerHTML = '<option value="">행정구역을 불러오지 못했어요 · 잠시 후 다시 열어 주세요</option>'; return; }
+    var sum = $('#natSum'); if(sum) sum.textContent = nationSummary();
     renderNatSido();
     renderNatRes(natQ);
   });
@@ -5466,7 +5495,7 @@ function openInfo(){
       '<div class="mod"><b>위생</b><span>조리·냉장 상품의 판매 가능 시간 기준 안내</span></div></div>'+
     '<div class="scale">'+
       '<div class="sc-h">🌱 전국 확장 로드맵</div>'+
-      '<p class="sc-lead">대전 둔산·탄방과 경기 광주 신현·태전 <b>2대 파일럿</b>에서 시작해 <b>당근처럼 전국 동네 생활권</b>으로 넓히는 퇴근길 저녁 장바구니 플랫폼입니다.</p>'+
+      '<p class="sc-lead">대전 둔산·탄방과 경기 광주 신현·태전 <b>2대 파일럿</b>에서 시작해 <b>전국 동네 생활권</b>으로 넓히는 퇴근길 저녁 장바구니 플랫폼입니다. 지금은 전국 주요 상권 <b>106곳</b>을 <b>오픈 예정 · 시연용 예시</b>로 함께 담아, 전국 3,559개 읍·면·동 어디든 검색해 가장 가까운 상권을 볼 수 있습니다.</p>'+
       '<ol><li class="now"><span class="n">1단계</span><span><b>2대 파일럿 동시 검증</b>대전(둔산·탄방) + 경기 광주(신현·태전) — 지방 거점 + 수도권 배드타운 (지금 이 MVP)</span></li>'+
         '<li><span class="n">2단계</span><span><b>충청·수도권 주거지 확장</b>동일 모델을 인구 밀집 주거·업무지구로 복제</span></li>'+
         '<li><span class="n">3단계</span><span><b>전국 동네 상권</b>지역화폐·지자체 ESG 연계로 전국 생활권 확대</span></li></ol>'+
@@ -5847,7 +5876,7 @@ function boot(){
   renderMap();
   renderInstall();
   $('#sbTime').textContent = nowTime();
-  $('#homeNote').innerHTML = '<div class="home-note-card"><b>동네 점포의 오늘을 살리는 장보기</b><p>8시마켓은 대전 둔산·탄방과 경기 광주 신현·태전, 2대 파일럿에서 시작해 당근처럼 전국 동네 생활권으로 넓혀가는 퇴근길 저녁 장바구니 플랫폼입니다. 동네 점포의 오늘 남은 신선식품을 이웃과 연결해, 폐기는 줄이고 저녁 장보기는 가볍게.</p><button type="button" class="link-btn" data-act="info">8시마켓 소개 보기 ›</button>'+
+  $('#homeNote').innerHTML = '<div class="home-note-card"><b>동네 점포의 오늘을 살리는 장보기</b><p>8시마켓은 대전 둔산·탄방과 경기 광주 신현·태전, 2대 파일럿에서 시작해 전국 동네 생활권으로 넓혀가는 퇴근길 저녁 장바구니 플랫폼입니다. 동네 점포의 오늘 남은 신선식품을 이웃과 연결해, 폐기는 줄이고 저녁 장보기는 가볍게.</p><button type="button" class="link-btn" data-act="info">8시마켓 소개 보기 ›</button>'+
     '<div class="home-sns"><p class="hs-ceo"><b>강선진 · 8시마켓 대표</b> — 서울사이버대학교 인공지능학과 재학중</p>'+
     '<div class="sns-row"><span class="sr-label">공식 채널</span>'+
       '<a class="sns-btn is-yt" href="https://www.youtube.com/@8simarket" target="_blank" rel="noopener noreferrer"><span class="sb-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 6.5v11l9-5.5z"/></svg></span><span>유튜브<small>@8simarket</small></span></a>'+
